@@ -11,3 +11,8 @@
 *.lai
 *.la
 *.a
+
+# misc
+*.d
+*.iso
+*.bin
