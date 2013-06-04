@@ -5,7 +5,10 @@ Mirus is a hobby operating system designed to be a playground for new and intere
 ## Features ##
 Not much as of now...
 * `printf` (so glorious...)
-* Working on GDT
+* GDT
+* ISRs
+* IDT
+* memcpy and related
 
 ## Screenshots ##
 
