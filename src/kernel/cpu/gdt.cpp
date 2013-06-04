@@ -31,7 +31,7 @@ void mirus::gdt_install() {
     using namespace mirus;
 
     gp.limit = (sizeof(gdt_entry) * 6) - 1;
-    gp.base = (unsigned int)&gdt;
+    gp.base = (unsigned long)&gdt;
 
     // Null descriptor
     gdt_set_gate(0, 0, 0, 0, 0);

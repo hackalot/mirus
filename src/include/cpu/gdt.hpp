@@ -19,7 +19,7 @@ namespace mirus {
     class gdt_ptr {
     public:
         unsigned short limit;
-        unsigned int base;
+        unsigned long base;
     } __attribute__ ((__packed__));
 
     void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
