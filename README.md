@@ -1,4 +1,0 @@
-mirus
-=====
-
-Mirus operating system
