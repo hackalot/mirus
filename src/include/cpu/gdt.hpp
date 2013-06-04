@@ -22,17 +22,6 @@ namespace mirus {
         unsigned int base;
     };
 
-    // simple 3 entry gdt
-    static gdt_entry gdt[3];
-
-    // methods and variables used in the asm file
-    extern "C" {
-        void gdt_flush();
-
-        // ERROR: multiple definitions...
-        gdt_ptr gp;
-    }
-
     void gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
     void gdt_install();
 }

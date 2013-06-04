@@ -1,7 +1,17 @@
 #include <cpu/gdt.hpp>
 
 // ERROR: multiple definitions...
-extern "C" mirus::gdt_ptr gp();
+
+// methods and variables used in the asm file
+namespace mirus {
+    extern "C" {
+        void gdt_flush();
+        mirus::gdt_ptr gp;
+    }
+}
+
+// simple 3 entry gdt
+static mirus::gdt_entry gdt[3];
 
 void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran)
 {
