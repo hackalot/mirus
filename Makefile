@@ -59,7 +59,7 @@ clean:
 	@rm -f todo.txt
 
 todolist:
-	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME $$file; done; true
+	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true
 
 dist:
 	@mkdir .tempdir

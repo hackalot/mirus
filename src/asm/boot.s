@@ -42,8 +42,6 @@ _start:
 	hlt
 	jmp .hang
 
-; TODO: undefined reference to _gp ??!?!@
-
 ; This will set up our new segment registers. We need to do
 ; something special in order to set CS. We do what is called a
 ; far jump. A jump that includes a segment as well as an offset.

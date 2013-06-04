@@ -28,6 +28,8 @@ namespace mirus {
     // methods and variables used in the asm file
     extern "C" {
         void gdt_flush();
+
+        // ERROR: multiple definitions...
         gdt_ptr gp;
     }
 

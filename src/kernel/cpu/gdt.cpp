@@ -1,5 +1,6 @@
 #include <cpu/gdt.hpp>
 
+// ERROR: multiple definitions...
 extern "C" mirus::gdt_ptr gp();
 
 void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran)
