@@ -16,3 +16,7 @@
 *.d
 *.iso
 *.bin
+
+# anything submlime might have copied over...
+*.sublime-project
+*.sublime-workspace

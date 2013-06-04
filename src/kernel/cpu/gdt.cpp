@@ -1,7 +1,5 @@
 #include <cpu/gdt.hpp>
 
-// ERROR: multiple definitions...
-
 // methods and variables used in the asm file
 namespace mirus {
     extern "C" {
@@ -13,35 +11,31 @@ namespace mirus {
 // simple 3 entry gdt
 static mirus::gdt_entry gdt[3];
 
-void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran)
-{
+void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran) {
     using namespace mirus;
 
-    /* Setup the descriptor base address */
+    // descriptor base address
     gdt[num].base_low = (base & 0xFFFF);
     gdt[num].base_middle = (base >> 16) & 0xFF;
     gdt[num].base_high = (base >> 24) & 0xFF;
 
-    /* Setup the descriptor limits */
+    // limits
     gdt[num].limit_low = (limit & 0xFFFF);
     gdt[num].granularity = ((limit >> 16) & 0x0F);
 
-    /* Finally, set up the granularity and access flags */
+    // flags + granularity
     gdt[num].granularity |= (gran & 0xF0);
     gdt[num].access = access;
 }
 
-void mirus::gdt_install()
-{
+void mirus::gdt_install() {
     using namespace mirus;
 
-    /* Setup the GDT pointer and limit */
+    // setup gdt pointer
     gp.limit = (sizeof(gdt_entry) * 3) - 1;
-
-    // TODO: error here...
     gp.base = (unsigned int)&gdt;
 
-    /* Our NULL descriptor */
+    // NULL desc.
     gdt_set_gate(0, 0, 0, 0, 0);
 
     /* The second entry is our Code Segment. The base address
@@ -56,6 +50,6 @@ void mirus::gdt_install()
     *  this entry's access byte says it's a Data Segment */
     gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
 
-    /* Flush out the old GDT and install the new changes! */
+    // finalize
     gdt_flush();
 }

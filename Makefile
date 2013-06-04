@@ -4,7 +4,9 @@ BUILD_NUM = $(shell cat $(PROG_BUILD_NUM))
 BUILD_MAJOR = 0
 BUILD_MINOR = 0
 BUILD_CODENAME = fayette
-BUILD_PREFIX = dev
+BUILD_POSTFIX = dev
+
+M_ARCH = i386
 
 PROJDIRS := src/kernel src/asm src/include
 SRCFILES := $(shell find $(PROJDIRS) -type f -name "*.cpp")
@@ -23,7 +25,7 @@ CXXWARNINGS = -Wall -Wextra -pedantic
 CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/mstl
 CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE) -DBUILD_NUM=$(BUILD_NUM)
 CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
-CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_PREFIX=$(BUILD_PREFIX)
+CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX=$(BUILD_POSTFIX)
 
 LD = ld
 LDFLAGS := -T build/linker.ld
@@ -33,7 +35,7 @@ ASFLAGS = -f elf
 
 .PHONY: all clean dist todolist dist
 
-TARGET = test.iso
+TARGET = mirus.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM).$(BUILD_POSTFIX).$(M_ARCH).iso
 
 ALL: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
@@ -57,16 +59,19 @@ clean:
 	@rm -f iso/boot/kernel.bin
 	@rm -f $(TARGET)
 	@rm -f todo.txt
+	@rm -f *.iso
+	@rm -f *.bin
 
 todolist:
 	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true
 
 dist:
 	@mkdir .tempdir
-	@cp -r src .tempdir/src/
-	@cp -r Readme.md .tempdir/
-	@cp -r License.md .tempdir/
-	@cp $(TARGET) .tempdir/
+	@mkdir .tempdir/mirus
+	@cp -r src .tempdir/mirus/src/
+	@cp -r README.md .tempdir/mirus
+	@cp -r LICENSE.md .tempdir/mirus
+	@cp $(TARGET) .tempdir/mirus
 	@tar cvfz package.tar.gz .tempdir
 	@rm -rf .tempdir
 

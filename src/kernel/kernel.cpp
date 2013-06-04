@@ -4,8 +4,14 @@
 
 extern "C" void kernel_main()
 {
+    // install the GDT
 	mirus::gdt_install();
+
+    // initilize display
 	terminal_initialize();
+
+    // set up system version
+
 
 	mirus::printf("mirus ");
 	mirus::printf(BUILD_MAJOR);
