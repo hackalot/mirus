@@ -9,6 +9,7 @@ namespace mirus {
 
     // memset
     unsigned char* memset(unsigned char* dest, unsigned char val, int count);
+    unsigned int* memset(unsigned int* dest, unsigned int val, int count);
 
     // memsetw
     unsigned short* memsetw(unsigned short* dest, unsigned short val, int count);

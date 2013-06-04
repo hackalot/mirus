@@ -39,6 +39,15 @@ unsigned char* mirus::memset(unsigned char* dest, unsigned char val, int count) 
     return dest;
 }
 
+unsigned int* mirus::memset(unsigned int* dest, unsigned int val, int count) {
+    int* temp = (int *)dest;
+
+    for(; count != 0; count--)
+        *temp++ = val;
+
+    return dest;
+}
+
 unsigned short* mirus::memsetw(unsigned short* dest, unsigned short val, int count)
 {
     unsigned short* temp = (unsigned short *)dest;

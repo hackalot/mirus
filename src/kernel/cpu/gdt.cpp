@@ -8,8 +8,7 @@ namespace mirus {
     }
 }
 
-// simple 3 entry gdt
-static mirus::gdt_entry gdt[3];
+static mirus::gdt_entry gdt[6];
 
 void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran) {
     using namespace mirus;
@@ -31,25 +30,24 @@ void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsig
 void mirus::gdt_install() {
     using namespace mirus;
 
-    // setup gdt pointer
-    gp.limit = (sizeof(gdt_entry) * 3) - 1;
+    gp.limit = (sizeof(gdt_entry) * 6) - 1;
     gp.base = (unsigned int)&gdt;
 
-    // NULL desc.
+    // Null descriptor
     gdt_set_gate(0, 0, 0, 0, 0);
 
-    /* The second entry is our Code Segment. The base address
-    *  is 0, the limit is 4GBytes, it uses 4KByte granularity,
-    *  uses 32-bit opcodes, and is a Code Segment descriptor.
-    *  Please check the table above in the tutorial in order
-    *  to see exactly what each value means */
+    // code seg
     gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
 
-    /* The third entry is our Data Segment. It's EXACTLY the
-    *  same as our code segment, but the descriptor type in
-    *  this entry's access byte says it's a Data Segment */
+    // data seg
     gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
 
-    // finalize
+    // user code
+    gdt_set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
+
+    // user data
+    gdt_set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
+
+    // flush it
     gdt_flush();
 }
