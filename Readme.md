@@ -2,23 +2,10 @@ mirus
 =====
 Mirus is a hobby operating system designed to be a playground for new and interesting OS theories.  It is not based on any other exsisting standards, allowing for a great deal of freedom in the development of the concepts behind it.
 
-### IRC ###
-You can reach us on the #mirus channel on [irc.freenode.net]().
-
 ## Features ##
-Mirus supports many important features of a complete operating system, as well as some new and interesting ones.
-
-### Kernel
-* Super-secure, system-wide, level based architecture
-* Compatability can be extended with Mix (Mirus Interface Extensions)
-* Support for extreme load and distribution across many machines
-* Every application sandboxed
-* Very tight permission system
-
-### Development
-* libc
-* ustl
-* libc++
+Not much as of now...
+* `printf` that supports
+* Working on GDT
 
 ## Screenshots ##
 
