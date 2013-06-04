@@ -18,7 +18,7 @@ Once the dependencies are met, you can clone the repository with the following c
 
 And build with `make all`.  To generate a distribution package, perform `make dist`.
 
-Make will build, link, and generate an ISO image of Mirus using grub2.  This can be run in your favorite VM or on physical hardware.  You can run `make kvm` or `make bochs` to run either VM, as well.  Note that we currently only officially support QEMU and VirtualBox.
+Make will build, link, and generate an ISO image of Mirus using grub2.  This can be run in your favorite VM or on physical hardware.  You can run `make kvm` to run in QEMU.  Note that we currently only officially support QEMU and VirtualBox.
 
 ## Dependencies
 

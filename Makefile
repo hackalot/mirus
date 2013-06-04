@@ -69,3 +69,6 @@ dist:
 	@cp $(TARGET) .tempdir/
 	@tar cvfz package.tar.gz .tempdir
 	@rm -rf .tempdir
+
+kvm: $(TARGET)
+	@qemu-system-i386 -cdrom $(TARGET)
