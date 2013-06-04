@@ -4,7 +4,7 @@ Mirus is a hobby operating system designed to be a playground for new and intere
 
 ## Features ##
 Not much as of now...
-* `printf` that supports
+* `printf` (so glorious...)
 * Working on GDT
 
 ## Screenshots ##
