@@ -44,7 +44,11 @@ void mirus::keyboard_handler(struct regs *r) {
     unsigned char scancode;
     scancode = mirus::inb(0x60);
 
-    mirus::terminal_putchar(kbdus[scancode]);
+    if (scancode & 0x80) {
+
+    } else {
+        mirus::terminal_putchar(kbdus[scancode]);
+    }
 
     mirus::outb(0x20,0x20);
 }
