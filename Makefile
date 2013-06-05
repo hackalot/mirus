@@ -63,6 +63,7 @@ clean:
 	@rm -f todo.txt
 	@rm -f *.iso
 	@rm -f *.bin
+	@rn -f *.tar.gz
 
 todolist:
 	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true
@@ -74,7 +75,7 @@ dist:
 	@cp -r README.md .tempdir/mirus
 	@cp -r LICENSE.md .tempdir/mirus
 	@cp *.iso .tempdir/mirus
-	@tar cvfz package.tar.gz .tempdir
+	@tar cvfz package.tar.gz .tempdir/mirus
 	@rm -rf .tempdir
 
 kvm: $(TARGET)
