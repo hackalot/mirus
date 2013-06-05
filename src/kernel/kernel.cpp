@@ -7,6 +7,7 @@
 #include <cpu/irq.hpp>
 
 #include <hw/pit.hpp>
+#include <hw/keyboard.hpp>
 
 extern "C" void kernel_main()
 {
@@ -26,7 +27,12 @@ extern "C" void kernel_main()
 	mirus::terminal_initialize();
 
     // install timer
-    mirus::timer_install();
+    //mirus::timer_install();
+
+    // install keyboard
+    mirus::keyboard_install();
+
+    asm volatile ("sti");
 
     // print version number
 	mirus::printf("mirus ");
@@ -36,12 +42,9 @@ extern "C" void kernel_main()
 	mirus::printf(".");
 	mirus::printf(BUILD_NUM);
     mirus::printf("\r");
-
-    mirus::timer_wait(5);
-
-    mirus::printf("BOO!");
+    mirus::printf("\r");
 
     mirus::timer_wait(2);
 
-    mirus::terminal_clear();
+    mirus::printf("test");
 }

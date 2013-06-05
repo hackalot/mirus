@@ -1,6 +1,6 @@
 #include <cpu/irq.hpp>
 
-static mirus::irq_handler_t irq_routines[16] = { 0 };
+static mirus::irq_handler_t irq_routines[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 
 void mirus::irq_install_handler(int irq, irq_handler_t handler) {
     irq_routines[irq] = handler;
@@ -46,7 +46,7 @@ void mirus::irq_install() {
     irq_remap();
     irq_gates();
 
-    IRQ_RES;
+    //IRQ_RES;
 }
 
 void mirus::irq_ack(int irq_no) {
@@ -58,7 +58,6 @@ void mirus::irq_ack(int irq_no) {
 }
 
 extern "C" void mirus::irq_handler(struct regs *r) {
-    IRQ_OFF;
     void (*handler)(struct regs *r);
 
     if (r->int_no > 47 || r->int_no < 32) {
@@ -72,6 +71,4 @@ extern "C" void mirus::irq_handler(struct regs *r) {
     } else {
         irq_ack(r->int_no - 32);
     }
-
-    IRQ_RES;
 }
