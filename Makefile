@@ -33,6 +33,8 @@ LDFLAGS := -T build/linker.ld
 AS = nasm
 ASFLAGS = -f elf
 
+QEMU = qemu-system-i386
+
 .PHONY: all clean dist todolist dist
 
 TARGET = mirus.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM).$(BUILD_POSTFIX).$(M_ARCH).iso
@@ -71,9 +73,9 @@ dist:
 	@cp -r src .tempdir/mirus/src/
 	@cp -r README.md .tempdir/mirus
 	@cp -r LICENSE.md .tempdir/mirus
-	@cp $(TARGET) .tempdir/mirus
+	@cp *.iso .tempdir/mirus
 	@tar cvfz package.tar.gz .tempdir
 	@rm -rf .tempdir
 
 kvm: $(TARGET)
-	@qemu-system-i386 -cdrom $(TARGET)
+	@$(QEMU) -cdrom $(TARGET)
