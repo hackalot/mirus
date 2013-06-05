@@ -1,5 +1,15 @@
 #include <term/terminal.hpp>
 
+// terminal sizes
+static const size_t VGA_WIDTH = 80;
+static const size_t VGA_HEIGHT = 24;
+
+// term info
+static size_t terminal_row;
+static size_t terminal_column;
+static uint8_t terminal_color;
+static uint16_t* terminal_buffer;
+
 uint8_t make_color(enum vga_color fg, enum vga_color bg) {
     return fg | bg << 4;
 }

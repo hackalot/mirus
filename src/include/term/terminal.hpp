@@ -7,15 +7,6 @@
 #include <core/ioport.hpp>
 #include <mem/memory.hpp>
 
-namespace mirus {
-    class stream {
-    public:
-        const char* operator<<(const char* str);
-    };
-
-    stream cout();
-}
-
 // Hardware text mode color constants.
 enum vga_color
 {
@@ -42,16 +33,6 @@ uint8_t make_color(enum vga_color fg, enum vga_color bg);
 
 // create a VGA entry
 uint16_t make_vgaentry(char c, uint8_t color);
-
-// terminal sizes
-static const size_t VGA_WIDTH = 80;
-static const size_t VGA_HEIGHT = 24;
-
-// term info
-static size_t terminal_row;
-static size_t terminal_column;
-static uint8_t terminal_color;
-static uint16_t* terminal_buffer;
 
 // init the terminal
 void terminal_initialize();

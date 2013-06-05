@@ -4,6 +4,9 @@
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
 #include <cpu/isr.hpp>
+#include <cpu/irq.hpp>
+
+#include <hw/pit.hpp>
 
 extern "C" void kernel_main()
 {
@@ -16,8 +19,14 @@ extern "C" void kernel_main()
     // install ISRs
     mirus::isrs_install();
 
+    // install IRQs
+    mirus::irq_install();
+
     // initilize display
 	terminal_initialize();
+
+    // install timer
+    mirus::timer_install();
 
     // print version number
 	mirus::printf("mirus ");
@@ -26,11 +35,9 @@ extern "C" void kernel_main()
 	mirus::printf(BUILD_MINOR);
 	mirus::printf(".");
 	mirus::printf(BUILD_NUM);
+    mirus::printf("\r");
 
-    // Try to trigger the ISR errors
-    int bob[2];
-    bob[0] = 33;
-    bob[1] = 33;
-    bob[2] = 666;
-    bob[3] = 666;
+    mirus::timer_wait(5);
+
+    mirus::printf("BOO!");
 }
