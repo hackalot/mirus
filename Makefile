@@ -63,7 +63,7 @@ clean:
 	@rm -f todo.txt
 	@rm -f *.iso
 	@rm -f *.bin
-	@rn -f *.tar.gz
+	@rm -f *.tar.gz
 
 todolist:
 	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true
