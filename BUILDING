@@ -1,0 +1,23 @@
+Building Mirus
+
+In order to build Mirus, you should have a copy of the source as well as the following dependencies:
+
+* make
+* ld
+* clang
+* nasm
+* grub2-utils
+* xorriso
+
+Makefile targets are as follows:
+
+all:		build mirus and produce iso image
+clean:		clean up all object and output files
+kvm:		run in qemu
+bochs:		run in bochs
+dist:		generate a tar.gz of the source and binaries
+todolist:	generate a list of // TODO:s, // ERROS:s, and // NOTE:s
+
+The resulting ISO file will be called something along the lines of `mirus.<version number>.<postfix>.<arch>.iso`
+
+Make automatically updates the build number in build/.buildnumber at each build.
