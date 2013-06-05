@@ -42,6 +42,7 @@ These documents or sites helped me greatly in the development of Mirus.
 
 * [OSDev](http://osdev.org)
 * [Bran's Kernel Development Series](http://www.osdever.net/bkerndev/Docs/intro.htm)
+* [James M's Kernel Tutorials](http://code.google.com/p/jamesm-tutorials/)
 
 ### Misc
 Other helpful things to me.
