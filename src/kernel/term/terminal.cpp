@@ -10,18 +10,20 @@ static size_t terminal_column;
 static uint8_t terminal_color;
 static uint16_t* terminal_buffer;
 
-uint8_t make_color(enum vga_color fg, enum vga_color bg) {
+uint8_t mirus::make_color(enum vga_color fg, enum vga_color bg) {
     return fg | bg << 4;
 }
 
-uint16_t make_vgaentry(char c, uint8_t color) {
+uint16_t mirus::make_vgaentry(char c, uint8_t color) {
     uint16_t c16 = c;
     uint16_t color16 = color;
 
     return c16 | color16 << 8;
 }
 
-void terminal_initialize() {
+void mirus::terminal_initialize() {
+    using namespace mirus;
+
     terminal_row = 0;
     terminal_column = 0;
     terminal_color = make_color(COLOR_WHITE, COLOR_BLACK);
@@ -38,18 +40,22 @@ void terminal_initialize() {
 }
 
 // set color
-void terminal_setcolor(uint8_t color) {
+void mirus::terminal_setcolor(uint8_t color) {
     terminal_color = color;
 }
 
 // put an entry at location
-void terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
+void mirus::terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
+    using namespace mirus;
+
     const size_t index = y * VGA_WIDTH + x;
     terminal_buffer[index] = make_vgaentry(c, color);
 }
 
 // put a char at a location
-void terminal_putchar(char c) {
+void mirus::terminal_putchar(char c) {
+    using namespace mirus;
+
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 
     if ( ++terminal_column == VGA_WIDTH )
@@ -72,15 +78,12 @@ void terminal_putchar(char c) {
 }
 
 // write a string
-void terminal_writestring(const char* data) {
+void mirus::terminal_writestring(const char* data) {
+    using namespace mirus;
+
     size_t datalen = strlen(data);
     for (size_t i = 0; i < datalen; i++) {
-        if (data[i] == '\n') {
-            // LF.  We don't like it, but we support it.
-            // set rows++, cols to 0.
-            ++terminal_row;
-            terminal_column = 0;
-        } else if (data[i] == '\r') {
+        if (data[i] == '\r') {
             // CR is default...
             ++terminal_row;
             terminal_column = 0;
@@ -90,7 +93,9 @@ void terminal_writestring(const char* data) {
     }
 }
 
-void terminal_clear() {
+void mirus::terminal_clear() {
+    using namespace mirus;
+
     int spaces = VGA_WIDTH * VGA_HEIGHT;
 
     for (int i = 0; i < spaces; i++) {
@@ -102,7 +107,9 @@ void terminal_clear() {
 }
 
 // TODO: does not scroll correctly
-void terminal_scroll() {
+void mirus::terminal_scroll() {
+    using namespace mirus;
+
     uint8_t blank = make_color(COLOR_BLACK, COLOR_BLACK);
     unsigned temp;
     unsigned short* vidmem = nullptr;
@@ -117,7 +124,9 @@ void terminal_scroll() {
     terminal_column = 25 - 1;
 }
 
-void terminal_move_cursor() {
+void mirus::terminal_move_cursor() {
+    using namespace mirus;
+
     unsigned temp;
 
     /* The equation for finding the index in a linear

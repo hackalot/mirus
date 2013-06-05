@@ -28,35 +28,39 @@ enum vga_color
     COLOR_WHITE = 15,
 };
 
-// create a color
-uint8_t make_color(enum vga_color fg, enum vga_color bg);
+namespace mirus {
+    // create a color
+    uint8_t make_color(enum vga_color fg, enum vga_color bg);
 
-// create a VGA entry
-uint16_t make_vgaentry(char c, uint8_t color);
+    // create a VGA entry
+    uint16_t make_vgaentry(char c, uint8_t color);
 
-// init the terminal
-void terminal_initialize();
-// set color
-void terminal_setcolor(uint8_t color);
+    // init the terminal
+    void terminal_initialize();
 
-// put an entry at location
-void terminal_putentryat(char c, uint8_t color, size_t x, size_t y);
-// put a char at a location
-void terminal_putchar(char c);
+    // set color
+    void terminal_setcolor(uint8_t color);
 
-// write a string
-void terminal_writestring(const char* data);
+    // put an entry at location
+    void terminal_putentryat(char c, uint8_t color, size_t x, size_t y);
 
-// clear function
-void terminal_clear();
+    // put a char at a location
+    void terminal_putchar(char c);
 
-// our test void
-void test();
+    // write a string
+    void terminal_writestring(const char* data);
 
-// scroll it
-void terminal_scroll();
+    // clear function
+    void terminal_clear();
 
-// move cursor
-void terminal_move_cursor();
+    // our test void
+    void test();
+
+    // scroll it
+    void terminal_scroll();
+
+    // move cursor
+    void terminal_move_cursor();
+}
 
 #endif

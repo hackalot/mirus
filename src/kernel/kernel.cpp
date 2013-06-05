@@ -23,7 +23,7 @@ extern "C" void kernel_main()
     mirus::irq_install();
 
     // initilize display
-	terminal_initialize();
+	mirus::terminal_initialize();
 
     // install timer
     mirus::timer_install();
@@ -40,4 +40,8 @@ extern "C" void kernel_main()
     mirus::timer_wait(5);
 
     mirus::printf("BOO!");
+
+    mirus::timer_wait(2);
+
+    mirus::terminal_clear();
 }
