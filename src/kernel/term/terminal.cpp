@@ -96,14 +96,17 @@ void mirus::terminal_writestring(const char* data) {
 void mirus::terminal_clear() {
     using namespace mirus;
 
-    int spaces = VGA_WIDTH * VGA_HEIGHT;
+    uint8_t attributeByte = (0 /*black*/ << 4) | (15 /*white*/ & 0x0F);
+    uint16_t blank = 0x20 /* space */ | (attributeByte << 8);
 
-    for (int i = 0; i < spaces; i++) {
-        terminal_putchar(' ');
-    }
+    for (int i = 0; i < 80 * 25; i++)
+        terminal_buffer[i] = 0;
 
+    // Move the hardware cursor back to the start.
     terminal_row = 0;
     terminal_column = 0;
+
+    terminal_move_cursor();
 }
 
 // TODO: does not scroll correctly
