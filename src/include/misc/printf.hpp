@@ -4,6 +4,8 @@
 namespace mirus {
     void printf(const char* args);
     void printf(const int args);
+
+    void printc(char args);
 }
 
 #endif

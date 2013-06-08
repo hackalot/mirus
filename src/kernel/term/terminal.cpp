@@ -56,6 +56,11 @@ void mirus::terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
 void mirus::terminal_putchar(char c) {
     using namespace mirus;
 
+    if (c == '\r') {
+        ++terminal_row;
+        terminal_column = 0;
+    }
+
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 
     if ( ++terminal_column == VGA_WIDTH )

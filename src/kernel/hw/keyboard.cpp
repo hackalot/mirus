@@ -47,7 +47,7 @@ void mirus::keyboard_handler(struct regs *r) {
     if (scancode & 0x80) {
 
     } else {
-        mirus::printf(kbdus[scancode]);
+        mirus::terminal_putchar(kbdus[scancode]);
     }
 
     mirus::irq_ack(1);
