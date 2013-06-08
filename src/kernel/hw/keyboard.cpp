@@ -6,7 +6,7 @@ unsigned char kbdus[128] =
   '9', '0', '-', '=', '\b', /* Backspace */
   '\t',         /* Tab */
   'q', 'w', 'e', 'r',   /* 19 */
-  't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n',     /* Enter key */
+  't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\r',     /* Enter key */
     0,          /* 29   - Control */
   'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', /* 39 */
  '\'', '`',   0,        /* Left shift */
@@ -47,15 +47,15 @@ void mirus::keyboard_handler(struct regs *r) {
     if (scancode & 0x80) {
 
     } else {
-        mirus::terminal_putchar(kbdus[scancode]);
+        mirus::printf(kbdus[scancode]);
     }
 
-    mirus::outb(0x20, 0x20);
+    mirus::irq_ack(1);
 }
 
 /* Installs the keyboard handler into IRQ1 */
 void mirus::keyboard_install() {
     mirus::irq_install_handler(1, keyboard_handler);
-    mirus::outb(0x20, 0x20);
+    //mirus::irq_ack(1);
 }
 

@@ -27,12 +27,12 @@ extern "C" void kernel_main()
 	mirus::terminal_initialize();
 
     // install timer
-    mirus::timer_install();
+    //mirus::timer_install();
 
     // install keyboard
     mirus::keyboard_install();
 
-    asm volatile ("sti");
+    asm volatile("sti");
 
     // print version number
 	mirus::printf("mirus ");
@@ -43,6 +43,9 @@ extern "C" void kernel_main()
 	mirus::printf(BUILD_NUM);
     mirus::printf("\r");
     mirus::printf("\r");
+
+    // WHAT THE HELL
+    mirus::timer_wait(1);
 
     mirus::printf("Write some stuff: ");
 }
