@@ -27,7 +27,7 @@ extern "C" void kernel_main()
 	mirus::terminal_initialize();
 
     // install timer
-    //mirus::timer_install();
+    mirus::timer_install();
 
     // install keyboard
     mirus::keyboard_install();
@@ -44,7 +44,5 @@ extern "C" void kernel_main()
     mirus::printf("\r");
     mirus::printf("\r");
 
-    mirus::timer_wait(2);
-
-    mirus::printf("test");
+    mirus::printf("Write some stuff: ");
 }

@@ -50,11 +50,12 @@ void mirus::keyboard_handler(struct regs *r) {
         mirus::terminal_putchar(kbdus[scancode]);
     }
 
-    mirus::outb(0x20,0x20);
+    mirus::outb(0x20, 0x20);
 }
 
 /* Installs the keyboard handler into IRQ1 */
 void mirus::keyboard_install() {
     mirus::irq_install_handler(1, keyboard_handler);
+    mirus::outb(0x20, 0x20);
 }
 
