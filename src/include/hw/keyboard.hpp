@@ -18,7 +18,7 @@
 #define SCROLLLOCK 0x40
 #define NUMLOCK 0x80
 
-#define RMASK = 0x80;
+#define RMASK 0x80;
 
 typedef uint8_t key_status_t;
 
