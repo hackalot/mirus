@@ -128,6 +128,6 @@ void mirus::keyboard_install() {
     mirus::irq_install_handler(1, keyboard_handler);
     current_layout = &us;
 
-    //mirus::irq_ack(1);
+    mirus::irq_ack(1);
 }
 

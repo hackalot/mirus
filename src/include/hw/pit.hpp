@@ -10,7 +10,7 @@
 #define PIT_C 0x42
 #define PIT_CONTROL 0x43
 
-#define PIT_MASK 0xFC
+#define PIT_MASK 0xFF
 #define PIT_SCALE 1193180
 #define PIT_SET 0x36
 
