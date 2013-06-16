@@ -26,11 +26,11 @@ extern "C" void kernel_main()
     // initilize display
 	mirus::terminal_initialize();
 
-    // install timer
-    //mirus::timer_install();
-
     // install keyboard
     mirus::keyboard_install();
+
+    // install timer
+    mirus::timer_install();
 
     asm volatile("sti");
 
