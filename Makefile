@@ -28,7 +28,7 @@ CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
 CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
 
 LD = ld
-LDFLAGS := -T build/linker.ld -m32
+LDFLAGS := -T build/linker.ld -march=elf_i386
 
 AS = nasm
 ASFLAGS = -f elf
