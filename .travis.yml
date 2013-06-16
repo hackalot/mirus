@@ -1,3 +1,4 @@
 language: cpp
+before_script: ./before_script.sh
 script: make no-iso && make clean
 compiler: clang
