@@ -1,6 +1,7 @@
 Mirus
 =====
 [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus)
+
 Mirus is a hobby operating system designed to be a playground for new and interesting OS theories.  It is not based on any other exsisting standards, allowing for a great deal of freedom in the development of the concepts behind it.
 
 ## Features ##
