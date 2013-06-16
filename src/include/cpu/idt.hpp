@@ -17,7 +17,7 @@ namespace mirus {
     class idt_ptr {
     public:
         unsigned short limit;
-        unsigned int base;
+        unsigned long base;
     } __attribute__ ((__packed__));
 
     void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags);

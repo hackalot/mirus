@@ -31,7 +31,7 @@ void mirus::idt_install() {
 
     /* Sets the special IDT pointer up, just like in 'gdt.c' */
     idtp.limit = (sizeof(idt_entry) * 256) - 1;
-    idtp.base = (unsigned int)&idt;
+    idtp.base = (unsigned long)&idt;
 
     /* Clear out the entire IDT, initializing it to zeros */
     mirus::memset((unsigned char *)&idt, 0, sizeof(idt_entry) * 256);
