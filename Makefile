@@ -78,6 +78,6 @@ dist:
 	@tar cvfz package.tar.gz .tempdir/mirus
 	@rm -rf .tempdir
 
-kvm: $(TARGET)
+kvm:
 	@mv mirus*.iso mirus.iso
 	@$(QEMU) -cdrom mirus.iso
