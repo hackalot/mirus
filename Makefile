@@ -81,3 +81,6 @@ dist:
 kvm:
 	@mv mirus*.iso mirus.iso
 	@$(QEMU) -cdrom mirus.iso
+
+no-iso: $(OBJFILES)
+	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
