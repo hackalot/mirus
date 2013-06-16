@@ -17,7 +17,7 @@ DEPFILES := $(shell find $(PROJDIRS) -type f -name "*.d")
 OBJFILES := $(patsubst %.cpp,%.o,$(SRCFILES))
 OBJFILES += $(patsubst %.s,%.o,$(ASMFILES))
 
-AUXFILES := Makefile README.md LICENSE.md
+AUXFILES := Makefile README.md LICENSE.mds
 ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
@@ -28,7 +28,7 @@ CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
 CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
 
 LD = ld
-LDFLAGS := -T build/linker.ld -melf_i386
+LDFLAGS := -T build/linker.ld -m32
 
 AS = nasm
 ASFLAGS = -f elf
