@@ -37,7 +37,7 @@ QEMU = qemu-system-i386
 
 .PHONY: all clean dist todolist dist
 
-TARGET = mirus.$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM).$(BUILD_POSTFIX).$(M_ARCH).iso
+TARGET = mirus-$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM)-$(BUILD_POSTFIX).$(M_ARCH).iso
 
 ALL: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
@@ -79,4 +79,5 @@ dist:
 	@rm -rf .tempdir
 
 kvm: $(TARGET)
-	@$(QEMU) -cdrom $(TARGET)
+	@mv mirus-*.iso mirus.iso
+	@$(QEMU) -cdrom mirus.iso
