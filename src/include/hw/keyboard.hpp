@@ -36,7 +36,7 @@ typedef struct keymap {
 
 
 namespace mirus {
-    void keyboard_handler(struct regs* r);
+    extern "C" void keyboard_handler(struct regs* r);
     void keyboard_install();
 }
 
