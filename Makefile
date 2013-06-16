@@ -79,5 +79,5 @@ dist:
 	@rm -rf .tempdir
 
 kvm: $(TARGET)
-	@mv mirus-*.iso mirus.iso
+	@mv mirus*.iso mirus.iso
 	@$(QEMU) -cdrom mirus.iso
