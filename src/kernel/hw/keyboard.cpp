@@ -104,7 +104,7 @@ keymap_t us = {
 
 keymap_t *current_layout;
 
-extern "C" void mirus::keyboard_handler(struct regs *r) {
+void mirus::keyboard_handler(struct regs *r) {
     unsigned char scancode;
     scancode = mirus::inb(0x60);
 
