@@ -1,0 +1,3 @@
+[submodule "mirloader"]
+	path = mirloader
+	url = git://github.com/joshbeitler/mirloader.git
