@@ -45,7 +45,7 @@ extern "C" void kernel_main()
     mirus::printf("\r");
 
     // WHAT THE HELL
-    mirus::timer_wait(1);
+    //mirus::timer_wait(1);
 
     mirus::printf("Write some stuff: ");
 }
