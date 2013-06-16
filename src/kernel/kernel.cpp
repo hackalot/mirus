@@ -45,7 +45,8 @@ extern "C" void kernel_main()
     mirus::printf("\r");
 
     // WHAT THE HELL
-    //mirus::timer_wait(1);
+    // It seems that the keyboard won't work without this, even if the Timer is not installed.
+    mirus::timer_wait(1);
 
     mirus::printf("Write some stuff: ");
 }
