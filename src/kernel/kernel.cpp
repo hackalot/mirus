@@ -48,8 +48,4 @@ extern "C" void kernel_main()
 
     // Make sure we never exit
     while (true);
-
-    // WHAT THE HELL
-    // It seems that the keyboard won't work without this, even if the Timer is not installed.
-    //mirus::timer_wait(1000);
 }
