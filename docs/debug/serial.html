@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mirus Serial Debugging</title>
+</head>
+<body>
+    <h1>Mirus Debugging via Serial</h1>
+    Mirus is capable of simple debugging over serial ports.  By default, when running Mirus in QEMU via <code>make kvm</code>, a serial port is opened on a file, <code>/tmp/miruslog</code>.  This build-in debugging facilities can read and write from this file.  You may interface with it via the following preferred ways.
+
+    <ul>
+        <li><code>tail -f /tmp/miruslog</code> - tail is a utility with will latch onto the file and monitor it for any updates, and then display them.</li>
+
+        <li><code>echo "message" >> /tmp/miruslog</code> - This will append "message" to the file, which will be read by Mirus via the serial driver.</li>
+    </ul>
+</body>
+</html>
