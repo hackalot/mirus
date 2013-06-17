@@ -1,4 +1,4 @@
-<img src="https://github.com/joshbeitler/mirus/blob/master/docs/logo.png" />
+<img src="https://raw.github.com/joshbeitler/mirus/master/docs/logo.png" />
 
 [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus)
 
