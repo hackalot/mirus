@@ -35,7 +35,7 @@
 extern "C" void kernel_main() {
     // CPU functions
 	mirus::gdt::install();
-    mirus::idt_install();
+    mirus::idt::install();
     mirus::isrs_install();
     mirus::irq_install();
 
