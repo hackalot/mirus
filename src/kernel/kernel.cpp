@@ -34,28 +34,17 @@
 
 extern "C" void kernel_main()
 {
-    // install the GDT
+    // CPU functions
 	mirus::gdt_install();
-
-    // install the IDT
     mirus::idt_install();
-
-    // install ISRs
     mirus::isrs_install();
-
-    // install IRQs
     mirus::irq_install();
 
-    // initilize display
 	mirus::terminal_initialize();
 
-    // install keyboard
+    // Install devices
     mirus::keyboard_install();
-
-    // install timer
     mirus::timer_install();
-
-    // install serials
     mirus::serial_install();
 
     asm volatile("sti");
