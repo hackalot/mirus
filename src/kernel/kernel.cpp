@@ -32,8 +32,7 @@
 
 #include <util/debug.hpp>
 
-extern "C" void kernel_main()
-{
+extern "C" void kernel_main() {
     // CPU functions
 	mirus::gdt_install();
     mirus::idt_install();
@@ -49,7 +48,7 @@ extern "C" void kernel_main()
 
     asm volatile("sti");
 
-    // print version number
+    // Print version number
 	mirus::printf("mirus ");
 	mirus::printf(BUILD_MAJOR);
 	mirus::printf(".");

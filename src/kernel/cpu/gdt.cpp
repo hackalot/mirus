@@ -30,7 +30,7 @@ namespace mirus {
 
 static mirus::gdt_entry gdt[6];
 
-void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran) {
+void mirus::gdt::set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran) {
     using namespace mirus;
 
     // descriptor base address
@@ -47,26 +47,26 @@ void mirus::gdt_set_gate(int num, unsigned long base, unsigned long limit, unsig
     gdt[num].access = access;
 }
 
-void mirus::gdt_install() {
+void mirus::gdt::install() {
     using namespace mirus;
 
     gp.limit = (sizeof(gdt_entry) * 6) - 1;
     gp.base = (unsigned long)&gdt;
 
     // Null descriptor
-    gdt_set_gate(0, 0, 0, 0, 0);
+    gdt::set_gate(0, 0, 0, 0, 0);
 
     // code seg
-    gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
+    gdt::set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
 
     // data seg
-    gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
+    gdt::set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
 
     // user code
-    gdt_set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
+    gdt::set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
 
     // user data
-    gdt_set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
+    gdt::set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
 
     // flush it
     gdt_flush();
