@@ -20,7 +20,7 @@
 
 #include <util/debug.hpp>
 
-mirus::debugger::write(const char* str) {
+void mirus::debugger::write(const char* str) {
     size_t len = strlen(str);
 
     for (size_t i = 0; i < len; i++) {
@@ -28,11 +28,11 @@ mirus::debugger::write(const char* str) {
     }
 }
 
-mirus::debugger::write(char chr) {
+void mirus::debugger::write(char chr) {
     mirus::write_serial(chr);
 }
 
-mirus::debugger::write(int wint) {
-    char* num = iota(wing);
+void mirus::debugger::write(int wint) {
+    char* num = iota(wint);
     mirus::debugger::write(num);
 }
