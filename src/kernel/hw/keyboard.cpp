@@ -133,6 +133,7 @@ void mirus::keyboard_handler(struct regs *r) {
     } else {
         uint8_t *scancodes = current_layout->scancodes;
 
+        // ERROR: doesn't work
         if ((current_layout->controls & (LSHIFT | RSHIFT | CAPSLOCK)) && !(current_layout->controls & CONTROL)) {
             scancodes = current_layout->shift_scancodes;
         }

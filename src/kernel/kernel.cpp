@@ -64,7 +64,7 @@ extern "C" void kernel_main()
     mirus::printf("\r");
     mirus::printf("\r");
 
-    mirus::printf("Write some stuffs: ");
+    mirus::printf("> ");
 
     // Make sure we never exit
     while (true);
