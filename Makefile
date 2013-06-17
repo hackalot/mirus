@@ -65,6 +65,7 @@ clean:
 	@rm -f *.iso
 	@rm -f *.bin
 	@rm -f *.tar.gz
+	@rm -f /tmp/miruslog
 
 todolist:
 	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true

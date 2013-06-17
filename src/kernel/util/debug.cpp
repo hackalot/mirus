@@ -18,62 +18,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <term/terminal.hpp>
-#include <misc/printf.hpp>
-
-#include <cpu/gdt.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/isr.hpp>
-#include <cpu/irq.hpp>
-
-#include <hw/pit.hpp>
-#include <hw/keyboard.hpp>
-#include <hw/serial.hpp>
-
 #include <util/debug.hpp>
 
-extern "C" void kernel_main()
-{
-    // install the GDT
-	mirus::gdt_install();
+mirus::debugger::write(const char* str) {
+    size_t len = strlen(str);
 
-    // install the IDT
-    mirus::idt_install();
+    for (size_t i = 0; i < len; i++) {
+        mirus::write_serial(str[i]);
+    }
+}
 
-    // install ISRs
-    mirus::isrs_install();
+mirus::debugger::write(char chr) {
+    mirus::write_serial(chr);
+}
 
-    // install IRQs
-    mirus::irq_install();
-
-    // initilize display
-	mirus::terminal_initialize();
-
-    // install keyboard
-    mirus::keyboard_install();
-
-    // install timer
-    mirus::timer_install();
-
-    // install serials
-    mirus::serial_install();
-
-    asm volatile("sti");
-
-    // print version number
-	mirus::printf("mirus ");
-	mirus::printf(BUILD_MAJOR);
-	mirus::printf(".");
-	mirus::printf(BUILD_MINOR);
-	mirus::printf(".");
-	mirus::printf(BUILD_NUM);
-    mirus::printf("\r");
-    mirus::printf("\r");
-
-    mirus::debugger::write("hello");
-
-    mirus::printf("> ");
-
-    // Make sure we never exit
-    while (true);
+mirus::debugger::write(int wint) {
+    char* num = iota(wing);
+    mirus::debugger::write(num);
 }
