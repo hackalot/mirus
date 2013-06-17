@@ -30,7 +30,7 @@ void mirus::init_serial() {
     mirus::outb(PORT + 4, 0x0B);    // IRQs enabled, RTS/DSR set
 }
 
-int mirus::serial_recieved() {
+int mirus::serial_received() {
     return mirus::inb(PORT + 5) & 1;
 }
 
