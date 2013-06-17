@@ -66,6 +66,7 @@ namespace mirus {
 
     // put a char at a location
     void terminal_putchar(char c);
+    void terminal_putchar(char c, uint8_t color);
 
     // write a string
     void terminal_writestring(const char* data);

@@ -102,6 +102,13 @@ void mirus::terminal_putchar(char c) {
     terminal_move_cursor();
 }
 
+void mirus::terminal_putchar(char c, uint8_t color) {
+    uint8_t oldcolor = terminal_color;
+    terminal_setcolor(color);
+    mirus::terminal_putchar(c);
+    terminal_setcolor(oldcolor);
+}
+
 // write a string
 void mirus::terminal_writestring(const char* data) {
     using namespace mirus;

@@ -61,8 +61,6 @@ extern "C" void kernel_main()
 
     mirus::debugger::write("hello");
 
-    mirus::printf("> ");
-
     // Make sure we never exit
     while (true);
 }
