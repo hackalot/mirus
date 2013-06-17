@@ -34,9 +34,9 @@ AS = nasm
 ASFLAGS = -f elf
 
 QEMU = qemu-system-i386
-QEMUFLAGS := -serial
+QEMUFLAGS = -serial file:/tmp/miruslog
 
-.PHONY: all clean dist todolist dist
+.PHONY: all clean dist todolist dist kvm
 
 TARGET = mirus-$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM)-$(BUILD_POSTFIX).$(M_ARCH).iso
 
@@ -80,8 +80,7 @@ dist:
 	@rm -rf .tempdir
 
 kvm:
-	@mv mirus*.iso mirus.iso
-	@$(QEMU) -cdrom mirus.iso $(QEMUFLAGS)
+	@$(QEMU) -cdrom mirus*.iso $(QEMUFLAGS)
 
 no-iso: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
