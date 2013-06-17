@@ -28,6 +28,7 @@
 
 #include <hw/pit.hpp>
 #include <hw/keyboard.hpp>
+#include <hw/serial.hpp>
 
 extern "C" void kernel_main()
 {
@@ -52,6 +53,9 @@ extern "C" void kernel_main()
     // install timer
     mirus::timer_install();
 
+    // install serials
+    mirus::serial_install();
+
     asm volatile("sti");
 
     // print version number
@@ -63,6 +67,8 @@ extern "C" void kernel_main()
 	mirus::printf(BUILD_NUM);
     mirus::printf("\r");
     mirus::printf("\r");
+
+    mirus::write_serial('m');
 
     mirus::printf("> ");
 

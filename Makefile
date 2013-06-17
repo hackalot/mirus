@@ -34,6 +34,7 @@ AS = nasm
 ASFLAGS = -f elf
 
 QEMU = qemu-system-i386
+QEMUFLAGS := -serial
 
 .PHONY: all clean dist todolist dist
 
@@ -80,7 +81,7 @@ dist:
 
 kvm:
 	@mv mirus*.iso mirus.iso
-	@$(QEMU) -cdrom mirus.iso
+	@$(QEMU) -cdrom mirus.iso $(QEMUFLAGS)
 
 no-iso: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}

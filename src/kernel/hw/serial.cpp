@@ -20,7 +20,7 @@
 
 #include <hw/serial.hpp>
 
-void mirus::init_serial() {
+void mirus::serial_install() {
     mirus::outb(PORT + 1, 0x00);    // Disable all interrupts
     mirus::outb(PORT + 3, 0x80);    // Enable DLAB (set baud rate divisor)
     mirus::outb(PORT + 0, 0x03);    // Set divisor to 3 (lo byte) 38400 baud
