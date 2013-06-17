@@ -44,22 +44,22 @@ void mirus::irq_remap() {
 }
 
 void mirus::irq_gates() {
-    mirus::idt_set_gate(32, (unsigned long)irq0, 0x08, 0x8E);
-    mirus::idt_set_gate(33, (unsigned long)irq1, 0x08, 0x8E);
-    mirus::idt_set_gate(34, (unsigned long)irq2, 0x08, 0x8E);
-    mirus::idt_set_gate(35, (unsigned long)irq3, 0x08, 0x8E);
-    mirus::idt_set_gate(36, (unsigned long)irq4, 0x08, 0x8E);
-    mirus::idt_set_gate(37, (unsigned long)irq5, 0x08, 0x8E);
-    mirus::idt_set_gate(38, (unsigned long)irq6, 0x08, 0x8E);
-    mirus::idt_set_gate(39, (unsigned long)irq7, 0x08, 0x8E);
-    mirus::idt_set_gate(40, (unsigned long)irq8, 0x08, 0x8E);
-    mirus::idt_set_gate(41, (unsigned long)irq9, 0x08, 0x8E);
-    mirus::idt_set_gate(42, (unsigned long)irq10, 0x08, 0x8E);
-    mirus::idt_set_gate(43, (unsigned long)irq11, 0x08, 0x8E);
-    mirus::idt_set_gate(44, (unsigned long)irq12, 0x08, 0x8E);
-    mirus::idt_set_gate(45, (unsigned long)irq13, 0x08, 0x8E);
-    mirus::idt_set_gate(46, (unsigned long)irq14, 0x08, 0x8E);
-    mirus::idt_set_gate(47, (unsigned long)irq15, 0x08, 0x8E);
+    mirus::idt::set_gate(32, (unsigned long)irq0, 0x08, 0x8E);
+    mirus::idt::set_gate(33, (unsigned long)irq1, 0x08, 0x8E);
+    mirus::idt::set_gate(34, (unsigned long)irq2, 0x08, 0x8E);
+    mirus::idt::set_gate(35, (unsigned long)irq3, 0x08, 0x8E);
+    mirus::idt::set_gate(36, (unsigned long)irq4, 0x08, 0x8E);
+    mirus::idt::set_gate(37, (unsigned long)irq5, 0x08, 0x8E);
+    mirus::idt::set_gate(38, (unsigned long)irq6, 0x08, 0x8E);
+    mirus::idt::set_gate(39, (unsigned long)irq7, 0x08, 0x8E);
+    mirus::idt::set_gate(40, (unsigned long)irq8, 0x08, 0x8E);
+    mirus::idt::set_gate(41, (unsigned long)irq9, 0x08, 0x8E);
+    mirus::idt::set_gate(42, (unsigned long)irq10, 0x08, 0x8E);
+    mirus::idt::set_gate(43, (unsigned long)irq11, 0x08, 0x8E);
+    mirus::idt::set_gate(44, (unsigned long)irq12, 0x08, 0x8E);
+    mirus::idt::set_gate(45, (unsigned long)irq13, 0x08, 0x8E);
+    mirus::idt::set_gate(46, (unsigned long)irq14, 0x08, 0x8E);
+    mirus::idt::set_gate(47, (unsigned long)irq15, 0x08, 0x8E);
 }
 
 void mirus::irq_install() {
