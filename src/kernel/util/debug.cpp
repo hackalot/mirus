@@ -36,3 +36,7 @@ void mirus::debugger::write(int wint) {
     char* num = iota(wint);
     mirus::debugger::write(num);
 }
+
+void mirus::debugger::flush() {
+    mirus::write_serial('\r');
+}

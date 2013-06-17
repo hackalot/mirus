@@ -60,6 +60,7 @@ extern "C" void kernel_main()
     mirus::printf("\r");
 
     mirus::debugger::write("hello");
+    mirus::debugger::flush();
 
     // Make sure we never exit
     while (true);

@@ -30,6 +30,8 @@ namespace mirus {
         static void write(const char* str);
         static void write(const char chr);
         static void write(const int wint);
+
+        static void flush();
     };
 }
 
