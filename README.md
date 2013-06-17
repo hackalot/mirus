@@ -13,7 +13,7 @@ Not much as of now...
 * memcpy and related
 
 ## Screenshots ##
-<img src="https://raw.github.com/joshbeitler/mirus/master/docs/resc/screens/mirus_console.png" />
+<img src="https://raw.github.com/joshbeitler/mirus/master/docs/resc/screens/mirus_console.png" width="100%" />
 
 ## Testing ##
 Mirus will build fine on most Unix systems that have the dependencies installed, and possibly with Mingw/Cygwin (not tested).  Normal development takes place on Fedora 18.
