@@ -20,11 +20,11 @@
 
 #include <sys/version.hpp>
 
-const char* mirus::version::getKernelName() {
+char* mirus::version::getKernelName() {
     return "mirus";
 }
 
-const char* mirus::version::getVersionString() {
+char* mirus::version::getVersionString() {
     char* vs = mirus::version::getKernelName()
         + "-" 
         + mirus::version::getMajor()
@@ -36,11 +36,11 @@ const char* mirus::version::getVersionString() {
     return vs;
 }
 
-const char* mirus::version::getVersionPostfix() {
+char* mirus::version::getVersionPostfix() {
     return "dev";
 }
 
-const char* mirus::version::getVersionCodename() {
+char* mirus::version::getVersionCodename() {
     return "fayette";
 }
 
