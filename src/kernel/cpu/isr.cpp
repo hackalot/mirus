@@ -55,7 +55,7 @@ extern "C" {
     void isr31();
 }
 
-void mirus::isrs_install() {
+void mirus::isrs::install() {
     using namespace mirus;
 
     idt::set_gate(0, (unsigned long)isr0, 0x08, 0x8E);
