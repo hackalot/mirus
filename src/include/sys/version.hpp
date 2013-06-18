@@ -21,6 +21,8 @@
 #ifndef _MIRUS_KERNEL_VERSION_H_
 #define _MIRUS_KERNEL_VERSION_H_
 
+#include <util/string.hpp>
+
 namespace mirus {
     class version {
     public:

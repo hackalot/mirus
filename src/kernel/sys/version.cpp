@@ -25,13 +25,15 @@ const char* mirus::version::getKernelName() {
 }
 
 const char* mirus::version::getVersionString() {
-    return mirus::version::getKernelName()
+    char* vs = mirus::version::getKernelName()
         + "-" 
         + mirus::version::getMajor()
         + "." 
         + mirus::version::getMinor()
         + "-"
         + mirus::version::getVersionPostfix();
+
+    return vs;
 }
 
 const char* mirus::version::getVersionPostfix() {
