@@ -24,14 +24,14 @@
 namespace mirus {
     class version {
     public:
-        static const char* getKernelName() const;
-        static const char* getVersionString() const;
-        static const char* getVersionPostfix() const;
-        static const char* getVersionCodename() const;
+        static const char* getKernelName();
+        static const char* getVersionString();
+        static const char* getVersionPostfix();
+        static const char* getVersionCodename();
 
-        static int getMajor() const;
-        static int getMinor() const;
-        static int getBuild() const;
+        static int getMajor();
+        static int getMinor();
+        static int getBuild();
     private:
         char* _kname;
         char* _vstring;
