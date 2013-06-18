@@ -32,13 +32,12 @@
 
 #include <util/debug.hpp>
 
-extern "C" void kernel_main()
-{
+extern "C" void kernel_main() {
     // CPU functions
-	mirus::gdt_install();
-    mirus::idt_install();
-    mirus::isrs_install();
-    mirus::irq_install();
+	mirus::gdt::install();
+    mirus::idt::install();
+    mirus::isr::install();
+    mirus::irq::install();
 
 	mirus::terminal_initialize();
 
@@ -49,7 +48,7 @@ extern "C" void kernel_main()
 
     asm volatile("sti");
 
-    // print version number
+    // Print version number
 	mirus::printf("mirus ");
 	mirus::printf(BUILD_MAJOR);
 	mirus::printf(".");
@@ -59,8 +58,7 @@ extern "C" void kernel_main()
     mirus::printf("\r");
     mirus::printf("\r");
 
-    mirus::debugger::write("hello");
-    mirus::debugger::flush();
+    mirus::debugger::write("hello\n");
 
     // Make sure we never exit
     while (true);

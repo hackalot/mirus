@@ -38,7 +38,7 @@ void mirus::timer_handler(struct regs *r) {
         timer_subticks = 0;
     }
 
-    mirus::irq_ack(TIMER_IRQ);
+    mirus::irq::ack(TIMER_IRQ);
 }
 
 void mirus::relative_time(unsigned long seconds, unsigned long subseconds, unsigned long * out_seconds, unsigned long * out_subseconds) {
@@ -52,7 +52,7 @@ void mirus::relative_time(unsigned long seconds, unsigned long subseconds, unsig
 }
 
 void mirus::timer_install() {
-    mirus::irq_install_handler(TIMER_IRQ, timer_handler);
+    mirus::irq::install_handler(TIMER_IRQ, timer_handler);
     mirus::timer_phase(100);
 }
 

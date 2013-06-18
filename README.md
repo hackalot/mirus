@@ -5,12 +5,7 @@ Mirus
 Mirus is a hobby operating system designed to be a playground for new and interesting OS theories.  It is not based on any other exsisting standards, allowing for a great deal of freedom in the development of the concepts behind it.
 
 ## Features ##
-Not much as of now...
-* `printf` (so glorious...)
-* GDT
-* ISRs
-* IDT
-* memcpy and related
+* The basics (gdt, irq, isrs, kprintf)
 
 ## Screenshots ##
 <img src="https://raw.github.com/joshbeitler/mirus/master/docs/resc/screens/mirus_console.png" width="100%" />
@@ -53,13 +48,6 @@ Other helpful things to me.
 
 * [とあるOS](http://torauos.org) - Helped inspire me to work on Mirus.
 * [Cosmos](http://cosmos.codeplex.com) - Original stomping ground for my OS dev ventures.
-* [Windows](http://toastytech.com/guis/bob.html) - For sucking so much it caused me to want to see if I could do better...
-
-## Related Projects
-These projects are directly related to Mirus.
-
-* [Mirloader](http://github.com/joshbeitler/mirloader) - Eventual bootloader for Mirus.
-* [Mirlabs](http://github.com/joshbeitler/mirlabs) - Testing grounds for a lot of Mirus' more...crazy features.
 
 ## License
 

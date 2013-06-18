@@ -26,8 +26,12 @@
 #include <misc/printf.hpp>
 
 namespace mirus {
-    void isrs_install();
     extern "C" void fault_handler(struct regs* r);
+
+    class isr {
+    public:
+        static void install();
+    };
 }
 
 #endif
