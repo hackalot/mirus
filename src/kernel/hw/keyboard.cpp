@@ -141,14 +141,14 @@ void mirus::keyboard_handler(struct regs *r) {
         mirus::terminal_putchar(scancodes[scancode]);
     }
 
-    mirus::irq_ack(1);
+    mirus::irq::ack(1);
 }
 
 /* Installs the keyboard handler into IRQ1 */
 void mirus::keyboard_install() {
-    mirus::irq_install_handler(1, keyboard_handler);
+    mirus::irq::install_handler(1, keyboard_handler);
     current_layout = &us;
 
-    mirus::irq_ack(1);
+    mirus::irq::ack(1);
 }
 
