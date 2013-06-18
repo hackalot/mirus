@@ -25,15 +25,17 @@ char* mirus::version::getKernelName() {
 }
 
 char* mirus::version::getVersionString() {
-    char* vs = mirus::version::getKernelName()
-        + "-" 
-        + mirus::version::getMajor()
-        + "." 
-        + mirus::version::getMinor()
-        + "-"
-        + mirus::version::getVersionPostfix();
+    // TODO: c-style strings don't allow this crap
+    
+    // char* vs = mirus::version::getKernelName()
+    //     + "-" 
+    //     + mirus::version::getMajor()
+    //     + "." 
+    //     + mirus::version::getMinor()
+    //     + "-"
+    //     + mirus::version::getVersionPostfix();
 
-    return vs;
+    // return vs;
 }
 
 char* mirus::version::getVersionPostfix() {
