@@ -22,7 +22,7 @@ ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
 CXXWARNINGS = -Wall -Wextra
-CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -m32
+CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/lib -m32
 CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE) -DBUILD_NUM=$(BUILD_NUM)
 CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
 CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
