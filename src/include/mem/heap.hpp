@@ -23,16 +23,5 @@
 #include <util/string.hpp>
 
 namespace mirus {
-    void kfree(void* p);
 
-    void* malloc(size_t);
-    void free(void*);
-
-    void kmalloc_int(uint32_t size, bool align, uint32_t* phys);
-    void* kmalloc(uint32_t size);
-    void* kmalloc_a(uint32_t size);
-    void* kmalloc_p(uint32_t size, uint32_t* phys);
-    void* kmalloc_ap(uint32_t size, uint32_t* phys);
-
-    void* krealloc(void* p, size_t new_size);
 }
