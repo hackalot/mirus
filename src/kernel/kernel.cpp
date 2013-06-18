@@ -37,7 +37,7 @@ extern "C" void kernel_main() {
 	mirus::gdt::install();
     mirus::idt::install();
     mirus::isrs_install();
-    mirus::irq_install();
+    mirus::irq::install();
 
 	mirus::terminal_initialize();
 

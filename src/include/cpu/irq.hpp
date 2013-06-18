@@ -50,14 +50,65 @@ namespace mirus {
         void irq15();
     }
 
-    void irq_install_handler(int irq, irq_handler_t handler);
-    void irq_uninstall_handler(int irq);
-    void irq_remap();
-    void irq_gates();
-    void irq_install();
-    void irq_ack(int irq_no);
+    class irq {
+    public:
+        static void install_handler();
+        static void uninstall_handler();
+
+        static void remap();
+        static void gates();
+
+        static void install();
+        static void ack(int irq_no);
+    };
 
     extern "C" void irq_handler(struct regs* r);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// namespace mirus {
+//     typedef void (*irq_handler_t) (struct regs *);
+
+//     extern "C" {
+//         void irq0();
+//         void irq1();
+//         void irq2();
+//         void irq3();
+//         void irq4();
+//         void irq5();
+//         void irq6();
+//         void irq7();
+//         void irq8();
+//         void irq9();
+//         void irq10();
+//         void irq11();
+//         void irq12();
+//         void irq13();
+//         void irq14();
+//         void irq15();
+//     }
+
+//     void irq_install_handler(int irq, irq_handler_t handler);
+//     void irq_uninstall_handler(int irq);
+//     void irq_remap();
+//     void irq_gates();
+//     void irq_install();
+//     void irq_ack(int irq_no);
+
+//     extern "C" void irq_handler(struct regs* r);
+// }
 
 #endif
