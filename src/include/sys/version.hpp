@@ -18,44 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <term/terminal.hpp>
-#include <misc/printf.hpp>
+#ifndef _MIRUS_KERNEL_VERSION_H_
+#define _MIRUS_KERNEL_VERSION_H_
 
-#include <cpu/gdt.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/isr.hpp>
-#include <cpu/irq.hpp>
+namespace mirus {
+    class version {
+    public:
+        static const char* getKernelName() const;
+        static const char* getVersionString() const;
+        static const char* getVersionPostfix() const;
+        static const char* getVersionCodename() const;
 
-#include <hw/pit.hpp>
-#include <hw/keyboard.hpp>
-#include <hw/serial.hpp>
+        static int getMajor() const;
+        static int getMinor() const;
+        static int getBuild() const;
+    private:
+        char* _kname;
+        char* _vstring;
+        char* _vpost;
+        char* _vcode;
 
-#include <sys/version.hpp>
-#include <util/debug.hpp>
-
-extern "C" void kernel_main() {
-    mirus::debugger::write("mirus 0.0.0-dev\n");
-
-    // CPU functions
-	mirus::gdt::install();
-    mirus::idt::install();
-    mirus::isr::install();
-    mirus::irq::install();
-
-	mirus::terminal_initialize();
-
-    // Install devices
-    mirus::keyboard_install();
-    mirus::timer_install();
-    mirus::serial_install();
-
-    asm volatile("sti");
-
-    // Print version number
-	mirus::printf(mirus::version::getVersionString());
-    mirus::printf("\r");
-    mirus::printf("\r");
-
-    // Make sure we never exit
-    while (true);
+        int _major;
+        int _minor;
+        int _build;
+    };
 }
+
+#endif

@@ -18,44 +18,46 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <term/terminal.hpp>
-#include <misc/printf.hpp>
-
-#include <cpu/gdt.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/isr.hpp>
-#include <cpu/irq.hpp>
-
-#include <hw/pit.hpp>
-#include <hw/keyboard.hpp>
-#include <hw/serial.hpp>
-
 #include <sys/version.hpp>
-#include <util/debug.hpp>
 
-extern "C" void kernel_main() {
-    mirus::debugger::write("mirus 0.0.0-dev\n");
+mirus::version::_kname = "mirus";
+mirus::version::_vpost = "dev";
+mirus::version::_vcode = "fayette";
 
-    // CPU functions
-	mirus::gdt::install();
-    mirus::idt::install();
-    mirus::isr::install();
-    mirus::irq::install();
+mirus::version::_major = BUILD_MAJOR;
+mirus::version::_minor = BUILD_MINOR;
+mirus::version::_build = BUILD_NUM;
 
-	mirus::terminal_initialize();
+static const char* mirus::version::getKernelName() const {
+    return mirus::version::_kname;
+}
 
-    // Install devices
-    mirus::keyboard_install();
-    mirus::timer_install();
-    mirus::serial_install();
+static const char* mirus::version::getVersionString() const {
+    return mirus::version::_kname 
+        + "-" 
+        + mirus::version::_major
+        + "." 
+        + mirus::version::_minor
+        + "-"
+        + mirus::version::_vpost;
+}
 
-    asm volatile("sti");
+static const char* mirus::version::getVersionPostfix() const {
+    return mirus::version::_vpost;
+}
 
-    // Print version number
-	mirus::printf(mirus::version::getVersionString());
-    mirus::printf("\r");
-    mirus::printf("\r");
+static const char* mirus::version::getVersionCodename() const {
+    return mirus::version::_vcode;
+}
 
-    // Make sure we never exit
-    while (true);
+static int mirus::version::getMajor() const {
+    return mirus::version::_major;
+}
+
+static int mirus::version::getMinor() const {
+    return mirus::version::_minor;
+}
+
+static int mirus::version::getBuild() const {
+    return mirus::version::_build;
 }
