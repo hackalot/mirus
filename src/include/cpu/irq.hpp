@@ -53,7 +53,7 @@ namespace mirus {
     class irq {
     public:
         static void install_handler(int irq, irq_handler_t handler);
-        static void uninstall_handler();
+        static void uninstall_handler(int irq);
 
         static void remap();
         static void gates();
