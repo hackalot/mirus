@@ -28,11 +28,11 @@ mirus::version::_major = BUILD_MAJOR;
 mirus::version::_minor = BUILD_MINOR;
 mirus::version::_build = BUILD_NUM;
 
-static const char* mirus::version::getKernelName() {
+const char* mirus::version::getKernelName() {
     return mirus::version::_kname;
 }
 
-static const char* mirus::version::getVersionString() {
+const char* mirus::version::getVersionString() {
     return mirus::version::_kname 
         + "-" 
         + mirus::version::_major
@@ -42,22 +42,22 @@ static const char* mirus::version::getVersionString() {
         + mirus::version::_vpost;
 }
 
-static const char* mirus::version::getVersionPostfix() {
+const char* mirus::version::getVersionPostfix() {
     return mirus::version::_vpost;
 }
 
-static const char* mirus::version::getVersionCodename() {
+const char* mirus::version::getVersionCodename() {
     return mirus::version::_vcode;
 }
 
-static int mirus::version::getMajor() {
+int mirus::version::getMajor() {
     return mirus::version::_major;
 }
 
-static int mirus::version::getMinor() {
+int mirus::version::getMinor() {
     return mirus::version::_minor;
 }
 
-static int mirus::version::getBuild() {
+int mirus::version::getBuild() {
     return mirus::version::_build;
 }
