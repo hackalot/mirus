@@ -32,15 +32,6 @@ namespace mirus {
         static int getMajor();
         static int getMinor();
         static int getBuild();
-    private:
-        char* _kname;
-        char* _vstring;
-        char* _vpost;
-        char* _vcode;
-
-        int _major;
-        int _minor;
-        int _build;
     };
 }
 

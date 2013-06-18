@@ -20,44 +20,36 @@
 
 #include <sys/version.hpp>
 
-mirus::version::_kname = "mirus";
-mirus::version::_vpost = "dev";
-mirus::version::_vcode = "fayette";
-
-mirus::version::_major = BUILD_MAJOR;
-mirus::version::_minor = BUILD_MINOR;
-mirus::version::_build = BUILD_NUM;
-
 const char* mirus::version::getKernelName() {
-    return mirus::version::_kname;
+    return "mirus";
 }
 
 const char* mirus::version::getVersionString() {
-    return mirus::version::_kname 
+    return mirus::version::getKernelName()
         + "-" 
-        + mirus::version::_major
+        + mirus::version::getMajor()
         + "." 
-        + mirus::version::_minor
+        + mirus::version::getMinor()
         + "-"
-        + mirus::version::_vpost;
+        + mirus::version::getVersionPostfix();
 }
 
 const char* mirus::version::getVersionPostfix() {
-    return mirus::version::_vpost;
+    return "dev";
 }
 
 const char* mirus::version::getVersionCodename() {
-    return mirus::version::_vcode;
+    return "fayette";
 }
 
 int mirus::version::getMajor() {
-    return mirus::version::_major;
+    return BUILD_MAJOR;
 }
 
 int mirus::version::getMinor() {
-    return mirus::version::_minor;
+    return BUILD_MINOR;
 }
 
 int mirus::version::getBuild() {
-    return mirus::version::_build;
+    return BUILD_NUM;
 }
