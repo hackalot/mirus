@@ -33,6 +33,8 @@
 #include <util/debug.hpp>
 
 extern "C" void kernel_main() {
+    mirus::debugger::write("mirus 0.0.0-dev\n");
+
     // CPU functions
 	mirus::gdt::install();
     mirus::idt::install();
