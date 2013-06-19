@@ -22,6 +22,14 @@
 #include <stdint.h>
 #include <util/string.hpp>
 
-namespace mirus {
+namespace mirus {   
+    class mem_bit {
+    public:
+        bool used;
+    };
 
+    class heap {
+    public:
+        mem_bit[255] bits;
+    };
 }
