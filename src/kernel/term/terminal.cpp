@@ -76,12 +76,12 @@ void mirus::terminal_putentryat(char c, uint8_t color, size_t x, size_t y) {
 void mirus::terminal_putchar(char c) {
     using namespace mirus;
 
-    if (c == '\r') {
-        ++terminal_row;
-        terminal_column = 0;
-    } else if (c == '\b') {
-        --terminal_column;
-    }
+    // if (c == '\r') {
+    //     ++terminal_row;
+    //     terminal_column = 0;
+    // } else if (c == '\b') {
+    //     --terminal_column;
+    // }
 
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 
@@ -117,16 +117,30 @@ void mirus::terminal_writestring(const char* data) {
 
     size_t datalen = strlen(data);
 
-    for (size_t i = 0; i < datalen; i++)
-        terminal_putchar(data[i]);
+    for (size_t i = 0; i < datalen; i++) {
+        if (data[i] == '\r') {
+            ++terminal_column;
+            terinal_row = 0;
+        } else if (data[i] == '\b') {
+            terminal_column--;
+        } else
+            terminal_putchar(data[i]);
+    }
 }
 
 void mirus::terminal_writestring(const char* data, uint8_t color) {
     using namespace mirus;
 
     size_t datalen = strlen(data);
-    for (size_t i = 0; i < datalen; i++)
-        terminal_putchar(data[i], color);
+    for (size_t i = 0; i < datalen; i++) {
+        if (data[i] == '\r') {
+            ++terminal_column;
+            terminal_row = 0;
+        }  else if (data[i] == '\b') {
+            terminal_column--;
+        } else
+            terminal_putchar(data[i], color);
+    }
 }
 
 void mirus::terminal_clear() {
