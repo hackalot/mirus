@@ -120,7 +120,7 @@ void mirus::terminal_writestring(const char* data) {
     for (size_t i = 0; i < datalen; i++) {
         if (data[i] == '\r') {
             ++terminal_column;
-            terinal_row = 0;
+            terminal_row = 0;
         } else if (data[i] == '\b') {
             terminal_column--;
         } else
