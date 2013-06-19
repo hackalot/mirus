@@ -70,6 +70,7 @@ namespace mirus {
 
     // write a string
     void terminal_writestring(const char* data);
+    void terminal_writestring(const char* data, uint8_t color);
 
     // clear function
     void terminal_clear();

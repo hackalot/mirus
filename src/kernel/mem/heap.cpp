@@ -18,42 +18,4 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <term/terminal.hpp>
-#include <misc/printf.hpp>
-
-#include <cpu/gdt.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/isr.hpp>
-#include <cpu/irq.hpp>
-
-#include <hw/pit.hpp>
-#include <hw/keyboard.hpp>
-#include <hw/serial.hpp>
-
-#include <sys/version.hpp>
-#include <util/debug.hpp>
-
-extern "C" void kernel_main() {
-    mirus::debugger::write("mirus [0.0.0-dev]\n\n");
-
-    // CPU funcs
-	mirus::gdt::install();
-    mirus::idt::install();
-    mirus::isr::install();
-    mirus::irq::install();
-
-	mirus::terminal_initialize();
-
-    // Install devices
-    mirus::keyboard_install();
-    mirus::timer_install();
-    mirus::serial_install();
-
-    asm volatile("sti");
-
-    // Print version number
-	mirus::printf("mirus\r\r");
-
-    // Make sure we never exit
-    while (true);
-}
+#include <mem/heap.hpp>

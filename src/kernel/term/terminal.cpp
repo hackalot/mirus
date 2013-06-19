@@ -125,6 +125,21 @@ void mirus::terminal_writestring(const char* data) {
     }
 }
 
+void mirus::terminal_writestring(const char* data, uint8_t color) {
+    using namespace mirus;
+
+    size_t datalen = strlen(data);
+    for (size_t i = 0; i < datalen; i++) {
+        if (data[i] == '\r') {
+            // CR is default...
+            ++terminal_row;
+            terminal_column = 0;
+        } else {
+            terminal_putchar(data[i], color);
+        }
+    }
+}
+
 void mirus::terminal_clear() {
     using namespace mirus;
 
