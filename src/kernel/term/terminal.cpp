@@ -84,8 +84,7 @@ void mirus::terminal_putchar(char c) {
     } else {
         terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 
-        if ( ++terminal_column == VGA_WIDTH )
-        {
+        if ( ++terminal_column == VGA_WIDTH ) {
             terminal_column = 0;
             terminal_row++;
 
@@ -94,6 +93,7 @@ void mirus::terminal_putchar(char c) {
             //     terminal_scroll();
             // }
         
+        }
     }
 
     // TODO: bug here
