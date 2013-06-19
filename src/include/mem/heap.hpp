@@ -30,6 +30,6 @@ namespace mirus {
 
     class heap {
     public:
-        mem_bit[255] bits;
+        mem_bit bits[255];
     };
 }
