@@ -81,7 +81,7 @@ void mirus::terminal_putchar(char c) {
         terminal_column = 0;
     } else if (c == '\b') {
         terminal_column--;
-        terminal_putentryat(' ', blank, terminal_column, terminal_row);
+        terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
     } else {
         terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 
