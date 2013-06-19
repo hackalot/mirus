@@ -119,7 +119,6 @@ void mirus::terminal_writestring(const char* data) {
 
     for (size_t i = 0; i < datalen; i++)
         terminal_putchar(data[i]);
-    }
 }
 
 void mirus::terminal_writestring(const char* data, uint8_t color) {
@@ -128,7 +127,6 @@ void mirus::terminal_writestring(const char* data, uint8_t color) {
     size_t datalen = strlen(data);
     for (size_t i = 0; i < datalen; i++)
         terminal_putchar(data[i], color);
-    }
 }
 
 void mirus::terminal_clear() {
