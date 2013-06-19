@@ -79,6 +79,8 @@ void mirus::terminal_putchar(char c) {
     if (c == '\r') {
         ++terminal_row;
         terminal_column = 0;
+    } else if (c == '\b') {
+        --terminal_column;
     }
 
     terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
@@ -114,14 +116,9 @@ void mirus::terminal_writestring(const char* data) {
     using namespace mirus;
 
     size_t datalen = strlen(data);
-    for (size_t i = 0; i < datalen; i++) {
-        if (data[i] == '\r') {
-            // CR is default...
-            ++terminal_row;
-            terminal_column = 0;
-        } else {
-            terminal_putchar(data[i]);
-        }
+
+    for (size_t i = 0; i < datalen; i++)
+        terminal_putchar(data[i]);
     }
 }
 
@@ -129,14 +126,8 @@ void mirus::terminal_writestring(const char* data, uint8_t color) {
     using namespace mirus;
 
     size_t datalen = strlen(data);
-    for (size_t i = 0; i < datalen; i++) {
-        if (data[i] == '\r') {
-            // CR is default...
-            ++terminal_row;
-            terminal_column = 0;
-        } else {
-            terminal_putchar(data[i], color);
-        }
+    for (size_t i = 0; i < datalen; i++)
+        terminal_putchar(data[i], color);
     }
 }
 
