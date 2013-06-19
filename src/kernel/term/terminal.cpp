@@ -124,7 +124,7 @@ void mirus::terminal_writestring(const char* data) {
             terminal_column = 0;
         } else if (data[i] == '\b') {
             terminal_column--;
-            terminal_putentryat(' ', blank, terminal_column, terminal_row);
+            terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
         } else
             terminal_putchar(data[i]);
     }
@@ -140,7 +140,7 @@ void mirus::terminal_writestring(const char* data, uint8_t color) {
             terminal_column = 0;
         }  else if (data[i] == '\b') {
             terminal_column--;
-            terminal_putentryat(' ', blank, terminal_column, terminal_row);
+            terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
         } else
             terminal_putchar(data[i], color);
     }
