@@ -21,6 +21,9 @@
 #ifndef _MIRUS_KERNEL_MEMORY_H_
 #define _MIRUS_KERNEL_MEMORY_H_
 
+#include <stddef.h>
+#include <stdint.h>
+
 namespace mirus {
     // memcpy
     unsigned char* memcpy(unsigned char* dest, const unsigned char* src, int count);
@@ -30,6 +33,8 @@ namespace mirus {
     // memset
     unsigned char* memset(unsigned char* dest, unsigned char val, int count);
     unsigned int* memset(unsigned int* dest, unsigned int val, int count);
+    void memseti(uint8_t *dest, uint8_t val, uint32_t len);
+    void memsetb(unsigned int* dest, uint8_t val, int count);
 
     // memsetw
     unsigned short* memsetw(unsigned short* dest, unsigned short val, int count);

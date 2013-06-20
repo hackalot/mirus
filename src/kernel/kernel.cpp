@@ -18,6 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#include <misc/multiboot.hpp>
 #include <term/terminal.hpp>
 #include <misc/printf.hpp>
 
@@ -33,7 +34,7 @@
 #include <sys/version.hpp>
 #include <util/debug.hpp>
 
-extern "C" void kernel_main() {
+extern "C" void kernel_main(multiboot_t *mboot_ptr) {
     mirus::debugger::write("mirus [0.0.0-dev]\n\n");
 
     // CPU funcs
@@ -53,11 +54,7 @@ extern "C" void kernel_main() {
 
     // Print version number
 	mirus::printf("mirus\r\r");
-
-    // cause kernel panic
-    int a = 666;
-    int b = 0;
-    int c = a / b;
+    mirus::printf("> ");
 
     // Make sure we never exit
     while (true);

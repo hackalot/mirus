@@ -77,3 +77,7 @@ unsigned short* mirus::memsetw(unsigned short* dest, unsigned short val, int cou
 
     return dest;
 }
+
+void memsetb(unsigned int* dest, uint32_t val, int count) {
+    for ( ; count != 0; count--) *dest++ = val;
+}
