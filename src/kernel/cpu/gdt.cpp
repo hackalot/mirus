@@ -50,6 +50,10 @@ void mirus::gdt::set_gate(int num, unsigned long base, unsigned long limit, unsi
 void mirus::gdt::install() {
     using namespace mirus;
 
+    #ifdef _DEBUG_ON
+        mirus::debugger::write("Installing GDT\n");
+    #endif
+
     gp.limit = (sizeof(gdt_entry) * 6) - 1;
     gp.base = (unsigned long)&_gdt;
 

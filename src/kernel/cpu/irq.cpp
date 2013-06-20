@@ -63,6 +63,10 @@ void mirus::irq::gates() {
 }
 
 void mirus::irq::install() {
+    #ifdef _DEBUG_ON
+        mirus::debugger::write("Installing IRQ handlers\n");
+    #endif
+
     irq::remap();
     irq::gates();
 

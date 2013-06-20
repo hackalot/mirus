@@ -22,10 +22,12 @@ ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
 CXXWARNINGS = -Wall -Wextra
+DEBUG = -D_DEBUG_ON
 CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/lib -m32 -O0
 CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE) -DBUILD_NUM=$(BUILD_NUM)
 CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
 CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
+CXXFLAGS += $(DEBUG)
 
 LD = ld
 LDFLAGS := -T build/linker.ld -melf_i386
@@ -36,7 +38,7 @@ ASFLAGS = -f elf
 QEMU = qemu-system-i386
 QEMUFLAGS = -serial file:/tmp/miruslog
 
-.PHONY: all clean dist todolist dist kvm
+.PHONY: all clean dist todolist dist kvm debug
 
 TARGET = mirus-$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM)-$(BUILD_POSTFIX).$(M_ARCH).iso
 

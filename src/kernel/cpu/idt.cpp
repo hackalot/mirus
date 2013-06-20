@@ -49,6 +49,10 @@ void mirus::idt::set_gate(unsigned char num, unsigned long base, unsigned short 
 void mirus::idt::install() {
     using namespace mirus;
 
+    #ifdef _DEBUG_ON
+        mirus::debugger::write("Installing IDT\n");
+    #endif
+
     /* Sets the special IDT pointer up, just like in 'gdt.c' */
     idtp.limit = (sizeof(idt_entry) * 256) - 1;
     idtp.base = (unsigned long)&_idt;

@@ -21,4 +21,14 @@
 #ifndef _MIRUS_KERNEL_PANIC_H_
 #define _MIRUS_KERNEL_PANIC_H_
 
+#include <cpu/register.hpp>
+#include <util/debug.hpp>
+#include <misc/printf.hpp>
+#include <term/terminal.hpp>
+#include <util/string.hpp>
+
+namespace mirus {
+	void panic(regs* r);
+}
+
 #endif

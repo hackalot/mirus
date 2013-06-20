@@ -35,7 +35,9 @@
 #include <util/debug.hpp>
 
 extern "C" void kernel_main(multiboot_t *mboot_ptr) {
-    mirus::debugger::write("mirus [0.0.0-dev]\n\n");
+    #ifdef _DEBUG_ON
+        mirus::debugger::write("mirus [0.0.0-dev]\n\n");
+    #endif
 
     // CPU funcs
 	mirus::gdt::install();
@@ -54,7 +56,10 @@ extern "C" void kernel_main(multiboot_t *mboot_ptr) {
 
     // Print version number
 	mirus::printf("mirus\r\r");
-    mirus::printf("> ");
+
+    int a = 666;
+    int b = 0;
+    int c = a / b;
 
     // Make sure we never exit
     while (true);

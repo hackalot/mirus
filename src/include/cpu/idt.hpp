@@ -22,6 +22,7 @@
 #define _MIRUS_KERNEL_IDT_H_
 
 #include <mem/memory.hpp>
+#include <util/debug.hpp>
 
 namespace mirus {
     class idt_entry {

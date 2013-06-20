@@ -19,3 +19,68 @@
 // THE SOFTWARE.
 
 #include <sys/panic.hpp>
+
+const char* exception_messages[] = {
+    "Division By Zero",
+    "Debug",
+    "Non Maskable Interrupt",
+    "Breakpoint",
+    "Into Detected Overflow",
+    "Out of Bounds",
+    "Invalid Opcode",
+    "No Coprocessor",
+
+    "Double Fault",
+    "Coprocessor Segment Overrun",
+    "Bad TSS",
+    "Segment Not Present",
+    "Stack Fault",
+    "General Protection Fault",
+    "Page Fault",
+    "Unknown Interrupt",
+
+    "Coprocessor Fault",
+    "Alignment Check",
+    "Machine Check",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved",
+    "Reserved"
+};
+
+void mirus::panic(regs* r) {
+    if (r->int_no < 32) {
+    	// Do kernel panic here
+    	#ifdef _DEBUG_ON
+    		mirus::debugger::write("Catostrophic system error - Resulted in panic.\n");
+    	#endif
+
+    	mirus::terminal_setcolor(mirus::make_color(COLOR_LIGHT_RED, COLOR_BLACK));
+    	mirus::terminal_clear();
+
+    	printf("System Panic\r\r");
+
+  //   	printf("eax=0x%x ebx=0x%x\r", r->eax, r->ebx);
+		// printf("ecx=0x%x edx=0x%x\r", r->ecx, r->edx);
+		// printf("esp=0x%x ebp=0x%x\r", r->esp, r->ebp);
+		// printf("Error code: 0x%x\r",  r->err_code);
+		// printf("EFLAGS:     0x%x\r",  r->eflags);
+		// printf("User ESP:   0x%x\r",  r->useresp);
+		// printf("eip=0x%x\r\r",          r->eip);
+
+        printf(exception_messages[r->int_no]);
+        printf(" Exception, system halted!\r");
+        
+        for (;;);
+    }
+}

@@ -24,6 +24,7 @@
 #include <cpu/register.hpp>
 #include <core/ioport.hpp>
 #include <cpu/idt.hpp>
+#include <util/debug.hpp>
 
 #define IRQ_OFF { asm volatile ("cli"); }
 #define IRQ_RES { asm volatile ("sti"); }

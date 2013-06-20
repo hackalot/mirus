@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 #include <cpu/isr.hpp>
+#include <sys/panic.hpp>
 
 extern "C" {
     void isr0();
@@ -58,6 +59,10 @@ extern "C" {
 void mirus::isr::install() {
     using namespace mirus;
 
+    #ifdef _DEBUG_ON
+        mirus::debugger::write("Installing ISR handlers\n");
+    #endif
+
     idt::set_gate(0, (unsigned)isr0, 0x08, 0x8E);
     idt::set_gate(1, (unsigned)isr1, 0x08, 0x8E);
     idt::set_gate(2, (unsigned)isr2, 0x08, 0x8E);
@@ -95,52 +100,6 @@ void mirus::isr::install() {
     idt::set_gate(31, (unsigned)isr31, 0x08, 0x8E);
 }
 
-const char* exception_messages[] = {
-    "Division By Zero",
-    "Debug",
-    "Non Maskable Interrupt",
-    "Breakpoint",
-    "Into Detected Overflow",
-    "Out of Bounds",
-    "Invalid Opcode",
-    "No Coprocessor",
-
-    "Double Fault",
-    "Coprocessor Segment Overrun",
-    "Bad TSS",
-    "Segment Not Present",
-    "Stack Fault",
-    "General Protection Fault",
-    "Page Fault",
-    "Unknown Interrupt",
-
-    "Coprocessor Fault",
-    "Alignment Check",
-    "Machine Check",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved",
-    "Reserved"
-};
-
-// DA PROBLEM BE HERE?!@#1@#!_(@*#(WdyFUHJKALDFJ))
 void mirus::fault_handler(struct regs* r) {
-    mirus::debugger::write("PROBLEM!!\n");
-
-    if (r->int_no < 32) {
-        printf(exception_messages[r->int_no]);
-        printf(" Exception, system halted!\r");
-        
-        for (;;);
-    }
+    mirus::panic(r);
 }

@@ -74,6 +74,7 @@ namespace mirus {
 
     // clear function
     void terminal_clear();
+    void terminal_clear(uint8_t color);
 
     // our test void
     void test();

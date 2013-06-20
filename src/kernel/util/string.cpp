@@ -64,3 +64,15 @@ char* iota(int value) {
 
     return rc;
 }
+
+char* strpad(char* data, int padlen) {
+    size_t datalen = strlen(data);
+    int subtotal = padlen - datalen;
+    char* ret = data;
+
+    for (int i = 0; i < subtotal; i++) {
+        ret += ' ';
+    }
+
+    return ret;
+}

@@ -162,6 +162,19 @@ void mirus::terminal_clear() {
     terminal_move_cursor();
 }
 
+void mirus::terminal_clear(uint8_t color) {
+    using namespace mirus;
+
+    for (int i = 0; i < 80 * 25; i++)
+        terminal_putchar(' ', color);
+
+    // Move the hardware cursor back to the start.
+    terminal_row = 0;
+    terminal_column = 0;
+
+    terminal_move_cursor();
+}
+
 // TODO: does not scroll correctly
 void mirus::terminal_scroll() {
     using namespace mirus;
