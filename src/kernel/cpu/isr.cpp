@@ -136,8 +136,9 @@ const char* exception_messages[] = {
 
 void mirus::fault_handler(struct regs* r) {
     if (r->int_no < 32) {
-        mirus::printf(exception_messages[r->int_no]);
-        mirus::printf(" Exception, system halted!\r");
+        printf(exception_messages[r->int_no]);
+        printf(" Exception, system halted!\r");
+        
         for (;;);
     }
 }
