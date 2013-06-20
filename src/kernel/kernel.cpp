@@ -52,10 +52,10 @@ extern "C" void kernel_main() {
     asm volatile("sti");
 
     // Print version number
-	// mirus::printf("mirus\r\r");
+	mirus::printf("mirus\r\r");
 
     // cause kernel panic
-    int a = 6 / 0;
+    mirus::printf(666/0);
 
     // Make sure we never exit
     while (true);
