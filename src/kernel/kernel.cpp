@@ -54,11 +54,11 @@ extern "C" void kernel_main() {
     // Print version number
 	// mirus::printf("mirus\r\r");
 
-    // divide by zero
-    int a = 0;
-    int b = 0;
-    int c = 0 / 0;
-    mirus::printf(c);
+    // cause kernel panic
+    int mArray[1];
+    mArray[0] = 123;
+    mArray[1] = 666;
+    mArray[2] = 666;
 
     // Make sure we never exit
     while (true);
