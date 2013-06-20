@@ -55,10 +55,7 @@ extern "C" void kernel_main() {
 	// mirus::printf("mirus\r\r");
 
     // cause kernel panic
-    int mArray[1];
-    mArray[0] = 123;
-    mArray[1] = 666;
-    mArray[2] = 666;
+    int a = 6 / 0;
 
     // Make sure we never exit
     while (true);
