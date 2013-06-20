@@ -24,6 +24,7 @@
 #include <cpu/register.hpp>
 #include <cpu/idt.hpp>
 #include <misc/printf.hpp>
+#include <util/debug.hpp>
 
 namespace mirus {
     extern "C" void fault_handler(struct regs* r);

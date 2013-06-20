@@ -42,6 +42,8 @@ extern "C" void kernel_main() {
     mirus::isr::install();
     mirus::irq::install();
 
+    asm volatile("sti");
+
 	mirus::terminal_initialize();
 
     // Install devices
@@ -49,13 +51,13 @@ extern "C" void kernel_main() {
     mirus::timer_install();
     mirus::serial_install();
 
-    asm volatile("sti");
-
     // Print version number
 	mirus::printf("mirus\r\r");
 
     // cause kernel panic
-    mirus::printf(666/0);
+    int a = 666;
+    int b = 0;
+    int c = a / b;
 
     // Make sure we never exit
     while (true);

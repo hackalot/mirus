@@ -31,9 +31,9 @@ size_t strlen(const char* str) {
 }
 
 char* iota(int value) {
-    char* rc = nullptr;
-    char* ptr = nullptr;
-    char* low = nullptr;
+    char* rc = 0;
+    char* ptr = 0;
+    char* low = 0;
 
     rc = ptr;
 
