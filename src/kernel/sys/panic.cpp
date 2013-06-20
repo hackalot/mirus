@@ -19,7 +19,6 @@
 // THE SOFTWARE.
 
 #include <sys/panic.hpp>
-#include <cpu/register.hpp>
 
 const char* exception_messages[] = {
     "Division By Zero",
