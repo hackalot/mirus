@@ -52,7 +52,13 @@ extern "C" void kernel_main() {
     asm volatile("sti");
 
     // Print version number
-	mirus::printf("mirus\r\r");
+	// mirus::printf("mirus\r\r");
+
+    // divide by zero
+    int a = 0;
+    int b = 0;
+    int c = 0 / 0;
+    mirus::printf(c);
 
     // Make sure we never exit
     while (true);

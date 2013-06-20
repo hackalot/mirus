@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 #include <cpu/isr.hpp>
+#include <sys/panic.hpp>
 
 extern "C" {
     void isr0();
@@ -134,9 +135,5 @@ const char* exception_messages[] = {
 };
 
 void mirus::fault_handler(struct regs* r) {
-    if (r->int_no < 32) {
-        printf(exception_messages[r->int_no]);
-        printf(" Exception. System Halted!\r");
-        for (;;);
-    }
+    mirus::panic(r);
 }
