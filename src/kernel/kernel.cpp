@@ -60,7 +60,7 @@ extern "C" void kernel_main(multiboot_t* mboot_ptr)
 
     while (true)
     {
-        char c = mirus::keyboard_getchar();
+        char c = mirus::keyboard_getkey();
 
         if (c == 'j')
         {
