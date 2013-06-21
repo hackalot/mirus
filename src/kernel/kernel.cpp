@@ -58,17 +58,6 @@ extern "C" void kernel_main(multiboot_t* mboot_ptr)
     // Print version number
     mirus::printf("mirus\r\r");
 
-    while (true)
-    {
-        char c = mirus::keyboard_getkey();
-
-        if (c == 'j')
-        {
-            mirus::printf("\rYUO GOT IT RIGHT!!\r");
-            break;
-        }
-    }
-
     // Make sure we never exit
     while (true);
 }
