@@ -87,3 +87,8 @@ kvm:
 
 no-iso: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
+
+debug: $(OBJFILES)
+	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
+	@cp kernel.bin iso/boot/kernel.bin
+	@grub2-mkrescue -o mirus.iso iso
