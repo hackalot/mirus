@@ -157,7 +157,7 @@ void mirus::keyboard_handler(struct regs* r)
 char mirus::keyboard_getkey()
 {
 #ifdef _DEBUG_ON
-    mirus::debugger::writeln(c);
+    mirus::debugger::write(c);
 #endif
 
     return c;
