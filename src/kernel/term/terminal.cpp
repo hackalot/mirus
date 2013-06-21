@@ -28,7 +28,7 @@ static const size_t VGA_HEIGHT = 24;
 static size_t terminal_row;
 static size_t terminal_column;
 static uint8_t terminal_color;
-static uint16_t *terminal_buffer;
+static uint16_t* terminal_buffer;
 
 uint8_t mirus::make_color(enum vga_color fg, enum vga_color bg)
 {
@@ -50,7 +50,7 @@ void mirus::terminal_initialize()
     terminal_row = 0;
     terminal_column = 0;
     terminal_color = make_color(COLOR_WHITE, COLOR_BLACK);
-    terminal_buffer = (uint16_t *) 0xB8000;
+    terminal_buffer = (uint16_t*) 0xB8000;
 
     for ( size_t y = 0; y < VGA_HEIGHT; y++ )
     {
@@ -126,7 +126,7 @@ void mirus::terminal_putchar(char c, uint8_t color)
 }
 
 // write a string
-void mirus::terminal_writestring(const char *data)
+void mirus::terminal_writestring(const char* data)
 {
     using namespace mirus;
 
@@ -145,11 +145,13 @@ void mirus::terminal_writestring(const char *data)
             terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
         }
         else
-        { terminal_putchar(data[i]); }
+        {
+            terminal_putchar(data[i]);
+        }
     }
 }
 
-void mirus::terminal_writestring(const char *data, uint8_t color)
+void mirus::terminal_writestring(const char* data, uint8_t color)
 {
     using namespace mirus;
 
@@ -167,7 +169,9 @@ void mirus::terminal_writestring(const char *data, uint8_t color)
             terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
         }
         else
-        { terminal_putchar(data[i], color); }
+        {
+            terminal_putchar(data[i], color);
+        }
     }
 }
 
@@ -175,11 +179,10 @@ void mirus::terminal_clear()
 {
     using namespace mirus;
 
-    uint8_t attributeByte = (0 /*black*/ << 4) | (15 /*white*/ & 0x0F);
-    uint16_t blank = 0x20 /* space */ | (attributeByte << 8);
-
     for (int i = 0; i < 80 * 25; i++)
-    { terminal_buffer[i] = 0; }
+    {
+        terminal_buffer[i] = 0;
+    }
 
     // Move the hardware cursor back to the start.
     terminal_row = 0;
@@ -193,7 +196,9 @@ void mirus::terminal_clear(uint8_t color)
     using namespace mirus;
 
     for (int i = 0; i < 80 * 25; i++)
-    { terminal_putchar(' ', color); }
+    {
+        terminal_putchar(' ', color);
+    }
 
     // Move the hardware cursor back to the start.
     terminal_row = 0;
@@ -209,9 +214,9 @@ void mirus::terminal_scroll()
 
     uint8_t blank = make_color(COLOR_BLACK, COLOR_BLACK);
     unsigned temp;
-    unsigned short *vidmem = nullptr;
+    unsigned short* vidmem = nullptr;
 
-    vidmem = (unsigned short *)0xB8000;
+    vidmem = (unsigned short*)0xB8000;
 
     temp = terminal_column - 25 + 1;
 
