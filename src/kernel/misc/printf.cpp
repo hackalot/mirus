@@ -22,7 +22,7 @@
 #include <term/terminal.hpp>
 #include <misc/printf.hpp>
 
-void mirus::printf(const char *args, ...)
+void mirus::printf(const char* args, ...)
 {
     mirus::terminal_writestring(args);
 }
