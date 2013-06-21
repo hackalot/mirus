@@ -124,6 +124,7 @@ keymap_t us =
 };
 
 keymap_t *current_layout;
+char c;
 
 void mirus::keyboard_handler(struct regs *r)
 {
@@ -144,10 +145,16 @@ void mirus::keyboard_handler(struct regs *r)
             scancodes = current_layout->shift_scancodes;
         }
 
+        c = scancodes[scancode];
         mirus::terminal_putchar(scancodes[scancode]);
     }
 
     mirus::irq::ack(1);
+}
+
+char mirus::keyboard_getkey()
+{
+    return c;
 }
 
 /* Installs the keyboard handler into IRQ1 */

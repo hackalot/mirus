@@ -59,6 +59,8 @@ extern "C" void kernel_main(multiboot_t* mboot_ptr)
     mirus::printf("mirus\r\r");
     mirus::printf("> ");
 
+    mirus::printf(mirus::keyboard_getkey());
+
     // Make sure we never exit
     while (true);
 }
