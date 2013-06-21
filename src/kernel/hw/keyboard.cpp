@@ -157,7 +157,6 @@ void mirus::keyboard_handler(struct regs* r)
 char mirus::keyboard_getkey()
 {
     return c;
-    c = NULL;
 }
 
 /* Installs the keyboard handler into IRQ1 */
