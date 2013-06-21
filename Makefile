@@ -45,7 +45,7 @@ TARGET = mirus-$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM)-$(BUILD_POSTFIX).$(M_A
 ALL: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
 	@cp kernel.bin iso/boot/kernel.bin
-	@grub-mkrescue -o $(TARGET) iso
+	@grub2-mkrescue -o $(TARGET) iso
 	@if ! test -f $(PROG_BUILD_NUM); then echo 0 > $(PROG_BUILD_NUM); fi
 	@echo $$(($$(cat $(PROG_BUILD_NUM)) + 1)) > $(PROG_BUILD_NUM)
 

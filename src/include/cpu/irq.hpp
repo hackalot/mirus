@@ -29,7 +29,8 @@
 #define IRQ_OFF { asm volatile ("cli"); }
 #define IRQ_RES { asm volatile ("sti"); }
 
-namespace mirus {
+namespace mirus
+{
     typedef void (*irq_handler_t) (struct regs *);
 
     extern "C" {
@@ -51,19 +52,20 @@ namespace mirus {
         void irq15();
     }
 
-    class irq {
-    public:
-        static void install_handler(int irq, irq_handler_t handler);
-        static void uninstall_handler(int irq);
+    class irq
+    {
+        public:
+            static void install_handler(int irq, irq_handler_t handler);
+            static void uninstall_handler(int irq);
 
-        static void remap();
-        static void gates();
+            static void remap();
+            static void gates();
 
-        static void install();
-        static void ack(int irq_no);
+            static void install();
+            static void ack(int irq_no);
     };
 
-    extern "C" void irq_handler(struct regs* r);
+    extern "C" void irq_handler(struct regs *r);
 }
 
 #endif

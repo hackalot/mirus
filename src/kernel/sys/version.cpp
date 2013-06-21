@@ -20,17 +20,19 @@
 
 #include <sys/version.hpp>
 
-char* mirus::version::getKernelName() {
+char *mirus::version::getKernelName()
+{
     return "mirus";
 }
 
-char* mirus::version::getVersionString() {
+char *mirus::version::getVersionString()
+{
     // TODO: c-style strings don't allow this crap
-    
+
     // char* vs = mirus::version::getKernelName()
-    //     + "-" 
+    //     + "-"
     //     + mirus::version::getMajor()
-    //     + "." 
+    //     + "."
     //     + mirus::version::getMinor()
     //     + "-"
     //     + mirus::version::getVersionPostfix();
@@ -38,22 +40,27 @@ char* mirus::version::getVersionString() {
     // return vs;
 }
 
-char* mirus::version::getVersionPostfix() {
+char *mirus::version::getVersionPostfix()
+{
     return "dev";
 }
 
-char* mirus::version::getVersionCodename() {
+char *mirus::version::getVersionCodename()
+{
     return "fayette";
 }
 
-int mirus::version::getMajor() {
+int mirus::version::getMajor()
+{
     return BUILD_MAJOR;
 }
 
-int mirus::version::getMinor() {
+int mirus::version::getMinor()
+{
     return BUILD_MINOR;
 }
 
-int mirus::version::getBuild() {
+int mirus::version::getBuild()
+{
     return BUILD_NUM;
 }

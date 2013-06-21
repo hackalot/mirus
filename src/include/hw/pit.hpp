@@ -38,10 +38,11 @@
 
 #define SUBTICKS_PER_TICK 100
 
-namespace mirus {
+namespace mirus
+{
     void timer_phase(int hz);
-    void timer_handler(struct regs* r);
-    void relative_time(unsigned long seconds, unsigned long subseconds, unsigned long * out_seconds, unsigned long * out_subseconds);
+    void timer_handler(struct regs *r);
+    void relative_time(unsigned long seconds, unsigned long subseconds, unsigned long *out_seconds, unsigned long *out_subseconds);
     void timer_install();
     void timer_wait(int ticks);
 }

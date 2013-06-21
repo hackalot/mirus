@@ -21,7 +21,8 @@
 #ifndef _MIRUS_KERNEL_IOPORT_H_
 #define _MIRUS_KERNEL_IOPORT_H_
 
-namespace mirus {
+namespace mirus
+{
     //inb
     unsigned char inb(unsigned short _port);
 

@@ -27,8 +27,9 @@
 #include <term/terminal.hpp>
 #include <util/string.hpp>
 
-namespace mirus {
-	void panic(regs* r);
+namespace mirus
+{
+    void panic(regs *r);
 }
 
 #endif

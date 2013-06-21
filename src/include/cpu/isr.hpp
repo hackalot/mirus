@@ -26,12 +26,14 @@
 #include <misc/printf.hpp>
 #include <util/debug.hpp>
 
-namespace mirus {
-    extern "C" void fault_handler(struct regs* r);
+namespace mirus
+{
+    extern "C" void fault_handler(struct regs *r);
 
-    class isr {
-    public:
-        static void install();
+    class isr
+    {
+        public:
+            static void install();
     };
 }
 

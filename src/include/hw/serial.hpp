@@ -25,7 +25,8 @@
 
 #define PORT 0x3f8  // com1
 
-namespace mirus {
+namespace mirus
+{
     void serial_install();
     int serial_received();
     char read_serial();

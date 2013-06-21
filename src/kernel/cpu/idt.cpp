@@ -20,7 +20,8 @@
 
 #include <cpu/idt.hpp>
 
-namespace mirus {
+namespace mirus
+{
     extern "C" {
         void idt_load();
         mirus::idt_ptr idtp;
@@ -31,7 +32,8 @@ static mirus::idt_entry _idt[256];
 
 /* Use this function to set an entry in the IDT. Alot simpler
 *  than twiddling with the GDT ;) */
-void mirus::idt::set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags) {
+void mirus::idt::set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags)
+{
     using namespace mirus;
 
     /* The interrupt routine's base address */
@@ -46,12 +48,13 @@ void mirus::idt::set_gate(unsigned char num, unsigned long base, unsigned short 
 }
 
 /* Installs the IDT */
-void mirus::idt::install() {
+void mirus::idt::install()
+{
     using namespace mirus;
 
-    #ifdef _DEBUG_ON
-        mirus::debugger::write("Installing IDT\n");
-    #endif
+#ifdef _DEBUG_ON
+    mirus::debugger::write("Installing IDT\n");
+#endif
 
     /* Sets the special IDT pointer up, just like in 'gdt.c' */
     idtp.limit = (sizeof(idt_entry) * 256) - 1;

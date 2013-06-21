@@ -34,20 +34,21 @@
 #include <sys/version.hpp>
 #include <util/debug.hpp>
 
-extern "C" void kernel_main(multiboot_t *mboot_ptr) {
+extern "C" void kernel_main(multiboot_t *mboot_ptr)
+{
     #ifdef _DEBUG_ON
-        mirus::debugger::write("mirus [0.0.0-dev]\n\n");
+    mirus::debugger::write("mirus [0.0.0-dev]\n\n");
     #endif
 
     // CPU funcs
-	mirus::gdt::install();
+    mirus::gdt::install();
     mirus::idt::install();
     mirus::isr::install();
     mirus::irq::install();
 
     asm volatile("sti");
 
-	mirus::terminal_initialize();
+    mirus::terminal_initialize();
 
     // Install devices
     mirus::keyboard_install();
@@ -55,7 +56,7 @@ extern "C" void kernel_main(multiboot_t *mboot_ptr) {
     mirus::serial_install();
 
     // Print version number
-	mirus::printf("mirus\r\r");
+    mirus::printf("mirus\r\r");
 
     int a = 666;
     int b = 0;

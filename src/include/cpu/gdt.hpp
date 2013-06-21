@@ -24,27 +24,31 @@
 #include <mem/memory.hpp>
 #include <util/debug.hpp>
 
-namespace mirus {
-    class gdt_entry {
-    public:
-        unsigned short limit_low;
-        unsigned short base_low;
-        unsigned char base_middle;
-        unsigned char access;
-        unsigned char granularity;
-        unsigned char base_high;
+namespace mirus
+{
+    class gdt_entry
+    {
+        public:
+            unsigned short limit_low;
+            unsigned short base_low;
+            unsigned char base_middle;
+            unsigned char access;
+            unsigned char granularity;
+            unsigned char base_high;
     } __attribute__ ((__packed__));
 
-    class gdt_ptr {
-    public:
-        unsigned short limit;
-        unsigned long base;
+    class gdt_ptr
+    {
+        public:
+            unsigned short limit;
+            unsigned long base;
     } __attribute__ ((__packed__));
 
-    class gdt {
-    public:
-        static void set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
-        static void install();
+    class gdt
+    {
+        public:
+            static void set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
+            static void install();
     };
 }
 

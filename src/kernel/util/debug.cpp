@@ -20,23 +20,33 @@
 
 #include <util/debug.hpp>
 
-void mirus::debugger::write(const char* str) {
+void mirus::debugger::write(const char *str)
+{
     size_t len = strlen(str);
 
-    for (size_t i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++)
+    {
         mirus::write_serial(str[i]);
     }
 }
 
-void mirus::debugger::write(char chr) {
+void mirus::debugger::write(char chr)
+{
     mirus::write_serial(chr);
 }
 
-void mirus::debugger::write(int wint) {
-    char* num = iota(wint);
+void mirus::debugger::write(int wint)
+{
+    char *num = iota(wint);
     mirus::debugger::write(num);
 }
 
-void mirus::debugger::flush() {
+void mirus::debugger::writeln(const char *str)
+{
+    mirus::debugger::write(str + '\n');
+}
+
+void mirus::debugger::flush()
+{
     mirus::write_serial('\r');
 }

@@ -21,7 +21,8 @@
 #include <cpu/gdt.hpp>
 
 // methods and variables used in the asm file
-namespace mirus {
+namespace mirus
+{
     extern "C" {
         void gdt_flush();
         mirus::gdt_ptr gp;
@@ -30,7 +31,8 @@ namespace mirus {
 
 static mirus::gdt_entry _gdt[6];
 
-void mirus::gdt::set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran) {
+void mirus::gdt::set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran)
+{
     using namespace mirus;
 
     // descriptor base address
@@ -47,12 +49,13 @@ void mirus::gdt::set_gate(int num, unsigned long base, unsigned long limit, unsi
     _gdt[num].access = access;
 }
 
-void mirus::gdt::install() {
+void mirus::gdt::install()
+{
     using namespace mirus;
 
-    #ifdef _DEBUG_ON
-        mirus::debugger::write("Installing GDT\n");
-    #endif
+#ifdef _DEBUG_ON
+    mirus::debugger::write("Installing GDT\n");
+#endif
 
     gp.limit = (sizeof(gdt_entry) * 6) - 1;
     gp.base = (unsigned long)&_gdt;

@@ -24,14 +24,18 @@
 #include <hw/serial.hpp>
 #include <util/string.hpp>
 
-namespace mirus {
-    class debugger {
-    public:
-        static void write(const char* str);
-        static void write(const char chr);
-        static void write(const int wint);
+namespace mirus
+{
+    class debugger
+    {
+        public:
+            static void write(const char *str);
+            static void write(const char chr);
+            static void write(const int wint);
 
-        static void flush();
+            static void writeln(const char *str);
+
+            static void flush();
     };
 }
 

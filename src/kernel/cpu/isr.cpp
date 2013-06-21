@@ -56,12 +56,13 @@ extern "C" {
     void isr31();
 }
 
-void mirus::isr::install() {
+void mirus::isr::install()
+{
     using namespace mirus;
 
-    #ifdef _DEBUG_ON
-        mirus::debugger::write("Installing ISR handlers\n");
-    #endif
+#ifdef _DEBUG_ON
+    mirus::debugger::write("Installing ISR handlers\n");
+#endif
 
     idt::set_gate(0, (unsigned)isr0, 0x08, 0x8E);
     idt::set_gate(1, (unsigned)isr1, 0x08, 0x8E);
@@ -100,6 +101,7 @@ void mirus::isr::install() {
     idt::set_gate(31, (unsigned)isr31, 0x08, 0x8E);
 }
 
-void mirus::fault_handler(struct regs* r) {
+void mirus::fault_handler(struct regs *r)
+{
     mirus::panic(r);
 }

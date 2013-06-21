@@ -25,10 +25,10 @@
 #include <stdint.h>
 
 // STR length
-size_t strlen(const char* str);
+size_t strlen(const char *str);
 
 // iota
 // TODO: supercharge the nooby iota
-char* iota(int value);
+char *iota(int value);
 
 #endif

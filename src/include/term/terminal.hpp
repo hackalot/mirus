@@ -48,7 +48,8 @@ enum vga_color
     COLOR_WHITE = 15,
 };
 
-namespace mirus {
+namespace mirus
+{
     // create a color
     uint8_t make_color(enum vga_color fg, enum vga_color bg);
 
@@ -69,8 +70,8 @@ namespace mirus {
     void terminal_putchar(char c, uint8_t color);
 
     // write a string
-    void terminal_writestring(const char* data);
-    void terminal_writestring(const char* data, uint8_t color);
+    void terminal_writestring(const char *data);
+    void terminal_writestring(const char *data, uint8_t color);
 
     // clear function
     void terminal_clear();

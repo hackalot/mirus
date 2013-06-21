@@ -42,21 +42,23 @@
 
 typedef uint8_t key_status_t;
 
-typedef struct keymap {
-  // All the chars mapped to their respective scancodes
-  uint8_t scancodes[128];
-  uint8_t shift_scancodes[128];
+typedef struct keymap
+{
+    // All the chars mapped to their respective scancodes
+    uint8_t scancodes[128];
+    uint8_t shift_scancodes[128];
 
-  // The function keys mapped to the bit position in the key status map.
-  uint8_t control_map[8];
+    // The function keys mapped to the bit position in the key status map.
+    uint8_t control_map[8];
 
-  // The statuses of the control keys, initialized to 0
-  key_status_t controls;
+    // The statuses of the control keys, initialized to 0
+    key_status_t controls;
 } keymap_t;
 
 
-namespace mirus {
-    void keyboard_handler(struct regs* r);
+namespace mirus
+{
+    void keyboard_handler(struct regs *r);
     void keyboard_install();
 }
 

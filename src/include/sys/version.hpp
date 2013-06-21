@@ -23,17 +23,19 @@
 
 #include <util/string.hpp>
 
-namespace mirus {
-    class version {
-    public:
-        static char* getKernelName();
-        static char* getVersionString();
-        static char* getVersionPostfix();
-        static char* getVersionCodename();
+namespace mirus
+{
+    class version
+    {
+        public:
+            static char *getKernelName();
+            static char *getVersionString();
+            static char *getVersionPostfix();
+            static char *getVersionCodename();
 
-        static int getMajor();
-        static int getMinor();
-        static int getBuild();
+            static int getMajor();
+            static int getMinor();
+            static int getBuild();
     };
 }
 

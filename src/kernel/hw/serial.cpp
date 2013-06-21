@@ -20,7 +20,8 @@
 
 #include <hw/serial.hpp>
 
-void mirus::serial_install() {
+void mirus::serial_install()
+{
     mirus::outb(PORT + 1, 0x00);    // Disable all interrupts
     mirus::outb(PORT + 3, 0x80);    // Enable DLAB (set baud rate divisor)
     mirus::outb(PORT + 0, 0x03);    // Set divisor to 3 (lo byte) 38400 baud
@@ -30,20 +31,24 @@ void mirus::serial_install() {
     mirus::outb(PORT + 4, 0x0B);    // IRQs enabled, RTS/DSR set
 }
 
-int mirus::serial_received() {
+int mirus::serial_received()
+{
     return mirus::inb(PORT + 5) & 1;
 }
 
-char mirus::read_serial() {
+char mirus::read_serial()
+{
     while (serial_received() == 0);
     return mirus::inb(PORT);
 }
 
-int mirus::is_transmit_empty() {
+int mirus::is_transmit_empty()
+{
     return mirus::inb(PORT + 5) & 0x20;
 }
 
-void mirus::write_serial(char a) {
+void mirus::write_serial(char a)
+{
     while (is_transmit_empty() == 0);
-    mirus::outb(PORT,a);
+    mirus::outb(PORT, a);
 }

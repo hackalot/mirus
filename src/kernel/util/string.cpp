@@ -20,25 +20,29 @@
 
 #include <util/string.hpp>
 
-size_t strlen(const char* str) {
+size_t strlen(const char *str)
+{
     size_t ret = 0;
 
-    while (str[ret] != 0) {
+    while (str[ret] != 0)
+    {
         ret++;
     }
 
     return ret;
 }
 
-char* iota(int value) {
-    char* rc = 0;
-    char* ptr = 0;
-    char* low = 0;
+char *iota(int value)
+{
+    char *rc = 0;
+    char *ptr = 0;
+    char *low = 0;
 
     rc = ptr;
 
     // Set '-' for negative decimals.
-    if ( value < 0) {
+    if ( value < 0)
+    {
         *ptr++ = '-';
     }
 
@@ -46,17 +50,20 @@ char* iota(int value) {
     low = ptr;
 
     // The actual conversion.
-    do {
+    do
+    {
         // Modulo is negative for negative value. This trick makes abs() unnecessary.
         *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"[35 + value % 10];
         value /= 10;
-    } while (value);
+    }
+    while (value);
 
     // Terminating the string.
     *ptr-- = '\0';
 
     // Invert the numbers.
-    while (low < ptr) {
+    while (low < ptr)
+    {
         char tmp = *low;
         *low++ = *ptr;
         *ptr-- = tmp;
@@ -65,12 +72,14 @@ char* iota(int value) {
     return rc;
 }
 
-char* strpad(char* data, int padlen) {
+char *strpad(char *data, int padlen)
+{
     size_t datalen = strlen(data);
     int subtotal = padlen - datalen;
-    char* ret = data;
+    char *ret = data;
 
-    for (int i = 0; i < subtotal; i++) {
+    for (int i = 0; i < subtotal; i++)
+    {
         ret += ' ';
     }
 
