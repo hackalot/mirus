@@ -21,6 +21,7 @@
 #include <misc/multiboot.hpp>
 #include <term/terminal.hpp>
 #include <misc/printf.hpp>
+#include <assert.h>
 
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
