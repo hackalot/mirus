@@ -28,6 +28,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <term/terminal.hpp>
+#include <util/debug.hpp>
 
 #define CONTROL 0x1
 #define ALT 0x2

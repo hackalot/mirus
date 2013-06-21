@@ -123,10 +123,10 @@ keymap_t us =
     0
 };
 
-keymap_t *current_layout;
+keymap_t* current_layout;
 char c;
 
-void mirus::keyboard_handler(struct regs *r)
+void mirus::keyboard_handler(struct regs* r)
 {
     unsigned char scancode;
     scancode = mirus::inb(0x60);
@@ -137,7 +137,7 @@ void mirus::keyboard_handler(struct regs *r)
     }
     else
     {
-        uint8_t *scancodes = current_layout->scancodes;
+        uint8_t* scancodes = current_layout->scancodes;
 
         // ERROR: doesn't work
         if ((current_layout->controls & (LSHIFT | RSHIFT | CAPSLOCK)) && !(current_layout->controls & CONTROL))
@@ -147,6 +147,8 @@ void mirus::keyboard_handler(struct regs *r)
 
         c = scancodes[scancode];
         mirus::terminal_putchar(scancodes[scancode]);
+
+        mirus::keyboard_getkey();
     }
 
     mirus::irq::ack(1);
@@ -154,6 +156,10 @@ void mirus::keyboard_handler(struct regs *r)
 
 char mirus::keyboard_getkey()
 {
+#ifdef _DEBUG_ON
+    mirus::debugger::writeln(c);
+#endif
+
     return c;
 }
 
