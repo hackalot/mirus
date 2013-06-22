@@ -19,21 +19,25 @@
 #include <iostream>
 #include <myheader.hpp>
 
-namespace {
-    class MyClass {
-    public:
-        MyClass();
-        ~MyClass();
+namespace
+{
+    class MyClass
+    {
+        public:
+            MyClass();
+            ~MyClass();
 
-        void setRandomValues(int val1, int val2, int val3);
-        void setPtrValues(int* ptr1, int* ptr2);
+            void setRandomValues(int val1, int val2, int val3);
+            void setPtrValues(int* ptr1, int* ptr2);
     };
 
-    MyClass::setRandomValues(int val1, int val2, int val3) {
+    MyClass::setRandomValues(int val1, int val2, int val3)
+    {
         // stuffs here
     } // MyClass
 
-    int main(int argc, char* argv[]) {
+    int main(int argc, char* argv[])
+    {
         using namespace std;
 
         cout << "Hello World!\r";
