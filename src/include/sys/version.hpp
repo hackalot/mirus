@@ -28,10 +28,10 @@ namespace mirus
     class version
     {
         public:
-            static char *getKernelName();
+            static const char *getKernelName();
             static char *getVersionString();
-            static char *getVersionPostfix();
-            static char *getVersionCodename();
+            static const char *getVersionPostfix();
+            static const char *getVersionCodename();
 
             static int getMajor();
             static int getMinor();

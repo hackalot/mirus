@@ -21,7 +21,7 @@ AUXFILES := Makefile README.md LICENSE.mds
 ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
-CXXWARNINGS = -Wall -Wextra
+CXXWARNINGS = -Wall -Wextra -Wno-unused-parameter
 DEBUG = -D_DEBUG_ON
 CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/lib -m32 -O0
 CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE) -DBUILD_NUM=$(BUILD_NUM)

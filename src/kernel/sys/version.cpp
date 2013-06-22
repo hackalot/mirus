@@ -20,7 +20,7 @@
 
 #include <sys/version.hpp>
 
-char *mirus::version::getKernelName()
+const char *mirus::version::getKernelName()
 {
     return "mirus";
 }
@@ -40,12 +40,12 @@ char *mirus::version::getVersionString()
     // return vs;
 }
 
-char *mirus::version::getVersionPostfix()
+const char *mirus::version::getVersionPostfix()
 {
     return "dev";
 }
 
-char *mirus::version::getVersionCodename()
+const char *mirus::version::getVersionCodename()
 {
     return "fayette";
 }
