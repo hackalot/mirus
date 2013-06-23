@@ -27,17 +27,16 @@ const char *mirus::version::getKernelName()
 
 char *mirus::version::getVersionString()
 {
-    // TODO: c-style strings don't allow this crap
+    // oh god
+    char* vs = strcat(vs, mirus::version::getKernelName());
+    vs = strcat(vs, "-");
+    vs = strcat(vs, iota(mirus::version::getMajor()));
+    vs = strcat(vs, ".");
+    vs = strcat(vs, iota(mirus::version::getMinor()));
+    vs = strcat(vs, "-");
+    vs = strcat(vs, mirus::version::getVersionPostfix());
 
-    // char* vs = mirus::version::getKernelName()
-    //     + "-"
-    //     + mirus::version::getMajor()
-    //     + "."
-    //     + mirus::version::getMinor()
-    //     + "-"
-    //     + mirus::version::getVersionPostfix();
-
-    // return vs;
+    return vs;
 }
 
 const char *mirus::version::getVersionPostfix()

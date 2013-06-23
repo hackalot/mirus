@@ -36,10 +36,6 @@
 
 extern "C" void kernel_main(multiboot_t* mboot_ptr)
 {
-#ifdef _DEBUG_ON
-    mirus::debugger::write("mirus [0.0.0-dev]\n\n");
-#endif
-
     // CPU funcs
     mirus::gdt::install();
     mirus::idt::install();
@@ -56,7 +52,9 @@ extern "C" void kernel_main(multiboot_t* mboot_ptr)
     mirus::serial_install();
 
     // Print version number
-    mirus::printf("mirus\r\r");
+    mirus::printf(mirus::version::getVersionString());
+    mirus::printf("\r\r");
+    mirus::printf("$ ");
 
     // Make sure we never exit
     while (true);

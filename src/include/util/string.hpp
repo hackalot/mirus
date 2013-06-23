@@ -24,11 +24,22 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <mem/memory.hpp>
+
 // STR length
 size_t strlen(const char *str);
 
 // iota
 // TODO: supercharge the nooby iota
 char *iota(int value);
+
+// pad
+char* strpad(char* data, int padlen);
+
+// strcpy
+// char* strcpy(char* dest, const char* src);
+
+// strcat
+char* strcat(char* dest, const char* src);
 
 #endif
