@@ -2,7 +2,7 @@ PROG_BUILD_NUM=build/.build_number
 BUILD_DATE = $(shell date +'%Y%m%d')
 BUILD_NUM = $(shell cat $(PROG_BUILD_NUM))
 BUILD_MAJOR = 0
-BUILD_MINOR = 0
+BUILD_MINOR = 1
 BUILD_CODENAME = fayette
 BUILD_POSTFIX = dev
 

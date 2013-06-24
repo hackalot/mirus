@@ -53,15 +53,7 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     // try to get avalible memory
     if (mbd->flags & 1)
     {
-        unsigned int low_mem = mbd->mem_lower;
-        unsigned int high_mem = mbd->mem_upper;
-
-#ifdef _DEBUG_ON
-        mirus::debugger::write("Low memory: ");
-        mirus::debugger::write(low_mem);
-        mirus::debugger::write("\nHigh memory: ");
-        mirus::debugger::write(high_mem);
-#endif
+        // get memory here
     }
 
     // Install devices
@@ -70,9 +62,11 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::serial_install();
 
     // Print version number
+    mirus::printf("mirus [");
+    mirus::terminal_setcolor(mirus::make_color(COLOR_MAGENTA, COLOR_BLACK));
     mirus::printf(mirus::version::getVersionString());
-    mirus::printf("\r\r");
-    mirus::printf("$ ");
+    mirus::terminal_setcolor(mirus::make_color(COLOR_WHITE, COLOR_BLACK));
+    mirus::printf("]\r\r");
 
     // Make sure we never exit
     while (true);
