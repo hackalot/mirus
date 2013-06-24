@@ -34,8 +34,14 @@
 #include <sys/version.hpp>
 #include <util/debug.hpp>
 
-extern "C" void kernel_main(multiboot_t* mboot_ptr)
+extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
+#ifdef _DEBUG_ON
+    mirus::debugger::write("mirus\n\n");
+#endif
+
+    mirus::terminal_initialize();
+
     // CPU funcs
     mirus::gdt::install();
     mirus::idt::install();
@@ -44,7 +50,19 @@ extern "C" void kernel_main(multiboot_t* mboot_ptr)
 
     asm volatile("sti");
 
-    mirus::terminal_initialize();
+    // try to get avalible memory
+    if (mbd->flags & 1)
+    {
+        unsigned int low_mem = mbd->mem_lower;
+        unsigned int high_mem = mbd->mem_upper;
+
+#ifdef _DEBUG_ON
+        mirus::debugger::write("Low memory: ");
+        mirus::debugger::write(low_mem);
+        mirus::debugger::write("\nHigh memory: ");
+        mirus::debugger::write(high_mem);
+#endif
+    }
 
     // Install devices
     mirus::keyboard_install();

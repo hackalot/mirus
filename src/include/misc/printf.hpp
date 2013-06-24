@@ -21,6 +21,10 @@
 #ifndef _MIRUS_KERNEL_PRINTF_H_
 #define _MIRUS_KERNEL_PRINTF_H_
 
+#include <term/terminal.hpp>
+
+enum KP_LEVEL {KPL_DUMP, KPL_PANIC};
+
 namespace mirus
 {
     void printf(const char *args, ...);

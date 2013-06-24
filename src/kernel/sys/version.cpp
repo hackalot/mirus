@@ -28,7 +28,8 @@ const char *mirus::version::getKernelName()
 char *mirus::version::getVersionString()
 {
     // oh god
-    char* vs = strcat(vs, mirus::version::getKernelName());
+    char* vs = "";
+    vs = strcat(vs, mirus::version::getKernelName());
     vs = strcat(vs, "-");
     vs = strcat(vs, iota(mirus::version::getMajor()));
     vs = strcat(vs, ".");
