@@ -64,7 +64,8 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     // Print version number
     mirus::printf("mirus [");
     mirus::terminal_setcolor(mirus::make_color(COLOR_MAGENTA, COLOR_BLACK));
-    mirus::printf(mirus::version::getVersionString());
+    // mirus::printf(mirus::version::getVersionString());
+    mirus::printf("0.1-dev");
     mirus::terminal_setcolor(mirus::make_color(COLOR_WHITE, COLOR_BLACK));
     mirus::printf("]\r\r");
 
