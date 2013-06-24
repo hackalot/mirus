@@ -18,8 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#include <util/string.hpp>
-#include <term/terminal.hpp>
 #include <misc/printf.hpp>
 
 void mirus::printf(const char* args, ...)

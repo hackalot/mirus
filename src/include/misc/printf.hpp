@@ -21,9 +21,9 @@
 #ifndef _MIRUS_KERNEL_PRINTF_H_
 #define _MIRUS_KERNEL_PRINTF_H_
 
+#include <util/string.hpp>
 #include <term/terminal.hpp>
-
-enum KP_LEVEL {KPL_DUMP, KPL_PANIC};
+#include <stdarg.h>
 
 namespace mirus
 {
