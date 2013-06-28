@@ -55,8 +55,8 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     if (mbd->flags & 1)
     {
         // get memory here
-        unsigned int base_addr_low = mbd->base_addr_low;
-        unsigned int base_addr_high = mbd->base_addr_high;
+        //unsigned int base_addr_low = mbd->base_addr_low;
+        //unsigned int base_addr_high = mbd->base_addr_high;
     }
 
     // Install devices
