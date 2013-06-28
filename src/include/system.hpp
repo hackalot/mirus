@@ -22,7 +22,7 @@
 #define _MIRUS_KERNEL_SYSTEM_HDR_H_
 
 // IO Ports
-#include <core/iport.hpp>
+#include <core/ioport.hpp>
 
 // CPU headers
 #include <cpu/register.hpp>
