@@ -18,9 +18,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#include <system.hpp>
+
 #include <misc/multiboot.hpp>
 #include <term/terminal.hpp>
-#include <misc/printf.hpp>
+#include <cpu/cpuid.hpp>
 
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
@@ -32,12 +34,11 @@
 #include <hw/serial.hpp>
 
 #include <sys/version.hpp>
-#include <util/debug.hpp>
 
 extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
 #ifdef _DEBUG_ON
-    mirus::debugger::write("mirus\n\n");
+    mirus::debugger::write("mirus now booting\n\n");
 #endif
 
     mirus::terminal_initialize();
@@ -54,6 +55,8 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     if (mbd->flags & 1)
     {
         // get memory here
+        unsigned int base_addr_low = mbd->base_addr_low;
+        unsigned int base_addr_high = mbd->base_addr_high;
     }
 
     // Install devices
