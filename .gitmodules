@@ -3,5 +3,5 @@
 	url = git://github.com/joshbeitler/mirloader.git
 
 [submodule "mkdb"]
-    path = mkdb
-    url = git://github.com/joshbeitler/mkdb.git
+	path = mkdb
+	url = git://github.com/joshbeitler/mkdb.git
