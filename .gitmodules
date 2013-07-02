@@ -1,6 +1,6 @@
 [submodule "mirloader"]
 	path = mirloader
-	url = https://github.com/joshbeitler/mirloader.git
+	url = git://github.com/joshbeitler/mirloader.git
 [submodule "mkdb"]
 	path = mkdb
-	url = https://github.com/joshbeitler/mkdb.git
+	url = git://github.com/joshbeitler/mkdb.git
