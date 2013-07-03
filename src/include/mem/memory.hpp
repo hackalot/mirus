@@ -27,18 +27,18 @@
 namespace mirus
 {
     // memcpy
-    unsigned char *memcpy(unsigned char *dest, const unsigned char *src, int count);
-    unsigned short *memcpy(unsigned short *dest, const unsigned short *src, int count);
-    unsigned int *memcpy(unsigned int *dest, const unsigned int *src, int count);
+    unsigned char* memcpy(unsigned char* dest, const unsigned char* src, int count);
+    unsigned short* memcpy(unsigned short* dest, const unsigned short* src, int count);
+    unsigned int* memcpy(unsigned int* dest, const unsigned int* src, int count);
 
     // memset
-    unsigned char *memset(unsigned char *dest, unsigned char val, int count);
-    unsigned int *memset(unsigned int *dest, unsigned int val, int count);
-    void memseti(uint8_t *dest, uint8_t val, uint32_t len);
-    void memsetb(unsigned int *dest, uint8_t val, int count);
+    unsigned char* memset(unsigned char* dest, unsigned char val, int count);
+    unsigned int* memset(unsigned int* dest, unsigned int val, int count);
+    void memseti(uint8_t* dest, uint8_t val, uint32_t len);
+    void memsetb(unsigned int* dest, uint8_t val, int count);
 
     // memsetw
-    unsigned short *memsetw(unsigned short *dest, unsigned short val, int count);
+    unsigned short* memsetw(unsigned short* dest, unsigned short val, int count);
 }
 
 #endif
