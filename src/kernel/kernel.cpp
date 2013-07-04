@@ -35,7 +35,8 @@
 
 #include <sys/version.hpp>
 
-extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
+// Just so we can keep stuff clean
+void init()
 {
 #ifdef _DEBUG_ON
     mirus::debugger::write("mirus now booting\n\n");
@@ -49,6 +50,7 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::isr::install();
     mirus::irq::install();
 
+    // enable interrupts
     asm volatile("sti");
 
     // try to get avalible memory
@@ -69,6 +71,12 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::keyboard_install();
     mirus::timer_install();
     mirus::serial_install();
+}
+
+extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
+{
+    // set up
+    init();
 
     // Print version number
     mirus::printf("mirus [");
