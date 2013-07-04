@@ -54,9 +54,15 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     // try to get avalible memory
     if (mbd->flags & 1)
     {
-        // get memory here
-        //unsigned int base_addr_low = mbd->base_addr_low;
-        //unsigned int base_addr_high = mbd->base_addr_high;
+#ifdef _DEBUG_ON
+        mirus::debugger::writeln("Can get memory? [YES]");
+#endif
+    }
+    else
+    {
+#ifdef _DEBUG_ON
+        mirus::debugger::writeln("Can get memroy? [NO]");
+#endif
     }
 
     // Install devices
