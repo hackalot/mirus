@@ -8,10 +8,6 @@ Mirus is a hobby operating system designed to be a playground for new and intere
 ## Features ##
 * The basics (gdt, irq, isrs, kprintf)
 
-## Screenshots ##
-<img src="https://raw.github.com/joshbeitler/mirus/master/docs/resc/screens/mirus_console.png" width="100%" />
-<img src="https://raw.github.com/joshbeitler/mirus/master/docs/resc/screens/mirus_colors.png" width="100%" />
-
 ## Testing ##
 Mirus will build fine on most Unix systems that have the dependencies installed, and possibly with Mingw/Cygwin (not tested).  Normal development takes place on Fedora 18.
 
