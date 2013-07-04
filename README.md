@@ -1,8 +1,5 @@
 Mirus
 =====
-[![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus)
-
-
 Mirus is a hobby operating system designed to be a playground for new and interesting OS theories.  It is not based on any other exsisting standards, allowing for a great deal of freedom in the development of the concepts behind it.
 
 ## Features ##
@@ -75,3 +72,7 @@ Mirus (and related userspace) is licensed under the MIT License, found below and
 
 ### Additional Components
 Licenses for other included components and software not covered by the MIT license can be found in the License.md file.
+
+### Status Images
+
+[![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus)
