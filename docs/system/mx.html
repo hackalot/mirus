@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mirus Documentation</title>
+        <link rel="stylesheet" type="text/css" href="../resources/main.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../resources/print.css" media="print" />
+    </head>
+    <body>
+        <hgroup>
+            <h1>Mirus Documentation</h1>
+            <h2>Mirus Executable Format</h2>
+        </hgroup>
+
+        <nav>
+            <ul class="breadcrumb">
+                <li><a href="../index.html" class="icon-book"></a> &raquo;</li>
+                <li><a href="index.html">system</a> &raquo;</li>
+                <li><a href="mx.html">mx format</a></li>
+            </ul>
+            <div id="right">
+                <a href="javascript:window.print()" class="icon-print"></a>
+            </div>
+        </nav>
+
+        <section class="content">
+            <p>
+                <h3><a id="introduction">Introduction</a></h3>
+                Mirus uses executables in the <kbd>MX</kbd> (Mirus Executable) format to help provide security and integration. Mirus executables support the many platforms that Mirus officially supports. It is used for the following:
+                
+                <ul>
+                    <li>native programs</li>
+                    <li>wrapper for first-class VM based languages</li>
+                    <li>wrapper for first-class interpreted languages</li>
+                    <li>libraries (class libraries, dynamic libraries)</li>
+                </ul>
+                
+                Executables in the MX format need not have the .mx extension, as on Mirus filetype is defined in the file's metadata. However, most of the time you will find that this naming convention is applied:
+                <ul>
+                    <li>foo.mx for programs</li>
+                    <li>foo.mx for interpreted/vm languages</li>
+                    <li>foo.lib for class libraries</li>
+                    <li>foo.dlib for dynamic libraries</li>
+                </ul>
+            </p>
+            <p>
+                <h3>MX Structure</h3>
+                The Mirus Executable format is divided into several sections preceded by a header.  Below is a table detailing the binary structure of an MX file, followed by descriptions of each section.
+            </p>
+            <p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Offset</th>
+                            <th>Length</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MX header</td>
+                            <td>Flag to tell the system that this is an MX file</td>
+                            <td>0</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Version</td>
+                            <td>MX version</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Flags</td>
+                            <td>Any flags the executable might have</td>
+                            <td>3</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p>
+            <p>
+                <h4>Header</h4>
+                The MX header describes primary information about the executable, such as the magic number, version, platform, and the locations of the other sections.
+            </p>
+            <p>
+                <h4>data</h4>
+            </p>
+            <p>
+                <h4>resc</h4>
+            </p>
+            <p>
+                <h4>bss</h4>
+            </p>
+            <p>
+                <h4>text</h4>
+            </p>
+            <p>
+                <h3>Working With MX</h3>
+            </p>
+            <p>
+                <h4>Compilers</h4>
+            </p>
+            <p>
+                <h4>Tools</h4>
+            </p>
+        </section>
+    </body>
+</html>

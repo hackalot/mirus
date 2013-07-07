@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html>
-<title>Mirus Documentation Center</title>
+    <head>
+        <title>Mirus Documentation</title>
+        <link rel="stylesheet" type="text/css" href="resources/main.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="resources/print.css" media="print" />
+    </head>
+    <body>
+        <hgroup>
+            <h1>Mirus Documentation</h1>
+            <h2>Index</h2>
+        </hgroup>
 
-<xmp theme="Cerulean" style="display:none;">
-# Mirus Documentation
-Welcome to the Official Offline Mirus Documentation Center&trade;.  All the documentation is in various directories, each of which has its own "index.html" for you to start from.  The documentation covers kernel development and structure, specifications used within Mirus, documentation on various userspace utilities, and user guides.
+        <nav>
+            <ul class="breadcrumb">
+                <li><a href="index.html" class="icon-book"></a> &raquo;</li>
+                <li><a href="index.html">mirus documentation index</a></li>
+                <!-- <li><a href="">kernel docs</a></li> -->
+            </ul>
+            <div id="right">
+                <a href="javascript:window.print()" class="icon-print"></a>
+            </div>
+        </nav>
 
-## Table of Contents
-
-* [Mirus Readme](../README.md)
-* [Mirus License](../LICENSE.md)
-* [Kernel](./kernel/index.html)
-* [Specs](./specs/index.html)
-    * [Mirus Executable Format](./specs/mx.html)
-* [Userland](./userland/index.html)
-* [Development](./dev/index.html)
-
-## Project Status
-</xmp>
-
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+        <section class="content">
+            <p>
+                <h3><a id="introduction">Introduction</a></h3>
+                Welcome to the conveniently created root of the documentation for the Mirus operating system!  This documentation serves as a general reference for both users and developers of and for Mirus.  Enjoy your stay!  All of this information can be found in the <kbd>docs</kbd> directory of the source.  The bulk of the information can also be found on the <a href="https://github.com/joshbeitler/mirus/wiki">wiki</a>.
+            </p>
+            <p>
+                <h3>Table of Contents</h3>
+                <ul class="toc1">
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#sections">Sections</a></li>
+                    <li><a href="#help">Getting Help</a></li>
+                    <li><a href="#links">Helpful Links</a></li>
+                </ul>
+            </p>
+            <p>
+                <h3><a id="sections">Sections</a></h3>
+                <ul class="toc1">
+                    <li>
+                        <a href="kernel/index.html">Kernel</a>
+                        <ul>
+                            <li><a href="#">Kernel Overview</a></li>
+                            <li><a href="#">Components</a></li>
+                            <li><a href="#">Deugging</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="system/index.html">System</a>
+                        <ul>
+                            <li><a href="#">Driver model</a></li>
+                            <li><a href="system/mx.html">Mirus executable format</a></li>
+                            <li><a href="#">Process model</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="development/index.html">Development</a>
+                        <ul>
+                            <li><a href="#">Design principles</a></li>
+                            <li><a href="#">Distributing code</a></li>
+                            <li><a href="#">Clang/LLVM</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="api/index.html">Mirus API</a>
+                        <ul>
+                            <li><a href="#">Mirus API overview</a></li>
+                            <li><a href="#">Anonymous interfacing</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </p>
+            <p>
+                <h3><a id="help">Getting Help</a></h3>
+                You can get help on Mirus from various sources.  The first and foremost place to get help is the official Mirus <a href="https://github.com/joshbeitler/mirus/issues">issue tracker</a>.  Help can also be found from the <kbd>#mirus-dev</kbd> IRC channel on <kbd>irc.freenode.net</kbd>.  The Mirus <a href="http://reddit.com/r/mirus">subreddit</a> is also a great place to go for help.
+            </p>
+            <p>
+                <h3><a id="links">Helpful Links</a></h3>
+                <ul>
+                    <li><a href="https://github.com/joshbeitler/mirus">Mirus GitHub repo</a></li>
+                    <li><a href="https://github.com/joshbeitler/mirus/wiki">Mirus wiki</a></li>
+                    <li><a href="https://github.com/joshbeitler/mirus/issues">Mirus issue tracker</a></li>
+                </ul>
+            </p>
+        </section>
+    </body>
 </html>
