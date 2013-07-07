@@ -23,13 +23,22 @@
 
 namespace mirus
 {
-    typedef struct 
+    // defines a mirus executable file header
+    class mx_header
     {
+    public:
         unsigned char magicnumber;
         unsigned char version;
         unsigned char flags;
-    } mx_header;
+    };
 
+    // defines flags for the "flags" variable in the header
+    enum class mx_flags
+    {
+
+    };
+
+    // defines a mirus executable
     class mx
     {
     public:
