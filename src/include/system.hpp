@@ -39,6 +39,10 @@
 // debugging
 #include <util/debug.hpp>
 
+// libraries
+#include <kmath/kmath.h>
+#include <kstring/kstring.h>
+
 #endif
 
 
