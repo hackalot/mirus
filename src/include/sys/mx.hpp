@@ -30,12 +30,23 @@ namespace mirus
         unsigned char magicnumber;
         unsigned char version;
         unsigned char flags;
+
+        unsigned short section_start_data;
+        unsigned short section_start_bss;
+        unsigned short section_start_text;
     };
 
     // defines flags for the "flags" variable in the header
     enum class mx_flags
     {
+        
+    };
 
+    // defines mx versions
+    enum class mx_version
+    {
+        MX_0,       // MX 0 = development version
+        MX_1        // MX 1 = first version
     };
 
     // defines a mirus executable
