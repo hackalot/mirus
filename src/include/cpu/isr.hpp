@@ -28,11 +28,14 @@
 
 namespace mirus
 {
+    // triggered when a kernel panic happens
     extern "C" void fault_handler(struct regs *r);
 
+    // isr functions
     class isr
     {
         public:
+            // install the isr controller
             static void install();
     };
 }

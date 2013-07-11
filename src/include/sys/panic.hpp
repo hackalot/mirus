@@ -29,6 +29,7 @@
 
 namespace mirus
 {
+    // DROP EVERYTHING AND DIE
     void panic(regs *r);
 }
 
