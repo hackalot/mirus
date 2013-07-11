@@ -24,29 +24,41 @@
 namespace mirus
 {
     // defines flags for the "flags" variable in the header
-    enum class mx_flags
+    enum class mx_flags : int
     {
-        
+        PLATFORM_AMD_ONLY    // AMD x64 only
     };
 
     // defines mx versions
     enum class mx_version : unsigned char
     {
-        MX_0,       // MX 0 = development version
-        MX_1        // MX 1 = first version
+        MX_0,               // MX 0 = development version
+        MX_1                // MX 1 = first version
     };
 
     // defines a mirus executable file header
     class mx_header
     {
     public:
+        // basic executable stuff
         unsigned char       magicnumber;
         mx_version          version;
         unsigned char       flags;
 
+        // where do the sections start
         unsigned short      section_start_data;
         unsigned short      section_start_bss;
         unsigned short      section_start_text;
+
+        // misc information about the app
+        char*               program_name;
+        char*               developer;
+        
+        // app version - we try to follow semver (semver.org)
+        int                 version_major;
+        int                 version_minor;
+        int                 version_rev;
+        int                 version_build;
     };
 
     // defines a mirus executable
