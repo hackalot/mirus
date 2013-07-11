@@ -25,6 +25,8 @@
 #include <term/terminal.hpp>
 #include <stdarg.h>
 
+// TODO: replace with a more powerful varient
+
 namespace mirus
 {
     void printf(const char *args, ...);

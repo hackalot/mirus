@@ -23,6 +23,8 @@
 
 #include <util/string.hpp>
 
+// TODO: this is *really* horrible
+
 namespace mirus
 {
     class version

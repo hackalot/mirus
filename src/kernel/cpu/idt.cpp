@@ -22,7 +22,8 @@
 
 namespace mirus
 {
-    extern "C" {
+    extern "C"
+    {
         void idt_load();
         mirus::idt_ptr idtp;
     }

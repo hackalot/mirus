@@ -72,6 +72,10 @@ void mirus::panic(regs *r)
         mirus::terminal_clear();
 
         printf("System Panic\r\r");
+        
+        // TODO: print regs
+        // TODO: prettier
+        // TODO: dump to debug as well
 
         //    printf("eax=0x%x ebx=0x%x\r", r->eax, r->ebx);
         // printf("ecx=0x%x edx=0x%x\r", r->ecx, r->edx);
