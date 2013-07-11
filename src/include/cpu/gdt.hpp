@@ -26,6 +26,7 @@
 
 namespace mirus
 {
+    // defines an entry in the gdt
     class gdt_entry
     {
         public:
@@ -37,6 +38,7 @@ namespace mirus
             unsigned char base_high;
     } __attribute__ ((__packed__));
 
+    // pointer to our gdt
     class gdt_ptr
     {
         public:
@@ -44,10 +46,14 @@ namespace mirus
             unsigned long base;
     } __attribute__ ((__packed__));
 
+    // our gdt + functions
     class gdt
     {
         public:
+            // setup a new entry
             static void set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
+            
+            // install the gdt
             static void install();
     };
 }

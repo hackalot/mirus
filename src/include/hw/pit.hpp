@@ -38,12 +38,22 @@
 
 #define SUBTICKS_PER_TICK 100
 
+// TODO: move under a hw::pit class
+
 namespace mirus
 {
+    // set timer freq.
     void timer_phase(int hz);
+    
+    // handler the timer
     void timer_handler(struct regs *r);
+    
     void relative_time(unsigned long seconds, unsigned long subseconds, unsigned long *out_seconds, unsigned long *out_subseconds);
+   
+    // install the timer
     void timer_install();
+    
+    // wait 'n' seconds
     void timer_wait(int ticks);
 }
 

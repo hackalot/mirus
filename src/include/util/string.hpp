@@ -26,6 +26,10 @@
 
 #include <mem/memory.hpp>
 
+// TODO: add more useful functions
+// TODO: move under mirus namespace
+// TODO: mirus::util
+
 // STR length
 size_t strlen(const char *str);
 

@@ -21,12 +21,20 @@
 #ifndef _MIRUS_KERNEL_REGISTERS_H_
 #define _MIRUS_KERNEL_REGISTERS_H_
 
+// registers
 struct regs
 {
-    unsigned int gs, fs, es, ds;      /* pushed the segs last */
-    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;  /* pushed by 'pusha' */
-    unsigned int int_no, err_code;    /* our 'push byte #' and ecodes do this */
-    unsigned int eip, cs, eflags, useresp, ss;   /* pushed by the processor automatically */
+    // pushed to the segs last
+    unsigned int gs, fs, es, ds;
+    
+    // pushed by 'pusha'
+    unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;
+
+    // pushbyte + ecodes
+    unsigned int int_no, err_code;
+
+    // pushed by CPU automatically
+    unsigned int eip, cs, eflags, useresp, ss;
 } __attribute__ ((__packed__));
 
 #endif

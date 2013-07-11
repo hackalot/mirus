@@ -31,8 +31,10 @@
 
 namespace mirus
 {
+    // irq handler void - defined in boot.s
     typedef void (*irq_handler_t) (struct regs *);
 
+    // irq handlers - uses C style linkage to help name mangling
     extern "C" {
         void irq0();
         void irq1();
@@ -52,19 +54,29 @@ namespace mirus
         void irq15();
     }
 
+    // irq functions
     class irq
     {
         public:
+            // install a handler on an irq
             static void install_handler(int irq, irq_handler_t handler);
+            
+            // remove a handler on an irq
             static void uninstall_handler(int irq);
 
+            // remap IRQs to avoid conflicts
             static void remap();
+
+            // set IRQ gates
             static void gates();
 
+            // install the irq handler
             static void install();
+
             static void ack(int irq_no);
     };
 
+    // our irq handler
     extern "C" void irq_handler(struct regs *r);
 }
 
