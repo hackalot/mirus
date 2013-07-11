@@ -27,6 +27,10 @@
 #include <core/ioport.hpp>
 #include <mem/memory.hpp>
 
+// TODO: move under mirus namespace
+// TODO: move under a mirus::io::term class (or similar)
+// TODO: prettyfy/make simpiler
+
 // Hardware text mode color constants.
 enum vga_color
 {

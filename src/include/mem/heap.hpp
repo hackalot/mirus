@@ -21,7 +21,8 @@
 #ifndef _MIRUS_KERNEL_HEAP_H_
 #define _MIRUS_KERNEL_HEAP_H_
 
-namespace mirus {
+namespace mirus
+{
 
 }
 

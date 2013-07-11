@@ -23,7 +23,8 @@
 // methods and variables used in the asm file
 namespace mirus
 {
-    extern "C" {
+    extern "C"
+    {
         void gdt_flush();
         mirus::gdt_ptr gp;
     }

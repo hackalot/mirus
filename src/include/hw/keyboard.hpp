@@ -56,12 +56,17 @@ typedef struct keymap
     key_status_t controls;
 } keymap_t;
 
+// TODO: move under a hw::keyboard class
 
 namespace mirus
 {
+    // triggered on keypress
     void keyboard_handler(struct regs *r);
+    
+    // install the keyboard
     void keyboard_install();
 
+    // get char
     char keyboard_getkey();
 }
 

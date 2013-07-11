@@ -21,7 +21,8 @@
 #include <cpu/isr.hpp>
 #include <sys/panic.hpp>
 
-extern "C" {
+extern "C"
+{
     void isr0();
     void isr1();
     void isr2();
