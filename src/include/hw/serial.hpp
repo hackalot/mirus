@@ -25,12 +25,25 @@
 
 #define PORT 0x3f8  // com1
 
+// TODO: move under a hw::serialport class
+// TODO: allow specification of any serial port,
+// not just COM1
+
 namespace mirus
 {
+    // install the serial ports
     void serial_install();
+
+    // triggered when we recieve input from the port
     int serial_received();
+    
+    // read from the serial
     char read_serial();
+    
+    // check if we should read anything
     int is_transmit_empty();
+    
+    // write to a serial port
     void write_serial(char a);
 }
 

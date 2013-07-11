@@ -133,7 +133,7 @@ void mirus::keyboard_handler(struct regs* r)
 
     if (scancode & 0x80)
     {
-
+        // TODO: handle control keys
     }
     else
     {
@@ -159,7 +159,6 @@ char mirus::keyboard_getkey()
     return c;
 }
 
-/* Installs the keyboard handler into IRQ1 */
 void mirus::keyboard_install()
 {
     mirus::irq::install_handler(1, keyboard_handler);
