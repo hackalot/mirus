@@ -1,9 +1,6 @@
-PROG_BUILD_NUM=build/.build_number
 BUILD_DATE = $(shell date +'%Y%m%d')
-BUILD_NUM = $(shell cat $(PROG_BUILD_NUM))
 BUILD_MAJOR = 0
 BUILD_MINOR = 1
-BUILD_CODENAME = fayette
 BUILD_POSTFIX = dev
 
 M_ARCH = i386
@@ -24,9 +21,9 @@ CXX = clang++
 CXXWARNINGS = -Wall -Wextra -Wno-unused-parameter
 DEBUG = -D_DEBUG_ON
 CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/lib -m32 -O0
-CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE) -DBUILD_NUM=$(BUILD_NUM)
+CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE)
 CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
-CXXFLAGS += -DBUILD_CODENAME=$(BUILD_CODENAME) -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
+CXXFLAGS += -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
 CXXFLAGS += $(DEBUG)
 
 LD = ld
@@ -40,14 +37,12 @@ QEMUFLAGS = -serial file:/tmp/miruslog
 
 .PHONY: all clean dist todolist dist kvm debug
 
-TARGET = mirus-$(BUILD_MAJOR).$(BUILD_MINOR).$(BUILD_NUM)-$(BUILD_POSTFIX).$(M_ARCH).iso
+TARGET = mirus.iso
 
 ALL: $(OBJFILES)
 	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
 	@cp kernel.bin iso/boot/kernel.bin
 	@grub2-mkrescue -o $(TARGET) iso
-	@if ! test -f $(PROG_BUILD_NUM); then echo 0 > $(PROG_BUILD_NUM); fi
-	@echo $$(($$(cat $(PROG_BUILD_NUM)) + 1)) > $(PROG_BUILD_NUM)
 
 -include $(DEPFILES)
 

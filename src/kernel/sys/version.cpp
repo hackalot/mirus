@@ -58,8 +58,3 @@ int mirus::version::getMinor()
 {
     return BUILD_MINOR;
 }
-
-int mirus::version::getBuild()
-{
-    return BUILD_NUM;
-}
