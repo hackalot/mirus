@@ -21,6 +21,28 @@ Make will build, link, and generate an ISO image of Mirus using grub2.  This can
 ### Kernel
 To build the Mirus kernel, you will need `nasm`, `clang`, and `GNU ld`.  In order to build the ISO image, Mirus uses the `grub2-mkrescue` utility found in the grub2 utilities collection. (Which you probably have if your system uses GRUB2)
 
+## Resources
+
+### Inspiration
+These projects helped inspire Mirus's unique kernel architecture.
+
+* [Plan 9 from Bell Labs](http://plan9.bell-labs.com/plan9/)
+* [EROS](http://www.eros-os.org/eros.html)
+* [MINIX3](http://www.minix3.org)
+
+### References
+These documents or sites helped me greatly in the development of Mirus.
+
+* [OSDev](http://osdev.org)
+* [Bran's Kernel Development Series](http://www.osdever.net/bkerndev/Docs/intro.htm)
+* [James M's Kernel Tutorials](http://code.google.com/p/jamesm-tutorials/)
+
+### Misc
+Other helpful things to me.
+
+* [とあるOS](http://torauos.org) - Helped inspire me to work on Mirus.
+* [Cosmos](http://cosmos.codeplex.com) - Original stomping ground for my OS dev ventures.
+
 ## License
 
 ### Mirus
