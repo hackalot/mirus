@@ -31,24 +31,6 @@ You can hook up with us on IRC on `#mirus` on `irc.freenode.net`.
 ### Reporting Issues
 If you happen upon a bug, want a feature, or need even *more* help, please drop us a line on the Mirus [issue tracker](https://github.com/joshbeitler/mirus/issues).
 
-## Additional Links
-
-### Related Projects
-
-* [mkdb](https://github.com/mirusproject/mkdb)
-* [mirloader](https://github.com/mirusproject/mirloader)
-* [bit](https://github.com/mirusproject/bit)
-
-### Community
-
-* [Reddit](http://reddit.com/r/mirus)
-* [@joshbeitler](http://twitter.com/joshbeitler)
-
-### Project
-
-* [Wiki](https://github.com/joshbeitler/mirus/wiki)
-* [Issue tracker](https://github.com/joshbeitler/mirus/issues)
-
 ## License
 
 ### Mirus
