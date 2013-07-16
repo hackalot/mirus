@@ -33,7 +33,7 @@ namespace mirus
     enum class mx_version : unsigned char
     {
         MX_0,               // MX 0 = development version
-        MX_1                // MX 1 = first version
+        MX_1                // MX 1 = production version
     };
 
     // defines a mirus executable file header

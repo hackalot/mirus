@@ -33,8 +33,6 @@
 #include <hw/keyboard.hpp>
 #include <hw/serial.hpp>
 
-#include <sys/version.hpp>
-
 extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
 {
 #ifdef _DEBUG_ON
@@ -56,13 +54,13 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     if (mbd->flags & 1)
     {
 #ifdef _DEBUG_ON
-        mirus::debugger::writeln("Can get memory? [YES]");
+        mirus::debugger::write("Memory map avalible\n");
 #endif
     }
     else
     {
 #ifdef _DEBUG_ON
-        mirus::debugger::writeln("Can get memroy? [NO]");
+        mirus::debugger::write("No memory map avalible\n");
 #endif
     }
 
@@ -71,12 +69,7 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::timer_install();
     mirus::serial_install();
 
-    // Print version number
-    mirus::printf("mirus [");
-    mirus::printf(mirus::version::getMajor());
-    mirus::printf(".");
-    mirus::printf(mirus::version::getMinor());
-    mirus::printf("]\r\r");
+    mirus::printf("Mirus\r");
 
     // Make sure we never exit
     while (true);
