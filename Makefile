@@ -14,7 +14,7 @@ DEPFILES := $(shell find $(PROJDIRS) -type f -name "*.d")
 OBJFILES := $(patsubst %.cpp,%.o,$(SRCFILES))
 OBJFILES += $(patsubst %.s,%.o,$(ASMFILES))
 
-AUXFILES := Makefile README.md LICENSE.mds
+AUXFILES := Makefile README.markdown LICENSE.markdown
 ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
