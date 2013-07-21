@@ -21,11 +21,7 @@
 #ifndef _MIRUS_KERNEL_IO_TERM_H_
 #define _MIRUS_KERNEL_IO_TERM_H_
 
-#include <stddef.h>     // TODO: do we *really* need these?
-#include <stdint.h>
-#include <util/string.hpp>
-#include <core/ioport.hpp>
-#include <mem/memory.hpp>
+#include <system.hpp>
 
 namespace mirus
 {
@@ -57,28 +53,28 @@ namespace mirus
             };
            
             // place a character at a specified location
-            void putentry(char c, terminal_color color, size_t x, size_t y);
+            static void putentry(char c, terminal_color color, size_t x, size_t y);
 
             // place a character
-            void putchar(char c);
-            void putchar(c, terminal_color color);
+            static void putchar(char c);
+            static void putchar(c, terminal_color color);
 
             // place a string
-            void writestring(const char* data);
-            void writestring(const char* data, terminal_color color);
+            static void writestring(const char* data);
+            static void writestring(const char* data, terminal_color color);
 
             // clear the screen
-            void clear();
-            void clean(terminal_color color);
+            static void clear();
+            static void clean(terminal_color color);
 
-            void scroll();
-            void move_cursor();
+            static void scroll();
+            static void move_cursor();
 
             // make a color/entry for vga memory
             static terminal_color make_color(vga_color fg, vga_color bg);
             static uint16_t make_vga_entry(char c, terminal_color color);
 
-            void initilize();
+            static void initilize();
         };
     }
 }

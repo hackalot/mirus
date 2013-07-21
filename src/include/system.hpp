@@ -43,6 +43,10 @@
 #include <kmath/kmath.h>
 #include <kstring/kstring.h>
 
+// c headers
+#include <stddef.h>
+#include <stdint.h>
+
 #endif
 
 
