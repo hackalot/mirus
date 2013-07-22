@@ -5,7 +5,7 @@ BUILD_POSTFIX = dev
 
 M_ARCH = i386
 
-PROJDIRS := src/kernel src/asm src/include
+PROJDIRS := source/kernel source/asm source/include
 SRCFILES := $(shell find $(PROJDIRS) -type f -name "*.cpp")
 ASMFILES := $(shell find $(PROJDIRS) -type f -name "*.s")
 HDRFILES := $(shell find $(PROJDIRS) -type f -name "*.hpp")
@@ -14,13 +14,13 @@ DEPFILES := $(shell find $(PROJDIRS) -type f -name "*.d")
 OBJFILES := $(patsubst %.cpp,%.o,$(SRCFILES))
 OBJFILES += $(patsubst %.s,%.o,$(ASMFILES))
 
-AUXFILES := Makefile README.markdown LICENSE.markdown
+AUXFILES := Makefile
 ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
 
 CXX = clang++
 CXXWARNINGS = -Wall -Wextra -Wno-unused-parameter
 DEBUG = -D_DEBUG_ON
-CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isrc/include -Isrc/lib -m32 -O0
+CXXFLAGS := $(CXXWARNINGS) -fno-builtin -fno-exceptions -ffreestanding -std=c++11 -Isource/include -Isource/library -m32 -O0
 CXXFLAGS += -DBUILD_DATE=$(BUILD_DATE)
 CXXFLAGS += -DBUILD_MAJOR=$(BUILD_MAJOR) -DBUILD_MINOR=$(BUILD_MINOR)
 CXXFLAGS += -DBUILD_POSTFIX="$(BUILD_POSTFIX)"
