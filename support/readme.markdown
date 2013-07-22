@@ -4,6 +4,9 @@ Mirus is a hobby operating system designed to be a playground for new and intere
 
 ## Testing
 
+### Note on Source Structure
+You may notice that `readme.markdown` and `license.txt` are symbolic links to accordingly named files in the `support` directory.  In the Mirus world, to keep things clean, files such as READMEs, CONTRIBUTING, Licenses, and related files are moved into a directory called `support`.  You will notice this trend in projects related to Mirus (mirloader, mkdb, mircore, etc.), as well as a lot of applications that run on Mirus.  To not cause any confusion, we have symlinked the README and LICENSE files to the root directory.  Please note that this is not always the case, and also that the symlinks may cause troubles in web-based source viewers.
+
 ### Dependencies
 Mirus depends on `clang`, `grub2`, `xorriso`, `ld`, and `nasm` to build the kernel.
 
