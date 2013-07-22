@@ -7,12 +7,12 @@ M_ARCH = i386
 
 PROJDIRS := source/kernel source/asm source/include
 SRCFILES := $(shell find $(PROJDIRS) -type f -name "*.cpp")
-ASMFILES := $(shell find $(PROJDIRS) -type f -name "*.s")
+ASMFILES := $(shell find $(PROJDIRS) -type f -name "*.asm")
 HDRFILES := $(shell find $(PROJDIRS) -type f -name "*.hpp")
 DEPFILES := $(shell find $(PROJDIRS) -type f -name "*.d")
 
 OBJFILES := $(patsubst %.cpp,%.o,$(SRCFILES))
-OBJFILES += $(patsubst %.s,%.o,$(ASMFILES))
+OBJFILES += $(patsubst %.asm,%.o,$(ASMFILES))
 
 AUXFILES := Makefile
 ALLFILES := $(SRCFILES) $(HDRFILES) $(AUXFILES) $(ASMFILES)
@@ -49,7 +49,7 @@ ALL: $(OBJFILES)
 %.o: %.cpp Makefile
 	@$(CXX) $(CXXFLAGS) -MMD -MP -o $@ -c $<
 
-%.o: %.s Makefile
+%.o: %.asm Makefile
 	@$(AS) $(ASFLAGS) -o $@ $<
 
 clean:
