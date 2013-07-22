@@ -2,6 +2,7 @@ BUILD_DATE = $(shell date +'%Y%m%d')
 BUILD_MAJOR = 0
 BUILD_MINOR = 1
 BUILD_POSTFIX = dev
+CODENAME = nova
 
 M_ARCH = i386
 
