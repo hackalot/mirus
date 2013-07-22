@@ -1,5 +1,5 @@
 language: cpp
-before_script: ./.before_script.sh
+before_script: ./build/travis-setup.sh 
 script: make no-iso && make clean
 compiler: clang
 
