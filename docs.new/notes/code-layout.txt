@@ -1,0 +1,32 @@
+code layout notes - 7/21/13
+===========================
+
+all code needs to be under `mirus` namespace at least.
+no classes directly under `mirus`
+
+
+kernel
+------
+
+* mirus                     master
+    * system
+        * io                console stuff
+        * debug (c)
+    * hardware
+        * keyboard (c)
+        * pit (c)
+        * serial (c)
+        * screen (c)
+    * core
+    * cpu
+    * memory
+
+
+api
+---
+
+* mirus
+    * system
+        * process (c)
+        * fs
+
