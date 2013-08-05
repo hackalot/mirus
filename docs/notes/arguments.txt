@@ -1,0 +1,37 @@
+command line arguments
+======================
+
+Mirus programs use a standardised command line syntax when handling arguments
+and such.  This is to help avoid confusion as well as to provide a standard
+point from which anyone who knows much about Mirus to be able to work with most
+any Mirus application with relative ease.
+
+To facilitate this goal, a command line argument parser has been included into
+the Mirus API that provides extreme ease in implimenting arguments and options
+that comply to this spec.
+
+
+argument structure
+------------------
+
+All command line arguments are denoted with a dash, regardless of length.
+
+    -a 
+    -b 
+    -long-option-name 
+    -derp
+
+Commands that accept a value follow the Ruby style of using a colon to seperate
+the values.
+    
+    -filename:myfile.txt
+    -o:outputfile.txt
+
+
+base arguments
+--------------
+
+These arguments must always be present:
+
+    -help           list all arguments/provide help
+    -version        version/program information
