@@ -51,7 +51,7 @@ namespace mirus
 
             // place a character
             static void putchar(char c);
-            static void putchar(c, terminal_color color);
+            static void putchar(char c, terminal_color color);
 
             // place a string
             static void writestring(const char* data);
@@ -59,7 +59,7 @@ namespace mirus
 
             // clear the screen
             static void clear();
-            static void clean(terminal_color color);
+            static void clear(terminal_color color);
 
             static void scroll();
             static void move_cursor();
@@ -67,6 +67,8 @@ namespace mirus
             // make a color/entry for vga memory
             static terminal_color make_color(vga_color fg, vga_color bg);
             static uint16_t make_vga_entry(char c, terminal_color color);
+
+            static void set_color(terminal_color color);
 
             static void initilize();
         };
