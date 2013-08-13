@@ -1,4 +1,4 @@
-Mirus [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus) [![Version](http://calm-shore-6115.herokuapp.com/?label=semantic version&value=0.2.5&color=green)](http://semver.org)
+<img src="https://raw.github.com/joshbeitler/mirus/master/docs/misc/newlooklogo-black.png" width="25%" /> [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=master)](https://travis-ci.org/joshbeitler/mirus)
 =====
 Mirus is a hobby operating system designed to be a playground for new and interesting OS theories.  It is not based on any other exsisting standards, allowing for a great deal of freedom in the development of the concepts behind it.
 
