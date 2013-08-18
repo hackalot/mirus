@@ -39,11 +39,11 @@ namespace mirus
             if (c == '\r')
             {
                 terminal_row++;
-                terminal_color = 0;
+                _terminal_color = 0;
             }
             else if (c == '\b')
             {
-                terminal_color--;
+                _terminal_color--;
                 terminal::putentry(' ', _terminal_color, terminal_column, terminal_row);
             }
             else
@@ -90,7 +90,7 @@ namespace mirus
 
         void terminal::writestring(const char* data, terminal_color color)
         {
-            terminal::putchar(data[i], color);
+            terminal::putchar(data, color);
         }
 
         void terminal::clear()
