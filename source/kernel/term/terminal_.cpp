@@ -90,7 +90,12 @@ namespace mirus
 
         void terminal::writestring(const char* data, terminal_color color)
         {
-            terminal::putchar(data, color);
+            terminal_color prev_color = _terminal_color;
+            terminal::set_color(color);
+
+            terminal::writestring(data);
+
+            terminal::set_color(prev_color);
         }
 
         void terminal::clear()
