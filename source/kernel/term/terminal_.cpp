@@ -146,7 +146,7 @@ namespace mirus
 
         terminal_color terminal::make_color(vga_color fg, vga_color bg)
         {
-            return fg | bg << 4;
+            return (int)fg | (int)bg << 4;
         }
 
         uint16_t terminal::make_vga_entry(char c, terminal_color color)
@@ -157,7 +157,7 @@ namespace mirus
             return c16 | color16 << 8;
         }
 
-        terminal_color terminal::set_color(terminal_color color)
+        void terminal::set_color(terminal_color color)
         {
             _terminal_color = color;
         }
@@ -166,8 +166,8 @@ namespace mirus
         {
             terminal_row = 0;
             terminal_column = 0;
-            _terminal_color = terminal::make_color(COLOR_WHITE, COLOR_BLACK);
-            terminal_buffer = static_cast<uint16_t*>0xb8000;
+            _terminal_color = terminal::make_color(vga_color::white, vga_color::black);
+            terminal_buffer = (uint16_t*)0xb8000;
 
             terminal::clear();
         }
