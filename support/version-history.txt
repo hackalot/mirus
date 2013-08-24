@@ -1,7 +1,0 @@
-Version history
-===============
-
-version/desc/codename (if any)
-------------------------------
-0.1.0   getting started     fayette
-0.2.0   coming along nicely nova

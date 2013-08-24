@@ -1,8 +1,0 @@
-mirus codenames
-===============
-
-used        codename        version
-----        --------        -------
-[x]         fayette         0.1.x
-[ ]         nova            0.2.x
-
