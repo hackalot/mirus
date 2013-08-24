@@ -32,11 +32,11 @@ rake
 To build Mirus, you will need to meet the following dependencies.  If you are not sure whether they are installed on your system, `rake` will notify you on build.
 
 * `rake` >= 0.9.6
-* `ruby`
-* `clang`
-* `lld`
-* `grub2`
-* `yasm`
+* `ruby` >= 2.0.0
+* `clang` >= 3.3
+* `ld` >= 2.23
+* `grub2` >= 2.0.0
+* `yasm` >= 1.2.0
 
 ### Contributing
 If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.
