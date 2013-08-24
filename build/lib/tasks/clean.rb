@@ -17,4 +17,7 @@ desc "Clean up all the extra crap"
 task :clean do
     sh "rm -f #{$object_files}"
     sh "rm -f #{$dep_files}"
+    sh "rm -f #{$target}"
+    sh "rm -f #{$target_bin}"
+    sh "rm -f #{$target_iso}"
 end

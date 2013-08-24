@@ -14,8 +14,8 @@
 
 # define various targets
 $target          = "mirus"
-$iso_target      = $target << ".iso"
-$bin_target      = $target << ".bin"
+$target_iso      = "mirus.iso"
+$target_bin      = "mirus.bin"
 
 # source files
 $cpp_files       = FileList['source/kernel/*.cpp', 'source/system/*.cpp', 'source/*.cpp']
@@ -39,6 +39,10 @@ $cpp_flags       = $warnings << $options << $include_paths
 # nasm + options
 $assembler       = "yasm"
 $assembler_flags = "-f elf"
+
+# linker options
+$ld              = "ld"
+$ld_flags        = "-T build/linker.ld -m elf_i386"
 
 # virtual machine options
 $vm              = "qemu-system-i386"

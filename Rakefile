@@ -24,6 +24,7 @@ require './build/lib/tasks/clean'
 require './build/lib/tasks/kernel'
 require './build/lib/tasks/qemu'
 require './build/lib/tasks/configure'
+require './build/lib/tasks/link'
 
-# default task
+# default task is to generate an iso image
 task :default => ['make_iso']
