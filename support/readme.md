@@ -16,6 +16,14 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 * Typical OS stuff (gdt, idt, etc.)
 
 ### Testing
+To build Mirus, you will need to meet the following dependencies:
+
+* `rake` >= 0.9.6
+* `ruby`
+* `clang`
+* `lld`
+* `grub2`
+* `yasm`
 
 ### Contributing
 
