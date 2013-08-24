@@ -1,3 +1,5 @@
+require 'colorize'
+
 target          = "mirus"
 iso_target      = target << ".iso"
 bin_target      = target << ".bin"
@@ -23,18 +25,22 @@ cpp_flags       = warnings << options << include_paths << "-c -MMD -MP"
 assembler       = "nasm"
 assembler_flags = "-f elf"
 
+# create a directory to hold output
 directory "build"
+
+# stfu rake
+verbose false
 
 # compile
 desc "Build all components"
 task :build_all => ['build_asm', 'build_kernel'] do
-
+    # ...
 end
 
 # build kernel
 desc "Build the kernel"
 task :build_kernel do
-
+    # ...
 end
 
 # build assembly
@@ -42,7 +48,15 @@ desc "Build bootstrap + lower level ASM code"
 task :build_asm do
     asm_files.each do |t|
         object_file = t.sub(/\.asm$/, '.o')
-        sh "#{assembler} #{assembler_flags} -o #{object_file} #{t}"
+        
+        sh "#{assembler} #{assembler_flags} -o #{object_file} #{t}" do |ok, res|
+            if ! ok
+                puts "[rake] Could not build #{t}".red
+                puts "\t#{res}.exitstatus".red
+            else
+                puts "[rake] #{t} -> #{object_file}".green
+            end
+        end
     end
 end
 
@@ -52,10 +66,12 @@ task :make_iso do
     puts "Generating ISO..."
 end
 
+# clean object files, etc.
 desc "Clean up all the extra crap"
 task :clean do
     sh "rm -f #{object_files}"
     sh "rm -f #{dep_files}"
 end
 
+# default task
 task :default => ['make_iso']
