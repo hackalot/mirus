@@ -37,6 +37,7 @@ To build Mirus, you will need to meet the following dependencies.  If you are no
 * `ld` >= 2.23
 * `grub2` >= 2.0.0
 * `yasm` >= 1.2.0
+* `xorriso` >= 1.2.8
 
 ### Contributing
 If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.
