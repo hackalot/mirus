@@ -20,4 +20,6 @@ task :clean do
     sh "rm -f #{$target}"
     sh "rm -f #{$target_bin}"
     sh "rm -f #{$target_iso}"
+    sh "rm -f build/*.bin"
+    sh "rm -f build/*.iso"
 end
