@@ -23,7 +23,6 @@ task :build_asm do
         sh "#{$assembler} #{$assembler_flags} -o #{object_file} #{t} >/dev/null 2>&1" do |ok, res|
             if ! ok
                 puts "[rake] Could not build #{t}".red
-                puts "\t#{res}.exitstatus".red
             else
                 puts "[rake] #{t} -> #{object_file}".green
             end

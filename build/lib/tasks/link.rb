@@ -15,10 +15,9 @@
 # linkage
 desc "Link object files to flat binary"
 task :link => ['build_asm', 'build_kernel'] do
-    sh "#{$ld} #{$ld_flags} -o #{$target_bin} #{$object_files} >/dev/null 2>&1" do |ok, res|
+    sh "#{$ld} #{$ld_flags} -o ./build/bin/#{$target_bin} #{$object_files} >/dev/null 2>&1" do |ok, res|
         if ! ok
             puts "[rake] Could not generate executable #{$target_bin}".red
-            puts "\t#{res}.exitstatus".red
         else
             puts "[rake] Generating executable #{$target_bin}".blue
         end
