@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# run qemu
-desc "Run Mirus in Qemu"
-task :qemu do
+# config
+desc "Configure your build"
+task :configure do
+
 end
