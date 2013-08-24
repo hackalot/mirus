@@ -70,20 +70,20 @@ namespace mirus
             for (size_t i = 0; i < datalen; i++)
             {
                 // TODO: do we really need this?
-                // if (data[i] == '\r')
-                // {
-                //     terminal_row++;
-                //     terminal_column = 0;
-                // }
-                // else if (data[i] == '\b')
-                // {
-                //     terminal_column--;
-                //     terminal::putentry(' ', _terminal_color, terminal_column, terminal_row);
-                // }
-                // else
-                // {
-                //     terminal::putchar(data[i]);
-                // }
+                if (data[i] == '\r')
+                {
+                    terminal_row++;
+                    terminal_column = 0;
+                }
+                else if (data[i] == '\b')
+                {
+                    terminal_column--;
+                    terminal::putentry(' ', _terminal_color, terminal_column, terminal_row);
+                }
+                else
+                {
+                    terminal::putchar(data[i]);
+                }
                 terminal::putchar(data[i]);
             }
         }

@@ -7,6 +7,7 @@ CODENAME = nova
 M_ARCH = i386
 
 PROJDIRS := source/kernel source/asm source/include
+OUTDIR   := binary
 SRCFILES := $(shell find $(PROJDIRS) -type f -name "*.cpp")
 ASMFILES := $(shell find $(PROJDIRS) -type f -name "*.asm")
 HDRFILES := $(shell find $(PROJDIRS) -type f -name "*.hpp")
@@ -41,9 +42,10 @@ QEMUFLAGS = -serial file:/tmp/miruslog
 TARGET = mirus.iso
 
 ALL: $(OBJFILES)
-	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
-	@cp kernel.bin iso/boot/kernel.bin
-	@grub2-mkrescue -o $(TARGET) iso
+	@mkdir binary
+	@$(LD) $(LDFLAGS) -o binary/kernel.bin ${OBJFILES}
+	@cp binary/kernel.bin iso/boot/kernel.bin
+	@grub2-mkrescue -o binary/$(TARGET) iso
 
 -include $(DEPFILES)
 
@@ -64,6 +66,7 @@ clean:
 	@rm -f *.bin
 	@rm -f *.tar.gz
 	@rm -f /tmp/miruslog
+	@rm -rf binary
 
 todolist:
 	-@for file in $(ALLFILES:Makefile=); do fgrep -H -e TODO -e FIXME -e ERROR $$file; done; true
@@ -79,12 +82,8 @@ dist:
 	@rm -rf .tempdir
 
 kvm:
-	@$(QEMU) -cdrom mirus*.iso $(QEMUFLAGS)
+	@$(QEMU) -cdrom binary/mirus.iso $(QEMUFLAGS)
 
 no-iso: $(OBJFILES)
-	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
-
-debug: $(OBJFILES)
-	@$(LD) $(LDFLAGS) -o kernel.bin ${OBJFILES}
-	@cp kernel.bin iso/boot/kernel.bin
-	@grub2-mkrescue -o mirus.iso iso
+	@mkdir binary
+	@$(LD) $(LDFLAGS) -o binary/kernel.bin ${OBJFILES}

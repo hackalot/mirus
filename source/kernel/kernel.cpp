@@ -33,8 +33,6 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::debugger::write("mirus now booting\n\n");
 #endif
 
-    mirus::io::terminal::initilize();
-
     // CPU funcs
     mirus::gdt::install();
     mirus::idt::install();
@@ -59,11 +57,12 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     }
 
     // Install devices
+    mirus::io::terminal::initilize();
     mirus::keyboard_install();
     mirus::timer_install();
     mirus::serial_install();
 
-    mirus::printf("Mirus\r");
+    mirus::printf("Mirus");
 
     // Make sure we never exit
     while (true);
