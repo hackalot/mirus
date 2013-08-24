@@ -30,7 +30,7 @@ include_paths   = "-I source/include -I source/library"
 cpp_flags       = warnings << options << include_paths << "-c -MMD -MP"
 
 # nasm + options
-assembler       = "nasm"
+assembler       = "yasm"
 assembler_flags = "-f elf"
 
 # virtual machine options
