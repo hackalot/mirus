@@ -140,7 +140,7 @@ void mirus::keyboard_handler(struct regs* r)
         }
 
         c = scancodes[scancode];
-        mirus::terminal_putchar(scancodes[scancode]);
+        mirus::io::terminal::putchar(scancodes[scancode]);
 
         mirus::keyboard_getkey();
     }

@@ -62,8 +62,9 @@ void mirus::panic(regs *r)
         mirus::debugger::write("Catostrophic system error - Resulted in panic.\n");
 #endif
 
-        mirus::terminal_setcolor(mirus::make_color(COLOR_LIGHT_RED, COLOR_BLACK));
-        mirus::terminal_clear();
+        mirus::io::terminal::set_color(
+            mirus::io::terminal::make_color(vga_color, COLOR_BLACK));
+        mirus::io::terminal::clear();
 
         printf("System Panic\r\r");
         

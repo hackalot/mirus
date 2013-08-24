@@ -63,7 +63,7 @@ namespace mirus
             terminal::set_color(oldcolor);
         }
 
-        void terminal::writestring(const char* data)
+        void terminal::write_string(const char* data)
         {
             size_t datalen = strlen(data);
 
@@ -88,7 +88,7 @@ namespace mirus
             }
         }
 
-        void terminal::writestring(const char* data, terminal_color color)
+        void terminal::write_string(const char* data, terminal_color color)
         {
             terminal_color prev_color = _terminal_color;
             terminal::set_color(color);

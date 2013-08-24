@@ -54,8 +54,8 @@ namespace mirus
             static void putchar(char c, terminal_color color);
 
             // place a string
-            static void writestring(const char* data);
-            static void writestring(const char* data, terminal_color color);
+            static void write_string(const char* data);
+            static void write_string(const char* data, terminal_color color);
 
             // clear the screen
             static void clear();

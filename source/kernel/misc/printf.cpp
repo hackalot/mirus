@@ -16,10 +16,10 @@
 
 void mirus::printf(const char* args, ...)
 {
-    mirus::terminal_writestring(args);
+    mirus::io::terminal::write_string(args);
 }
 
 void mirus::printf(const int args, ...)
 {
-    mirus::terminal_writestring(iota(args));
+    mirus::io::terminal::write_string(iota(args));
 }
