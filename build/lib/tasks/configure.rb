@@ -15,5 +15,8 @@
 # config
 desc "Configure your build"
 task :configure do
-
+    # allow changing of target (output)
+    if ENV['target']
+        $target = ENV['target']
+    end
 end

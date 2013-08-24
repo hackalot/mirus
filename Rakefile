@@ -23,6 +23,7 @@ require './build/lib/tasks/asm'
 require './build/lib/tasks/clean'
 require './build/lib/tasks/kernel'
 require './build/lib/tasks/qemu'
+require './build/lib/tasks/configure'
 
 # default task
 task :default => ['make_iso']
