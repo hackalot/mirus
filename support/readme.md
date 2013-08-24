@@ -4,15 +4,15 @@ Mirus is a new operating system with the aim of trying out new and interesting t
 
 Mirus is designed primarily for higher-performance machines, such as workstations and gaming rigs, and to be used by those of higher technical knowledge. We also are trying to implement cluster-based computing and advanced load bearing capabilities.
 
-## Core Features
+### Core Features
 * herp
 * derp
 
-## Testing
+### Testing
 
-## Contributing
+### Contributing
 
-## License
+### License
 ```
 Copyright 2013 Joshua Beitler
 
