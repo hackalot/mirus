@@ -16,11 +16,19 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 * Typical OS stuff (gdt, idt, etc.)
 
 ### Testing
+We do not have bleeding-edge ISO images avalible currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `support/building.text` file.
+
+A build of Mirus with no additional configuration or specified tasks will generate a bootable `mirus.iso` in the `build` directory.  You can burn this to any bootable medium you see fit, or run it in a virtual machine.
+
+After building Mirus, you may run `rake qemu` to run the freshly generated image in Qemu, provided it is installed.
+
+### Building
 ```
 rake configure
 rake
 ```
 
+### Dependencies
 To build Mirus, you will need to meet the following dependencies.  If you are not sure whether they are installed on your system, `rake` will notify you on build.
 
 * `rake` >= 0.9.6
@@ -31,6 +39,13 @@ To build Mirus, you will need to meet the following dependencies.  If you are no
 * `yasm`
 
 ### Contributing
+If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.
+
+### Issue Tracker
+If you run into issues (which we almost garentee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
+
+### Getting Help
+We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`.  The [wiki](https://github.com/joshbeitler/mirus/wiki) is an excellent place to look if you need a quick reference of Mirus.
 
 ### License
 ```
