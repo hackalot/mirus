@@ -9,7 +9,7 @@ bin_target      = target << ".bin"
 # source files
 cpp_files       = FileList['source/kernel/*.cpp', 'source/system/*.cpp']
 header_files    = FileList['source/include/*.hpp', 'source/library/*.hpp']
-asm_files       = FileList['source/assembly/*.asm']
+asm_files       = FileList['source/asm/*.asm']
 
 # object files
 object_files    = cpp_files.sub(/\.cpp$/, '.o')
