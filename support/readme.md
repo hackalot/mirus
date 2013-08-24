@@ -1,0 +1,1 @@
+<img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-type-black.png" width="35%" />
