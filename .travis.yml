@@ -1,8 +1,0 @@
-language: cpp
-before_script: ./build/travis-setup.sh 
-script: make no-iso && make clean
-compiler: clang
-
-branches:
-  except:
-    - docs
