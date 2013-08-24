@@ -33,7 +33,7 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     mirus::debugger::write("mirus now booting\n\n");
 #endif
 
-    mirus::terminal_initialize();
+    mirus::io::terminal::initilize();
 
     // CPU funcs
     mirus::gdt::install();

@@ -63,7 +63,8 @@ void mirus::panic(regs *r)
 #endif
 
         mirus::io::terminal::set_color(
-            mirus::io::terminal::make_color(vga_color, COLOR_BLACK));
+            mirus::io::terminal::make_color(mirus::io::terminal::vga_color::red, 
+                mirus::io::terminal::vga_color::black));
         mirus::io::terminal::clear();
 
         printf("System Panic\r\r");

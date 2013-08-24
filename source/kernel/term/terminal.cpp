@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <term/terminal_.hpp>
+#include <term/terminal.hpp>
 
 namespace mirus
 {
@@ -93,7 +93,7 @@ namespace mirus
             terminal_color prev_color = _terminal_color;
             terminal::set_color(color);
 
-            terminal::writestring(data);
+            terminal::write_string(data);
 
             terminal::set_color(prev_color);
         }
