@@ -25,6 +25,9 @@ cpp_flags       = warnings << options << include_paths << "-c -MMD -MP"
 assembler       = "nasm"
 assembler_flags = "-f elf"
 
+vm              = "qemu-system-i386"
+vm_flags        = "-serial file:/tmp/mirus_debug.log"
+
 # create a directory to hold output
 directory "build"
 
@@ -71,6 +74,12 @@ desc "Clean up all the extra crap"
 task :clean do
     sh "rm -f #{object_files}"
     sh "rm -f #{dep_files}"
+end
+
+# start qemu
+desc "Start QEMU with Mirus"
+task :qemu do
+    sh "#{vm} #{vm_flags} build/mirus.iso"
 end
 
 # default task
