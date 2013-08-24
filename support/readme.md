@@ -5,8 +5,15 @@ Mirus is a new operating system with the aim of trying out new and interesting t
 Mirus is designed primarily for higher-performance machines, such as workstations and gaming rigs, and to be used by those of higher technical knowledge. We also are trying to implement cluster-based computing and advanced load bearing capabilities.
 
 ### Core Features
-* herp
-* derp
+* Powerful executable format
+* Dynamic, node based filesystem
+* Load bearing and cluster capabilities
+* First-party bootloader
+* Completely designed for AMD64 architecture
+* Forward thinking design
+* Resiliant driver framework
+* Fast and lean microkernel
+* Typical OS stuff (gdt, idt, etc.)
 
 ### Testing
 
