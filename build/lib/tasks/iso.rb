@@ -15,5 +15,12 @@
 # generate a bootable iso image of Mirus
 desc "Creates bootable media"
 task :make_iso => ['build_asm', 'build_kernel', 'link'] do
-    puts "[rake] Generating ISO image #{$target_iso}".blue
+    sh "cp ./build/kernel.bin ./iso/boot/kernel.bin >./build/isolog.log 2>&1"
+    sh "grub2-mkrescue -o ./build/#{$target_iso} iso >>./build/isolog.log 2>&1" do |ok, res|
+            if ! ok
+                puts "[rake] Could not generate disk image".red
+            else
+                puts "[rake] Generating disk image".blue
+            end
+        end
 end

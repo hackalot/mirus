@@ -15,7 +15,7 @@
 # define various targets
 $target          = "mirus"
 $target_iso      = "mirus.iso"
-$target_bin      = "mirus.bin"
+$target_bin      = "kernel.bin"
 
 # source files
 $cpp_files       = FileList['source/kernel/*.cpp', 'source/system/*.cpp', 'source/*.cpp']
