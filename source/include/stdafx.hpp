@@ -1,4 +1,4 @@
-// Copyright 2013 Mirus Project
+// Copyright 2013 Joshua Beitler
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,13 +13,8 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
-//              we all have to begin somewhere, right?
+// stdafx.hpp - Mirus main header file
+//              Includes all the useful headers we will ever need
 //
 
-#include <stdafx.hpp>
-
-extern "C" void kernel_main()
-{
-    while (true);
-}
+#pragma once

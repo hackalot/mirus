@@ -15,13 +15,13 @@
 # clean object files, etc.
 desc "Clean up all the extra crap"
 task :clean do
-    sh "rm -f #{$object_files}"
-    sh "rm -f #{$dep_files}"
-    sh "rm -f #{$target}"
-    sh "rm -f #{$target_bin}"
-    sh "rm -f #{$target_iso}"
-    sh "rm -f build/*.bin"
-    sh "rm -f build/*.iso"
-    sh "rm -f build/*.log"
-    rm "rm -f iso/boot/kernel.bin"
+    sh "rm -f #{$object_files} >/dev/null 2>&1"
+    sh "rm -f #{$dep_files} >/dev/null 2>&1"
+    sh "rm -f #{$target} >/dev/null 2>&1"
+    sh "rm -f #{$target_bin} >/dev/null 2>&1"
+    sh "rm -f #{$target_iso} >/dev/null 2>&1"
+    sh "rm -f build/*.bin >/dev/null 2>&1"
+    sh "rm -f build/*.iso >/dev/null 2>&1"
+    sh "rm -f build/*.log >/dev/null 2>&1"
+    sh "rm -f iso/boot/kernel.bin >/dev/null 2>&1"
 end
