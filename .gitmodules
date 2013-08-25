@@ -4,3 +4,6 @@
 [submodule "mkdb"]
 	path = mkdb
 	url = git://github.com/mirusproject/mkdb.git
+[submodule "coreutils"]
+	path = coreutils
+	url = git://github.com/mirusproject/coreutils.git
