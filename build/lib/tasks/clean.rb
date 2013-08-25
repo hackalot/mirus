@@ -23,4 +23,5 @@ task :clean do
     sh "rm -f build/*.bin"
     sh "rm -f build/*.iso"
     sh "rm -f build/*.log"
+    rm "rm -f iso/boot/kernel.bin"
 end
