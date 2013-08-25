@@ -6,3 +6,6 @@ sudo apt-get install clang
 
 # install all the gems we need
 sudo gem install colorize
+
+gem update --system
+gem --version
