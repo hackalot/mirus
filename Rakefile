@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # dependencies
+require 'rubygems'
 require 'colorize'
 require './build/lib/deps'
 
