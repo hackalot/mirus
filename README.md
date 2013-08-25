@@ -42,7 +42,7 @@ To build Mirus, you will need to meet the following dependencies.  If you are no
 * `xorriso` >= 1.2.9
 
 ### Contributing
-If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.
+If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.
 
 ### Issue Tracker
 If you run into issues (which we almost garentee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
