@@ -1,0 +1,4 @@
+language: c++
+compiler:
+    - clang
+script: ./build/setup-travis.sh && rake
