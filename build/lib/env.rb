@@ -46,7 +46,7 @@ $ld_flags        = "-T build/linker.ld -m elf_i386"
 
 # virtual machine options
 $vm              = "qemu-system-i386"
-$vm_flags        = "-serial file:/tmp/mirus_debug.log"
+$vm_flags        = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso"
 
 # stfu rake
 verbose false

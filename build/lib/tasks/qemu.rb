@@ -15,4 +15,5 @@
 # run qemu
 desc "Run Mirus in Qemu"
 task :qemu do
+    sh "#{$vm} #{$vm_flags}"
 end
