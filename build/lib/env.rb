@@ -50,3 +50,6 @@ $vm_flags        = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso"
 
 # stfu rake
 verbose false
+
+# did we generate any errors?
+errors           = false

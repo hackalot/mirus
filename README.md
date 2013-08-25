@@ -23,7 +23,7 @@ A build of Mirus with no additional configuration or specified tasks will genera
 After building Mirus, you may run `rake qemu` to run the freshly generated image in Qemu, provided it is installed.
 
 ### Building
-We use `rake` along with a powerful framework designed to extend Rake known as [bit](https://github.com/joshbeitler/bit) to build Mirus .  As such, we would like to lay claim to the best build environment of any operating system.  Ever.  Building Mirus is dead simple, fast, and easy.  Go ahead, try it out for yourself!
+You can run the following commands to configure and build the system:
 
 ```
 rake configure

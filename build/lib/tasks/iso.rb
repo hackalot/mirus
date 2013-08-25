@@ -12,15 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+error_cp = false
+
 # generate a bootable iso image of Mirus
 desc "Creates bootable media"
 task :make_iso => ['build_asm', 'build_kernel', 'link'] do
-    sh "cp ./build/kernel.bin ./iso/boot/kernel.bin >./build/isolog.log 2>&1"
-    sh "grub2-mkrescue -o ./build/#{$target_iso} iso >>./build/isolog.log 2>&1" do |ok, res|
+    sh "cp ./build/kernel.bin ./iso/boot/kernel.bin >>./build/isolog.log 2>&1" do |ok, res|
+        if ! ok
+            puts "[rake] Could not copy kernel image to ISO directory!".red
+            $errors = true
+            error_cp = true
+        end
+    end
+
+    if ! error_cp
+        sh "grub2-mkrescue -o ./build/#{$target_iso} iso >>./build/isolog.log 2>&1" do |ok, res|
             if ! ok
                 puts "[rake] Could not generate disk image".red
+                $errors = true
             else
                 puts "[rake] Generating disk image".blue
             end
         end
+    end
 end

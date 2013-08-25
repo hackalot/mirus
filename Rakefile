@@ -35,4 +35,12 @@ require './build/lib/tasks/configure'
 require './build/lib/tasks/link'
 
 # default task is to generate an iso image
-task :default => ['make_iso']
+task :default => ['make_iso'] do
+    if $errors
+        puts
+        puts "Errors were generated during the build.  Please review the \"build/*.log\" files for details.".red
+    else
+        puts
+        puts "Build completed successfully!".green
+    end
+end
