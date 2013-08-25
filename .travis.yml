@@ -1,7 +1,0 @@
-language: c++
-compiler:
-    - clang
-before_install:
-  - gem update --system
-  - gem --version
-script: ./build/setup-travis.sh && rake
