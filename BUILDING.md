@@ -26,3 +26,9 @@ The following targets are avalible via `rake <target-name>`:
 Note that many of these targets depend on each other.  As such, if you call, say, `make_iso`, it will also call `build_asm`, `build_kernel`, and `link`.
 
 You can find the source for the targets in the `build/lib` directory, and in the `Rakefile`.
+
+## Configure Options
+The following options can be configured via the `rake configure <optionName>=<value>` syntax
+* `target` - Set a custom target name (default: `mirus`)
+* `vm` - Set a custom virtual machine (default: `qemu`)
+* `verbose` - Turn on command verbosity (default: `false`)
