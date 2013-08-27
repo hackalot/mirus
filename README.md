@@ -7,8 +7,7 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 ### Core Features
 * Powerful executable format
 * Dynamic, node based filesystem
-* Load bearing and cluster capabilities
-* First-party bootloader
+* Homegrown bootloader
 * Completely designed for AMD64 architecture
 * Forward thinking design
 * Resiliant driver framework
