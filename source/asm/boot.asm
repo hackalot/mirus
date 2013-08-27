@@ -48,6 +48,10 @@ global _start
 _start:
 	mov esp, stack_top
 
+    ; multiboot information
+    push eax
+    push ebx
+
 	extern kernel_main
 	call kernel_main
 
