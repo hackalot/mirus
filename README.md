@@ -18,9 +18,7 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 ### Testing
 We do not have bleeding-edge ISO images avalible currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `support/building.text` file.
 
-A build of Mirus with no additional configuration or specified tasks will generate a bootable `mirus.iso` in the `build` directory.  You can burn this to any bootable medium you see fit, or run it in a virtual machine.
-
-After building Mirus, you may run `rake qemu` to run the freshly generated image in Qemu, provided it is installed.
+A build of Mirus with no additional configuration or specified tasks will generate a bootable `mirus.iso` in the `build` directory.  You can burn this to any bootable medium you see fit, or run it in a virtual machine via `rake qemu`. 
 
 ### Building
 You can run the following commands to configure and build the system:
