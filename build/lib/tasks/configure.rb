@@ -18,5 +18,9 @@ task :configure do
     # allow changing of target (output)
     if ENV['target']
         $target = ENV['target']
+    elsif ENV['vm']
+        $vm = ENV['vm']
+    elsif ENV['verbose']
+        verbose true
     end
 end
