@@ -42,17 +42,38 @@ extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     // enable interrupts
     asm volatile("sti");
 
-    // try to get avalible memory
+    // check if bootloader is valid
+    if (magic != MULTIBOOT_BOOTLOADER_MAGIC) {
+#ifdef _DEBUG_ON
+        mirus::debugger::write("Multiboot bootloader magic doesn't match!\n");
+#endif
+    }
+
+    int memory_size = 0;
+    // try to get available memory
     if (mbd->flags & 1)
     {
 #ifdef _DEBUG_ON
-        mirus::debugger::write("Memory map avalible\n");
+        mirus::debugger::write("Memory map present - try to get available memory\n");
+#endif
+        memory_map_t * mmap = (memory_map_t *)mbd->mmap_addr;
+        // parse each entry
+        while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) + mbd->mmap_length) {
+            memory_size += mmap->length_low;
+
+            mmap = (memory_map_t *)((unsigned int)mmap + mmap->size + sizeof(unsigned int));
+        }
+
+#ifdef _DEBUG_ON
+        mirus::debugger::write("Available memory: ");
+        mirus::debugger::write(memory_size / 1024);
+        mirus::debugger::write("k\n");
 #endif
     }
     else
     {
 #ifdef _DEBUG_ON
-        mirus::debugger::write("No memory map avalible\n");
+        mirus::debugger::write("No memory map available\n");
 #endif
     }
 
