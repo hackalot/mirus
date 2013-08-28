@@ -18,6 +18,7 @@
 //
 
 #include <stdafx.hpp>
+#include <boot/multiboot.hpp>
 
 extern "C" void kernel_main()
 {
