@@ -25,7 +25,7 @@ $version_prefix     = "dev"
 $version_codename   = "wake"
 
 # source files
-$cpp_files          = FileList['source/kernel/*.cpp', 'source/system/*.cpp', 'source/*.cpp']
+$cpp_files          = FileList['source/kernel/**/*.cpp', 'source/system/**/*.cpp', 'source/*.cpp']
 $header_files       = FileList['source/include/*.hpp', 'source/library/*.hpp']
 $asm_files          = FileList['source/asm/*.asm']
 
