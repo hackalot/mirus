@@ -45,7 +45,11 @@ namespace mirus
     {
         public:
             // setup a new entry
-            static void set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
+            static void set_gate(int num, 
+                unsigned long base, 
+                unsigned long limit, 
+                unsigned char access, 
+                unsigned char gran);
             
             // install the gdt
             static void install();

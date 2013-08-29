@@ -23,12 +23,16 @@ namespace mirus
     extern "C"
     {
         void gdt_flush();
-        gdt_ptr gp;
+        mirus::gdt_ptr gp;
     }
 
     static gdt_entry _gdt[6];
 
-    void gdt::set_gate(int num, unsigned long base, unsigned long limit, unsigned char access, unsigned char gran)
+    void gdt::set_gate(int num, 
+        unsigned long base, 
+        unsigned long limit, 
+        unsigned char access, 
+        unsigned char gran)
     {
         // descriptor base address
         _gdt[num].base_low = (base & 0xFFFF);

@@ -22,6 +22,6 @@ task :clean do
     sh "rm -f #{$target_iso} >/dev/null 2>&1"
     sh "rm -f build/*.bin >/dev/null 2>&1"
     sh "rm -f build/*.iso >/dev/null 2>&1"
-    sh "rm -f build/*.log >/dev/null 2>&1"
+    sh "rm -f build/logs/*.log >/dev/null 2>&1"
     sh "rm -f iso/boot/kernel.bin >/dev/null 2>&1"
 end
