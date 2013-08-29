@@ -34,6 +34,8 @@ require './build/lib/tasks/qemu'
 require './build/lib/tasks/configure'
 require './build/lib/tasks/link'
 
+directory "./build/logs"
+
 # default task is to generate an iso image
 task :default => ['make_iso'] do
     if $errors
