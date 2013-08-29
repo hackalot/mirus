@@ -49,8 +49,7 @@ If you run into issues (which we almost garentee you will), please post them on 
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`.  The [wiki](https://github.com/joshbeitler/mirus/wiki) is an excellent place to look if you need a quick reference of Mirus.
 
 ### Project Links
-* [Update news](http://mirusupdate.wordpress.com/)
-* [CI](https://travis-ci.org/)
+* [Build status](https://travis-ci.org/)
 * [Ohloh](https://www.ohloh.net/p/mirus)
 
 ### License
