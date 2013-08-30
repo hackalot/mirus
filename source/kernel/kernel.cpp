@@ -21,6 +21,7 @@
 #include <boot/multiboot.hpp>
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
+#include <cpu/isr.hpp>
 
 namespace mirus
 {
