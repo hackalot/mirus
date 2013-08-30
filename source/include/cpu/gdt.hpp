@@ -20,38 +20,41 @@
 
 namespace mirus
 {
-    // defines an entry in the gdt
-    class gdt_entry
+    namespace cpu
     {
-        public:
-            unsigned short limit_low;
-            unsigned short base_low;
-            unsigned char base_middle;
-            unsigned char access;
-            unsigned char granularity;
-            unsigned char base_high;
-    } __attribute__ ((__packed__));
+        // defines an entry in the gdt
+        class gdt_entry
+        {
+            public:
+                unsigned short limit_low;
+                unsigned short base_low;
+                unsigned char base_middle;
+                unsigned char access;
+                unsigned char granularity;
+                unsigned char base_high;
+        } __attribute__ ((__packed__));
 
-    // pointer to our gdt
-    class gdt_ptr
-    {
-        public:
-            unsigned short limit;
-            unsigned long base;
-    } __attribute__ ((__packed__));
+        // pointer to our gdt
+        class gdt_ptr
+        {
+            public:
+                unsigned short limit;
+                unsigned long base;
+        } __attribute__ ((__packed__));
 
-    // our gdt + functions
-    class gdt
-    {
-        public:
-            // setup a new entry
-            static void set_gate(int num, 
-                unsigned long base, 
-                unsigned long limit, 
-                unsigned char access, 
-                unsigned char gran);
+        // our gdt + functions
+        class gdt
+        {
+            public:
+                // setup a new entry
+                static void set_gate(int num, 
+                    unsigned long base, 
+                    unsigned long limit, 
+                    unsigned char access, 
+                    unsigned char gran);
             
-            // install the gdt
-            static void install();
-    };
-}
+                // install the gdt
+                static void install();
+        };
+    } // !namespace
+} // !namespace

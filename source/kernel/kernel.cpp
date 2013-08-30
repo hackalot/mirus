@@ -21,7 +21,12 @@
 #include <boot/multiboot.hpp>
 #include <cpu/gdt.hpp>
 
-extern "C" void kernel_main()
+namespace mirus
 {
-    while (true);
-}
+    extern "C" void kernel_main()
+    {
+        cpu::gdt::install();
+
+        while (true);
+    }
+} // !namespace
