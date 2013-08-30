@@ -25,7 +25,7 @@ namespace mirus
         extern "C"
         {
             void gdt_flush();
-            mirus::gdt_ptr gp;
+            gdt_ptr gp;
         }
 
         static gdt_entry _gdt[6];
