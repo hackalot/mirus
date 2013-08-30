@@ -18,6 +18,8 @@
 
 #pragma once
 
+#include <stdafx.hpp>
+
 namespace mirus
 {
     namespace cpu

@@ -19,5 +19,9 @@
 
 #pragma once
 
-// Includes
+// compiler includes
+#include <stddef.h>
+#include <stdint.h>
+
+// kernel includes
 #include <util/asm.hpp>
