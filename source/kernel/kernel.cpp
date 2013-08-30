@@ -28,6 +28,7 @@ namespace mirus
     {
         cpu::gdt::install();
         cpu::idt::install();
+        cpu::isr::install();
 
         while (true);
     }

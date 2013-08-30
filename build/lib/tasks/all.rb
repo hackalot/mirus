@@ -14,6 +14,6 @@
 
 # compile
 desc "Build all components"
-task :build_all => ['build_asm', 'build_kernel'] do
+task :build_all => ['build_asm', 'build_kernel', 'link'] do
     # ...
 end
