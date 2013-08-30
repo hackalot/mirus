@@ -7,3 +7,6 @@
 [submodule "coreutils"]
 	path = coreutils
 	url = git://github.com/mirusproject/coreutils.git
+[submodule "sing"]
+	path = sing
+	url = git://github.com/mirusproject/sing.git
