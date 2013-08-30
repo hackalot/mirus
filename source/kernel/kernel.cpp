@@ -20,12 +20,14 @@
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
 #include <cpu/gdt.hpp>
+#include <cpu/idt.hpp>
 
 namespace mirus
 {
     extern "C" void kernel_main()
     {
         cpu::gdt::install();
+        cpu::idt::install();
 
         while (true);
     }
