@@ -1,13 +1,4 @@
-<table style="border:0">
-    <tr>
-        <td><img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" />
-        </td>
-        <td>
-            <a href="https://travis-ci.org/joshbeitler/mirus"><img src="https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc" /></a>
-        </td>
-    </tr>
-</table>
-
+<img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" /> <a href="https://travis-ci.org/joshbeitler/mirus"><img src="https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc" /></a>
 Mirus is a new operating system with the aim of trying out new and interesting things, in hopes to get the best combination possible. We throw all existing ideas and standards out the window (ie: POSIX, Single UNIX Specification) - and try to see what we can do better.
 
 Mirus is designed primarily for higher-performance machines, such as workstations and gaming rigs, and to be used by those of higher technical knowledge. We also are trying to implement cluster-based computing and advanced load bearing capabilities.
