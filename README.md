@@ -10,14 +10,14 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 * Homegrown bootloader
 * Completely designed for AMD64 architecture
 * Forward thinking design
-* Resiliant driver framework
+* Resilient driver framework
 * Fast and lean microkernel
 * Typical OS stuff (gdt, idt, etc.)
 
-Please note that not all of these features are implimented yet.
+Please note that not all of these features are implemented yet.
 
 ### Testing
-We do not have bleeding-edge ISO images avalible currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `support/building.text` file.
+We do not have bleeding-edge ISO images available currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `support/building.text` file.
 
 You can run the following commands to configure and build the system:
 
@@ -40,10 +40,10 @@ To build Mirus, you will need to meet the following dependencies.  If you are no
 * `xorriso` >= 1.2.9
 
 ### Contributing
-If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a seperate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.
+If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a separate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.
 
 ### Issue Tracker
-If you run into issues (which we almost garentee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
+If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
 
 ### Getting Help
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`.  The [wiki](https://github.com/joshbeitler/mirus/wiki) is an excellent place to look if you need a quick reference of Mirus.
