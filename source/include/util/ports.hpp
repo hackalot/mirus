@@ -13,26 +13,22 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
-//              we all have to begin somewhere, right?
+// ports.hpp - IO port util functions
 //
 
-#include <stdafx.hpp>
-#include <boot/multiboot.hpp>
-#include <cpu/gdt.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/isr.hpp>
-#include <cpu/irq.hpp>
+#pragma once
 
 namespace mirus
 {
-    extern "C" void kernel_main()
+    namespace hw
     {
-        cpu::gdt::install();
-        cpu::idt::install();
-        cpu::isr::install();
-        cpu::irq::install();
+        namespace io
+        {
+            //inb
+            unsigned char inb(unsigned short _port);
 
-        while (true);
-    }
+            // outb
+            void outb(unsigned short _port, unsigned char _data);
+        } // !namespace
+    } // !namespace
 } // !namespace
