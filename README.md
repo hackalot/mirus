@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="35%" />
+<img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" />
 
 Mirus is a new operating system with the aim of trying out new and interesting things, in hopes to get the best combination possible. We throw all existing ideas and standards out the window (ie: POSIX, Single UNIX Specification) - and try to see what we can do better.
 
