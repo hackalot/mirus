@@ -1,59 +1,59 @@
 .
-(0tqq (Bbuild
-(0x   tqq (Blib
-(0x   x   mqq (Btasks
-(0x   mqq (Blogs
-(0tqq (Bcoreutils
-(0tqq (Bdocumentation
-(0x   mqq (Bresc
-(0x       mqq (Bimg
-(0tqq (Biso
-(0x   mqq (Bboot
-(0x       mqq (Bgrub
-(0tqq (Bmirloader
-(0x   tqq (Bdocs
-(0x   mqq (Bsrc
-(0tqq (Bmkdb
-(0tqq (Bruntime
-(0tqq (Bsing
-(0mqq (Bsource
-(0    tqq (Basm
-(0    tqq (Bdrivers
-(0    x   tqq (Bacpi
-(0    x   tqq (Bata
-(0    x   tqq (Batapi
-(0    x   tqq (Bkeyboard
-(0    x   tqq (Bserial
-(0    x   tqq (Busb
-(0    x   mqq (Bvmm
-(0    tqq (Binclude
-(0    x   tqq (Bbackbone
-(0    x   tqq (Bboot
-(0    x   tqq (Bcore
-(0    x   tqq (Bcpu
-(0    x   tqq (Bdevice
-(0    x   tqq (Bdriverman
-(0    x   tqq (Bio
-(0    x   tqq (Bmem
-(0    x   tqq (Bprocess
-(0    x   tqq (Bscreen
-(0    x   tqq (Bsubsystem
-(0    x   tqq (Btime
-(0    x   mqq (Butil
-(0    tqq (Bkernel
-(0    x   tqq (Bcore
-(0    x   tqq (Bcpu
-(0    x   tqq (Bdevice
-(0    x   tqq (Bmem
-(0    x   tqq (Bprocess
-(0    x   tqq (Bscreen
-(0    x   tqq (Btime
-(0    x   mqq (Butil
-(0    mqq (Bsystem
-(0        tqq (Bbackbone
-(0        tqq (Bdriver
-(0        tqq (Bio
-(0        tqq (Bsubsystem
-(0        mqq (Butil
+|-- build
+|   |-- lib
+|   |   `-- tasks
+|   `-- logs
+|-- coreutils
+|-- documentation
+|   `-- resc
+|       `-- img
+|-- iso
+|   `-- boot
+|       `-- grub
+|-- mirloader
+|   |-- docs
+|   `-- src
+|-- mkdb
+|-- runtime
+|-- sing
+`-- source
+    |-- asm
+    |-- drivers
+    |   |-- acpi
+    |   |-- ata
+    |   |-- atapi
+    |   |-- keyboard
+    |   |-- serial
+    |   |-- usb
+    |   `-- vmm
+    |-- include
+    |   |-- backbone
+    |   |-- boot
+    |   |-- core
+    |   |-- cpu
+    |   |-- device
+    |   |-- driverman
+    |   |-- io
+    |   |-- mem
+    |   |-- process
+    |   |-- screen
+    |   |-- subsystem
+    |   |-- time
+    |   `-- util
+    |-- kernel
+    |   |-- core
+    |   |-- cpu
+    |   |-- device
+    |   |-- mem
+    |   |-- process
+    |   |-- screen
+    |   |-- time
+    |   `-- util
+    `-- system
+        |-- backbone
+        |-- driver
+        |-- io
+        |-- subsystem
+        `-- util
 
 56 directories
