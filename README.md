@@ -1,9 +1,9 @@
-<table>
+<table style="border:0">
     <tr>
         <td><img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" />
         </td>
         <td>
-            [![Build Status](https://travis-ci.org/joshbeitler/mirus.png)](https://travis-ci.org/joshbeitler/mirus)
+            <a href="https://travis-ci.org/joshbeitler/mirus"><img src="https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc" /></a>
         </td>
     </tr>
 </table>
