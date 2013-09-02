@@ -26,6 +26,7 @@
 
 namespace mirus
 {
+    // a-here we go!
     extern "C" void kernel_main()
     {
         cpu::gdt::install();
