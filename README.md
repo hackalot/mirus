@@ -1,4 +1,12 @@
-<img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" />
+<table>
+    <tr>
+        <td><img src="https://raw.github.com/joshbeitler/mirus/newsrc/documentation/resc/img/logo-b.png" width="15%" />
+        </td>
+        <td>
+            [![Build Status](https://travis-ci.org/joshbeitler/mirus.png)](https://travis-ci.org/joshbeitler/mirus)
+        </td>
+    </tr>
+</table>
 
 Mirus is a new operating system with the aim of trying out new and interesting things, in hopes to get the best combination possible. We throw all existing ideas and standards out the window (ie: POSIX, Single UNIX Specification) - and try to see what we can do better.
 
