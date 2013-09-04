@@ -25,3 +25,6 @@
 
 // kernel includes
 #include <util/asm.hpp>
+
+// sti and cli
+#define IRQ_RES asm volatile("sti");
