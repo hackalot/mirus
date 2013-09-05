@@ -26,11 +26,11 @@
 
 namespace mirus
 {
-    //      "We are now entering kernel mode.
+    //      We are now entering kernel mode.
     //      No libraries, only stuff we have made.
     //      This is man's land.
     //      No fucking "cowsay" or "fortune" to
-    //      help brighten our days"
+    //      help brighten our days
     //
     // - joshbeitler
     extern "C" void kernel_main()
@@ -39,8 +39,6 @@ namespace mirus
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
-
-        IRQ_RES
 
         while (true);
     }

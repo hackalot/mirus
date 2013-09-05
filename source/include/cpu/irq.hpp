@@ -18,10 +18,6 @@
 
 #pragma once
 
-#include <cpu/idt.hpp>
-#include <cpu/regs.hpp>
-#include <util/ports.hpp>
-
 namespace mirus
 {
     namespace cpu

@@ -16,6 +16,10 @@
 // irq.hpp - IRQ implimentation
 //
 
+#include <stdafx.hpp>
+#include <cpu/idt.hpp>
+#include <cpu/regs.hpp>
+#include <util/ports.hpp>
 #include <cpu/irq.hpp>
 
 using mirus::hw::io::inb;
@@ -77,7 +81,7 @@ namespace mirus
             irq::remap();
             irq::gates();
 
-            //IRQ_RES;
+            IRQ_RES;
         }
 
         void irq::ack(int irq_no)
