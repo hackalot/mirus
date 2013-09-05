@@ -34,6 +34,8 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
+        IRQ_RES
+
         while (true);
     }
 } // !namespace
