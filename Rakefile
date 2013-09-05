@@ -39,7 +39,9 @@ directory "./build/logs"
 
 # cool ascii art
 a = Artii::Base.new :font => 'slant'
-a.asciify('mirus')
+puts a.asciify('mirus')
+puts "Mirus build system [0.2.0]"
+puts "(C) Mirus Project, Apache 2 License"
 
 puts
 
