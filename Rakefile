@@ -37,16 +37,8 @@ require './build/lib/tasks/link'
 
 directory "./build/logs"
 
-# cool ascii art
-a = Artii::Base.new :font => 'slant'
-puts a.asciify('mirus')
-puts "Mirus build system [0.2.0]"
-puts "(C) Mirus Project, Apache 2 License"
-
-puts
-
 # default task is to generate an iso image
-task :default => ['make_iso'] do
+task :default => ['make_iso'] do    
     if $errors
         puts
         puts "Errors were generated during the build.  Please review the \"build/*.log\" files for details.".red
