@@ -31,13 +31,18 @@ A build of Mirus with no additional configuration or specified tasks will genera
 ### Dependencies
 To build Mirus, you will need to meet the following dependencies.  If you are not sure whether they are installed on your system, `rake` will notify you on build.
 
-* `rake`
-* `ruby`
+**Kernel**
 * `clang` >= 3.3
 * `ld`
 * `grub2`
 * `yasm`
 * `xorriso` >= 1.2.9
+
+**Build System**
+* `rake`
+* `ruby`
+* `colorize`
+* `artii`
 
 ### Contributing
 If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a separate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.

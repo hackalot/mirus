@@ -15,6 +15,7 @@
 # dependencies
 require 'rubygems'
 require 'colorize'
+require 'artii'
 require './build/lib/deps'
 
 # check for required programs
@@ -35,6 +36,12 @@ require './build/lib/tasks/configure'
 require './build/lib/tasks/link'
 
 directory "./build/logs"
+
+# cool ascii art
+a = Artii::Base.new :font => 'slant'
+a.asciify('mirus')
+
+puts
 
 # default task is to generate an iso image
 task :default => ['make_iso'] do
