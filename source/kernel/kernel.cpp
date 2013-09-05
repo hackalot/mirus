@@ -26,7 +26,13 @@
 
 namespace mirus
 {
-    // a-here we go!
+    //      "We are now entering kernel mode.
+    //      No libraries, only stuff we have made.
+    //      This is man's land.
+    //      No fucking "cowsay" or "fortune" to
+    //      help brighten our days"
+    //
+    // - joshbeitler
     extern "C" void kernel_main()
     {
         cpu::gdt::install();
