@@ -45,6 +45,7 @@ namespace mirus
         scr.install();
         
         scr.write('x');
+        scr.write('y');
 
         while (true);
     }

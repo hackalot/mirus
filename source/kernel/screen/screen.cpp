@@ -17,6 +17,11 @@
 //
 
 #include <screen/screen.hpp>
+#include <util/asm.hpp>
+#include <util/ports.hpp>
+
+using mirus::hw::io::inb;
+using mirus::hw::io::outb;
 
 namespace mirus
 {
@@ -26,9 +31,12 @@ namespace mirus
         {
             screen::video_memory = (signed int*)0xB8000;
             screen::rows = 25;
-            screen::cols = 25;
+            screen::cols = 80;
             screen::x_pos = 0;
             screen::y_pos = 0;
+            screen::term_color = screen::make_entry(vga_color::white);
+
+            screen::clear();
         }
 
         void screen::set_color(vga_color color)
@@ -40,9 +48,47 @@ namespace mirus
             char c)
         {
             int c16 = c;
-            int color16 = (int)color;
+            int color16 = color;
 
             return c16 | color16 << 8;
+        }
+
+        void screen::put_entry(char c,
+            vga_color color,
+            int x,
+            int y)
+        {
+            const int index = y_pos * cols + x_pos;
+            video_memory[index] = make_entry(vga_color::white, 
+                val);
+        }
+
+        void screen::move_cursor()
+        {
+            unsigned temp;
+
+            // Index = [(y * width) + x]
+            temp = screen::y_pos * screen::cols
+                + screen::x_pos;
+
+            outb(0x3D4, 14);
+            outb(0x3D5, temp >> 8);
+            outb(0x3D4, 15);
+            outb(0x3D5, temp);
+        }
+
+        void screen::clear()
+        {
+            for (int i = 0; i < 80 * 25; i++)
+            {
+                screen::video_memory[i] = 0;
+            }
+
+            // Move the hardware cursor back to the start.
+            screen::x_pos = 0;
+            screen::y_pos = 0;
+
+            screen::move_cursor();
         }
     } // !namespace
 } // !namespace

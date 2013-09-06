@@ -55,24 +55,52 @@ namespace mirus
                 signed int make_entry(vga_color color, 
                     char c);
 
+                // put entry
+                void put_entry(char c, 
+                    vga_color color, 
+                    int x, 
+                    int y);
+
                 // write to the screen, don't flush
                 template<class T>
                 void write(T val)
                 {
-                    const int index = y_pos * cols + x_pos;
-                    video_memory[index] = make_entry(vga_color::white, val);
+                    if (val == '\r')
+                    {
+                        y_pos++;
+                        x_pos = 0;
+                    }
+                    else if (val == '\b')
+                    {
+                        x_pos--;
+                        screen::put_entry(' ', term_color, x_pos, y_pos);
+                    }
+                    else
+                    {
+                        screen::put_entry(val, term_color, x_pos, y_pos);
+                    }
+
+                    move_cursor();
                 }
 
                 // write to screen, flush
                 template <class T>
                 void writeln(T val)
                 {
-
+                    write(val);
+                    write('\n');
                 }
+
+                // move cursor
+                void move_cursor();
+
+                // clear it
+                void clear();
 
             private:
                 signed int* video_memory;
-                
+                int term_color = 0;
+
                 int rows = 25;
                 int cols = 80;
 
