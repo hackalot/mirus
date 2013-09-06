@@ -1,4 +1,4 @@
-// Copyright 2013 Joshua Beitler
+// Copyright 2013 Mirus Project
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,19 +13,11 @@
 // limitations under the License.
 
 //
-// stdafx.hpp - Mirus main header file
-//              Includes all the useful headers we will ever need
+// c++.hpp - a few niceities
 //
 
 #pragma once
 
-// compiler includes
-#include <stddef.h>
-#include <stdint.h>
-
-// kernel includes
-#include <util/asm.hpp>
-#include <util/c++.hpp>
-
-// sti and cli
-#define IRQ_RES asm volatile("sti");
+namespace
+{
+} // !namespace

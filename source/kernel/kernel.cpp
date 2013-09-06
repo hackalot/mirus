@@ -23,6 +23,7 @@
 #include <cpu/idt.hpp>
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
+#include <screen/screen.hpp>
 
 namespace mirus
 {
@@ -39,6 +40,11 @@ namespace mirus
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
+
+        screen::screen scr;
+        scr.install();
+        
+        scr.write('x');
 
         while (true);
     }
