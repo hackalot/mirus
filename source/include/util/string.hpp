@@ -13,19 +13,15 @@
 // limitations under the License.
 
 //
-// screen.hpp - VGA text mode
+// string.hpp - string utils
 //
 
 #pragma once
 
 namespace mirus
 {
-    namespace screen
-    {
-        void cls();
-        void putch(unsigned char c);
-        void puts(const char *str);
-        void settextcolor(unsigned char forecolor, unsigned char backcolor);
-        void init_video();
-    } // !namespace
+    unsigned long long int strlen(const char* str);
+    char* iota(int value);
+    char* strpad(char* data, int padlen);
+    char* strcat(char* dest, const char* src);
 } // !namespace

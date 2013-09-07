@@ -41,10 +41,8 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
-        screen::screen scr;
-        scr.install();
-        
-        scr.put_entry('x', screen::vga_color::light_red, 1, 1);
+        screen::init_video();
+        screen::puts("hello");
 
         while (true);
     }
