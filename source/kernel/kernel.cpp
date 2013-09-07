@@ -47,6 +47,10 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
+        // Print debug stub
+        debug::debugger::writeln("[log] Mirus 0.2.5-dev");
+        debug::debugger::flush();
+
         // Set up screen
         screen::terminal::install();
 
@@ -55,9 +59,6 @@ namespace mirus
         hardware::serial::install();
 
         // Do some tests
-        screen::terminal::writeln("will wait 5 seconds...");
-        hardware::pit::wait(5);
-
         screen::terminal::writeln("hello");
         screen::terminal::write("world");
 
