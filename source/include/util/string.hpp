@@ -20,7 +20,7 @@
 
 namespace mirus
 {
-    unsigned long long int strlen(const char* str);
+    unsigned int strlen(const char* str);
     char* iota(int value);
     char* strpad(char* data, int padlen);
     char* strcat(char* dest, const char* src);

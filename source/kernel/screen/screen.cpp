@@ -129,8 +129,8 @@ namespace mirus
 
         void terminal::write(const char* val)
         {
-            for (auto i = 0; i < (int)strlen(val); i++)
-                terminal::write(val[i]);
+            // for (size_t i = 0; i < strlen(val); i++)
+            //     terminal::write(val[i]);
         }
 
         void terminal::write(int val)

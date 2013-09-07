@@ -16,13 +16,14 @@
 // string.cpp - string utils
 //
 
+#include <stdafx.hpp>
 #include <util/string.hpp>
 
 namespace mirus
 {
-    unsigned long long int strlen(const char *str)
+    size_t strlen(const char *str)
     {
-        unsigned long long int ret = 0;
+        size_t ret = 0;
 
         while (str[ret] != 0)
             ret++;

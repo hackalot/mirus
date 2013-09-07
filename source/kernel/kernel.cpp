@@ -42,8 +42,7 @@ namespace mirus
         cpu::irq::install();
 
         screen::terminal::install();
-
-        screen::terminal::write("hello ");
+        screen::terminal::write("hello");
 
         while (true);
     }
