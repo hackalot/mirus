@@ -20,7 +20,7 @@
 
 namespace mirus
 {
-    namespace hw
+    namespace hardware
     {
         namespace io
         {

@@ -21,8 +21,8 @@
 #include <util/ports.hpp>
 #include <util/string.hpp>
 
-using mirus::hw::io::inb;
-using mirus::hw::io::outb;  
+using mirus::hardware::io::inb;
+using mirus::hardware::io::outb;  
 
 namespace mirus
 {

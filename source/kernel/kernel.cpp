@@ -26,6 +26,7 @@
 #include <cpu/irq.hpp>
 
 #include <screen/screen.hpp>
+#include <hardware/timer.hpp>
 
 namespace mirus
 {
@@ -48,7 +49,12 @@ namespace mirus
         // Set up screen
         screen::terminal::install();
 
+        // Set up additional hardware
+        hardware::pit::install();
+
         // Do some tests
+        hardware::pit::wait(5);
+
         screen::terminal::writeln("hello");
         screen::terminal::write("world");
 
