@@ -81,7 +81,7 @@ namespace mirus
         }
 
         // printing functions
-        void terminal::write(unsigned char val)
+        void terminal::write(char val)
         {
             unsigned short *where;
             unsigned att = attrib << 8;
@@ -129,8 +129,8 @@ namespace mirus
 
         void terminal::write(const char* val)
         {
-            // for (size_t i = 0; i < strlen(val); i++)
-            //     terminal::write(val[i]);
+            for (size_t i = 0; i < strlen(val); i++)
+                terminal::write(val[i]);
         }
 
         void terminal::write(int val)

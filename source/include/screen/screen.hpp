@@ -35,7 +35,7 @@ namespace mirus
                 unsigned char bg);
 
             // printing functions
-            static void write(unsigned char val);
+            static void write(char val);
             static void write(const char* val);
             static void write(int val);
 
