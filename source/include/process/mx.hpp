@@ -13,35 +13,15 @@
 // limitations under the License.
 
 //
-// screen.hpp - VGA text mode
+// mx.hpp - MX loader
 //
 
 #pragma once
 
 namespace mirus
 {
-    namespace screen
+    namespace process
     {
-        class terminal
-        {
-        public:
-            // hardware functions
-            static void clear();
-            static void move_cursor();
-            static void scroll();
 
-            // set current color
-            static void set_color(unsigned char fg,
-                unsigned char bg);
-
-            // printing functions
-            static void write(char val);
-            static void write(const char* val);
-            static void write(int val);
-            static void writeln(const char* val);
-
-            // set up
-            static void install();
-        };
     } // !namespace
 } // !namespace

@@ -19,10 +19,12 @@
 
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
+
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
+
 #include <screen/screen.hpp>
 
 namespace mirus
@@ -34,15 +36,21 @@ namespace mirus
     //      help brighten our days
     //
     // - joshbeitler
-    extern "C" void kernel_main()
+    extern "C" void kernel_main(multiboot_info_t* mbd, 
+        unsigned int magic)
     {
+        // Install CPU hardware devices
         cpu::gdt::install();
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
 
+        // Set up screen
         screen::terminal::install();
-        screen::terminal::write("hello");
+
+        // Do some tests
+        screen::terminal::writeln("hello");
+        screen::terminal::write("world");
 
         while (true);
     }

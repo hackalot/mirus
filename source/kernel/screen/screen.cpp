@@ -138,6 +138,12 @@ namespace mirus
             terminal::write(iota(val));
         }
 
+        void terminal::writeln(const char* val)
+        {
+            terminal::write(val);
+            terminal::write('\n');
+        }
+
         // set up our terminal
         void terminal::install()
         {
