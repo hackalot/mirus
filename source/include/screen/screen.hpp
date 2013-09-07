@@ -22,10 +22,25 @@ namespace mirus
 {
     namespace screen
     {
-        void cls();
-        void putch(unsigned char c);
-        void puts(const char *str);
-        void settextcolor(unsigned char forecolor, unsigned char backcolor);
-        void init_video();
+        class terminal
+        {
+        public:
+            // hardware functions
+            static void clear();
+            static void move_cursor();
+            static void scroll();
+
+            // set current color
+            static void set_color(unsigned char fg,
+                unsigned char bg);
+
+            // printing functions
+            static void write(unsigned char val);
+            static void write(const char* val);
+            static void write(int val);
+
+            // set up
+            static void install();
+        };
     } // !namespace
 } // !namespace

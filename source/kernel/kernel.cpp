@@ -41,8 +41,9 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
-        screen::init_video();
-        screen::puts("hello");
+        screen::terminal::install();
+
+        screen::terminal::write("hello ");
 
         while (true);
     }
