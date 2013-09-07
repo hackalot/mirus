@@ -58,8 +58,8 @@ namespace mirus
                 // put entry
                 void put_entry(char c, 
                     vga_color color, 
-                    int x, 
-                    int y);
+                    unsigned int x, 
+                    unsigned int y);
 
                 // write to the screen, don't flush
                 template<class T>
@@ -80,7 +80,7 @@ namespace mirus
                         screen::put_entry(val, term_color, x_pos, y_pos);
                     }
 
-                    move_cursor();
+                    // move_cursor();
                 }
 
                 // write to screen, flush
@@ -99,7 +99,7 @@ namespace mirus
 
             private:
                 signed int* video_memory;
-                int term_color = 0;
+                vga_color term_color;
 
                 int rows = 25;
                 int cols = 80;

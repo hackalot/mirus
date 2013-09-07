@@ -34,7 +34,7 @@ namespace mirus
             screen::cols = 80;
             screen::x_pos = 0;
             screen::y_pos = 0;
-            screen::term_color = screen::make_entry(vga_color::white);
+            screen::term_color = vga_color::white;
 
             screen::clear();
         }
@@ -44,23 +44,23 @@ namespace mirus
 
         }
 
-        int screen::make_entry(vga_color color,
+        signed int screen::make_entry(vga_color color,
             char c)
         {
-            int c16 = c;
-            int color16 = color;
+            signed int c16 = c;
+            signed int color16 = (signed int)color;
 
             return c16 | color16 << 8;
         }
 
         void screen::put_entry(char c,
             vga_color color,
-            int x,
-            int y)
+            unsigned int x,
+            unsigned int y)
         {
-            const int index = y_pos * cols + x_pos;
+            const unsigned int index = y * cols + x;
             video_memory[index] = make_entry(vga_color::white, 
-                val);
+                c);
         }
 
         void screen::move_cursor()

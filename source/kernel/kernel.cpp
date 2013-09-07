@@ -44,8 +44,7 @@ namespace mirus
         screen::screen scr;
         scr.install();
         
-        scr.write('x');
-        scr.write('y');
+        scr.put_entry('x', screen::vga_color::light_red, 1, 1);
 
         while (true);
     }
