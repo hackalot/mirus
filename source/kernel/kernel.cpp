@@ -27,6 +27,7 @@
 
 #include <screen/screen.hpp>
 #include <hardware/timer.hpp>
+#include <hardware/serial.hpp>
 
 namespace mirus
 {
@@ -51,12 +52,16 @@ namespace mirus
 
         // Set up additional hardware
         hardware::pit::install();
+        hardware::serial::install();
 
         // Do some tests
+        screen::terminal::writeln("will wait 5 seconds...");
         hardware::pit::wait(5);
 
         screen::terminal::writeln("hello");
         screen::terminal::write("world");
+
+        hardware::serial::write('x');
 
         while (true);
     }

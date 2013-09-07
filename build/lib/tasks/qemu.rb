@@ -15,5 +15,6 @@
 # run qemu
 desc "Run Mirus in Qemu"
 task :qemu do
-    sh "#{$vm} #{$vm_flags}"
+    sh "#{$vm} #{$vm_flags}&"
+    sh "tail -f /tmp/mirus_debug.log"
 end
