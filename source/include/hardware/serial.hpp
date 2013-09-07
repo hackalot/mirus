@@ -29,8 +29,8 @@ namespace mirus
         public:
             static void install();
             static char read();
-            static bool serial_received();
-            static bool is_transmit_empty();
+            static int serial_received();
+            static int is_transmit_empty();
             static void write(char a);
         };
     } // !namespace

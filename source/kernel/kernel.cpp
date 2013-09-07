@@ -61,7 +61,7 @@ namespace mirus
         screen::terminal::writeln("hello");
         screen::terminal::write("world");
 
-        hardware::serial::write('x');
+        debug::debugger::writeln("mirus booted OK");
 
         while (true);
     }

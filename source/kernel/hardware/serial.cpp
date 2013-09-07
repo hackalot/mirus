@@ -43,19 +43,19 @@ namespace mirus
             return inb(COM1);
         }
 
-        bool serial::serial_received()
+        int serial::serial_received()
         {
             return inb(COM1 + 5) & 1;
         }
 
-        bool serial::is_transmit_empty()
+        int serial::is_transmit_empty()
         {
             return inb(COM1 + 5) & 0x20;
         }
 
         void serial::write(char a)
         {
-            while (is_transmit_empty() == 0);
+            while (serial::is_transmit_empty() == 0);
             outb(COM1, a);
         }
     } // !namespace
