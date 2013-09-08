@@ -50,6 +50,30 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
+        // Get avalible memory
+        if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
+            debug::debugger::writeln("[error] Multiboot bootloader magic doesn't match!");
+
+        int memory_size = 0;
+
+        if (mbd->flags & 1)
+        {
+            debug::debugger::writeln("[log] Memory map present, trying to get memory");
+
+            memory_map_t* mmap = (memory_map_t*)mbd->mmap_addr;
+
+            // parse entries
+            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) + mbd->mmap_length)
+            {
+                memory_size += mmap->length_low;
+                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size + sizeof(unsigned int));
+            }
+
+            debug::debugger::write("[log] Avalible memory: ");
+            debug::debugger::write(memory_size / 1024);
+            debug::debugger::writeln("k");
+        }
+
         // Set up screen
         screen::terminal::install();
 
