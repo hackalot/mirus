@@ -21,7 +21,7 @@ require './build/lib/deps'
 # check for required programs
 if meets_deps? == false
     puts "Does not meet dependencies, cannot continue.".red
-    exit
+    exit -1
 end
 
 # require all our tasks
