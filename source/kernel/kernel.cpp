@@ -82,7 +82,6 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
-        // Time test
         hardware::RTC::read_rtc();
         hardware::DateTime dt = hardware::RTC::getTime();
 
