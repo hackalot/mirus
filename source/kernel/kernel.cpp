@@ -70,8 +70,8 @@ namespace mirus
             }
 
             debug::debugger::write("[log] Avalible memory: ");
-            debug::debugger::write(memory_size / 1024);
-            debug::debugger::writeln("k");
+            debug::debugger::write((memory_size / 1024) / 1024);
+            debug::debugger::writeln("m");
         }
 
         // Set up screen

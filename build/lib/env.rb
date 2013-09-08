@@ -59,7 +59,7 @@ $ld_flags           = "-T build/linker.ld -m elf_i386"
 
 # virtual machine options
 $vm                 = "qemu-system-i386"
-$vm_flags           = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso"
+$vm_flags           = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso -m 1024"
 
 # did we generate any errors?
 $errors             = false
