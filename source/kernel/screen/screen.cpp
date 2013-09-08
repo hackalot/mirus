@@ -148,6 +148,8 @@ namespace mirus
         void terminal::install()
         {
             textmemptr = (unsigned short *)0xB8000;
+            terminal::set_color((unsigned char)vga_color::white,
+                (unsigned char)vga_color::black);
             terminal::clear();
         }
     } // !namespace
