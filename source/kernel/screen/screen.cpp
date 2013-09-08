@@ -138,6 +138,11 @@ namespace mirus
             terminal::write(iota(val));
         }
 
+        void terminal::write(unsigned int val)
+        {
+            terminal::write((int)val);
+        }
+
         void terminal::writeln(const char* val)
         {
             terminal::write(val);

@@ -58,6 +58,7 @@ namespace mirus
             static void write(char val);
             static void write(const char* val);
             static void write(int val);
+            static void write(unsigned int val);
             static void writeln(const char* val);
 
             // location

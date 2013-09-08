@@ -27,6 +27,7 @@
 
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
+#include <hardware/rtc.hpp>
 
 namespace mirus
 {
@@ -80,6 +81,16 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
+
+        // Time test
+        hardware::RTC::read_rtc();
+        hardware::DateTime dt = hardware::RTC::getTime();
+
+        screen::terminal::write(dt.getHour());
+        screen::terminal::write(":");
+        screen::terminal::write(dt.getMinute());
+        screen::terminal::write(":");
+        screen::terminal::write(dt.getSecond());
 
         // WE MUST NEVER RETURN!!!!
         while (true);
