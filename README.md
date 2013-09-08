@@ -17,7 +17,7 @@ Mirus is designed primarily for higher-performance machines, such as workstation
 Please note that not all of these features are implemented yet.
 
 ### Testing
-We do not have bleeding-edge ISO images available currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `support/building.text` file.
+We do not have bleeding-edge ISO images available currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `BUILDING.md` file.
 
 You can run the following commands to configure and build the system:
 
