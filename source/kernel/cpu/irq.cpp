@@ -81,7 +81,7 @@ namespace mirus
             irq::remap();
             irq::gates();
 
-            IRQ_RES;
+            asm volatile("sti");
         }
 
         void irq::ack(int irq_no)

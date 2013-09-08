@@ -143,6 +143,18 @@ namespace mirus
             terminal::write(val);
             terminal::write('\n');
         }
+        
+        void terminal::set_col(int x)
+        {
+            csr_x = x;
+            move_cursor();
+        }
+
+        void terminal::set_row(int y)
+        {
+            csr_y = y;
+            move_cursor();
+        }
 
         // set up our terminal
         void terminal::install()

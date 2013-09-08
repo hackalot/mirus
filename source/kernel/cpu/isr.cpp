@@ -17,6 +17,8 @@
 //
 
 #include <cpu/isr.hpp>
+#include <cpu/regs.hpp>
+#include <core/panic.hpp>
 
 namespace mirus
 {
@@ -97,9 +99,9 @@ namespace mirus
             idt::set_gate(31, (unsigned)isr31, 0x08, 0x8E);
         }
 
-        void fault_handler(struct regs* r)
+        extern "C" void fault_handler(cpu::regs* r)
         {
-            //mirus::panic(r);
+            core::panic(r);
         }
     } // !namespace
 } // !namespace

@@ -60,6 +60,10 @@ namespace mirus
             static void write(int val);
             static void writeln(const char* val);
 
+            // location
+            static void set_col(int x);
+            static void set_row(int y);
+
             // set up
             static void install();
         };

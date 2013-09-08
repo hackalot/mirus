@@ -1,4 +1,4 @@
-// Copyright 2013 Joshua Beitler
+// Copyright 2013 Mirus Project
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,22 +13,17 @@
 // limitations under the License.
 
 //
-// stdafx.hpp - Mirus main header file
-//              Includes all the useful headers we will ever need
+// panic.hpp - The cooler cousin of the BSOD
 //
 
 #pragma once
 
-// compiler includes
-#include <stddef.h>
-#include <stdint.h>
+#include <cpu/regs.hpp>
 
-// kernel includes
-#include <util/asm.hpp>
-#include <util/c++.hpp>
-
-// screen
-#include <screen/screen.hpp>
-
-// debugger
-#include <debug/debug.hpp>
+namespace mirus
+{
+    namespace core
+    {
+        void panic(cpu::regs* r);
+    } // !namespace
+} // !namespace

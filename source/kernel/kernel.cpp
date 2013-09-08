@@ -25,7 +25,6 @@
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
 
-#include <screen/screen.hpp>
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 
@@ -58,11 +57,11 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
-        // Do some tests
-        screen::terminal::writeln("hello");
-        screen::terminal::write("world");
+        int a = 1;
+int b = 0;
+int c;
 
-        debug::debugger::writeln("mirus booted OK");
+c = a / b;
 
         while (true);
     }
