@@ -31,14 +31,11 @@ A build of Mirus with no additional configuration or specified tasks will genera
 ### Dependencies
 To build Mirus, you will need to meet the following dependencies.  If you are not sure whether they are installed on your system, `rake` will notify you on build.
 
-**Kernel**
 * `clang` >= 3.3
 * `ld`
 * `grub2`
 * `yasm`
 * `xorriso` >= 1.2.9
-
-**Build System**
 * `rake`
 * `ruby`
 * `colorize`
@@ -52,10 +49,6 @@ If you run into issues (which we almost guarantee you will), please post them on
 
 ### Getting Help
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`.  The [wiki](https://github.com/joshbeitler/mirus/wiki) is an excellent place to look if you need a quick reference of Mirus.
-
-### Project Links
-* [Twitter](https://twitter.com/mirusproject)
-* [Ohloh](https://www.ohloh.net/p/mirus)
 
 ### License
 ```
