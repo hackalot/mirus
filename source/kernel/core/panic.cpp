@@ -63,14 +63,6 @@ namespace mirus
             "Reserved"
         };
 
-        static void print_center(const char* msg)
-        {
-            int a = strlen(msg);
-            int location = 80 / 2 - (a / 2);
-            screen::terminal::set_col(location);
-            screen::terminal::write(msg);
-        }
-
         // TODO: this is a mess....
         void panic(cpu::regs* r)
         {
@@ -81,19 +73,36 @@ namespace mirus
 
                 screen::terminal::set_color((unsigned char)screen::vga_color::red,
                     (unsigned char)screen::vga_color::white);
+
+                int a = strlen(" Mirus ");
+                int location = 80 / 2 - (a / 2);
+
+                screen::terminal::set_col(location);
                 screen::terminal::set_row(5);
 
-                print_center(" Mirus ");
+                screen::terminal::writeln(" Mirus ");
 
                 screen::terminal::set_color((unsigned char)screen::vga_color::red,
                     (unsigned char)screen::vga_color::black);
 
-                screen::terminal::write('\n\n');
-                print_center("System Panic!\n");
+                screen::terminal::write('\n');
+                a = strlen("System Panic");
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+                screen::terminal::writeln("System Panic!");
 
-                print_center(exception_messages[r->int_no]);
-                print_center(" Exception\n\n");
-                print_center("System Halted");
+                a = strlen(exception_messages[r->int_no]);
+                int b = strlen(" Exception.");
+                a += b;
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+
+                screen::terminal::write(exception_messages[r->int_no]);
+                screen::terminal::write(" Exception\n\n");
+                a = strlen("System Halted");
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+                screen::terminal::write("System Halted");
 
                 while (true);
             }
