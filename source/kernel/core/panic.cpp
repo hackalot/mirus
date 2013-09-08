@@ -89,7 +89,7 @@ namespace mirus
                 a = strlen("System Panic");
                 location = 80 / 2 - (a / 2);
                 screen::terminal::set_col(location);
-                screen::terminal::writeln("System Panic");
+                screen::terminal::writeln("System Panic!");
 
                 a = strlen(exception_messages[r->int_no]);
                 int b = strlen(" Exception.");
