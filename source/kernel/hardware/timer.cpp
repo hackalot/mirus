@@ -78,6 +78,9 @@ namespace mirus
         {
             cpu::irq::install_handler(TIMER_IRQ, pit::handle_timer);
             pit::phase(100);
+
+            // report OK
+            debug::debugger::writeln("[log] PIT successfully installed.");
         }
     } // !namespace
 } // !namespace

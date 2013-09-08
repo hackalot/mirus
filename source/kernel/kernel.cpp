@@ -40,15 +40,15 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, 
         unsigned int magic)
     {
+        // Print debug stub
+        debug::debugger::writeln("[log] Mirus 0.2.5-dev");
+        debug::debugger::flush();
+
         // Install CPU hardware devices
         cpu::gdt::install();
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
-
-        // Print debug stub
-        debug::debugger::writeln("[log] Mirus 0.2.5-dev");
-        debug::debugger::flush();
 
         // Set up screen
         screen::terminal::install();
@@ -57,12 +57,7 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
-        int a = 1;
-int b = 0;
-int c;
-
-c = a / b;
-
+        // WE MUST NEVER RETURN!!!!
         while (true);
     }
 } // !namespace

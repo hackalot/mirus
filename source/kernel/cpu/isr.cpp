@@ -97,6 +97,9 @@ namespace mirus
             idt::set_gate(29, (unsigned)isr29, 0x08, 0x8E);
             idt::set_gate(30, (unsigned)isr30, 0x08, 0x8E);
             idt::set_gate(31, (unsigned)isr31, 0x08, 0x8E);
+
+            // report OK
+            debug::debugger::writeln("[log] ISRs successfully installed.");
         }
 
         extern "C" void fault_handler(cpu::regs* r)

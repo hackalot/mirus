@@ -163,6 +163,9 @@ namespace mirus
             terminal::set_color((unsigned char)vga_color::white,
                 (unsigned char)vga_color::black);
             terminal::clear();
+
+            // report OK
+            debug::debugger::writeln("[log] Screen successfully installed.");
         }
     } // !namespace
 } // !namespace
