@@ -92,13 +92,17 @@ namespace mirus
                 screen::terminal::writeln("System Panic");
 
                 a = strlen(exception_messages[r->int_no]);
-                int b = strlen(" Exception, system halted!");
+                int b = strlen(" Exception.");
                 a += b;
                 location = 80 / 2 - (a / 2);
                 screen::terminal::set_col(location);
 
                 screen::terminal::write(exception_messages[r->int_no]);
-                screen::terminal::write(" Exception, system halted!");
+                screen::terminal::write(" Exception\n\n");
+                a = strlen("System Halted");
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+                screen::terminal::write("System Halted");
 
                 while (true);
             }
