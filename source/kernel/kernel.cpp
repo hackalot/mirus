@@ -75,6 +75,9 @@ namespace mirus
             debug::debugger::writeln("m");
         }
 
+        if (((memory_size / 1024) / 1024) < 512)
+            debug::debugger::writeln("[warning] Memory is less than expected minimum");
+
         // Set up screen
         screen::terminal::install();
 
@@ -82,6 +85,7 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
+        // RCT tests
         hardware::RTC::read_rtc();
         hardware::DateTime dt = hardware::RTC::getTime();
 
