@@ -86,10 +86,6 @@ namespace mirus
                     (unsigned char)screen::vga_color::black);
 
                 screen::terminal::write('\n');
-                a = strlen("System Panic");
-                location = 80 / 2 - (a / 2);
-                screen::terminal::set_col(location);
-                screen::terminal::writeln("System Panic!");
 
                 a = strlen(exception_messages[r->int_no]);
                 int b = strlen(" Exception.");
@@ -98,11 +94,11 @@ namespace mirus
                 screen::terminal::set_col(location);
 
                 screen::terminal::write(exception_messages[r->int_no]);
-                screen::terminal::write(" Exception\n\n");
-                a = strlen("System Halted");
+                screen::terminal::write(" Exception\n");
+                a = strlen("The system has been halted.");
                 location = 80 / 2 - (a / 2);
                 screen::terminal::set_col(location);
-                screen::terminal::write("System Halted");
+                screen::terminal::write("The system has been halted.");
 
                 while (true);
             }
