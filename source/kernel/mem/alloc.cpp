@@ -36,7 +36,7 @@ namespace mirus
 		// Allocate a region of memory
 		void stack_allocator::k_alloc(size_t size)
 		{
-			debug::debugger::writeln("[log] k_alloc called: wants " + size + " bytes");
+			debug::debugger::writeln("[log] k_alloc called");
 		}
 	} // !namespace
 } // !namespace
