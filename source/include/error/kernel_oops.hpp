@@ -16,6 +16,8 @@
 // kernel_oops.hpp - Basic oops facilities
 //
 
+#pragma once
+
 namespace mirus
 {
 	namespace error

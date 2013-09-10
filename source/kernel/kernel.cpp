@@ -29,6 +29,8 @@
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
 
+#import <mem/alloc.hpp>
+
 namespace mirus
 {
     //      We are now entering kernel mode.
@@ -89,11 +91,9 @@ namespace mirus
         hardware::RTC::read_rtc();
         hardware::DateTime dt = hardware::RTC::getTime();
 
-        screen::terminal::write(dt.getHour());
-        screen::terminal::write(":");
-        screen::terminal::write(dt.getMinute());
-        screen::terminal::write(":");
-        screen::terminal::write(dt.getSecond());
+        // allocator tests
+        memory::stack_allocator::install((memory_size / 1024) / 1024, 0, 0, 4);
+        memory::stack_allocator::k_alloc(1024);
 
         // WE MUST NEVER RETURN!!!!
         while (true);

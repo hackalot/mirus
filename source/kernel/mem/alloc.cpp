@@ -13,31 +13,30 @@
 // limitations under the License.
 
 //
-// alloc.hpp - joshbeitler's home-grown, organic stack allocator
-//			   explaination avalible on wiki
+// alloc.cpp - joshbeitler's home-grown, organic stack allocator
 //
 
-#pragma once
+#include <stdafx.hpp>
+#include <mem/alloc.hpp>
 
 namespace mirus
 {
 	namespace memory
 	{
-		class stack_allocator
+		// Install the stack allocator, perform basic
+		// initilization functions
+		void stack_allocator::install(size_t memory_size, 
+			unsigned int* kernel_start,
+			unsigned int* kernel_end,
+			size_t block_size)
 		{
-		public:
-			// Install the stack allocator, perform basic
-			// initilization functions
-			void install(size_t memory_size, 
-				unsigned int* kernel_start,
-				unsigned int* kernel_end,
-				size_t block_size);
+			debug::debugger::writeln("[log] Intalling stack allocator");
+		}
 
-			// Allocate a region of memory
-			void k_alloc(size_t size);
-
-			// Free a region of memory
-			void k_free(void* val);
-		};
+		// Allocate a region of memory
+		void stack_allocator::k_alloc(size_t size)
+		{
+			debug::debugger::writeln("[log] k_alloc called: wants " + size + " bytes");
+		}
 	} // !namespace
 } // !namespace
