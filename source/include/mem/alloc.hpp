@@ -28,16 +28,16 @@ namespace mirus
 		public:
 			// Install the stack allocator, perform basic
 			// initilization functions
-			void install(size_t memory_size, 
+			static void install(size_t memory_size, 
 				unsigned int* kernel_start,
 				unsigned int* kernel_end,
 				size_t block_size);
 
 			// Allocate a region of memory
-			void k_alloc(size_t size);
+			static void k_alloc(size_t size);
 
 			// Free a region of memory
-			void k_free(void* val);
+			static void k_free(void* val);
 		};
 	} // !namespace
 } // !namespace
