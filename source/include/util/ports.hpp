@@ -24,11 +24,17 @@ namespace mirus
     {
         namespace io
         {
-            //inb
+            // byte
             unsigned char inb(unsigned short _port);
-
-            // outb
             void outb(unsigned short _port, unsigned char _data);
+
+            // short
+            unsigned short ins(unsigned short _port);
+            void outs(unsigned short _port, unsigned short _data);
+
+            // long
+            unsigned int inl(unsigned short _port);
+            void outl(unsigned short _port, unsigned int _data);
         } // !namespace
     } // !namespace
 } // !namespace
