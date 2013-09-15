@@ -81,6 +81,7 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
+        hardware::ide_install(0x1F0);
 
         // Test ATA PIO r/w
 
