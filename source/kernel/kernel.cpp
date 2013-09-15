@@ -28,6 +28,7 @@
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
+#include <hardware/atapio.hpp>
 
 namespace mirus
 {
@@ -80,6 +81,9 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
+
+        // Test ATA PIO r/w
+
 
         // WE MUST NEVER RETURN!!!!
         while (true);

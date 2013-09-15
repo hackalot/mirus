@@ -185,5 +185,32 @@ namespace mirus
             partition partitions[4];
             uint8_t   signature[2];
         } __attribute__((packed));
+
+        // prototype all methods used in atapio.cpp
+        void detect_ide();
+        void ata_io_wait(uint16_t bus);
+        int ata_wait(uint16_t bus, int advanced);
+        void ata_select(uint16_t bus);
+        void ata_wait_ready(uint16_t bus);
+        void ide_install(uint16_t bus);
+
+        void ide_read_sector(uint16_t bus,
+            uint8_t slave,
+            uint32_t lba,
+            uint8_t* buffer);
+
+        void ide_write_sector(uint16_t bus,
+            uint8_t slave,
+            uint32_t lba,
+            uint8_t* buffer);
+
+        int ide_cmp(uint32_t* ptr1,
+            uint32_t* ptr2,
+            size_t size);
+
+        void ide_write_sector_retry(uint16_t bus,
+            uint8_t slave,
+            uint32_t lba,
+            uint8_t* buffer);
     } // !namespace
 } // !namespace
