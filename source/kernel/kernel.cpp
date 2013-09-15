@@ -29,8 +29,6 @@
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
 
-#import <mem/alloc.hpp>
-
 namespace mirus
 {
     //      We are now entering kernel mode.
@@ -46,12 +44,6 @@ namespace mirus
         // Print debug stub
         debug::debugger::writeln("[log] Mirus 0.2.5-dev");
         debug::debugger::flush();
-
-        // Install CPU hardware devices
-        cpu::gdt::install();
-        cpu::idt::install();
-        cpu::isr::install();
-        cpu::irq::install();
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
@@ -80,6 +72,12 @@ namespace mirus
         if (((memory_size / 1024) / 1024) < 512)
             debug::debugger::writeln("[warning] Memory is less than expected minimum");
 
+        // Install CPU hardware devices
+        cpu::gdt::install();
+        cpu::idt::install();
+        cpu::isr::install();
+        cpu::irq::install();
+
         // Set up screen
         screen::terminal::install();
 
@@ -90,10 +88,6 @@ namespace mirus
         // RCT tests
         hardware::RTC::read_rtc();
         hardware::DateTime dt = hardware::RTC::getTime();
-
-        // allocator tests
-        memory::stack_allocator::install((memory_size / 1024) / 1024, 0, 0, 4);
-        memory::stack_allocator::k_alloc(1024);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
