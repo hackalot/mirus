@@ -32,8 +32,7 @@
 namespace mirus
 {
     //
-    // kernel_main
-    // Our kernel entry point
+    // kernel_main - our kernel entry point
     //
     extern "C" void kernel_main(multiboot_info_t* mbd, 
         unsigned int magic)
