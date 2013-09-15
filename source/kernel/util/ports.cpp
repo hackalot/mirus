@@ -59,6 +59,20 @@ namespace mirus
             {
                 asm volatile ("outl %%eax, %%dx" : : "dN" (_port), "a" (_data));
             }
+
+            void insm(unsigned short _port,
+                unsigned char* data,
+                unsigned long size)
+            {
+                asm volatile ("rep insw" : "+D" (data), "+c" (size) : "d" (_port) : "memory");
+            }
+
+            void outsm(unsigned short _port,
+                unsigned char* data,
+                unsigned long size)
+            {
+                asm volatile ("rep outsw" : "+S" (data), "+c" (size) : "d" (_port));
+            }
         } // !namespace
     } // !namespace
 } // !namespace

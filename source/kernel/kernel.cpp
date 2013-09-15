@@ -81,10 +81,6 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
-        // RCT tests
-        hardware::RTC::read_rtc();
-        hardware::DateTime dt = hardware::RTC::getTime();
-
         // WE MUST NEVER RETURN!!!!
         while (true);
     }

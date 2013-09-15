@@ -23,86 +23,86 @@ namespace mirus
     namespace hardware
     {
         //
-        // ATA_commands - convinent way to access ATA commands
+        // ATA - convinent way to access ATA commands
         //
-        enum class ATA_commands : unsigned int
+        enum class ATA : unsigned int
         {
-            ATA_SR_BSY                  = 0x80
-            ATA_SR_DRDY                 = 0x40
-            ATA_SR_DF                   = 0x20
-            ATA_SR_DSC                  = 0x10
-            ATA_SR_DRQ                  = 0x08
-            ATA_SR_CORR                 = 0x04
-            ATA_SR_IDX                  = 0x02
-            ATA_SR_ERR                  = 0x01
+            SR_BSY                  = 0x80,
+            SR_DRDY                 = 0x40,
+            SR_DF                   = 0x20,
+            SR_DSC                  = 0x10,
+            SR_DRQ                  = 0x08,
+            SR_CORR                 = 0x04,
+            SR_IDX                  = 0x02,
+            SR_ERR                  = 0x01,
 
-            ATA_ER_BBK                  = 0x80
-            ATA_ER_UNC                  = 0x40
-            ATA_ER_MC                   = 0x20
-            ATA_ER_IDNF                 = 0x10
-            ATA_ER_MCR                  = 0x08
-            ATA_ER_ABRT                 = 0x04
-            ATA_ER_TK0NF                = 0x02
-            ATA_ER_AMNF                 = 0x01
+            ER_BBK                  = 0x80,
+            ER_UNC                  = 0x40,
+            ER_MC                   = 0x20,
+            ER_IDNF                 = 0x10,
+            ER_MCR                  = 0x08,
+            ER_ABRT                 = 0x04,
+            ER_TK0NF                = 0x02,
+            ER_AMNF                 = 0x01,
 
-            ATA_CMD_READ_PIO            = 0x20
-            ATA_CMD_READ_PIO_EXT        = 0x24
-            ATA_CMD_READ_DMA            = 0xC8
-            ATA_CMD_READ_DMA_EXT        = 0x25
-            ATA_CMD_WRITE_PIO           = 0x30
-            ATA_CMD_WRITE_PIO_EXT       = 0x34
-            ATA_CMD_WRITE_DMA           = 0xCA
-            ATA_CMD_WRITE_DMA_EXT       = 0x35
-            ATA_CMD_CACHE_FLUSH         = 0xE7
-            ATA_CMD_CACHE_FLUSH_EXT     = 0xEA
-            ATA_CMD_PACKET              = 0xA0
-            ATA_CMD_IDENTIFY_PACKET     = 0xA1
-            ATA_CMD_IDENTIFY            = 0xEC
+            CMD_READ_PIO            = 0x20,
+            CMD_READ_PIO_EXT        = 0x24,
+            CMD_READ_DMA            = 0xC8,
+            CMD_READ_DMA_EXT        = 0x25,
+            CMD_WRITE_PIO           = 0x30,
+            CMD_WRITE_PIO_EXT       = 0x34,
+            CMD_WRITE_DMA           = 0xCA,
+            CMD_WRITE_DMA_EXT       = 0x35,
+            CMD_CACHE_FLUSH         = 0xE7,
+            CMD_CACHE_FLUSH_EXT     = 0xEA,
+            CMD_PACKET              = 0xA0,
+            CMD_IDENTIFY_PACKET     = 0xA1,
+            CMD_IDENTIFY            = 0xEC,
 
-            ATAPI_CMD_READ              = 0xA8
-            ATAPI_CMD_EJECT             = 0x1B
+            ATAPI_CMD_READ          = 0xA8,
+            ATAPI_CMD_EJECT         = 0x1B,
 
-            ATA_IDENT_DEVICETYPE        = 0
-            ATA_IDENT_CYLINDERS         = 2
-            ATA_IDENT_HEADS             = 6
-            ATA_IDENT_SECTORS           = 12
-            ATA_IDENT_SERIAL            = 20
-            ATA_IDENT_MODEL             = 54
-            ATA_IDENT_CAPABILITIES      = 98
-            ATA_IDENT_FIELDVALID        = 106
-            ATA_IDENT_MAX_LBA           = 120
-            ATA_IDENT_COMMANDSETS       = 164
-            ATA_IDENT_MAX_LBA_EXT       = 200
+            IDENT_DEVICETYPE        = 0,
+            IDENT_CYLINDERS         = 2,
+            IDENT_HEADS             = 6,
+            IDENT_SECTORS           = 12,
+            IDENT_SERIAL            = 20,
+            IDENT_MODEL             = 54,
+            IDENT_CAPABILITIES      = 98,
+            IDENT_FIELDVALID        = 106,
+            IDENT_MAX_LBA           = 120,
+            IDENT_COMMANDSETS       = 164,
+            IDENT_MAX_LBA_EXT       = 200,
 
-            IDE_ATA                     = 0x00
-            IDE_ATAPI                   = 0x01
+            IDE_ATA                 = 0x00,
+            IDE_ATAPI               = 0x01,
  
-            ATA_MASTER                  = 0x00
-            ATA_SLAVE                   = 0x01
+            MASTER                  = 0x00,
+            SLAVE                   = 0x01,
 
-            ATA_REG_DATA                = 0x00
-            ATA_REG_ERROR               = 0x01
-            ATA_REG_FEATURES            = 0x01
-            ATA_REG_SECCOUNT0           = 0x02
-            ATA_REG_LBA0                = 0x03
-            ATA_REG_LBA1                = 0x04
-            ATA_REG_LBA2                = 0x05
-            ATA_REG_HDDEVSEL            = 0x06
-            ATA_REG_COMMAND             = 0x07
-            ATA_REG_STATUS              = 0x07
-            ATA_REG_SECCOUNT1           = 0x08
-            ATA_REG_LBA3                = 0x09
-            ATA_REG_LBA4                = 0x0A
-            ATA_REG_LBA5                = 0x0B
-            ATA_REG_CONTROL             = 0x0C
-            ATA_REG_ALTSTATUS           = 0x0C
-            ATA_REG_DEVADDRESS          = 0x0D
+            REG_DATA                = 0x00,
+            REG_ERROR               = 0x01,
+            REG_FEATURES            = 0x01,
+            REG_SECCOUNT0           = 0x02,
+            REG_LBA0                = 0x03,
+            REG_LBA1                = 0x04,
+            REG_LBA2                = 0x05,
+            REG_HDDEVSEL            = 0x06,
+            REG_COMMAND             = 0x07,
+            REG_STATUS              = 0x07,
+            REG_SECCOUNT1           = 0x08,
+            REG_LBA3                = 0x09,
+            REG_LBA4                = 0x0A,
+            REG_LBA5                = 0x0B,
+            REG_CONTROL             = 0x0C,
+            REG_ALTSTATUS           = 0x0C,
+            REG_DEVADDRESS          = 0x0D,
 
-            ATA_PRIMARY                 = 0x00
-            ATA_SECONDARY               = 0x01
+            PRIMARY                 = 0x00,
+            SECONDARY               = 0x01,
 
-            ATA_READ                    = 0x00
-            ATA_WRITE                   = 0x01
+            READ                    = 0x00,
+            WRITE                   = 0x01
         };
 
         //

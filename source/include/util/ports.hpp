@@ -35,6 +35,15 @@ namespace mirus
             // long
             unsigned int inl(unsigned short _port);
             void outl(unsigned short _port, unsigned int _data);
+
+            // multiple short
+            void insm(unsigned short _port, 
+                unsigned char* data, 
+                unsigned long size);
+
+            void outsm(unsigned short _port, 
+                unsigned char* data, 
+                unsigned long size);
         } // !namespace
     } // !namespace
 } // !namespace

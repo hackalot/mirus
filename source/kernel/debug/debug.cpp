@@ -26,9 +26,9 @@ namespace mirus
     {
         void debugger::write(const char *str)
         {
-            auto len = strlen(str);
+            unsigned int len = strlen(str);
 
-            for (auto i = 0; i < len; i++)
+            for (unsigned int i = 0; i < len; i++)
             {
                 hardware::serial::write(str[i]);
             }
