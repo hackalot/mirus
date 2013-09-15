@@ -31,13 +31,10 @@
 
 namespace mirus
 {
-    //      We are now entering kernel mode.
-    //      No libraries, only stuff we have made.
-    //      This is man's land.
-    //      No fucking "cowsay" or "fortune" to
-    //      help brighten our days
     //
-    // - joshbeitler
+    // kernel_main
+    // Our kernel entry point
+    //
     extern "C" void kernel_main(multiboot_info_t* mbd, 
         unsigned int magic)
     {
