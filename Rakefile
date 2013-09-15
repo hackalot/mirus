@@ -15,7 +15,6 @@
 # dependencies
 require 'rubygems'
 require 'colorize'
-require 'artii'
 require './build/lib/deps'
 
 # check for required programs
