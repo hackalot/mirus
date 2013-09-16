@@ -90,7 +90,7 @@ namespace mirus
             1,
             &buffer);
         debug::debugger::write("[log] ATA value read: ");
-        debug::debugger::write((unsigned int)buffer);
+        debug::debugger::write((int)buffer);
         debug::debugger::flush();
 
         // WE MUST NEVER RETURN!!!!
