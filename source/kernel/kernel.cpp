@@ -88,7 +88,7 @@ namespace mirus
         hardware::ide_read_sector(0x1F0,
             0x1F0,
             1,
-            &buffer);
+            buffer);
         debug::debugger::write("[log] ATA value read: ");
         debug::debugger::write((int)buffer);
         debug::debugger::flush();
