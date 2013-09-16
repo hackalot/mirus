@@ -87,7 +87,7 @@ namespace mirus
         hardware::ide_write_sector(0x1F0,
             0x1F0,
             1,
-            42);
+            (uint8_t*)42);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
