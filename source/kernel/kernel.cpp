@@ -83,11 +83,13 @@ namespace mirus
         hardware::serial::install();
 
         // Test ATA PIO r/w
+        uint8_t* buffer;
         hardware::ide_install(0x1F0);
-        hardware::ide_write_sector(0x1F0,
+        hardware::ide_read_sector(0x1F0,
             0x1F0,
             1,
-            (uint8_t*)42);
+            buffer);
+        screen::terminal::writeln((int)buffer);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
