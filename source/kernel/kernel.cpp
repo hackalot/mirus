@@ -88,8 +88,10 @@ namespace mirus
         hardware::ide_read_sector(0x1F0,
             0x1F0,
             1,
-            buffer);
-        screen::terminal::write((unsigned int)buffer);
+            &buffer);
+        debug::debugger::write("[log] ATA value read: ");
+        debug::debugger::write(buffer);
+        debug::debugger::flush();
 
         // WE MUST NEVER RETURN!!!!
         while (true);
