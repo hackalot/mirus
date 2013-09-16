@@ -81,10 +81,13 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
-        hardware::ide_install(0x1F0);
 
         // Test ATA PIO r/w
-
+        hardware::ide_install(0x1F0);
+        hardware::ide_write_sector_entry(0x1F0,
+            0x1F0,
+            1,
+            42);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
