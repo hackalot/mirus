@@ -89,7 +89,7 @@ namespace mirus
             0x1F0,
             1,
             buffer);
-        screen::terminal::writeln((int)buffer);
+        screen::terminal::write((unsigned int)buffer);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
