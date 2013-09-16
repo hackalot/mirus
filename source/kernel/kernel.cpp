@@ -84,7 +84,7 @@ namespace mirus
 
         // Test ATA PIO r/w
         hardware::ide_install(0x1F0);
-        hardware::ide_write_sector_entry(0x1F0,
+        hardware::ide_write_sector(0x1F0,
             0x1F0,
             1,
             42);
