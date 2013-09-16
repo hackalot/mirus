@@ -82,16 +82,9 @@ namespace mirus
         hardware::pit::install();
         hardware::serial::install();
 
-        // Test ATA PIO r/w
-        uint8_t* buffer;
-        hardware::ide_install(0x1F0);
-        hardware::ide_read_sector(0x1F0,
-            0x1F0,
-            1,
-            buffer);
-        debug::debugger::write("[log] ATA value read: ");
-        debug::debugger::write((int)buffer);
-        debug::debugger::flush();
+        // Test ATA PIO
+        //0x1F0
+        hardware::ide_install(12);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
