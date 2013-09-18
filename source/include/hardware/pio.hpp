@@ -106,11 +106,35 @@ namespace mirus
 		};
 
 		//
-		// ata_status - hold the status of 
-		enum class ata_status
+		// ata_status - ATA status codes
+        //
+		enum class ata_status : unsigned int
 		{
-
+            None                    = 0x00,
+            Busy                    = 0x80,
+            ATA_SR_DRD              = 0x40,
+            ATA_SR_DF               = 0x20,
+            ATA_SR_DSC              = 0x10,
+            DRQ                     = 0x08,
+            ATA_SR_COR              = 0x04,
+            ATA_SR_IDX              = 0x02,
+            Error                   = 0x01
 		};
+
+        //
+        // ata_error - ATA error codes
+        //
+        enum class ata_error : unsigned int
+        {
+            ATA_ER_BBK              = 0x80,
+            ATA_ER_UNC              = 0x40,
+            ATA_ER_MC               = 0x20,
+            ATA_ER_IDNF             = 0x10,
+            ATA_ER_MCR              = 0x08,
+            ATA_ER_ABRT             = 0x04,
+            ATA_ER_TK0NF            = 0x02,
+            ATA_ER_AMNF             = 0x01
+        };
 
 		// PIO - ATA PIO methods
 		class PIO
