@@ -83,7 +83,7 @@ namespace mirus
         hardware::serial::install();
 
         // Test ATA PIO
-        uint8_t* buffer;
+        uint8_t* buffer = nullptr;
 
         hardware::ide_install(0x1F0);
         hardware::ide_write_sector(0x1F0,
@@ -91,7 +91,7 @@ namespace mirus
             1617944,
             buffer);
 
-        debug::debugger::writeln(iota((int)buffer));
+        debug::debugger::write(iota((int)buffer));
 
 
         // WE MUST NEVER RETURN!!!!
