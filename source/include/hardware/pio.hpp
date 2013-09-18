@@ -13,21 +13,21 @@
 // limitations under the License.
 
 //
-// atapio.hpp - ATA PIO mode implimentation
+// pio.hpp - (PATA) PIO
 //
 
 #pragma once
 
 namespace mirus
 {
-    namespace hardware
-    {
-        //
-        // ATA - convinent way to access ATA commands
-        //
-        enum class ATA : unsigned int
-        {
-            SR_BSY                  = 0x80,
+	namespace hardware
+	{
+		//
+		// ata_commands - All ATA command operations we will ever need
+		//
+		enum class ata_commands : unsigned int
+		{
+			SR_BSY                  = 0x80,
             SR_DRDY                 = 0x40,
             SR_DF                   = 0x20,
             SR_DSC                  = 0x10,
@@ -103,11 +103,33 @@ namespace mirus
 
             READ                    = 0x00,
             WRITE                   = 0x01
-        };
+		};
 
-        //
-        // ide_channel/_registers - hold the status of IDE channel
-        //                          registers
+		//
+		// ata_status - hold the status of 
+		enum class ata_status
+		{
+
+		};
+
+		// PIO - ATA PIO methods
+		class PIO
+		{
+		public:
+			void install(uint32_t bus);
+
+			// rw
+			void read_sector(unsigned int lba);
+			void write_sector(unsigned int lba);
+
+			// misc
+			void ata_wait();
+			void ata_reset();
+		};
+
+		//
+        // ide_channel_registers - hold the status of IDE channel
+        //                         registers
         //
         class ide_channel_registers
         {
@@ -185,32 +207,5 @@ namespace mirus
             partition partitions[4];
             uint8_t   signature[2];
         } __attribute__((packed));
-
-        // prototype all methods used in atapio.cpp
-        void detect_ide();
-        void ata_io_wait(uint16_t bus);
-        int ata_wait(uint16_t bus, int advanced);
-        void ata_select(uint16_t bus);
-        void ata_wait_ready(uint16_t bus);
-        void ide_install(uint16_t bus);
-
-        void ide_read_sector(uint16_t bus,
-            uint8_t slave,
-            uint32_t lba,
-            uint8_t* buffer);
-
-        void ide_write_sector(uint16_t bus,
-            uint8_t slave,
-            uint32_t lba,
-            uint8_t* buffer);
-
-        int ide_cmp(uint32_t* ptr1,
-            uint32_t* ptr2,
-            size_t size);
-
-        void ide_write_sector_retry(uint16_t bus,
-            uint8_t slave,
-            uint32_t lba,
-            uint8_t* buffer);
-    } // !namespace
+	} // !namespace
 } // !namespace
