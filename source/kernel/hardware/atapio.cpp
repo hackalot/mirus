@@ -103,7 +103,7 @@ namespace mirus
             outb(bus + (int)ATA::REG_COMMAND, (int)ATA::CMD_IDENTIFY);
             ata_io_wait(bus);
 
-            int status = inb(bus + (int)ATA::REG_COMMAND);
+            unsigned int status = inb(bus + (int)ATA::REG_COMMAND);
             debug::debugger::write("[log] status = ");
             debug::debugger::write(status);
             debug::debugger::flush();
@@ -129,11 +129,11 @@ namespace mirus
             debug::debugger::flush();
 
             debug::debugger::write("[log] sectors_48: ");
-            debug::debugger::write((int)device.sectors_48);
+            debug::debugger::write((unsigned int)device.sectors_48);
             debug::debugger::flush();
 
             debug::debugger::write("[log] sectors_28: ");
-            debug::debugger::write((int)device.sectors_28);
+            debug::debugger::write((unsigned int)device.sectors_28);
             debug::debugger::flush();
 
             outb(bus + (int)ATA::REG_CONTROL, 0x02);
