@@ -91,7 +91,7 @@ namespace mirus
             1617944,
             buffer);
 
-        debug::debugger::writeln(iota((unsigned int)buffer));
+        debug::debugger::writeln(iota((int)buffer));
 
 
         // WE MUST NEVER RETURN!!!!

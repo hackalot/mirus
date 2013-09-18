@@ -26,6 +26,7 @@
 // kernel includes
 #include <util/asm.hpp>
 #include <util/c++.hpp>
+#include <util/string.hpp>
 
 // screen
 #include <screen/screen.hpp>
