@@ -24,7 +24,7 @@ namespace mirus
 {
     namespace debug
     {
-        void debugger::write(const char *str)
+        void debugger::write(char *str)
         {
             unsigned int len = strlen(str);
 
