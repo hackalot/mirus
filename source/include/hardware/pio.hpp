@@ -222,7 +222,7 @@ namespace mirus
         } __attribute__((packed));
 
         //
-        // mbr - defines a master boot record
+        // mbr - master boot record
         //
         class mbr
         {
