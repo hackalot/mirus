@@ -25,7 +25,7 @@ namespace mirus
         class debugger
         {
         public:
-            static void write(char *str);
+            static void write(const char *str);
             static void write(const char chr);
             static void write(const int wint);
             static void writeln(const char *str);
