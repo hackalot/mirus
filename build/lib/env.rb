@@ -49,7 +49,7 @@ $cpp_flags          << "-DBUILD_REV=#{$version_rev} "
 $cpp_flags          << "-DBUILD_PREFIX=#{$version_prefix} "
 $cpp_flags          << "-DBUILD_CODENAME=#{$version_codename}"
 
-# nasm + options
+# asm + options
 $assembler          = "yasm"
 $assembler_flags    = "-f elf"
 
