@@ -28,7 +28,6 @@
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
-#include <hardware/atapio.hpp>
 
 namespace mirus
 {
