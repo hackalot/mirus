@@ -12,12 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//
+// message.hpp - implimentation of the message_t class
+//
+
 #pragma once
 
 namespace mirus
 {
     namespace system
     {
-
+        class message_t
+        {
+        public:
+            uint16_t pid_sender;
+            uint16_t pid_dest;
+            int priority;
+            int type;
+            char* message;
+        };
     } // !namespace
 } // !namespace
