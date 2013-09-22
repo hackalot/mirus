@@ -64,7 +64,7 @@ namespace mirus
         };
 
         // TODO: this is a mess....
-        void panic(cpu::regs* r) const
+        void panic(cpu::regs* r)
         {
             if (r->int_no < 32)
             {

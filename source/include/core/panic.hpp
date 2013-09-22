@@ -24,6 +24,6 @@ namespace mirus
 {
     namespace core
     {
-        void panic(cpu::regs* r) const;
+        void panic(cpu::regs* r);
     } // !namespace
 } // !namespace
