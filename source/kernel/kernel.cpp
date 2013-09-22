@@ -85,14 +85,14 @@ namespace mirus
         hardware::serial::install();
 
         // Testing the message system
-        message_t msg;
+        system::message_t msg;
         msg.pid_sender = 0;
         msg.pid_dest = 0;
         msg.priority = 0;
-        msg.type = message_request_type::pingback;
+        msg.type = (int)system::message_request_type::pingback;
         msg.message = "this is your kernel speaking.";
 
-        message_handler::dispatch_message(msg);
+        // message_handler::dispatch_message(msg);
 
         // WE MUST NEVER RETURN!!!!
         while (true);
