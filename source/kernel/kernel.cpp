@@ -29,6 +29,9 @@
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
 
+#include <msg/message_handler.hpp>
+#include <msg/message.hpp>
+
 namespace mirus
 {
     //
@@ -80,6 +83,16 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
+
+        // Testing the message system
+        message_t msg;
+        msg.pid_sender = 0;
+        msg.pid_dest = 0;
+        msg.priority = 0;
+        msg.type = message_request_type::pingback;
+        msg.message = "this is your kernel speaking.";
+
+        message_handler::dispatch_message(msg);
 
         // WE MUST NEVER RETURN!!!!
         while (true);

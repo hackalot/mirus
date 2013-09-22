@@ -28,6 +28,8 @@ namespace mirus
         {
         public:
             message_t message_queue[256];
+
+            static void dispatch_message(const message_t& msg);
         };
     } // !namespace
 } // !namespace
