@@ -28,7 +28,6 @@
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
-#include <hardware/atapio.hpp>
 
 namespace mirus
 {
@@ -81,18 +80,6 @@ namespace mirus
         // Set up additional hardware
         hardware::pit::install();
         hardware::serial::install();
-
-        // Test ATA PIO
-        uint8_t* buffer = nullptr;
-
-        hardware::ide_install(0x1F0);
-        hardware::ide_write_sector(0x1F0,
-            0,
-            1617944,
-            buffer);
-
-        debug::debugger::write(iota((int)buffer));
-
 
         // WE MUST NEVER RETURN!!!!
         while (true);
