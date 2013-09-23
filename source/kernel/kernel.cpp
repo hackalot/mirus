@@ -16,7 +16,7 @@
 // kernel.cpp - main source file + kernel entry point
 //              we all have to begin somewhere, right?
 //
-
+    
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
 
