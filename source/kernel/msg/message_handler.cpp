@@ -13,31 +13,21 @@
 // limitations under the License.
 
 //
-// message.hpp - implimentation of the message_t class
+// message_handler.cpp - handles the message queue
 //
 
-#pragma once
+#include <msg/message_handler.hpp>
 
 namespace mirus
 {
     namespace system
     {
-        enum class message_request_type : uint16_t
+        void message_handler::dispatch_message(const message_t& msg)
         {
-            pingback        = 0x0,
-            handshake       = 0x1,
-            write_io_port   = 0x2,
-            read_io_port    = 0x3
-        };
-
-        class message_t
-        {
-        public:
-            uint16_t pid_sender;
-            uint16_t pid_dest;
-            int priority;
-            int type;
-            char* data;
-        };
+            // Here's how I plan to do things:
+            //
+            //      process_manager.get_from_pid(msg.pid_dest).messages.insert(msg)
+            // 
+            // Sort of
     } // !namespace
 } // !namespace
