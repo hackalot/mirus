@@ -1,12 +1,12 @@
 [submodule "documentation"]
 	path = documentation
-	url = git://github.com/joshbeitler/mirus.wiki.git
+	url = https://github.com/joshbeitler/mirus.wiki.git
 [submodule "mirloader"]
 	path = mirloader
-	url = git://github.com/joshbeitler/mirloader
+	url = https://github.com/joshbeitler/mirloader
 [submodule "drivers"]
 	path = drivers
-	url = git://github.com/joshbeitler/drivers.git
+	url = https://github.com/joshbeitler/drivers.git
 [submodule "utils"]
 	path = utils
-	url = git://github.com/joshbeitler/utils.git
+	url = https://github.com/joshbeitler/utils.git
