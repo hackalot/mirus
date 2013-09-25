@@ -1,6 +1,3 @@
-[submodule "coreutils"]
-	path = coreutils
-	url = git://github.com/mirusproject/coreutils.git
 [submodule "documentation"]
 	path = documentation
 	url = git://github.com/joshbeitler/mirus.wiki.git
