@@ -90,7 +90,7 @@ namespace mirus
         msg.pid_dest = 0;
         msg.priority = 0;
         msg.type = (int)system::message_request_type::pingback;
-        msg.message = "this is your kernel speaking.";
+        msg.message = "this is your kernel speaking, enjoy the ride.";
 
         // message_handler::dispatch_message(msg);
 
