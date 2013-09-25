@@ -29,5 +29,6 @@ namespace mirus
             //      process_manager.get_from_pid(msg.pid_dest).messages.insert(msg)
             // 
             // Sort of
+        }
     } // !namespace
 } // !namespace

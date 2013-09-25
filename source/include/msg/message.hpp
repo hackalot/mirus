@@ -18,11 +18,13 @@
 
 #pragma once
 
+#include <stdafx.hpp>
+
 namespace mirus
 {
     namespace system
     {
-        enum class message_request_type : uint16_t
+        enum class message_request_type : uint8_t
         {
             pingback        = 0x0,
             handshake       = 0x1,
@@ -33,11 +35,11 @@ namespace mirus
         class message_t
         {
         public:
-            uint16_t pid_sender;
-            uint16_t pid_dest;
+            uint8_t pid_sender;
+            uint8_t pid_dest;
             int priority;
             int type;
-            char* data;
+            const char* data;
         };
     } // !namespace
 } // !namespace
