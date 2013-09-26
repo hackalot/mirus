@@ -44,6 +44,9 @@ namespace mirus
         debug::debugger::writeln("[log] Mirus 0.2.5-dev");
         debug::debugger::flush();
 
+        uintptr_t ramdisk_top = 0;
+        char*     ramdisk;
+
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
             debug::debugger::writeln("[error] Multiboot bootloader magic doesn't match!");
@@ -52,7 +55,7 @@ namespace mirus
 
         if (mbd->flags & 1)
         {
-            debug::debugger::writeln("[log] Memory map present, trying to get memory");
+            debug::debugger::writeln("[log] Reading multiboot header");
 
             memory_map_t* mmap = (memory_map_t*)mbd->mmap_addr;
 
@@ -66,6 +69,23 @@ namespace mirus
             debug::debugger::write("[log] Avalible memory: ");
             debug::debugger::write((memory_size / 1024) / 1024);
             debug::debugger::writeln("m");
+
+            debug::debugger::writeln("[log] Trying to get ramdisk.");
+
+            // Check for any modules, the only of which should be the ramdisk
+            if (mbd->mods_count > 0)
+            {
+                uint32_t* module_start = *((uint32_t*)mbd->mods_addr);
+                uint32_t* module_end   = *(uint32_t*)(mbd->mods_addr + 4);
+                ramdisk                = (char*)0x30000000;
+                ramdisk_top            = (uintptr_t)ramdisk + (module_end - module_start);
+                
+                // TODO: do we need to move the ramdisk somewhere
+                //       more convinient?
+
+                debug::debugger::write("[log] Ramdisk top: ");
+                debug::debugger::writeln(ramdisk_top);
+            }
         }
 
         if (((memory_size / 1024) / 1024) < 512)
