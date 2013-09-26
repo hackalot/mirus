@@ -81,7 +81,7 @@ namespace mirus
                 ramdisk_top            = (uintptr_t)ramdisk + (module_end - module_start);
                 
                 // TODO: do we need to move the ramdisk somewhere
-                //       more convinient?
+                //       more convinient
 
                 debug::debugger::write("[log] Ramdisk top: ");
                 debug::debugger::writeln(ramdisk_top);
