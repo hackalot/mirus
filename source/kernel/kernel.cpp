@@ -75,8 +75,8 @@ namespace mirus
             // Check for any modules, the only of which should be the ramdisk
             if (mbd->mods_count > 0)
             {
-                uint32_t* module_start = *((uint32_t*)mbd->mods_addr);
-                uint32_t* module_end   = *(uint32_t*)(mbd->mods_addr + 4);
+                uint32_t* module_start = ((uint32_t*)mbd->mods_addr);
+                uint32_t* module_end   = ((uint32_t*)(mbd->mods_addr + 4));
                 ramdisk                = (char*)0x30000000;
                 ramdisk_top            = (uintptr_t)ramdisk + (module_end - module_start);
                 
@@ -84,7 +84,11 @@ namespace mirus
                 //       more convinient
 
                 debug::debugger::write("[log] Ramdisk top: ");
-                debug::debugger::writeln(ramdisk_top);
+                debug::debugger::writeln((const char*)ramdisk_top);
+            }
+            else
+            {
+                debug::debugger::writeln("[log] No modules found.");
             }
         }
 
