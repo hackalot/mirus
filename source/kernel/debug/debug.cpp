@@ -16,6 +16,7 @@
 // debug.cpp - debugger
 //
 
+#include <stdafx.hpp>
 #include <debug/debug.hpp>
 #include <hardware/serial.hpp>
 #include <util/string.hpp>
