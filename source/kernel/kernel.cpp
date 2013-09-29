@@ -41,8 +41,7 @@ namespace mirus
         unsigned int magic)
     {
         // Print debug stub
-        debug::debugger::writeln("[log] Mirus 0.2.5-dev");
-        debug::debugger::flush();
+        debug::debugger::writeln("[log] Mirus 0.2.5-dev\n");
 
         uintptr_t ramdisk_top = 0;
         char*     ramdisk;
@@ -76,8 +75,7 @@ namespace mirus
             if (mbd->mods_count > 0)
             {
                 debug::debugger::write("[log] Modules found: ");
-                debug::debugger::write((int)mbd->mods_count);
-                debug::debugger::flush();
+                debug::debugger::writeln((int)mbd->mods_count);
 
                 uint32_t* module_start = ((uint32_t*)mbd->mods_addr);
                 uint32_t* module_end   = ((uint32_t*)(mbd->mods_addr + 4));
@@ -86,8 +84,7 @@ namespace mirus
                 //       more convinient
 
                 debug::debugger::write("[log] Module start: ");
-                debug::debugger::write((int)&module_start);
-                debug::debugger::flush();
+                debug::debugger::writeln((int)&module_start);
             }
             else
             {

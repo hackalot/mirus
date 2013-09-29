@@ -22,6 +22,13 @@ namespace mirus
 {
     namespace debug
     {
+        enum class debug_level : int
+        {
+            debug_log = 0,
+            debug_error = 1,
+            debug_msg = 2
+        };
+
         class debugger
         {
         public:
@@ -29,6 +36,7 @@ namespace mirus
             static void write(const char chr);
             static void write(const int wint);
             static void writeln(const char *str);
+            static void writeln(const int wint);
             static void flush();
         };
     } // !namespace

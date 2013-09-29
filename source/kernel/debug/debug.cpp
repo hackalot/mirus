@@ -51,6 +51,12 @@ namespace mirus
             debugger::write('\n');
         }
 
+        void debugger::writeln(const int wint)
+        {
+            debugger::write(wint);
+            debugger::write('\n');
+        }
+
         void debugger::flush()
         {
             hardware::serial::write('\n');
