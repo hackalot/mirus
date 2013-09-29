@@ -16,7 +16,7 @@ error_cp = false
 
 # generate a bootable iso image of Mirus
 desc "Creates bootable media"
-task :make_iso => ['build_asm', 'build_kernel', 'link'] do
+task :make_iso => ['build_asm', 'build_kernel', 'link', 'build_initrd'] do
     sh "cp ./build/kernel.bin ./iso/boot/kernel.bin >>./build/logs/isolog.log 2>&1" do |ok, res|
         if ! ok
             puts "[rake] Could not copy kernel image to ISO directory!".red

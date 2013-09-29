@@ -12,17 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# clean object files, etc.
-desc "Clean up all the extra crap"
-task :clean do
-    sh "rm -f #{$object_files} >/dev/null 2>&1"
-    sh "rm -f #{$dep_files} >/dev/null 2>&1"
-    sh "rm -f #{$target} >/dev/null 2>&1"
-    sh "rm -f #{$target_bin} >/dev/null 2>&1"
-    sh "rm -f #{$target_iso} >/dev/null 2>&1"
-    sh "rm -f build/*.bin >/dev/null 2>&1"
-    sh "rm -f build/*.iso >/dev/null 2>&1"
-    sh "rm -f build/logs/*.log >/dev/null 2>&1"
-    sh "rm -f iso/boot/kernel.bin >/dev/null 2>&1"
-    sh "rm -f iso/boot/initrd.img >/dev/null @>&1"
+# create the ramdisk
+desc "Create initial ramdisk"
+task :build_initrd do
+    puts "[rake] Creating initrd".blue
 end
