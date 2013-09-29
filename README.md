@@ -38,7 +38,6 @@ To build Mirus, you will need to meet the following dependencies.  If you are no
 * `yasm`
 * `xorriso` >= 1.2.9
 * `rake`
-* `ruby`
 * `colorize`
 
 ### Contributing
