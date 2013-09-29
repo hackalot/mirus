@@ -75,16 +75,19 @@ namespace mirus
             // Check for any modules, the only of which should be the ramdisk
             if (mbd->mods_count > 0)
             {
+                debug::debugger::write("[log] Modules found: ");
+                debug::debugger::write((int)mbd->mods_count);
+                debug::debugger::flush();
+
                 uint32_t* module_start = ((uint32_t*)mbd->mods_addr);
                 uint32_t* module_end   = ((uint32_t*)(mbd->mods_addr + 4));
-                ramdisk                = (char*)0x30000000;
-                ramdisk_top            = (uintptr_t)ramdisk + (module_end - module_start);
                 
                 // TODO: do we need to move the ramdisk somewhere
                 //       more convinient
 
-                debug::debugger::write("[log] Ramdisk top: ");
-                debug::debugger::writeln((const char*)ramdisk_top);
+                debug::debugger::write("[log] Module start: ");
+                debug::debugger::write((int)&module_start);
+                debug::debugger::flush();
             }
             else
             {
