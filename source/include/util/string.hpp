@@ -24,4 +24,5 @@ namespace mirus
     char* iota(int value);
     char* strpad(char* data, int padlen);
     char* strcat(char* dest, const char* src);
+    char* strcpy(char* dest, const char* src);
 } // !namespace

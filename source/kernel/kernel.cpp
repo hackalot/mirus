@@ -19,7 +19,6 @@
     
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
-#include <core/initrd.hpp>
 
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
@@ -32,6 +31,12 @@
 
 #include <msg/message_handler.hpp>
 #include <msg/message.hpp>
+
+// just a test
+typedef struct initrd_hdr
+{
+    uint32_t magic;
+} hdr_t;
 
 namespace mirus
 {
@@ -80,17 +85,14 @@ namespace mirus
 
                 uint32_t* module_start = ((uint32_t*)mbd->mods_addr);
                 uint32_t* module_end   = ((uint32_t*)(mbd->mods_addr + 4));
-                
-                // TODO: do we need to move the ramdisk somewhere
-                //       more convinient
 
                 debug::debugger::write("[log] Module start: ");
                 debug::debugger::writeln((int)&module_start);
 
-                int ramdisk_magic = (int)(module_start) + (int)(module_start + 1);
+                hdr_t* header = (hdr_t*)*module_start;
 
-                debug::debugger::write("[log] Ramdisk magic: ");
-                debug::debugger::writeln(ramdisk_magic);
+                debug::debugger::write("[log] Value: ");
+                debug::debugger::writeln((unsigned int)header->magic);
             }
             else
             {
