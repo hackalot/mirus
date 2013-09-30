@@ -26,9 +26,7 @@ namespace mirus
         {
         public:
             uint8_t magic;
-            uint32_t length;
-            uint32_t offset;
-            char name[256];
+            uint8_t dirs;
         };
     } // !namespace
 } // !namespace

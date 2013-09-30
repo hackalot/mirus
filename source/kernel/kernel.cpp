@@ -19,6 +19,7 @@
     
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
+#include <core/initrd.hpp>
 
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
@@ -85,6 +86,11 @@ namespace mirus
 
                 debug::debugger::write("[log] Module start: ");
                 debug::debugger::writeln((int)&module_start);
+
+                int ramdisk_magic = (int)(module_start) + (int)(module_start + 1);
+
+                debug::debugger::write("[log] Ramdisk magic: ");
+                debug::debugger::writeln(ramdisk_magic);
             }
             else
             {
