@@ -92,7 +92,7 @@ namespace mirus
                 hdr_t* header = (hdr_t*)*module_start;
 
                 debug::debugger::write("[log] Value: ");
-                debug::debugger::writeln((unsigned int)header->magic);
+                debug::debugger::writeln(header->magic);
             }
             else
             {
