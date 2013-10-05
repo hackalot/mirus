@@ -35,7 +35,7 @@
 // just a test
 typedef struct initrd_hdr
 {
-    uint32_t magic;
+    uint16_t magic;
 } hdr_t;
 
 namespace mirus
@@ -83,16 +83,16 @@ namespace mirus
                 debug::debugger::write("[log] Modules found: ");
                 debug::debugger::writeln((int)mbd->mods_count);
 
-                uint32_t* module_start = ((uint32_t*)mbd->mods_addr);
-                uint32_t* module_end   = ((uint32_t*)(mbd->mods_addr + 4));
+                uintptr_t module_start = (uintptr_t)mbd->mods_addr;
+                uintptr_t module_end   = (uintptr_t)mbd->mods_addr + 4;
 
                 debug::debugger::write("[log] Module start: ");
-                debug::debugger::writeln((int)&module_start);
+                debug::debugger::writeln((unsigned int)module_start);
 
-                hdr_t* header = (hdr_t*)*module_start;
+                hdr_t header = *((hdr_t*)(module_end - module_start));
 
                 debug::debugger::write("[log] Value: ");
-                debug::debugger::writeln(header->magic);
+                debug::debugger::writeln((unsigned int)header.magic);
             }
             else
             {
