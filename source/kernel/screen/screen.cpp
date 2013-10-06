@@ -67,8 +67,8 @@ namespace mirus
             if (csr_y >= 25)
             {
                 temp = csr_y - 25 + 1;
-                memcpy (textmemptr, textmemptr + temp * 80, (25 - temp) * 80 * 2);
-                memsetw (textmemptr + (25 - temp) * 80, blank, 80);
+                memcpy(textmemptr, textmemptr + temp * 80, (25 - temp) * 80 * 2);
+                memsetw(textmemptr + (25 - temp) * 80, blank, 80);
                 csr_y = 25 - 1;
             }   
         }
@@ -135,7 +135,9 @@ namespace mirus
 
         void terminal::write(int val)
         {
-            terminal::write(iota(val));
+            char* buf;
+            itoa(buf, 10, val);
+            terminal::write(buf);
         }
 
         void terminal::write(unsigned int val)
@@ -168,9 +170,6 @@ namespace mirus
             terminal::set_color((unsigned char)vga_color::white,
                 (unsigned char)vga_color::black);
             terminal::clear();
-
-            // report OK
-            debug::debugger::writeln("[log] Screen successfully installed.");
         }
     } // !namespace
 } // !namespace

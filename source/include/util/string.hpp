@@ -21,7 +21,7 @@
 namespace mirus
 {
     unsigned int strlen(const char* str);
-    char* iota(int value);
+    void itoa (char *buf, int base, int d);
     char* strpad(char* data, int padlen);
     char* strcat(char* dest, const char* src);
     char* strcpy(char* dest, const char* src);

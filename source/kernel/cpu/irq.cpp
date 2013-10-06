@@ -82,9 +82,6 @@ namespace mirus
             irq::gates();
 
             asm volatile("sti");
-
-            // report OK
-            debug::debugger::writeln("[log] IRQs successfully installed.");
         }
 
         void irq::ack(int irq_no)

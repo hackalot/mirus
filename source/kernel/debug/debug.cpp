@@ -25,37 +25,46 @@ namespace mirus
 {
     namespace debug
     {
-        void debugger::write(const char *str)
+        void debugger::write(const char *fmt, ...)
         {
-            unsigned int len = strlen(str);
-
-            for (unsigned int i = 0; i < len; i++)
+            char** arg = (char**)&fmt;
+            int c;
+            char* buf;
+     
+            arg++;
+     
+            while ((c = *fmt++) != 0)
             {
-                hardware::serial::write(str[i]);
+                if (c != '%')
+                    hardware::serial::write(c);
+                else
+                {
+                    char *p;
+                    c = *fmt++;
+
+                    switch (c)
+                    {
+                        case 'd':
+                        case 'u':
+                        case 'x':
+                            itoa(buf, c, *((int *) arg++));
+                            p = buf;
+                            while (*p)
+                                hardware::serial::write(*p++);
+                            break;
+                        case 's':
+                            p = *arg++;
+                            if (!p)
+                                p = "(null)";
+                            while (*p)
+                                hardware::serial::write(*p++);
+                            break;
+                        default:
+                            hardware::serial::write(*((int *) arg++));
+                            break;
+                    }
+                }
             }
-        }
-
-        void debugger::write(char chr)
-        {
-            hardware::serial::write(chr);
-        }
-
-        void debugger::write(int wint)
-        {
-            char *num = iota(wint);
-            debugger::write(num);
-        }
-
-        void debugger::writeln(const char *str)
-        {
-            debugger::write(str);
-            debugger::write('\n');
-        }
-
-        void debugger::writeln(const int wint)
-        {
-            debugger::write(wint);
-            debugger::write('\n');
         }
 
         void debugger::flush()

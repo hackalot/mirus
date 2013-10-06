@@ -32,37 +32,41 @@
 #include <msg/message_handler.hpp>
 #include <msg/message.hpp>
 
-// just a test
-typedef struct initrd_hdr
-{
-    uint16_t magic;
-} hdr_t;
-
 namespace mirus
 {
+    // Memory size
+    uint32_t memory_size = 0;
+
+    // Memory size (mb)
+    uint32_t memory_size_m = 0;
+
+    // Memory map
+    memory_map_t* mmap = nullptr;
+
+    // Module count
+    uint32_t mod_count = 0;
+
+    // Modules
+    module_t* mods = nullptr;
+
     //
     // kernel_main - our kernel entry point
     //
-    extern "C" void kernel_main(multiboot_info_t* mbd, 
-        unsigned int magic)
+    extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        debug::debugger::writeln("[log] Mirus 0.2.5-dev\n");
-
-        uintptr_t ramdisk_top = 0;
-        char*     ramdisk;
+        debug::debugger::write("[log] Mirus 0.2.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
-            debug::debugger::writeln("[error] Multiboot bootloader magic doesn't match!");
+            debug::debugger::write("[error] Multiboot bootloader magic doesn't match!\n");
 
-        int memory_size = 0;
+        mod_count = mbd->mods_count;
 
         if (mbd->flags & 1)
         {
-            debug::debugger::writeln("[log] Reading multiboot header");
-
-            memory_map_t* mmap = (memory_map_t*)mbd->mmap_addr;
+            debug::debugger::write("[log] Reading multiboot header\n");
+            mmap = (memory_map_t*)mbd->mmap_addr;
 
             // parse entries
             while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) + mbd->mmap_length)
@@ -71,67 +75,69 @@ namespace mirus
                 mmap = (memory_map_t*)((unsigned int)mmap + mmap->size + sizeof(unsigned int));
             }
 
-            debug::debugger::write("[log] Avalible memory: ");
-            debug::debugger::write((memory_size / 1024) / 1024);
-            debug::debugger::writeln("m");
+            memory_size_m = ((memory_size / 1024) / 1024);
 
-            debug::debugger::writeln("[log] Trying to get ramdisk.");
+            debug::debugger::write("[log] Avalible memory: %dm\n", memory_size_m);
+            debug::debugger::write("[log] Trying to get ramdisk.\n");
 
             // Check for any modules, the only of which should be the ramdisk
-            if (mbd->mods_count > 0)
+            if (mod_count > 0)
             {
-                debug::debugger::write("[log] Modules found: ");
-                debug::debugger::writeln((int)mbd->mods_count);
+                debug::debugger::write("[log] Modules found: %d\n", mod_count);
 
-                // uint32_t* module_start = (uint32_t*)mbd->mods_addr;
-                // uint32_t* module_end   = (uint32_t*)mbd->mods_addr + 4;
-
-                module_t* mod;
-                int i;
-
-                for (i = 0, mod = (module_t*)mbd->mods_addr;
-                    i < mbd->mods_count;
-                    i++, mod++)
+                auto i = 0;
+                for (i = 0, mods = (module_t*)mbd->mods_addr;
+                    i < mod_count;
+                    i++, mods++)
                 {
-                    debug::debugger::write("[log] Module start: ");
-                    debug::debugger::write((const int)mod->mod_start);
-                    debug::debugger::write(" Module end: ");
-                    debug::debugger::write((const int)mod->mod_end);
-                    debug::debugger::write(" Module string: ");
-                    debug::debugger::writeln((const int)mod->string);
+
                 }
             }
             else
             {
-                debug::debugger::writeln("[log] No modules found.");
+                debug::debugger::write("[log] No modules found.\n");
             }
         }
 
-        if (((memory_size / 1024) / 1024) < 512)
-            debug::debugger::writeln("[warning] Memory is less than expected minimum");
+        if (memory_size_m < 512)
+            debug::debugger::write("[warning] Memory is less than expected minimum\n");
 
-        // Install CPU hardware devices
+        // Install GDT
+        debug::debugger::write("[log] Installing GDT...");
         cpu::gdt::install();
+        debug::debugger::write("OK\n");
+
+        // Install IDT
+        debug::debugger::write("[log] Installing IDT...");
         cpu::idt::install();
+        debug::debugger::write("OK\n");
+
+        // Setup ISRs
+        debug::debugger::write("[log] Setting up ISRs...");
         cpu::isr::install();
+        debug::debugger::write("OK\n");
+
+        // Setup IRQs
+        debug::debugger::write("[log] Setting up IRQs...");
         cpu::irq::install();
+        debug::debugger::write("OK\n");
 
-        // Set up screen
+        // Setup screen
+        debug::debugger::write("[log] Setting up screen...");
         screen::terminal::install();
+        debug::debugger::write("OK\n");
 
-        // Set up additional hardware
+        // Setup timer
+        debug::debugger::write("[log] Setting up timer...");
         hardware::pit::install();
+        debug::debugger::write("OK\n");
+
+        // Setup serial ports
+        debug::debugger::write("[log] Setting up serial ports...");
         hardware::serial::install();
+        debug::debugger::write("OK\n");
 
-        // Testing the message system
-        system::message_t msg;
-        msg.pid_sender = 0;
-        msg.pid_dest = 0;
-        msg.priority = 0;
-        msg.type = (int)system::message_request_type::pingback;
-        msg.data = "this is your kernel speaking, enjoy the ride.";
-
-        // message_handler::dispatch_message(msg);
+        debug::debugger::write("Hello, %s", "Mirus");
 
         // WE MUST NEVER RETURN!!!!
         while (true);

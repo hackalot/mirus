@@ -57,9 +57,6 @@ namespace mirus
 
             // load idt
             idt_load();
-
-            // report OK
-            debug::debugger::writeln("[log] IDT successfully installed.");
         }
     } // !namespace
 } // !namespace

@@ -72,9 +72,6 @@ namespace mirus
 
             // flush it
             gdt_flush();
-
-            // report OK
-            debug::debugger::writeln("[log] GDT successfully installed.");
         }
     } // !namespace
 } // !namespace

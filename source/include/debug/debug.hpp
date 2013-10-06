@@ -32,11 +32,7 @@ namespace mirus
         class debugger
         {
         public:
-            static void write(const char *str);
-            static void write(const char chr);
-            static void write(const int wint);
-            static void writeln(const char *str);
-            static void writeln(const int wint);
+            static void write(const char *fmt, ...);
             static void flush();
         };
     } // !namespace
