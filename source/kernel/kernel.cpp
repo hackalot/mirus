@@ -83,16 +83,23 @@ namespace mirus
                 debug::debugger::write("[log] Modules found: ");
                 debug::debugger::writeln((int)mbd->mods_count);
 
-                uintptr_t module_start = (uintptr_t)mbd->mods_addr;
-                uintptr_t module_end   = (uintptr_t)mbd->mods_addr + 4;
+                // uint32_t* module_start = (uint32_t*)mbd->mods_addr;
+                // uint32_t* module_end   = (uint32_t*)mbd->mods_addr + 4;
 
-                debug::debugger::write("[log] Module start: ");
-                debug::debugger::writeln((unsigned int)module_start);
+                module_t* mod;
+                int i;
 
-                hdr_t header = *((hdr_t*)(module_end - module_start));
-
-                debug::debugger::write("[log] Value: ");
-                debug::debugger::writeln((unsigned int)header.magic);
+                for (i = 0, mod = (module_t*)mbd->mods_addr;
+                    i < mbd->mods_count;
+                    i++, mod++)
+                {
+                    debug::debugger::write("[log] Module start: ");
+                    debug::debugger::write((const int)mod->mod_start);
+                    debug::debugger::write(" Module end: ");
+                    debug::debugger::write((const int)mod->mod_end);
+                    debug::debugger::write(" Module string: ");
+                    debug::debugger::writeln((const int)mod->string);
+                }
             }
             else
             {
