@@ -139,7 +139,7 @@ namespace mirus
         hardware::serial::install();
         debug::debugger::write("OK\n");
 
-        
+        kprintf("hello");
 
         // WE MUST NEVER RETURN!!!!
         while (true);

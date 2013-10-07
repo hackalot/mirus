@@ -65,7 +65,7 @@ namespace mirus
         return dest;
     }
 
-    unsigned char* memset(unsigned char* dest, 
+    extern "C" unsigned char* memset(unsigned char* dest, 
         unsigned char val, 
         int count)
     {

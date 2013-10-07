@@ -36,7 +36,7 @@ namespace mirus
         int count);
 
     // memset
-    unsigned char* memset(unsigned char* dest, 
+    extern "C" unsigned char* memset(unsigned char* dest, 
         unsigned char val, 
         int count);
 

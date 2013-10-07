@@ -153,9 +153,9 @@ namespace mirus
         return ptr;
     }
 
-    int kprintf(char* file,
-        int line,
-        const char* fmt,
+    int kprintf(const char* fmt,
+        // int line,
+        // const char* fmt,
         ...) 
     {
         char buf[1024] = {-1};
@@ -170,13 +170,13 @@ namespace mirus
             buf[strlen(buf)-1] = '\0';
             hardware::serial::write(buf);
             char buf2[1024];
-            sprintf(buf2, " %s:%d\n", file, line);
+            // sprintf(buf2, " %s:%d\n", file, line);
             hardware::serial::write(buf2);
         } 
         else 
         {
             hardware::serial::write(buf);
-        }
+        }   
         return out;
     }
 
