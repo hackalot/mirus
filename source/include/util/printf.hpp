@@ -35,8 +35,6 @@ namespace mirus
         va_list args);
 
     int kprintf(const char* fmt,
-        // int line,
-        // const char* fmt,
         ...);
 
     int sprintf(char* buf,

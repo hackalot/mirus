@@ -22,6 +22,9 @@
 
 namespace mirus
 {
+    //
+    // Print a decimal number
+    //
     void print_dec(unsigned int value, 
         unsigned int width, 
         char* buf, 
@@ -60,6 +63,9 @@ namespace mirus
         *ptr += n_width;
     }
 
+    //
+    // Print a hexadecimal number
+    //
     void print_hex(unsigned int value, 
         unsigned int width, 
         char* buf, 
@@ -96,16 +102,18 @@ namespace mirus
         }
     }
 
+    //
+    // Format a string for printing
+    //
     size_t vasprintf(char* buf, 
         const char* fmt, 
         va_list args) 
     {
-        int i = 0;
         char *s;
         int ptr = 0;
         int len = strlen(fmt);
             
-        for ( ; i < len && fmt[i]; ++i) 
+        for (int i = 0; i < len && fmt[i]; ++i) 
         {
             if (fmt[i] != '%') 
             {
@@ -123,27 +131,42 @@ namespace mirus
                 ++i;
             }
 
-            /* fmt[i] == '%' */
             switch (fmt[i]) 
             {
-                case 's': /* String pointer -> String */
+                // string
+                case 's':
                     s = (char *)va_arg(args, char *);
                     while (*s)
                         buf[ptr++] = *s++;
                     break;
-                case 'c': /* Single character */
+
+                // char
+                case 'c':
                     buf[ptr++] = (char)va_arg(args, int);
                     break;
-                case 'x': /* Hexadecimal number */
-                    print_hex((unsigned long)va_arg(args, unsigned long), arg_width, buf, &ptr);
+
+                // hex
+                case 'x':
+                    print_hex((unsigned long)va_arg(args, unsigned long), 
+                        arg_width, 
+                        buf, 
+                        &ptr);
                     break;
-                case 'd': /* Decimal number */
-                    print_dec((unsigned long)va_arg(args, unsigned long), arg_width, buf, &ptr);
+
+                // decimal
+                case 'd':
+                    print_dec((unsigned long)va_arg(args, unsigned long), 
+                        arg_width, 
+                        buf, 
+                        &ptr);
                     break;
-                case '%': /* Escape */
+
+                // escape
+                case '%':
                     buf[ptr++] = '%';
                     break;
-                default: /* Nothing at all, just dump it */
+
+                default:
                     buf[ptr++] = fmt[i];
                     break;
             }
@@ -153,41 +176,31 @@ namespace mirus
         return ptr;
     }
 
+    //
+    // Print a string
+    //
     int kprintf(const char* fmt,
-        // int line,
-        // const char* fmt,
         ...) 
     {
         char buf[1024] = {-1};
         va_list args;
+
         va_start(args, fmt);
         int out = vasprintf(buf, fmt, args);
-        /* We're done with our arguments */
         va_end(args);
-        /* Print that sucker */
+
+        // Print
         if (buf[strlen(buf)-1] == '\n') 
         {
             buf[strlen(buf)-1] = '\0';
             hardware::serial::write(buf);
             char buf2[1024];
-            // sprintf(buf2, " %s:%d\n", file, line);
             hardware::serial::write(buf2);
         } 
         else 
         {
             hardware::serial::write(buf);
         }   
-        return out;
-    }
-
-    int sprintf(char* buf,
-        const char *fmt,
-        ...) 
-    {
-        va_list args;
-        va_start(args, fmt);
-        int out = vasprintf(buf, fmt, args);
-        va_end(args);
         return out;
     }
 } // !namespace
