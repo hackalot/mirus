@@ -182,7 +182,7 @@ namespace mirus
     int kprintf(const char* fmt,
         ...) 
     {
-        char buf[1024] = {-1};
+        char buf[1024] = { -1 };
         va_list args;
 
         va_start(args, fmt);
@@ -190,9 +190,9 @@ namespace mirus
         va_end(args);
 
         // Print
-        if (buf[strlen(buf)-1] == '\n') 
+        if (buf[strlen(buf) - 1] == '\n') 
         {
-            buf[strlen(buf)-1] = '\0';
+            buf[strlen(buf) - 1] = '\0';
             hardware::serial::write(buf);
             char buf2[1024];
             hardware::serial::write(buf2);
