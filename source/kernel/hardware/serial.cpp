@@ -18,6 +18,7 @@
 
 #include <hardware/serial.hpp>
 #include <util/ports.hpp>
+#include <util/string.hpp>
 
 using mirus::hardware::io::outb;
 using mirus::hardware::io::inb;
@@ -57,6 +58,14 @@ namespace mirus
         {
             while (serial::is_transmit_empty() == 0);
             outb(COM1, a);
+        }
+
+        void serial::write(char* a)
+        {
+            for (unsigned int i = 0; i < strlen(a); i++)
+            {
+                serial::write(a[i]);
+            }
         }
     } // !namespace
 } // !namespace

@@ -32,6 +32,7 @@ namespace mirus
             static int serial_received();
             static int is_transmit_empty();
             static void write(char a);
+            static void write(char* a);
         };
     } // !namespace
 } // !namespace

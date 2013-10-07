@@ -13,16 +13,33 @@
 // limitations under the License.
 
 //
-// string.hpp - string utils
+// printf.hpp - printf and formatting
 //
 
 #pragma once
 
 namespace mirus
 {
-    unsigned int strlen(const char* str);
-    char* itoa (int value);
-    char* strpad(char* data, int padlen);
-    char* strcat(char* dest, const char* src);
-    char* strcpy(char* dest, const char* src);
+   void print_dec(unsigned int value, 
+        unsigned int width, 
+        char* buf, 
+        int* ptr);
+
+    void print_hex(unsigned int value, 
+        unsigned int width, 
+        char* buf, 
+        int* ptr);
+
+    size_t vasprintf(char* buf, 
+        const char* fmt, 
+        va_list args);
+
+    int kprintf(char* file,
+        int line,
+        const char* fmt,
+        ...);
+
+    int sprintf(char* buf,
+        const char *fmt,
+        ...);
 } // !namespace

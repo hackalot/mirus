@@ -17,7 +17,6 @@
 //
 
 #include <stdafx.hpp>
-#include <debug/debug.hpp>
 #include <hardware/serial.hpp>
 #include <util/string.hpp>
 #include <screen/screen.hpp>
@@ -28,45 +27,7 @@ namespace mirus
     {
         void debugger::write(const char *fmt, ...)
         {
-            char** arg = (char**)&fmt;
-            int c;
-            char* buf;
-     
-            arg++;
-     
-            while ((c = *fmt++) != 0)
-            {
-                if (c != '%')
-                    hardware::serial::write(c);
-                else
-                {
-                    char *p;
-                    c = *fmt++;
-
-                    switch (c)
-                    {
-                        case 'd':
-                        case 'u':
-                        case 'x':
-                            itoa(buf, *((int*)arg++), c);
-                            screen::terminal::write(buf);
-                            p = buf;
-                            goto string;
-                            break;
-                        case 's':
-                            p = *arg++;
-                            if (!p)
-                                p = "(null)";
-                        string:
-                            while (*p)
-                                hardware::serial::write(*p++);
-                            break;
-                        default:
-                            hardware::serial::write(*((int *) arg++));
-                            break;
-                    }
-                }
-            }
+            
         }
 
         void debugger::flush()

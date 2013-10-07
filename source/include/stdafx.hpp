@@ -33,3 +33,7 @@
 
 // debugger
 #include <debug/debug.hpp>
+
+// Helpful macros
+#define INT32_MAX 0x7fffffffL
+#define UINT32_MAX 0xffffffffL

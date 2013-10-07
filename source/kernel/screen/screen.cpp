@@ -135,9 +135,9 @@ namespace mirus
 
         void terminal::write(int val)
         {
-            char* buf;
-            itoa(buf, 10, val);
-            terminal::write(buf);
+            // char* buf;
+            // itoa(buf, 10, val);
+            terminal::write(itoa(val));
         }
 
         void terminal::write(unsigned int val)

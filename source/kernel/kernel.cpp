@@ -32,6 +32,8 @@
 #include <msg/message_handler.hpp>
 #include <msg/message.hpp>
 
+#include <util/printf.hpp>
+
 namespace mirus
 {
     // Memory size
@@ -85,7 +87,7 @@ namespace mirus
             {
                 debug::debugger::write("[log] Modules found: %d\n", mod_count);
 
-                auto i = 0;
+                uint32_t i = 0;
                 for (i = 0, mods = (module_t*)mbd->mods_addr;
                     i < mod_count;
                     i++, mods++)
@@ -137,7 +139,7 @@ namespace mirus
         hardware::serial::install();
         debug::debugger::write("OK\n");
 
-        debug::debugger::write("%d", 666);
+        
 
         // WE MUST NEVER RETURN!!!!
         while (true);

@@ -31,47 +31,44 @@ namespace mirus
         return ret;
     }
 
-    void itoa (char *buf, int base, int d)
-     {
-       char *p = buf;
-       char *p1, *p2;
-       unsigned long ud = d;
-       int divisor = 10;
-     
-       /* If %d is specified and D is minus, put `-' in the head. */
-       if (base == 'd' && d < 0)
-         {
-           *p++ = '-';
-           buf++;
-           ud = -d;
-         }
-       else if (base == 'x')
-         divisor = 16;
-     
-       /* Divide UD by DIVISOR until UD == 0. */
-       do
-         {
-           int remainder = ud % divisor;
-     
-           *p++ = (remainder < 10) ? remainder + '0' : remainder + 'a' - 10;
-         }
-       while (ud /= divisor);
-     
-       /* Terminate BUF. */
-       *p = 0;
-     
-       /* Reverse BUF. */
-       p1 = buf;
-       p2 = p - 1;
-       while (p1 < p2)
-         {
-           char tmp = *p1;
-           *p1 = *p2;
-           *p2 = tmp;
-           p1++;
-           p2--;
-         }
-     }
+    char *itoa(int value)
+    {
+        char *rc = 0;
+        char *ptr = 0;
+        char *low = 0;
+
+        rc = ptr;
+
+        // Set '-' for negative decimals.
+        if (value < 0)
+            *ptr++ = '-';
+
+        // Remember where the numbers start.
+        low = ptr;
+
+        // The actual conversion.
+        do
+        {
+            // Modulo is negative for negative value. This trick makes abs() unnecessary.
+            *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz"[35 + value % 10];
+            value /= 10;
+        }
+        while (value);
+
+        // Terminating the string.
+        *ptr-- = '\0';
+
+        // Invert the numbers.
+        while (low < ptr)
+        {
+            char tmp = *low;
+            *low++ = *ptr;
+            *ptr-- = tmp;
+        }
+
+        return rc;
+    }
+
 
     char *strpad(char *data, int padlen)
     {
