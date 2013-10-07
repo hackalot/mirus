@@ -137,7 +137,7 @@ namespace mirus
         hardware::serial::install();
         debug::debugger::write("OK\n");
 
-        debug::debugger::write("Hello, %s", "Mirus");
+        debug::debugger::write("%d", 666);
 
         // WE MUST NEVER RETURN!!!!
         while (true);

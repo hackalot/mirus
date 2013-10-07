@@ -20,6 +20,7 @@
 #include <debug/debug.hpp>
 #include <hardware/serial.hpp>
 #include <util/string.hpp>
+#include <screen/screen.hpp>
 
 namespace mirus
 {
@@ -47,15 +48,16 @@ namespace mirus
                         case 'd':
                         case 'u':
                         case 'x':
-                            itoa(buf, c, *((int *) arg++));
+                            itoa(buf, *((int*)arg++), c);
+                            screen::terminal::write(buf);
                             p = buf;
-                            while (*p)
-                                hardware::serial::write(*p++);
+                            goto string;
                             break;
                         case 's':
                             p = *arg++;
                             if (!p)
                                 p = "(null)";
+                        string:
                             while (*p)
                                 hardware::serial::write(*p++);
                             break;
