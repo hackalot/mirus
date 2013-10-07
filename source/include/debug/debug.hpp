@@ -24,16 +24,20 @@ namespace mirus
     {
         enum class debug_level : int
         {
-            debug_log = 0,
-            debug_error = 1,
-            debug_msg = 2
+            log = 0,
+            error = 1,
+            msg = 2,
+            trace = 3,
+            warning = 4,
+            none = 5
         };
 
         class debugger
         {
         public:
-            static void write(const char *fmt, ...);
-            static void flush();
+            static int write(debug_level level, 
+                const char *fmt, 
+                ...);
         };
     } // !namespace
 } // !namespace

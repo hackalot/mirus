@@ -34,6 +34,9 @@
 
 #include <util/printf.hpp>
 
+using mirus::debug::debug_level;
+using mirus::debug::debugger;
+
 namespace mirus
 {
     // Memory size
@@ -57,17 +60,18 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        debug::debugger::write("[log] Mirus 0.2.5-dev\n\n");
+        debugger::write(debug_level::log, "Mirus 0.2.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
-            debug::debugger::write("[error] Multiboot bootloader magic doesn't match!\n");
+            debugger::write(debug_level::error, 
+                "Multiboot bootloader magic doesn't match!\n");
 
         mod_count = mbd->mods_count;
 
         if (mbd->flags & 1)
         {
-            debug::debugger::write("[log] Reading multiboot header\n");
+            debugger::write(debug_level::log, "Reading multiboot header\n");
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // parse entries
@@ -79,13 +83,18 @@ namespace mirus
 
             memory_size_m = ((memory_size / 1024) / 1024);
 
-            debug::debugger::write("[log] Avalible memory: %dm\n", memory_size_m);
-            debug::debugger::write("[log] Trying to get ramdisk.\n");
+            debugger::write(debug_level::log, 
+                "Avalible memory: %dm\n", 
+                memory_size_m);
+            debugger::write(debug_level::log, 
+                "Trying to get ramdisk.\n");
 
             // Check for any modules, the only of which should be the ramdisk
             if (mod_count > 0)
             {
-                debug::debugger::write("[log] Modules found: %d\n", mod_count);
+                debugger::write(debug_level::log, 
+                    "Modules found: %d\n", 
+                    mod_count);
 
                 uint32_t i = 0;
                 for (i = 0, mods = (module_t*)mbd->mods_addr;
@@ -97,49 +106,48 @@ namespace mirus
             }
             else
             {
-                debug::debugger::write("[log] No modules found.\n");
+                debugger::write(debug_level::log, "No modules found.\n");
             }
         }
 
         if (memory_size_m < 512)
-            debug::debugger::write("[warning] Memory is less than expected minimum\n");
+            debugger::write(debug_level::warning, 
+                "Memory is less than expected minimum\n");
 
         // Install GDT
-        debug::debugger::write("[log] Installing GDT...");
+        debugger::write(debug_level::log, "Installing GDT...");
         cpu::gdt::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Install IDT
-        debug::debugger::write("[log] Installing IDT...");
+        debugger::write(debug_level::log, "Installing IDT...");
         cpu::idt::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Setup ISRs
-        debug::debugger::write("[log] Setting up ISRs...");
+        debugger::write(debug_level::log, "Setting up ISRs...");
         cpu::isr::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Setup IRQs
-        debug::debugger::write("[log] Setting up IRQs...");
+        debugger::write(debug_level::log, "Setting up IRQs...");
         cpu::irq::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Setup screen
-        debug::debugger::write("[log] Setting up screen...");
+        debugger::write(debug_level::log, "Setting up screen...");
         screen::terminal::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Setup timer
-        debug::debugger::write("[log] Setting up timer...");
+        debugger::write(debug_level::log, "Setting up timer...");
         hardware::pit::install();
-        debug::debugger::write("OK\n");
+        debugger::write(debug_level::none, "OK\n");
 
         // Setup serial ports
-        debug::debugger::write("[log] Setting up serial ports...");
+        debugger::write(debug_level::log, "Setting up serial ports...");
         hardware::serial::install();
-        debug::debugger::write("OK\n");
-
-        kprintf("hello");
+        debugger::write(debug_level::none, "OK\n");
 
         // WE MUST NEVER RETURN!!!!
         while (true);

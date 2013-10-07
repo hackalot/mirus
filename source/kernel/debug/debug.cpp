@@ -19,20 +19,36 @@
 #include <stdafx.hpp>
 #include <hardware/serial.hpp>
 #include <util/string.hpp>
-#include <screen/screen.hpp>
+#include <util/printf.hpp>
 
 namespace mirus
 {
     namespace debug
     {
-        void debugger::write(const char *fmt, ...)
+        int debugger::write(debug_level level,
+            const char *fmt, 
+            ...)
         {
-            
-        }
+            char buf[1024] = { -1 };
+            va_list args;
 
-        void debugger::flush()
-        {
-            hardware::serial::write('\n');
+            va_start(args, fmt);
+            int out = vasprintf(buf, fmt, args);
+            va_end(args);
+
+            // Print
+            if (buf[strlen(buf) - 1] == '\n') 
+            {
+                buf[strlen(buf) - 1] = '\0';
+                hardware::serial::write(buf);
+                hardware::serial::write('\n');
+            } 
+            else 
+            {
+                hardware::serial::write(buf);
+            }   
+            
+            return out;    
         }
     } // !namespace
 } // !namespace
