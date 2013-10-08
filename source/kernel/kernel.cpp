@@ -25,12 +25,11 @@
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
 
+#include <process/process.hpp>
+
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
-
-#include <msg/message_handler.hpp>
-#include <msg/message.hpp>
 
 namespace mirus
 {
@@ -48,6 +47,9 @@ namespace mirus
 
     // Modules
     module_t* mods = nullptr;
+
+    // Kernel process id
+    system::pid_t kernel_pid = 0;
 
     //
     // kernel_main - our kernel entry point

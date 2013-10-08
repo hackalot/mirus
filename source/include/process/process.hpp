@@ -13,24 +13,27 @@
 // limitations under the License.
 
 //
-// message_handler.hpp - handles the message queue
+// process.hpp - process information
 //
 
 #pragma once
-
-#include <msg/message.hpp>
 
 namespace mirus
 {
     namespace system
     {
-        class message_handler
+        //
+        // pid_t - helpful wrapper for process ids
+        //
+        typedef uint32_t pid_t;
+
+        //
+        // process_t - defines a process
+        //
+        class process_t
         {
         public:
-            message_t message_queue[256];
-
-            static void dispatch_message(const message_t& msg);
-            static void respond_message(const message_t& msg);
+            pid_t process_id;
         };
     } // !namespace
 } // !namespace
