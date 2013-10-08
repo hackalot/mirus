@@ -19,8 +19,8 @@ $target_bin         = "kernel.bin"
 
 # build information to be passed to kernel
 $version_major      = 0
-$version_minor      = 2
-$version_rev        = 0
+$version_minor      = 3
+$version_rev        = 5
 $version_prefix     = "dev"
 $version_codename   = "wake"
 

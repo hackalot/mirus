@@ -51,6 +51,9 @@ namespace mirus
     // Kernel process id
     system::pid_t kernel_pid = 0;
 
+    // Minimum memory size (512mb)
+    uint32_t min_mem = 512;
+
     //
     // kernel_main - our kernel entry point
     //
@@ -64,20 +67,24 @@ namespace mirus
             ktrace(trace_level::error, 
                 "Multiboot bootloader magic doesn't match!\n");
 
+        // Retrieve number of multiboot modules
         mod_count = mbd->mods_count;
 
+        // Verify if multiboot flags are ok to go
         if (mbd->flags & 1)
         {
+            // Read header and assign
             ktrace(trace_level::log, "Reading multiboot header\n");
             mmap = (memory_map_t*)mbd->mmap_addr;
 
-            // parse entries
+            // Parse entries
             while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) + mbd->mmap_length)
             {
                 memory_size += mmap->length_low;
                 mmap = (memory_map_t*)((unsigned int)mmap + mmap->size + sizeof(unsigned int));
             }
 
+            // Get memory size in megabytes
             memory_size_m = ((memory_size / 1024) / 1024);
 
             ktrace(trace_level::log, 
@@ -98,7 +105,11 @@ namespace mirus
                     i < mod_count;
                     i++, mods++)
                 {
-
+                    ktrace(trace_level::none, "==========\n");
+                    ktrace(trace_level::log, "Module found: [%d:%d]\n",
+                        mods->mod_start,
+                        mods->mod_end);
+                    ktrace(trace_level::none, "==========\n");
                 }
             }
             else
@@ -107,7 +118,8 @@ namespace mirus
             }
         }
 
-        if (memory_size_m < 512)
+        // Check for minimum memory size
+        if (memory_size_m < min_mem)
             ktrace(trace_level::warning, 
                 "Memory is less than expected minimum\n");
 
@@ -146,7 +158,10 @@ namespace mirus
         hardware::serial::install();
         ktrace(trace_level::none, "OK\n");
 
-        // WE MUST NEVER RETURN!!!!
+        // Print kernel information
+        kprintf("Mirus [0.3.5-dev]\n");
+
+        // The point of no return (heh...)
         while (true);
     }
 } // !namespace
