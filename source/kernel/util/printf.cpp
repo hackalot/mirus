@@ -193,13 +193,13 @@ namespace mirus
         if (buf[strlen(buf) - 1] == '\n') 
         {
             buf[strlen(buf) - 1] = '\0';
-            hardware::serial::write(buf);
+            screen::terminal::write(buf);
             char buf2[1024];
-            hardware::serial::write(buf2);
+            screen::terminal::write(buf2);
         } 
         else 
         {
-            hardware::serial::write(buf);
+            screen::terminal::write(buf);
         }   
         return out;
     }

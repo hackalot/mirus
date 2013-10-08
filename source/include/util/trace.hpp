@@ -13,26 +13,33 @@
 // limitations under the License.
 
 //
-// debug.cpp - debugger
+// trace.hpp - trace debugger functions
 //
 
-#include <stdafx.hpp>
-#include <hardware/serial.hpp>
-#include <util/string.hpp>
-#include <screen/screen.hpp>
+#pragma once
 
 namespace mirus
 {
-    namespace debug
+    //
+    // trace_level - defines priority of the message
+    //
+    enum class trace_level : int
     {
-        void debugger::write(const char *fmt, ...)
-        {
-            
-        }
+        log = 0,
+        error = 1,
+        msg = 2,
+        trace = 3,
+        warning = 4,
+        none = 5
+    };
 
-        void debugger::flush()
-        {
-            hardware::serial::write('\n');
-        }
-    } // !namespace
+    //
+    // trace - send a trace message
+    //
+    int trace(trace_level level, const char *fmt, ...);
+
+    //
+    // ktrace - kernel tracing (to the debug console)
+    //
+    int ktrace(trace_level level, const char* fmt, ...);
 } // !namespace
