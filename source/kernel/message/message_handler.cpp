@@ -13,24 +13,22 @@
 // limitations under the License.
 
 //
-// message_handler.hpp - handles the message queue
+// message_handler.cpp - handles the message queue
 //
 
-#pragma once
-
-#include <msg/message.hpp>
+#include <message/message_handler.hpp>
 
 namespace mirus
 {
     namespace system
     {
-        class message_handler
+        void message_handler::dispatch_message(const message_t& msg)
         {
-        public:
-            message_t message_queue[256];
-
-            static void dispatch_message(const message_t& msg);
-            static void respond_message(const message_t& msg);
-        };
+            // Here's how I plan to do things:
+            //
+            //      process_manager.get_from_pid(msg.pid_dest).messages.insert(msg)
+            // 
+            // Sort of
+        }
     } // !namespace
 } // !namespace

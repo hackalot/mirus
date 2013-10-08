@@ -31,5 +31,6 @@
 // screen
 #include <screen/screen.hpp>
 
-// debugger
-#include <debug/debug.hpp>
+// stdio functions
+#include <util/printf.hpp>
+#include <util/trace.hpp>

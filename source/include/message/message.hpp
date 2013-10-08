@@ -29,7 +29,9 @@ namespace mirus
             pingback        = 0x0,
             handshake       = 0x1,
             write_io_port   = 0x2,
-            read_io_port    = 0x3
+            read_io_port    = 0x3,
+            install_irq     = 0x4,
+            remove_irq      = 0x5
         };
 
         class message_t

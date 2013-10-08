@@ -25,14 +25,11 @@
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
 
+#include <process/process.hpp>
+
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
-
-#include <msg/message_handler.hpp>
-#include <msg/message.hpp>
-
-#include <util/printf.hpp>
 
 namespace mirus
 {
@@ -51,23 +48,27 @@ namespace mirus
     // Modules
     module_t* mods = nullptr;
 
+    // Kernel process id
+    system::pid_t kernel_pid = 0;
+
     //
     // kernel_main - our kernel entry point
     //
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        debug::debugger::write("[log] Mirus 0.2.5-dev\n\n");
+        ktrace(trace_level::log, "Mirus 0.2.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
-            debug::debugger::write("[error] Multiboot bootloader magic doesn't match!\n");
+            ktrace(trace_level::error, 
+                "Multiboot bootloader magic doesn't match!\n");
 
         mod_count = mbd->mods_count;
 
         if (mbd->flags & 1)
         {
-            debug::debugger::write("[log] Reading multiboot header\n");
+            ktrace(trace_level::log, "Reading multiboot header\n");
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // parse entries
@@ -79,13 +80,18 @@ namespace mirus
 
             memory_size_m = ((memory_size / 1024) / 1024);
 
-            debug::debugger::write("[log] Avalible memory: %dm\n", memory_size_m);
-            debug::debugger::write("[log] Trying to get ramdisk.\n");
+            ktrace(trace_level::log, 
+                "Avalible memory: %dm\n", 
+                memory_size_m);
+            ktrace(trace_level::log, 
+                "Trying to get ramdisk.\n");
 
             // Check for any modules, the only of which should be the ramdisk
             if (mod_count > 0)
             {
-                debug::debugger::write("[log] Modules found: %d\n", mod_count);
+                ktrace(trace_level::log, 
+                    "Modules found: %d\n", 
+                    mod_count);
 
                 uint32_t i = 0;
                 for (i = 0, mods = (module_t*)mbd->mods_addr;
@@ -97,49 +103,48 @@ namespace mirus
             }
             else
             {
-                debug::debugger::write("[log] No modules found.\n");
+                ktrace(trace_level::log, "No modules found.\n");
             }
         }
 
         if (memory_size_m < 512)
-            debug::debugger::write("[warning] Memory is less than expected minimum\n");
+            ktrace(trace_level::warning, 
+                "Memory is less than expected minimum\n");
 
         // Install GDT
-        debug::debugger::write("[log] Installing GDT...");
+        ktrace(trace_level::log, "Installing GDT...");
         cpu::gdt::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Install IDT
-        debug::debugger::write("[log] Installing IDT...");
+        ktrace(trace_level::log, "Installing IDT...");
         cpu::idt::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup ISRs
-        debug::debugger::write("[log] Setting up ISRs...");
+        ktrace(trace_level::log, "Setting up ISRs...");
         cpu::isr::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup IRQs
-        debug::debugger::write("[log] Setting up IRQs...");
+        ktrace(trace_level::log, "Setting up IRQs...");
         cpu::irq::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup screen
-        debug::debugger::write("[log] Setting up screen...");
+        ktrace(trace_level::log, "Setting up screen...");
         screen::terminal::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup timer
-        debug::debugger::write("[log] Setting up timer...");
+        ktrace(trace_level::log, "Setting up timer...");
         hardware::pit::install();
-        debug::debugger::write("OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup serial ports
-        debug::debugger::write("[log] Setting up serial ports...");
+        ktrace(trace_level::log, "Setting up serial ports...");
         hardware::serial::install();
-        debug::debugger::write("OK\n");
-
-        kprintf("hello");
+        ktrace(trace_level::none, "OK\n");
 
         // WE MUST NEVER RETURN!!!!
         while (true);

@@ -13,27 +13,24 @@
 // limitations under the License.
 
 //
-// debug.hpp - debugger
+// message_handler.hpp - handles the message queue
 //
 
 #pragma once
 
+#include <message/message.hpp>
+
 namespace mirus
 {
-    namespace debug
+    namespace system
     {
-        enum class debug_level : int
-        {
-            debug_log = 0,
-            debug_error = 1,
-            debug_msg = 2
-        };
-
-        class debugger
+        class message_handler
         {
         public:
-            static void write(const char *fmt, ...);
-            static void flush();
+            message_t message_queue[256];
+
+            static void dispatch_message(const message_t& msg);
+            static void respond_message(const message_t& msg);
         };
     } // !namespace
 } // !namespace

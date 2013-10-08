@@ -13,22 +13,27 @@
 // limitations under the License.
 
 //
-// message_handler.cpp - handles the message queue
+// process.hpp - process information
 //
 
-#include <msg/message_handler.hpp>
+#pragma once
 
 namespace mirus
 {
     namespace system
     {
-        void message_handler::dispatch_message(const message_t& msg)
+        //
+        // pid_t - helpful wrapper for process ids
+        //
+        typedef uint32_t pid_t;
+
+        //
+        // process_t - defines a process
+        //
+        class process_t
         {
-            // Here's how I plan to do things:
-            //
-            //      process_manager.get_from_pid(msg.pid_dest).messages.insert(msg)
-            // 
-            // Sort of
-        }
+        public:
+            pid_t process_id;
+        };
     } // !namespace
 } // !namespace
