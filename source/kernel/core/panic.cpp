@@ -24,6 +24,9 @@ namespace mirus
 {
     namespace core
     {
+        //
+        // exception_messages - all intel messages possible
+        //
         const char* exception_messages[] =
         { 
             "Division By Zero",
@@ -63,7 +66,10 @@ namespace mirus
             "Reserved"
         };
 
-        // TODO: this is a mess....
+        //
+        // panic_at_the_disco - Kill the kernel and light everything on fire
+        //                      TODO: this is a mess...
+        //
         void panic(cpu::regs* r)
         {
             if (r->int_no < 32)

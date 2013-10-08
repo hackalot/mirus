@@ -24,6 +24,9 @@ namespace mirus
 {
     namespace core
     {
+        //
+        // panic_at_the_disco - Kill the kernel and light everything on fire
+        //
         void panic(cpu::regs* r);
     } // !namespace
 } // !namespace
