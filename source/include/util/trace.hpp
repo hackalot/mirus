@@ -13,31 +13,33 @@
 // limitations under the License.
 
 //
-// debug.hpp - debugger
+// trace.hpp - trace debugger functions
 //
 
 #pragma once
 
 namespace mirus
 {
-    namespace debug
+    //
+    // trace_level - defines priority of the message
+    //
+    enum class trace_level : int
     {
-        enum class debug_level : int
-        {
-            log = 0,
-            error = 1,
-            msg = 2,
-            trace = 3,
-            warning = 4,
-            none = 5
-        };
+        log = 0,
+        error = 1,
+        msg = 2,
+        trace = 3,
+        warning = 4,
+        none = 5
+    };
 
-        class debugger
-        {
-        public:
-            static int write(debug_level level, 
-                const char *fmt, 
-                ...);
-        };
-    } // !namespace
+    //
+    // trace - send a trace message
+    //
+    int trace(trace_level level, const char *fmt, ...);
+
+    //
+    // ktrace - kernel tracing (to the debug console)
+    //
+    int ktrace(trace_level level, const char* fmt, ...);
 } // !namespace

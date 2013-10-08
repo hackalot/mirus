@@ -32,11 +32,6 @@
 #include <msg/message_handler.hpp>
 #include <msg/message.hpp>
 
-#include <util/printf.hpp>
-
-using mirus::debug::debug_level;
-using mirus::debug::debugger;
-
 namespace mirus
 {
     // Memory size
@@ -60,18 +55,18 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        debugger::write(debug_level::log, "Mirus 0.2.5-dev\n\n");
+        ktrace(trace_level::log, "Mirus 0.2.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
-            debugger::write(debug_level::error, 
+            ktrace(trace_level::error, 
                 "Multiboot bootloader magic doesn't match!\n");
 
         mod_count = mbd->mods_count;
 
         if (mbd->flags & 1)
         {
-            debugger::write(debug_level::log, "Reading multiboot header\n");
+            ktrace(trace_level::log, "Reading multiboot header\n");
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // parse entries
@@ -83,16 +78,16 @@ namespace mirus
 
             memory_size_m = ((memory_size / 1024) / 1024);
 
-            debugger::write(debug_level::log, 
+            ktrace(trace_level::log, 
                 "Avalible memory: %dm\n", 
                 memory_size_m);
-            debugger::write(debug_level::log, 
+            ktrace(trace_level::log, 
                 "Trying to get ramdisk.\n");
 
             // Check for any modules, the only of which should be the ramdisk
             if (mod_count > 0)
             {
-                debugger::write(debug_level::log, 
+                ktrace(trace_level::log, 
                     "Modules found: %d\n", 
                     mod_count);
 
@@ -106,48 +101,48 @@ namespace mirus
             }
             else
             {
-                debugger::write(debug_level::log, "No modules found.\n");
+                ktrace(trace_level::log, "No modules found.\n");
             }
         }
 
         if (memory_size_m < 512)
-            debugger::write(debug_level::warning, 
+            ktrace(trace_level::warning, 
                 "Memory is less than expected minimum\n");
 
         // Install GDT
-        debugger::write(debug_level::log, "Installing GDT...");
+        ktrace(trace_level::log, "Installing GDT...");
         cpu::gdt::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Install IDT
-        debugger::write(debug_level::log, "Installing IDT...");
+        ktrace(trace_level::log, "Installing IDT...");
         cpu::idt::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup ISRs
-        debugger::write(debug_level::log, "Setting up ISRs...");
+        ktrace(trace_level::log, "Setting up ISRs...");
         cpu::isr::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup IRQs
-        debugger::write(debug_level::log, "Setting up IRQs...");
+        ktrace(trace_level::log, "Setting up IRQs...");
         cpu::irq::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup screen
-        debugger::write(debug_level::log, "Setting up screen...");
+        ktrace(trace_level::log, "Setting up screen...");
         screen::terminal::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup timer
-        debugger::write(debug_level::log, "Setting up timer...");
+        ktrace(trace_level::log, "Setting up timer...");
         hardware::pit::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // Setup serial ports
-        debugger::write(debug_level::log, "Setting up serial ports...");
+        ktrace(trace_level::log, "Setting up serial ports...");
         hardware::serial::install();
-        debugger::write(debug_level::none, "OK\n");
+        ktrace(trace_level::none, "OK\n");
 
         // WE MUST NEVER RETURN!!!!
         while (true);
