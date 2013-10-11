@@ -23,7 +23,6 @@ You can run the following commands to configure and build the system:
 ```
 git clone https://github.com/joshbeitler/mirus.git --recursive
 cd mirus
-git submodule init
 rake
 ```
 
