@@ -109,6 +109,7 @@ namespace mirus
                     ktrace(trace_level::log, "Module found: [%d:%d]\n",
                         mods->mod_start,
                         mods->mod_end);
+
                     ktrace(trace_level::none, "==========\n");
                 }
             }
