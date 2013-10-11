@@ -26,7 +26,7 @@ $version_codename   = "wake"
 
 # source files
 $cpp_files          = FileList['source/kernel/**/*.cpp', 'source/system/**/*.cpp', 'source/*.cpp']
-$header_files       = FileList['source/include/*.hpp', 'source/library/*.hpp']
+$header_files       = FileList['source/include/*.hpp', 'source/common/**/*.h*']
 $asm_files          = FileList['source/asm/*.asm']
 
 # object files
@@ -39,7 +39,7 @@ $dep_files          = $cpp_files.sub(/\.cpp$/, '.d')
 # clang + additional options
 $compiler           = "clang++"
 $warnings           = "-Wall -Wextra -Wno-unused-parameter "
-$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -m32 -O0 "
+$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -nostdlib -m32 -O0 "
 $include_paths      = "-Isource/include -Isource/library "
 $cpp_flags          = $warnings << $options << $include_paths 
 

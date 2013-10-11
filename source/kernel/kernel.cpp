@@ -18,6 +18,7 @@
 //
     
 #include <stdafx.hpp>
+#include <type.hpp>
 #include <boot/multiboot.hpp>
 
 #include <cpu/gdt.hpp>
@@ -33,25 +34,39 @@
 
 namespace mirus
 {
+    //
     // Memory size
+    //
     uint32_t memory_size = 0;
 
+    //
     // Memory size (mb)
+    //
     uint32_t memory_size_m = 0;
 
+    //
     // Memory map
+    //
     memory_map_t* mmap = nullptr;
 
+    //
     // Module count
+    //
     uint32_t mod_count = 0;
 
+    //
     // Modules
+    //
     module_t* mods = nullptr;
 
+    //
     // Kernel process id
+    //
     system::pid_t kernel_pid = 0;
 
+    //
     // Minimum memory size (512mb)
+    //
     uint32_t min_mem = 512;
 
     //
