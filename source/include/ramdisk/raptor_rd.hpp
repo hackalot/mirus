@@ -59,7 +59,7 @@ namespace mirus
         class raptor_superblock
         {
         public:
-            int8_t fs_magic;
+            int32_t fs_magic;
             uint8_t fs_version;
             uint32_t inode_count;
             uint32_t used_inode_count;
@@ -81,6 +81,8 @@ namespace mirus
         {
             raptor_superblock* sb = (raptor_superblock*)location;
             ktrace(trace_level::log, "Magic: %x\n", sb->fs_magic);
+            if (sb->fs_magic = (int32_t)0x2a2a2a2a)
+                ktrace(trace_level::log, "Magic matches!\n");
         }
     } // !namespace
 } // !namespace
