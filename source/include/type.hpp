@@ -25,6 +25,6 @@ namespace mirus
     class kerninfo_t
     {
     public:
-        const unsigned int KERNEL_MAGIC = 0xD15C073C4;
+        // const unsigned int KERNEL_MAGIC = 0x13374045
     };
 } // !namespace

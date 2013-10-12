@@ -32,6 +32,8 @@
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
 
+#include <ramdisk/raptor_rd.hpp>
+
 namespace mirus
 {
     //
@@ -124,6 +126,8 @@ namespace mirus
                     ktrace(trace_level::log, "Module found: [%d:%d]\n",
                         mods->mod_start,
                         mods->mod_end);
+
+                    boot::read_ramdisk(mods->mod_start);
 
                     ktrace(trace_level::none, "==========\n");
                 }
