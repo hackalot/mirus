@@ -61,9 +61,11 @@ namespace mirus
         public:
             int32_t fs_magic;
             uint8_t fs_version;
+            uint8_t fs_class;
             uint32_t inode_count;
             uint32_t used_inode_count;
-        };
+            uint32_t used_block_count;
+        } __attribute__ ((__packed__));
 
         class raptor_ramdisk
         {
@@ -83,6 +85,8 @@ namespace mirus
             ktrace(trace_level::log, "Magic: %x\n", sb->fs_magic);
             if (sb->fs_magic = (int32_t)0x2a2a2a2a)
                 ktrace(trace_level::log, "Magic matches!\n");
+            ktrace(trace_level::log, "Filesystem version: %d\n", sb->fs_version);
+            ktrace(trace_level::log, "Filesystem class: %d\n", sb->fs_class);
         }
     } // !namespace
 } // !namespace

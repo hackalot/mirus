@@ -23,9 +23,53 @@
 
 #include <unistd.h>
 #include <dirent.h>
+#include <stdio.h>
 
 std::string output_name = "filesystem.img";
 std::string input_dir;
+
+enum class raptor_inode_type : int
+{
+    null = 0x00,
+    file = 0x01,
+    pipe = 0x02,
+    dir  = 0x03
+};
+
+enum class raptor_inode_flags : int
+{
+    ro         = 0x00,
+    hidden     = 0x01,
+    compressed = 0x02,
+    encrypted  = 0x03
+};
+
+class raptor_inode
+{
+public:
+    char name[256];
+    uint8_t   type;
+    uint8_t   flags;
+    uint8_t   permissions;
+    uintptr_t blocks[256];
+};
+
+class raptor_block
+{
+public:
+    uint32_t data[512];
+};
+
+class raptor_superblock
+{
+public:
+    int32_t fs_magic;
+    uint8_t fs_version;
+    uint8_t fs_class;
+    uint32_t inode_count;
+    uint32_t used_inode_count;
+    uint32_t used_block_count;
+};
 
 void print_usage()
 {
@@ -44,24 +88,28 @@ void print_usage()
 
 void generate_image()
 {
-    DIR *dir;
-    struct dirent *ent;
-    
-    if ((dir = opendir(input_dir))) != NULL) {
-        /* print all the files and directories within directory */
-        while ((ent = readdir(dir)) != NULL) {
-            printf("%s\n", ent->d_name);
-        }
-        
-        closedir(dir);
-    } 
-    else 
+    raptor_superblock mBlock;
+    mBlock.fs_magic = 0x2a2a2a2a;
+    mBlock.fs_version = 1;
+    mBlock.fs_class = 2;
+
+
+
+    FILE* outfile;
+
+    outfile = fopen(output_name.c_str(), "wb");
+
+    if (!outfile)
     {
+        printf("Can't open file.");
         exit(1);
     }
+
+    fwrite(&mBlock, sizeof(raptor_superblock), 1, outfile);
+    fclose(outfile);
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
@@ -77,7 +125,7 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "Error.  Must provide input directory name" << std::endl;
-        exit(1)
+        exit(1);
     }
 
     generate_image();
