@@ -1,0 +1,53 @@
+# docscript - the most amazing markup language ever. period.
+
+{title}
+    docscript
+
+{section}
+    {title} How To Use
+    {p}
+        Its rather simple.  Docscript was created to counter the ugly and
+        unintuitive markup languages used by UNIX.  It was designed for Mirus,
+        but is cross platform and open source.
+    {p}
+        It is minimal, familiar, and loosly typed.  It is designed to be used
+        for things such as:
+
+        * man pages
+        * document markup
+        * printer spooling
+        * graphic design
+        * readmes
+        * documentation
+
+{section}
+    {title} Neat Features
+    {p}
+        Docscript has a few neat tricks up its sleve to help you get your work
+        done as fast as possible.
+
+    {sh} Syntax
+    {p}
+        The syntax is similar to HTML, but very lax and non-verbose.  It is
+        totally DRY oriented, so you can get more done with less typing.
+
+    {sh} Flow
+    {p}
+        Docscript is designed to flow elegantly, according to your workflow.
+        The various headers and section elements were created in a way the
+        matches the way documents are generally written and read.
+
+    {sh} Readability
+    {p}
+        Not everyone is going to have a Docscript compiler or reader handy.
+        We know this, so Docscript was created with readability in mind.  Every
+        document created with Docscript is readable and makes sense without
+        needing to convert it to HTML, making it perfect for code documentation
+        and support files.
+
+    {sh} Tables
+    {table:3x3}
+        It | Is | Rather
+        Simple | To | Use
+        Tables | In | Docscript
+
