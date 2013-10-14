@@ -1,5 +1,3 @@
-# docscript - the most amazing markup language ever. period.
-
 {title}
     docscript
 
@@ -51,3 +49,26 @@
         Simple | To | Use
         Tables | In | Docscript
 
+    {sh} Images
+    {img:/home/johnsmith/image.png}
+        {caption} This is my pet cat - Frodo.
+        {link:www.frodo.com}
+        {title} His website
+
+{section}
+    {title} Sweet.  How do I get it?
+    {p}
+        We assume by this point, you absolutly *must* try this.  Good, that
+        means the mind control is working.
+
+    {sh} Downloads
+    {p}
+        {link:www.docscript.org/downloads}
+
+    {sh} Try it online
+    {p}
+        {link:www.docscript.org/try}
+
+    {sh} Rubygem
+    {p}
+        {link:www.rubygems.org/dfdadf}
