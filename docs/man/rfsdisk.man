@@ -1,0 +1,28 @@
+.\" Manpage for rfsdisk
+.\" Copyright 2013 Mirus Project
+
+.TH man 8 "13 October 2013" "1.0" "rfsdisk man page"
+.SH NAME
+rfsdisk \- generate raptor file system images
+.SH SYNOPSIS
+rfsdisk [OPTIONS]... [DIRTREE]...
+.SH DESCRIPTION
+rfsdisk is used to create full system images from directory trees, useful for
+creating ramdisks, backups, or archives.
+.SH OPTIONS
+-o, --output
+.RS
+Specify output file name (default: raptor.img)
+.RE
+
+-v, --verbose
+.RS
+Display program output
+.RE
+
+-c, --compression
+.RS
+Compression level of the image (default: 0)
+.RE
+
+
