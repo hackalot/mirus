@@ -18,8 +18,8 @@
 //
     
 #include <stdafx.hpp>
-#include <type.hpp>
 #include <boot/multiboot.hpp>
+#include <boot/ramdisk.hpp>
 
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
@@ -31,8 +31,6 @@
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>
-
-#include <ramdisk/raptor_rd.hpp>
 
 namespace mirus
 {
@@ -127,7 +125,7 @@ namespace mirus
                         mods->mod_start,
                         mods->mod_end);
 
-                    boot::read_ramdisk(mods->mod_start);
+                    boot::parse_tar(mods->mod_start);
 
                     ktrace(trace_level::none, "==========\n");
                 }
