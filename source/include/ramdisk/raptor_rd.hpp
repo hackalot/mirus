@@ -69,8 +69,7 @@ namespace mirus
 
         class raptor_ramdisk
         {
-        public:
-            const uint32_t sb_offset = 0;
+        public: 
             const uint32_t sb_length = 1024;
             
             raptor_superblock* sb = nullptr;
@@ -81,12 +80,21 @@ namespace mirus
 
         void read_ramdisk(uint32_t location)
         {
+            ktrace(trace_level::log, "--Superblock start--\n");
+            
             raptor_superblock* sb = (raptor_superblock*)location;
-            ktrace(trace_level::log, "Magic: %x\n", sb->fs_magic);
-            if (sb->fs_magic = (int32_t)0x2a2a2a2a)
-                ktrace(trace_level::log, "Magic matches!\n");
-            ktrace(trace_level::log, "Filesystem version: %d\n", sb->fs_version);
-            ktrace(trace_level::log, "Filesystem class: %d\n", sb->fs_class);
+            
+            if (sb->fs_magic == (int32_t)0x2a2a2a2a)
+                ktrace(trace_level::log, "\tMagic matches!\n");
+            else
+                ktrace(trace_level::log, "\tMagic: %x\n", sb->fs_magic);
+
+            ktrace(trace_level::log, "\tFilesystem version: %d\n", sb->fs_version);
+            ktrace(trace_level::log, "\tFilesystem class: %d\n", sb->fs_class);
+            ktrace(trace_level::log, "\tInode count: %d\n", sb->inode_count);
+            ktrace(trace_level::log, "\t(Used) Inode count: %d\n", sb->used_inode_count);
+
+            ktrace(trace_level::log, "--Superblock end--\n");
         }
     } // !namespace
 } // !namespace

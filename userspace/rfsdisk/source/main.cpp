@@ -20,10 +20,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #include <unistd.h>
 #include <dirent.h>
 #include <stdio.h>
+#include <cstring>
 
 std::string output_name = "filesystem.img";
 std::string input_dir;
@@ -86,6 +88,31 @@ void print_usage()
     std::cout << "\t\tspecify output file name (default: filesystem.img)" << std::endl;
 }
 
+std::vector<std::string> list_dir(const char *mdir)
+{
+    std::vector<std::string> mret;
+
+    DIR *dir;
+    struct dirent *ent;
+    if ((dir = opendir(mdir)) != NULL)
+    {
+        /* print all the files and directories within directory */
+        while ((ent = readdir(dir)) != NULL)
+        {
+            // printf ("%s\n", ent->d_name);
+            mret.push_back(ent->d_name);
+        }
+        closedir (dir);
+    }
+    else
+    {
+        /* could not open directory */
+        exit(1);
+    }
+
+    return mret;
+}
+
 void generate_image()
 {
     raptor_superblock mBlock;
@@ -93,17 +120,27 @@ void generate_image()
     mBlock.fs_version = 1;
     mBlock.fs_class = 2;
 
-
-
-    FILE* outfile;
-
-    outfile = fopen(output_name.c_str(), "wb");
+    FILE *outfile = fopen(output_name.c_str(), "wb");
 
     if (!outfile)
     {
         printf("Can't open file.");
         exit(1);
     }
+
+    // auto a = list_dir(input_dir.c_str());
+
+    // for (auto i = 0; i < a.size(); i++)
+    // {
+    //     raptor_inode mInode;
+    //     // strcpy(mInode.name, a[i].c_str());
+    //     mInode.type = (uint8_t)raptor_inode_type::file;
+    //     mInode.flags = (uint8_t)0;
+    //     // mBlock.inode_count++;
+    //     mBlock.used_inode_count++;
+
+    //     fwrite(&mInode, sizeof(raptor_inode), 1, outfile);
+    // }
 
     fwrite(&mBlock, sizeof(raptor_superblock), 1, outfile);
     fclose(outfile);
