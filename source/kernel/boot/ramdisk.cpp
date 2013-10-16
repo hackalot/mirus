@@ -26,7 +26,7 @@ namespace mirus
         //
         // headers - File headers for all our files
         //
-        tar_header_t* headers[2];
+        tar_header_t* headers[32];
 
         //
         // get_size - Get size of tar file
