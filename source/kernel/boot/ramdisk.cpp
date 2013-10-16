@@ -64,9 +64,7 @@ namespace mirus
                 if (size % 512)
                     address += 512;
 
-                // ktrace(trace_level::log, "Filename: %s\n", header->filename);
-                const char* val = *((header) + 512);
-                ktrace(trace_level::log, "%s: %s\n", header->filename, val);
+                ktrace(trace_level::log, "Filename: %s\n", header->filename);
             }
 
         }
