@@ -177,7 +177,7 @@ namespace mirus
         ktrace(trace_level::none, "OK\n");
 
         // Print kernel information
-        kprintf("Mirus [%s.%d.%d-%s]\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV, BUILD_PREFIX);
+        kprintf("Mirus [%s.%d.%d-dev]\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
         kprintf("Unless required by applicable law or agreed to in writing, software\n");
         kprintf("distributed under the License is distributed on an \"AS IS\" BASIS,\n");
         kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
