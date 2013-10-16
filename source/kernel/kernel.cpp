@@ -107,33 +107,6 @@ namespace mirus
                 memory_size_m);
             ktrace(trace_level::log, 
                 "Trying to get ramdisk.\n");
-
-            // Check for any modules, the only of which should be the ramdisk
-            if (mod_count > 0)
-            {
-                ktrace(trace_level::log, 
-                    "Modules found: %d\n", 
-                    mod_count);
-
-                uint32_t i = 0;
-                for (i = 0, mods = (module_t*)mbd->mods_addr;
-                    i < mod_count;
-                    i++, mods++)
-                {
-                    ktrace(trace_level::none, "==========\n");
-                    ktrace(trace_level::log, "Module found: [%d:%d]\n",
-                        mods->mod_start,
-                        mods->mod_end);
-
-                    boot::parse_tar(mods->mod_start);
-
-                    ktrace(trace_level::none, "==========\n");
-                }
-            }
-            else
-            {
-                ktrace(trace_level::log, "No modules found.\n");
-            }
         }
 
         // Check for minimum memory size
@@ -181,7 +154,37 @@ namespace mirus
         kprintf("Unless required by applicable law or agreed to in writing, software\n");
         kprintf("distributed under the License is distributed on an \"AS IS\" BASIS,\n");
         kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
-        kprintf("limitations under the License.\n");
+        kprintf("limitations under the License.\n\n");
+
+        // Check for any modules, the only of which should be the ramdisk
+        if (mod_count > 0)
+        {
+            ktrace(trace_level::log, 
+                "Modules found: %d\n", 
+                mod_count);
+
+            uint32_t i = 0;
+            for (i = 0, mods = (module_t*)mbd->mods_addr;
+                i < mod_count;
+                i++, mods++)
+            {
+                ktrace(trace_level::none, "==========\n");
+                ktrace(trace_level::log, "Module found: [%d:%d]\n",
+                    mods->mod_start,
+                    mods->mod_end);
+
+                // load the ramdisk
+                kprintf("Loading ramdisk...");
+                boot::parse_tar(mods->mod_start);
+                kprintf("[OK]\n");
+
+                ktrace(trace_level::none, "==========\n");
+            }
+        }
+        else
+        {
+            ktrace(trace_level::log, "No modules found.\n");
+        }
 
         // The point of no return (heh...)
         while (true);
