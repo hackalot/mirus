@@ -18,10 +18,6 @@
 
 #pragma once
 
-// max
-#define INT32_MAX 0x7fffffffL
-#define UINT32_MAX 0xffffffffL
-
 namespace mirus
 {
    void print_dec(unsigned int value, 

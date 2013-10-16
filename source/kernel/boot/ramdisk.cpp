@@ -59,14 +59,18 @@ namespace mirus
 
                 headers[i] = header;
 
+                // const char* file_content = (((char*)&header) + 512);
+                const char* file_content = (((char*)&header) + 512);
+
+                ktrace(trace_level::log, "Filename: %s\n", header->filename);
+                ktrace(trace_level::log, "\tFile size: %d\n", size);
+                ktrace(trace_level::log, "\tFile content: %s\n", file_content);
+
                 address += ((size / 512) + 1) * 512;
 
                 if (size % 512)
                     address += 512;
-
-                ktrace(trace_level::log, "Filename: %s\n", header->filename);
             }
-
         }
     } // !namespace
 } // !namespace

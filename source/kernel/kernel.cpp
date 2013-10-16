@@ -75,7 +75,7 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        ktrace(trace_level::log, "Mirus 0.2.5-dev\n\n");
+        ktrace(trace_level::log, "Mirus 0.3.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
@@ -177,13 +177,11 @@ namespace mirus
         ktrace(trace_level::none, "OK\n");
 
         // Print kernel information
-        kprintf("Mirus [%s.%d.%d-dev]\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
+        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
         kprintf("Unless required by applicable law or agreed to in writing, software\n");
         kprintf("distributed under the License is distributed on an \"AS IS\" BASIS,\n");
         kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
-        kprintf("limitations under the License.\n\n");
-
-        
+        kprintf("limitations under the License.\n");
 
         // The point of no return (heh...)
         while (true);
