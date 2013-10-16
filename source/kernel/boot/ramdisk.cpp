@@ -51,6 +51,7 @@ namespace mirus
             for (uint32_t i = 0; ; i++)
             {
                 tar_header_t* header = (tar_header_t*)address;
+                char* file_content = (((char*)address) + 512);
 
                 if (header->filename[0] == '\0')
                     break;
@@ -58,9 +59,6 @@ namespace mirus
                 uint32_t size = get_size(header->size);
 
                 headers[i] = header;
-
-                // const char* file_content = (((char*)&header) + 512);
-                const char* file_content = (((char*)&header) + 512);
 
                 ktrace(trace_level::log, "Filename: %s\n", header->filename);
                 ktrace(trace_level::log, "\tFile size: %d\n", size);
