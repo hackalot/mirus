@@ -192,10 +192,10 @@ namespace mirus
         // Print
         if (buf[strlen(buf) - 1] == '\n') 
         {
-            buf[strlen(buf) - 1] = '\0';
+            // buf[strlen(buf) - 1] = '\0';
             screen::terminal::write(buf);
-            char buf2[1024];
-            screen::terminal::write(buf2);
+            // char buf2[1024];
+            // screen::terminal::write(buf2);
         } 
         else 
         {
