@@ -177,7 +177,11 @@ namespace mirus
         ktrace(trace_level::none, "OK\n");
 
         // Print kernel information
-        kprintf("Mirus [0.3.5-dev]\n");
+        kprintf("Mirus [%s.%d.%d-%s]\n", VERSION_MAJOR, VERSION_MINOR, VERSION_REV, VERSION_PREFIX);
+        kprintf("Unless required by applicable law or agreed to in writing, software\n");
+        kprintf("distributed under the License is distributed on an \"AS IS\" BASIS,\n");
+        kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
+        kprintf("limitations under the License.\n\n");
 
         // The point of no return (heh...)
         while (true);
