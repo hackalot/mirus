@@ -34,3 +34,7 @@
 // stdio functions
 #include <util/printf.hpp>
 #include <util/trace.hpp>
+
+// max
+#define INT32_MAX 0x7fffffffL
+#define UINT32_MAX 0xffffffffL
