@@ -183,6 +183,8 @@ namespace mirus
         kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
         kprintf("limitations under the License.\n\n");
 
+        
+
         // The point of no return (heh...)
         while (true);
     }
