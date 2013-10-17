@@ -159,6 +159,8 @@ namespace mirus
         // Check for any modules, the only of which should be the ramdisk
         if (mod_count > 0)
         {
+            kprintf("Loading ramdisk...");
+
             ktrace(trace_level::log, 
                 "Modules found: %d\n", 
                 mod_count);
@@ -174,9 +176,8 @@ namespace mirus
                     mods->mod_end);
 
                 // load the ramdisk
-                kprintf("Loading ramdisk...");
                 boot::parse_tar(mods->mod_start);
-                kprintf("[OK]\n");
+                kprintf("[ OK ]\n");
 
                 ktrace(trace_level::none, "==========\n");
             }
@@ -184,6 +185,7 @@ namespace mirus
         else
         {
             ktrace(trace_level::log, "No modules found.\n");
+            kprintf("[ERROR]\n");
         }
 
         // The point of no return (heh...)

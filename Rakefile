@@ -33,7 +33,7 @@ require './build/lib/tasks/kernel'
 require './build/lib/tasks/qemu'
 require './build/lib/tasks/configure'
 require './build/lib/tasks/link'
-require './build/lib/tasks/initrd'
+require './build/lib/tasks/ramdisk'
 
 directory "./build/logs"
 
