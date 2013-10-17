@@ -68,8 +68,8 @@ namespace mirus
 
                 // START ELF STUFF ---------------------------------------------
                 // TODO: put this somewhere proper...
-
                 ktrace(trace_level::none, "--- Elf load started ---\n");
+
                 Elf32_Header* header1 = ((Elf32_Header*)(address + 512));
 
                 if (header1->e_ident[0] != ELFMAG0 ||
@@ -82,10 +82,20 @@ namespace mirus
                 else
                 {
                     ktrace(trace_level::log, "ELF magic checks out\n");
+
+                    for (uintptr_t x = 0; 
+                        x < (uint32_t)header1->e_shentsize * header1->e_shnum;
+                        x+= header1->sh_entsize)
+                    {
+                        Elf32_Shdr* s_header = (Elf32_Shdr*)((uintptr_t)header1 + (header1->e_shoff + x));
+                        if (s_header->sh_addr)
+                        {
+                            
+                        }
+                    }
                 }
 
                 ktrace(trace_level::none, "--- Elf load ended ---\n");
-
                 // END ELF STUFF -----------------------------------------------
 
                 address += ((size / 512) + 1) * 512;
