@@ -26,11 +26,11 @@ namespace mirus
 		//
 		// ELF magic structure
 		//
-		const unsigned char ELFMAG0   0x7f
-		const unsigned char ELFMAG1   'E'
-		const unsigned char ELFMAG2   'L'
-		const unsigned char ELFMAG3   'F'
-		const unsigned char EI_NIDENT 16
+		const unsigned char ELFMAG0   = 0x7f;
+		const unsigned char ELFMAG1   = 'E';
+		const unsigned char ELFMAG2   = 'L';
+		const unsigned char ELFMAG3   = 'F';
+		const unsigned char EI_NIDENT = 16;
 
 		//
 		// ELF data types
@@ -141,34 +141,27 @@ namespace mirus
 		//
 		// ELF Flags - used for the e_flags field of the header
 		//
-		enum class Elf_Flags : Elf32_Word
-		{
-			EF_SPARC_EXT_MASK	= 0xffff00,		// Vendor execption mask
-			EF_SPARC_32PLUS		= 0x000100,		// Generic V8+ features
-			EF_SPARC_SUN_US1	= 0x000200,		// Sun UltraSPARC 1 extensions
-			EF_SPARC_HALR1		= 0x000400,		// HAL R1 extensions
-			EF_SPARC_SUN_US4	= 0x000800,		// Sun UltraSPARC 3 extensions
-			EF_SPARCV9MM		= 0x3,			// Mask for memory model
-			EF_SPARCV9_TSO		= 0x0,			// Total store ordering
-			EF_SPARCV9_PSO		= 0x1,			// Partial store ordering
-			EF_SPARCV9_RMO		= 0x2 			// Relaxed memory ordering
-		};
-
+		#define EF_SPARC_EXT_MASK	 0xffff00		// Vendor execption mask
+		#define EF_SPARC_32PLUS		 0x000100		// Generic V8+ features
+		#define EF_SPARC_SUN_US1	 0x000200		// Sun UltraSPARC 1 extensions
+		#define EF_SPARC_HALR1		 0x000400		// HAL R1 extensions
+		#define EF_SPARC_SUN_US4	 0x000800		// Sun UltraSPARC 3 extensions
+		#define EF_SPARCV9MM		 0x3			// Mask for memory model
+		#define EF_SPARCV9_TSO		 0x0			// Total store ordering
+		#define EF_SPARCV9_PSO		 0x1			// Partial store ordering
+		#define EF_SPARCV9_RMO		 0x2 			// Relaxed memory ordering
 		//
 		// ELF Program Flags - used for the p_flags field of the program header
 		//
-		enum class Elf_PFlags : Elf32_Word
-		{
-			PT_NULL				= 0, 			// Unused
-			PT_LOAD				= 1, 			// Loadable segment
-			PT_DYNAMIC 			= 2,     		// Dynamic linking information
-			PT_INTERP			= 3, 			// Interperter
-			PT_NOTE 			= 4, 			// Auxillary information
-			PT_SHLIB 			= 5,			// Reserved
-			PT_PHDR 			= 6, 			// Back reference to header table
-			PT_LOPROC			= 0x70000000,
-			PT_HIPROC			= 0x7FFFFFFF
-		};
+		#define PT_NULL				 0 				// Unused
+		#define PT_LOAD				 1 				// Loadable segment
+		#define PT_DYNAMIC 			 2     			// Dynamic linking information
+		#define PT_INTERP			 3 				// Interperter
+		#define PT_NOTE 			 4 				// Auxillary information
+		#define PT_SHLIB 			 5				// Reserved
+		#define PT_PHDR 			 6 				// Back reference to header table
+		#define PT_LOPROC			 0x70000000
+		#define PT_HIPROC			 0x7FFFFFFF
 
 		//
 		// ELF Section Header Type - used for sh_type
@@ -181,5 +174,10 @@ namespace mirus
 			SHT_STRTAB			= 3,
 			SHT_NOBITS			= 4
 		};
+
+		//
+		// exec - Load a static elf executable
+		//
+		int exec(uint32_t address);
 	} // !namespace
 } // !namespace

@@ -74,6 +74,18 @@ namespace mirus
         {
             if (r->int_no < 32)
             {
+                ktrace(trace_level::error, "SYSTEM PANIC: %s\n", exception_messages[r->int_no]);
+                ktrace(trace_level::none, "\tgs: %x\tfs: %x\n", r->gs, r->fs);
+                ktrace(trace_level::none, "\trs: %x\tds: %x\n", r->es, r->ds);
+                ktrace(trace_level::none, "\tedi: %x\tesi: %x\n", r->edi, r->esi);
+                ktrace(trace_level::none, "\tebp: %x\tesp: %x\n", r->ebp, r->esp);
+                ktrace(trace_level::none, "\tebx: %x\tedx: %x\n", r->ebx, r->edx);
+                ktrace(trace_level::none, "\tecx: %x\teax: %x\n", r->ecx, r->eax);
+                ktrace(trace_level::none, "\tint_no: %d\terr_code: %d\n", r->int_no, r->err_code);
+                ktrace(trace_level::none, "\teip: %x\tcs: %x\n", r->eip, r->cs);
+                ktrace(trace_level::none, "\teflags: %x\n\tuseresp: %x\n", r->eflags, r->useresp);
+                ktrace(trace_level::none, "\tss: %x\n", r->ss);
+
                 // Do kernel panic here
                 screen::terminal::clear();
 

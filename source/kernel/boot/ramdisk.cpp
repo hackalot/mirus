@@ -18,6 +18,7 @@
 
 #include <stdafx.hpp>
 #include <boot/ramdisk.hpp>
+#include <process/elf.hpp>
 
 namespace mirus
 {
@@ -48,6 +49,7 @@ namespace mirus
         //
         void parse_tar(uint32_t address)
         {
+            using namespace system;
             for (uint32_t i = 0; ; i++)
             {
                 tar_header_t* header = (tar_header_t*)address;
@@ -63,6 +65,28 @@ namespace mirus
                 ktrace(trace_level::log, "Filename: %s\n", header->filename);
                 ktrace(trace_level::log, "\tFile size: %db\n", size);
                 ktrace(trace_level::log, "\tFile content: %s\n", file_content);
+
+                // START ELF STUFF ---------------------------------------------
+                // TODO: put this somewhere proper...
+
+                ktrace(trace_level::none, "--- Elf load started ---\n");
+                Elf32_Header* header1 = ((Elf32_Header*)(address + 512));
+
+                if (header1->e_ident[0] != ELFMAG0 ||
+                    header1->e_ident[1] != ELFMAG1 ||
+                    header1->e_ident[2] != ELFMAG2 ||
+                    header1->e_ident[3] != ELFMAG3) 
+                {
+                    ktrace(trace_level::error, "Not a valid ELF executable\n");
+                }
+                else
+                {
+                    ktrace(trace_level::log, "ELF magic checks out\n");
+                }
+
+                ktrace(trace_level::none, "--- Elf load ended ---\n");
+
+                // END ELF STUFF -----------------------------------------------
 
                 address += ((size / 512) + 1) * 512;
 

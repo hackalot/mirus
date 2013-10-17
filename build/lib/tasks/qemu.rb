@@ -14,6 +14,7 @@
 
 # run qemu
 desc "Run Mirus in Qemu"
-task :qemu do
+task :qemu => ['make_iso'] do
     sh "#{$vm} #{$vm_flags}"
+    sh "cat /tmp/mirus_debug.log"
 end

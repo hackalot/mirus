@@ -27,6 +27,7 @@
 #include <cpu/irq.hpp>
 
 #include <process/process.hpp>
+#include <process/elf.hpp>
 
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
