@@ -18,14 +18,28 @@
 
 #pragma once
 
+#include <stdafx.hpp>
+#include <cpu/regs.hpp>
+
 namespace mirus
 {
     namespace system
     {
         //
-        // pid_t - helpful wrapper for process ids
+        // bin_image_t - Binary image information
         //
-        typedef uint32_t pid_t;
+        class image_t
+        {
+        public:
+            size_t      size;
+            uintptr_t   entry;
+            uintptr_t   heap;
+            uintptr_t   phys_heap;
+            uintptr_t   stack;
+            uintptr_t   user_stack;
+            uintptr_t   start;
+            uintptr_t   shm_heap;
+        };
 
         //
         // process_t - defines a process
@@ -33,7 +47,22 @@ namespace mirus
         class process_t
         {
         public:
-            pid_t process_id;
+            uint32_t        pid;
+            uint32_t        process_namespace;
+            char*           env;
+            char*           name;
+            char*           desc;
+            uint32_t        uid;
+            uint32_t        umask;
+            char**          cmdline;
+            uint32_t        thread_group;
+            uint32_t        job_group;
+            uint32_t        session_group;
+            uint8_t         status;
+            bool            finished;
+            bool            started;
+            cpu::regs*      regstate;
+            image_t         image;
         };
     } // !namespace
 } // !namespace

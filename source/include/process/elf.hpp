@@ -36,7 +36,7 @@ namespace mirus
 		// ELF data types
 		//
 		typedef uint32_t Elf32_Addr;
-		typedef uint32_t Elf32_Half;
+		typedef uint16_t Elf32_Half;
 		typedef uint32_t Elf32_Off;
 		typedef uint32_t Elf32_Sword;
 		typedef uint16_t Elf32_Word;
@@ -105,38 +105,29 @@ namespace mirus
 		//
 		// ELF type - used for the e_type field of the header
 		//
-		enum class Elf_Type : Elf32_Half
-		{
-			ET_NONE				= 0,			// No file type
-			ET_REL				= 1,			// Relocatable file
-			ET_EXEC				= 2,			// Executable file
-			ET_DYN				= 3,			// Shared object file
-			ET_CORE				= 4,			// Core file
-			ET_LOPROC			= 0xff00,		// Processor specific
-			ET_HIPROC			= 0xffff		// Processor specific
-		};
+		#define ET_NONE			 0			// No file type
+		#define ET_REL			 1			// Relocatable file
+		#define ET_EXEC			 2			// Executable file
+		#define ET_DYN			 3			// Shared object file
+		#define ET_CORE			 4			// Core file
+		#define ET_LOPROC		 0xff00		// Processor specific
+		#define ET_HIPROC		 0xffff		// Processor specific
 
 		//
 		// ELF machine - used for the e_machine field of the header
 		//
-		enum class Elf_Machine : Elf32_Half
-		{
-			EM_NONE 			= 0,
-			EM_SPARC 			= 2,
-			EM_386 				= 3,
-			EM_SPARC32PLUS 		= 18,
-			EM_SPARCV9 			= 43,
-			EM_AMD64 			= 62
-		};
+		#define EM_NONE 		 0
+		#define EM_SPARC 		 2
+		#define EM_386 			 3
+		#define EM_SPARC32PLUS 	 18
+		#define EM_SPARCV9 		 43
+		#define EM_AMD64 		 62
 
 		//
 		// ELF Version - used for the e_version field of the header
 		//
-		enum class Elf_Version : Elf32_Word
-		{
-			EV_NONE				= 0,			// Invalid version
-			EV_CURRENT			= 1 			// Current version (>= 1)
-		};
+		#define EV_NONE			 0			// Invalid version
+		#define EV_CURRENT		 1 			// Current version (>= 1)
 
 		//
 		// ELF Flags - used for the e_flags field of the header
@@ -166,14 +157,11 @@ namespace mirus
 		//
 		// ELF Section Header Type - used for sh_type
 		//
-		enum class Elf_ShType : Elf32_Word
-		{
-			SHT_NONE			= 0,
-			SHT_PROGBITS 		= 1,
-			SHT_SYMTAB			= 2,
-			SHT_STRTAB			= 3,
-			SHT_NOBITS			= 4
-		};
+		#define SHT_NONE			 0
+		#define SHT_PROGBITS 		 1
+		#define SHT_SYMTAB			 2
+		#define SHT_STRTAB			 3
+		#define SHT_NOBITS			 4
 
 		//
 		// exec - Load a static elf executable

@@ -19,6 +19,7 @@
 #include <stdafx.hpp>
 #include <boot/ramdisk.hpp>
 #include <process/elf.hpp>
+#include <process/process.hpp>
 
 namespace mirus
 {
@@ -50,6 +51,7 @@ namespace mirus
         void parse_tar(uint32_t address)
         {
             using namespace system;
+
             for (uint32_t i = 0; ; i++)
             {
                 tar_header_t* header = (tar_header_t*)address;
@@ -59,44 +61,39 @@ namespace mirus
                     break;
 
                 uint32_t size = get_size(header->size);
-
                 headers[i] = header;
 
                 ktrace(trace_level::log, "Filename: %s\n", header->filename);
                 ktrace(trace_level::log, "\tFile size: %db\n", size);
                 ktrace(trace_level::log, "\tFile content: %s\n", file_content);
 
-                // START ELF STUFF ---------------------------------------------
-                // TODO: put this somewhere proper...
-                ktrace(trace_level::none, "--- Elf load started ---\n");
+                // PARSE ELF ---------------------------------------------------
+                // TODO: move
 
-                Elf32_Header* header1 = ((Elf32_Header*)(address + 512));
+                uint32_t elf_base_addr = (address + 512);
+                Elf32_Header* ehdr = (Elf32_Header*)elf_base_addr;
 
-                if (header1->e_ident[0] != ELFMAG0 ||
-                    header1->e_ident[1] != ELFMAG1 ||
-                    header1->e_ident[2] != ELFMAG2 ||
-                    header1->e_ident[3] != ELFMAG3) 
+                // Check magic
+                if (ehdr->e_ident[0] == ELFMAG0 &&
+                    ehdr->e_ident[1] == ELFMAG1 &&
+                    ehdr->e_ident[2] == ELFMAG2 &&
+                    ehdr->e_ident[3] == ELFMAG3)
                 {
-                    ktrace(trace_level::error, "Not a valid ELF executable\n");
-                }
-                else
-                {
-                    ktrace(trace_level::log, "ELF magic checks out\n");
+                    ktrace(trace_level::log, "ELF magic matches\n");
+                    ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
 
-                    for (uintptr_t x = 0; 
-                        x < (uint32_t)header1->e_shentsize * header1->e_shnum;
-                        x+= header1->sh_entsize)
-                    {
-                        Elf32_Shdr* s_header = (Elf32_Shdr*)((uintptr_t)header1 + (header1->e_shoff + x));
-                        if (s_header->sh_addr)
-                        {
-                            
-                        }
-                    }
+                    if (ehdr->e_type != ET_EXEC)
+                        ktrace(trace_level::warning, "File not an executable\n");
+
+                    ktrace(trace_level::log, "ELF machine: %d\n", ehdr->e_machine);
+                    ktrace(trace_level::log, "ELF version: %d\n", ehdr->e_version);
+                    ktrace(trace_level::log, "ELF entry point: %x\n", ehdr->e_entry);
+                    ktrace(trace_level::log, "ELF program header offset: %d\n", ehdr->e_phoff);
+                    ktrace(trace_level::log, "ELF section header offset: %d\n", ehdr->e_shoff);
+                    ktrace(trace_level::log, "ELF flags: %d\n", ehdr->e_flags);
                 }
 
-                ktrace(trace_level::none, "--- Elf load ended ---\n");
-                // END ELF STUFF -----------------------------------------------
+                // END ELF -----------------------------------------------------
 
                 address += ((size / 512) + 1) * 512;
 

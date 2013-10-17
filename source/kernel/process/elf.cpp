@@ -18,29 +18,12 @@
 
 #include <stdafx.hpp>
 #include <process/elf.hpp>
+#include <process/process.hpp>
 
 namespace mirus
 {
 	namespace system
 	{
-        int exec(uint32_t address)
-        {
-            ktrace(trace_level::none, "--- Elf load started ---\n");
-            Elf32_Header* header = (Elf32_Header*)address;
-
-            if (header->e_ident[0] != ELFMAG0 ||
-                header->e_ident[1] != ELFMAG1 ||
-                header->e_ident[2] != ELFMAG2 ||
-                header->e_ident[3] != ELFMAG3) 
-            {
-                ktrace(trace_level::error, "Not a valid ELF executable\n");
-            }
-            else
-            {
-                ktrace(trace_level::log, "ELF magic checks out\n");
-            }
-
-            ktrace(trace_level::none, "--- Elf load ended ---\n");
-        }
+        
 	} // !namespace
 } // !namespace

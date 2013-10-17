@@ -61,11 +61,6 @@ namespace mirus
     module_t* mods = nullptr;
 
     //
-    // Kernel process id
-    //
-    system::pid_t kernel_pid = 0;
-
-    //
     // Minimum memory size (512mb)
     //
     uint32_t min_mem = 512;
