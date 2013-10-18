@@ -91,6 +91,12 @@ namespace mirus
                     ktrace(trace_level::log, "ELF program header offset: %d\n", ehdr->e_phoff);
                     ktrace(trace_level::log, "ELF section header offset: %d\n", ehdr->e_shoff);
                     ktrace(trace_level::log, "ELF flags: %d\n", ehdr->e_flags);
+                    ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
+                    ktrace(trace_level::log, "ELF phdr size: %d\n", ehdr->e_phentsize);
+                    ktrace(trace_level::log, "ELF phdr count: %d\n", ehdr->e_phnum);
+                    ktrace(trace_level::log, "ELF shdr size: %d\n", ehdr->e_shentsize);
+                    ktrace(trace_level::log, "ELF shdr count: %d\n", ehdr->e_shnum);
+                    ktrace(trace_level::log, "ELF string table index: %d\n", ehdr->e_shstrndx);
                 }
 
                 // END ELF -----------------------------------------------------

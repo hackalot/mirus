@@ -30,7 +30,8 @@ namespace mirus
 		const unsigned char ELFMAG1   = 'E';
 		const unsigned char ELFMAG2   = 'L';
 		const unsigned char ELFMAG3   = 'F';
-		const unsigned char EI_NIDENT = 16;
+		
+		#define EI_NIDENT				16
 
 		//
 		// ELF data types
@@ -39,7 +40,7 @@ namespace mirus
 		typedef uint16_t Elf32_Half;
 		typedef uint32_t Elf32_Off;
 		typedef uint32_t Elf32_Sword;
-		typedef uint16_t Elf32_Word;
+		typedef uint32_t Elf32_Word;
 
 		//
 		// ELF header
