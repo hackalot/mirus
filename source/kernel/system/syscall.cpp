@@ -26,7 +26,7 @@ namespace mirus
     {
         void test_syscall()
         {
-            ktrace(trace_level::log, "Test syscall called\n");
+            ktrace(trace_level::log, "Test syscall called.\n");
         }
 
         static uintptr_t syscalls[] =
@@ -47,9 +47,9 @@ namespace mirus
                 return;
 
             syscall_t call = (syscall_t)location;
-            uint32_t ret = call(r->ebx, r->ecx, r->edx, r->esi, r->edi);
             
-            // r->eax = ret;
+            uint32_t ret = call(r->ebx, r->ecx, r->edx, r->esi, r->edi);
+            r->eax = ret;
         }
 
         void init_syscalls()
