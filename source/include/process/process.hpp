@@ -26,43 +26,45 @@ namespace mirus
     namespace system
     {
         //
-        // bin_image_t - Binary image information
-        //
-        class image_t
-        {
-        public:
-            size_t      size;
-            uintptr_t   entry;
-            uintptr_t   heap;
-            uintptr_t   phys_heap;
-            uintptr_t   stack;
-            uintptr_t   user_stack;
-            uintptr_t   start;
-            uintptr_t   shm_heap;
-        };
-
-        //
         // process_t - defines a process
         //
         class process_t
         {
         public:
+            // Basic information
             uint32_t        pid;
             uint32_t        process_namespace;
-            char*           env;
-            char*           name;
-            char*           desc;
             uint32_t        uid;
             uint32_t        umask;
-            char**          cmdline;
             uint32_t        thread_group;
             uint32_t        job_group;
             uint32_t        session_group;
             uint8_t         status;
+            uintptr_t       entry;
+            uintptr_t       start;
+            uint32_t        size;
+
+            // Process information
+            char**          env;
+            char*           name;
+            char*           desc;
+            char**          cmdline;
+
             bool            finished;
             bool            started;
+
+            uintptr_t       heap;
+            uintptr_t       heap_actual;
+            uintptr_t       stack;
+            uintptr_t       user_stack;
+
+            // CPU register state
             cpu::regs*      regstate;
-            image_t         image;
         };
+
+        // 
+        // enter_userpace - Goodbye kernel
+        //
+        void enter_userspace(uint32_t location);
     } // !namespace
 } // !namespace

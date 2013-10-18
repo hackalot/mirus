@@ -31,6 +31,12 @@ namespace mirus
         tar_header_t* headers[32];
 
         //
+        // current_process
+        // TODO: move
+        //
+        system::process_t* current_process;
+
+        //
         // get_size - Get size of tar file
         //
         uint32_t get_size(const char* in)
@@ -85,18 +91,38 @@ namespace mirus
                     if (ehdr->e_type != ET_EXEC)
                         ktrace(trace_level::warning, "File not an executable\n");
 
-                    ktrace(trace_level::log, "ELF machine: %d\n", ehdr->e_machine);
-                    ktrace(trace_level::log, "ELF version: %d\n", ehdr->e_version);
-                    ktrace(trace_level::log, "ELF entry point: %x\n", ehdr->e_entry);
-                    ktrace(trace_level::log, "ELF program header offset: %d\n", ehdr->e_phoff);
-                    ktrace(trace_level::log, "ELF section header offset: %d\n", ehdr->e_shoff);
-                    ktrace(trace_level::log, "ELF flags: %d\n", ehdr->e_flags);
-                    ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
-                    ktrace(trace_level::log, "ELF phdr size: %d\n", ehdr->e_phentsize);
-                    ktrace(trace_level::log, "ELF phdr count: %d\n", ehdr->e_phnum);
-                    ktrace(trace_level::log, "ELF shdr size: %d\n", ehdr->e_shentsize);
-                    ktrace(trace_level::log, "ELF shdr count: %d\n", ehdr->e_shnum);
-                    ktrace(trace_level::log, "ELF string table index: %d\n", ehdr->e_shstrndx);
+                    for (uintptr_t x = 0; 
+                        x < (uint32_t)ehdr->e_shentsize * ehdr->e_shnum;
+                        x += ehdr->e_shentsize)
+                    {
+                        Elf32_Shdr* shdr = (Elf32_Shdr*)((uintptr_t)ehdr 
+                            + (ehdr->e_shoff + x));
+
+                        // Loadable?
+                        if (shdr->sh_addr)
+                        {
+                            current_process->entry = shdr->sh_addr;
+                        }
+
+                        // Zero .bss
+                        if (shdr->sh_type == SHT_NOBITS)
+                        {
+                            memset_v((void*)shdr->sh_addr, 0x0, shdr->sh_size);
+                        }
+                        else
+                        {
+                            // Load it into memory
+                            memcpy_v((void*)(shdr->sh_addr), 
+                                (void*)((uintptr_t)ehdr + shdr->sh_offset),
+                                shdr->sh_size);
+                        }
+                    }
+
+                    // Program entry point
+                    uintptr_t entry = (uintptr_t)ehdr->e_entry;
+                    current_process->start = entry;
+
+                    enter_userspace(entry);
                 }
 
                 // END ELF -----------------------------------------------------

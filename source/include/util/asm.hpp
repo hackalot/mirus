@@ -35,6 +35,10 @@ namespace mirus
         const unsigned int* src, 
         int count);
 
+    void* memcpy_v(void* dest,
+        void* src,
+        size_t count);
+
     // memset
     extern "C" unsigned char* memset(unsigned char* dest, 
         unsigned char val, 
@@ -51,6 +55,10 @@ namespace mirus
     void memsetb(unsigned int* dest, 
         uint8_t val, 
         int count);
+
+    void* memset_v(void* b,
+        int val,
+        size_t count);
 
     // memsetw
     unsigned short* memsetw(unsigned short* dest, 
