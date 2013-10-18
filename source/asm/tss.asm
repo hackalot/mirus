@@ -12,18 +12,8 @@
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
 
-; global jump_usermode
-
-; jump_usermode:
-;    mov ax, 0x23
-;    mov ds, ax
-;    mov es, ax
-;    mov fs, ax
-;    mov gs, ax
-;    mov eax, esp
-;    push 0x23
-;    push eax
-;    pushf
-;    push 0x1B
-;    push 
-;    iret
+global tss_flush
+tss_flush:
+    mov ax, 0x2B
+    ltr ax
+    ret

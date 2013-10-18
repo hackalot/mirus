@@ -25,25 +25,28 @@ namespace mirus
         //
         // enter_userpace - Goodbye kernel
         //
-        void enter_userspace(uintptr_t location)
+        void enter_userspace()
         {
             ktrace(trace_level::warning, "ENTERING USERSPACE\n");
 
-            asm volatile(
-                "cli"
-                "mov $0x23, %%ax\n"
-                "mov %%ax, %%ds\n"
-                "mov %%ax, %%es\n"
-                "mov %%ax, %%fs\n"
-                "mov %%ax, %%gs\n"
-                "mov %%esp, %%eax\n"
-                "push $0x23\n"
-                "push %%eax\n"
-                "pushf\n"
-                "push $0x1B\n"
-                "push $1f\n"
-                "iret\n
-              1:\n");
+        // Set up a stack structure for switching to user mode.
+        asm volatile("\
+            cli;\
+            mov $0x23, %ax;\
+            mov %ax, %ds;\
+            mov %ax, %es;\
+            mov %ax, %fs;\
+            mov %ax, %gs;\
+                  \
+            mov %esp, %eax;\
+            pushl $0x23;\
+            pushl %eax;\
+            pushf;\
+            pushl $0x1B;\
+            push $1f;\
+            iret;\
+          1:\
+            ");
 
             ktrace(trace_level::log, "Done\n");
         }

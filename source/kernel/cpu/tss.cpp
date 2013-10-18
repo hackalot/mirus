@@ -17,6 +17,7 @@
 //
 
 #include <cpu/tss.hpp>
+#include <cpu/gdt.hpp>
 
 namespace mirus
 {
@@ -24,14 +25,14 @@ namespace mirus
     {
         tss_entry_t tss_entry;
 
-        static void tss::write(short int32_t num, uint16_t ss0, uint32_t esp0)
+        void tss::write(int32_t num, uint16_t ss0, uint32_t esp0)
         {
             uint32_t base = (uint32_t)&tss_entry;
             uint32_t limit = base + sizeof(tss_entry);
 
             gdt::set_gate(num, base, limit, 0xE9, 0x00);
 
-            memset(&tss_entry, 0, sizeof(tss_entry));
+            memset((unsigned int*)&tss_entry, 0, sizeof(tss_entry));
 
             tss_entry.ss0 = ss0;
             tss_entry.esp0 = esp0;
@@ -42,6 +43,11 @@ namespace mirus
                 = tss_entry.fs 
                 = tss_entry.gs 
                 = 0x13;
+        }
+
+        void set_kernel_stack(uint32_t stack)
+        {
+            tss_entry.esp0 = stack;
         }
     } // !namespace
 } // !namespace

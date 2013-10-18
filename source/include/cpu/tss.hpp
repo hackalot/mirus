@@ -25,7 +25,7 @@ namespace mirus
     namespace cpu
     {
         extern "C" void tss_flush();
-        
+
         //
         // tss_entry_t - Describes a task state segment
         //
@@ -66,7 +66,9 @@ namespace mirus
         class tss
         {
         public:
-            static void write(short int32_t, uint16_t, uint32_t);
+            static void write(int32_t num, uint16_t ss0, uint32_t esp0);
         };
+
+        void set_kernel_stack(uint32_t stack);
     } // !namespace
 } // !namespace

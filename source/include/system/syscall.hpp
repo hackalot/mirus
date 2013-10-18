@@ -13,20 +13,19 @@
 // limitations under the License.
 
 //
-// task.hpp - Task stuff
+// syscall.hpp - System call implimentation
 //
 
 #pragma once
 
-#include <stdafx.hpp>
+#include <cpu/regs.hpp>
 
 namespace mirus
 {
     namespace system
     {
-        // 
-        // enter_userpace - Goodbye kernel
-        //
-        void enter_userspace();
+        void init_syscalls();
+        void syscall_handler(cpu::regs* r);
+        void test_syscall();
     } // !namespace
 } // !namespace

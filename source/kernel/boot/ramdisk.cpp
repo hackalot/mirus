@@ -20,7 +20,6 @@
 #include <boot/ramdisk.hpp>
 #include <process/elf.hpp>
 #include <process/process.hpp>
-#include <process/task.hpp>
 
 namespace mirus
 {
@@ -77,54 +76,54 @@ namespace mirus
                 // PARSE ELF ---------------------------------------------------
                 // TODO: move
 
-                uint32_t elf_base_addr = (address + 512);
-                Elf32_Header* ehdr = (Elf32_Header*)elf_base_addr;
+                // uint32_t elf_base_addr = (address + 512);
+                // Elf32_Header* ehdr = (Elf32_Header*)elf_base_addr;
 
-                // Check magic
-                if (ehdr->e_ident[0] == ELFMAG0 &&
-                    ehdr->e_ident[1] == ELFMAG1 &&
-                    ehdr->e_ident[2] == ELFMAG2 &&
-                    ehdr->e_ident[3] == ELFMAG3)
-                {
-                    ktrace(trace_level::log, "ELF magic matches\n");
-                    ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
+                // // Check magic
+                // if (ehdr->e_ident[0] == ELFMAG0 &&
+                //     ehdr->e_ident[1] == ELFMAG1 &&
+                //     ehdr->e_ident[2] == ELFMAG2 &&
+                //     ehdr->e_ident[3] == ELFMAG3)
+                // {
+                //     ktrace(trace_level::log, "ELF magic matches\n");
+                //     ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
 
-                    if (ehdr->e_type != ET_EXEC)
-                        ktrace(trace_level::warning, "File not an executable\n");
+                //     if (ehdr->e_type != ET_EXEC)
+                //         ktrace(trace_level::warning, "File not an executable\n");
 
-                    for (uintptr_t x = 0; 
-                        x < (uint32_t)ehdr->e_shentsize * ehdr->e_shnum;
-                        x += ehdr->e_shentsize)
-                    {
-                        Elf32_Shdr* shdr = (Elf32_Shdr*)((uintptr_t)ehdr 
-                            + (ehdr->e_shoff + x));
+                //     for (uintptr_t x = 0; 
+                //         x < (uint32_t)ehdr->e_shentsize * ehdr->e_shnum;
+                //         x += ehdr->e_shentsize)
+                //     {
+                //         Elf32_Shdr* shdr = (Elf32_Shdr*)((uintptr_t)ehdr 
+                //             + (ehdr->e_shoff + x));
 
-                        // Loadable?
-                        if (shdr->sh_addr)
-                        {
-                            current_process->entry = shdr->sh_addr;
-                        }
+                //         // Loadable?
+                //         if (shdr->sh_addr)
+                //         {
+                //             current_process->entry = shdr->sh_addr;
+                //         }
 
-                        // Zero .bss
-                        if (shdr->sh_type == SHT_NOBITS)
-                        {
-                            memset_v((void*)shdr->sh_addr, 0x0, shdr->sh_size);
-                        }
-                        else
-                        {
-                            // Load it into memory
-                            memcpy_v((void*)(shdr->sh_addr), 
-                                (void*)((uintptr_t)ehdr + shdr->sh_offset),
-                                shdr->sh_size);
-                        }
-                    }
+                //         // Zero .bss
+                //         if (shdr->sh_type == SHT_NOBITS)
+                //         {
+                //             memset_v((void*)shdr->sh_addr, 0x0, shdr->sh_size);
+                //         }
+                //         else
+                //         {
+                //             // Load it into memory
+                //             memcpy_v((void*)(shdr->sh_addr), 
+                //                 (void*)((uintptr_t)ehdr + shdr->sh_offset),
+                //                 shdr->sh_size);
+                //         }
+                //     }
 
-                    // Program entry point
-                    uintptr_t entry = (uintptr_t)ehdr->e_entry;
-                    current_process->start = entry;
+                //     // Program entry point
+                //     uintptr_t entry = (uintptr_t)ehdr->e_entry;
+                //     current_process->start = entry;
 
-                    enter_userspace(entry);
-                }
+                    // enter_userspace(entry);
+                // }
 
                 // END ELF -----------------------------------------------------
 

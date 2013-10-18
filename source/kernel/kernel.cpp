@@ -28,6 +28,7 @@
 
 #include <process/process.hpp>
 #include <process/elf.hpp>
+#include <process/task.hpp>
 
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
@@ -101,8 +102,6 @@ namespace mirus
             ktrace(trace_level::log, 
                 "Avalible memory: %dm\n", 
                 memory_size_m);
-            ktrace(trace_level::log, 
-                "Trying to get ramdisk.\n");
         }
 
         // Check for minimum memory size
@@ -153,6 +152,8 @@ namespace mirus
         kprintf("limitations under the License.\n\n");
 
         // Check for any modules, the only of which should be the ramdisk
+        ktrace(trace_level::log, "Trying to get ramdisk...\n");
+
         if (mod_count > 0)
         {
             kprintf("Loading ramdisk...");
@@ -183,6 +184,9 @@ namespace mirus
             ktrace(trace_level::log, "No modules found.\n");
             kprintf("[ERROR]\n");
         }
+
+        // Enter usermode
+        system::enter_userspace();
 
         // The point of no return (heh...)
         while (true);
