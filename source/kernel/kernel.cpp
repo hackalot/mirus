@@ -188,13 +188,14 @@ namespace mirus
         kprintf("limitations under the License.\n\n");
 
         // Set up system calls
+        ktrace(trace_level::log, "Installing system calls...");
         system::init_syscalls();
+        ktrace(trace_level::none, "OK\n");
 
         // Enter usermode
         system::enter_userspace();
 
-        asm volatile("mov $0, %eax\n"
-            "int $0x80");
+        // TODO: get system calls working
 
         // The point of no return (heh...)
         while (true);

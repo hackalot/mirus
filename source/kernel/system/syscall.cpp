@@ -26,7 +26,7 @@ namespace mirus
     {
         void test_syscall()
         {
-            ktrace(trace_level::log, "Test syscall called.\n");
+            kprintf("Test syscall called.\n");
         }
 
         static uintptr_t syscalls[] =
