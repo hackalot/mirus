@@ -24,7 +24,7 @@ namespace mirus
 {
     namespace system
     {
-        void test_syscall()
+        static uint32_t test_syscall()
         {
             kprintf("Test syscall called.\n");
         }
@@ -38,22 +38,30 @@ namespace mirus
 
         void syscall_handler(cpu::regs* r)
         {
+            ktrace(trace_level::log, "System call called\n");
             if (r->eax >= 3)
                 return;
 
             uintptr_t location = syscalls[r->eax];
-
             if (!location)
                 return;
 
-            syscall_t call = (syscall_t)location;
-            
-            uint32_t ret = call(r->ebx, r->ecx, r->edx, r->esi, r->edi);
+            syscall_t func = (syscall_t)location;
+            uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
+
             r->eax = ret;
+        }
+
+        void test_syscalls(int eax)
+        {
+            cpu::regs* r;
+            r->eax = eax;
+            syscall_handler(r);
         }
 
         void init_syscalls()
         {
+            // asm volatile("sti");
             cpu::irq::install_handler(0x80, &syscall_handler);
         }
     } // !namespace

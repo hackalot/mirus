@@ -22,6 +22,7 @@ namespace mirus
 {
     namespace system
     {
+        extern "C" void jmp_usermode();
         //
         // enter_userpace - Goodbye kernel
         //
@@ -29,9 +30,10 @@ namespace mirus
         {
             ktrace(trace_level::warning, "ENTERING USERSPACE\n");
 
+            // set_kernel_stack();
+
         // Set up a stack structure for switching to user mode.
-        asm volatile("\
-            cli;\
+        asm volatile("cli;\
             mov $0x23, %ax;\
             mov %ax, %ds;\
             mov %ax, %es;\
@@ -44,8 +46,9 @@ namespace mirus
             pushf;\
             pushl $0x1B;\
             push $1f;\
+            sti;\
             iret;\
-          1:\
+          1: \
             ");
 
             ktrace(trace_level::log, "Done\n");

@@ -38,6 +38,8 @@
 
 namespace mirus
 {
+    extern "C" void test_func();
+
     //
     // Memory size
     //
@@ -195,7 +197,7 @@ namespace mirus
         // Enter usermode
         system::enter_userspace();
 
-        // TODO: get system calls working
+        test_func();
 
         // The point of no return (heh...)
         while (true);

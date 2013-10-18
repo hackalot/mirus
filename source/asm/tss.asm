@@ -17,3 +17,25 @@ tss_flush:
     mov ax, 0x2B
     ltr ax
     ret
+
+global test_func
+test_func:
+    mov eax, 0
+    int 0x80
+
+global jmp_usermode
+jmp_usermode:
+    cli
+    mov ax, 0x23
+    mov ax, ds
+    mov ax, es
+    mov ax, fs
+    mov ax, gs
+    mov eax, esp
+    push 0x23 ;
+    push eax  ;
+    pushf
+    push 0x1B ;
+    ; push $1f
+    sti
+    iret

@@ -32,7 +32,7 @@ namespace mirus
 
             gdt::set_gate(num, base, limit, 0xE9, 0x00);
 
-            memset((unsigned int*)&tss_entry, 0, sizeof(tss_entry));
+            memset_v(&tss_entry, 0x0, sizeof(tss_entry));
 
             tss_entry.ss0 = ss0;
             tss_entry.esp0 = esp0;

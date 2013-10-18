@@ -46,7 +46,7 @@ namespace mirus
             // segment selection and flags
             _idt[num].sel = sel;
             _idt[num].always0 = 0;
-            _idt[num].flags = flags;
+            _idt[num].flags = flags | 0x60;
         }
 
         //
