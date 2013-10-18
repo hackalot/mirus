@@ -17,6 +17,7 @@
 //
 
 #include <cpu/gdt.hpp>
+#include <cpu/tss.hpp>
 
 namespace mirus
 {
@@ -82,8 +83,12 @@ namespace mirus
             // user data
             gdt::set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
 
+            // tss
+            tss::write(5, 0x10, 0x0);
+
             // flush it
             gdt_flush();
+            tss_flush();
         }
     } // !namespace
 } // !namespace

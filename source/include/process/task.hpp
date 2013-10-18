@@ -13,18 +13,20 @@
 // limitations under the License.
 
 //
-// process.cpp - process information
+// task.hpp - Task stuff
 //
 
-#include <process/process.hpp>
+#pragma once
+
+#include <stdafx.hpp>
 
 namespace mirus
 {
     namespace system
     {
+        // 
+        // enter_userpace - Goodbye kernel
         //
-        // jmp_usermode - Jump to usermode
-        //
-        extern "C" void jump_usermode();
+        void enter_userspace(uintptr_t location);
     } // !namespace
 } // !namespace

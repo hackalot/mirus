@@ -20,6 +20,7 @@
 #include <boot/ramdisk.hpp>
 #include <process/elf.hpp>
 #include <process/process.hpp>
+#include <process/task.hpp>
 
 namespace mirus
 {
