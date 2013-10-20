@@ -18,8 +18,8 @@
 
 #include <stdafx.hpp>
 #include <boot/ramdisk.hpp>
-#include <process/elf.hpp>
-#include <process/process.hpp>
+#include <system/process/elf.hpp>
+#include <system/process/process.hpp>
 
 namespace mirus
 {

@@ -18,7 +18,7 @@
 
 #include <cpu/isr.hpp>
 #include <cpu/regs.hpp>
-#include <core/panic.hpp>
+#include <system/core/panic.hpp>
 
 namespace mirus
 {
