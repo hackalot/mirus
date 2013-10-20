@@ -17,7 +17,7 @@
 //
 
 #include <stdafx.hpp>
-#include <core/panic.hpp>
+#include <system/core/panic.hpp>
 #include <util/string.hpp>
 
 namespace mirus

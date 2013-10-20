@@ -26,9 +26,9 @@
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
 
-#include <process/process.hpp>
-#include <process/elf.hpp>
-#include <process/task.hpp>
+#include <system/process/process.hpp>
+#include <system/process/elf.hpp>
+#include <system/process/task.hpp>
 
 #include <system/syscall.hpp>
 
