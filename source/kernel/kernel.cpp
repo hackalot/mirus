@@ -197,7 +197,13 @@ namespace mirus
         // Enter usermode
         system::enter_userspace();
 
-        test_func();
+        // ERROR: causes gpf when either of these happen
+        //        possibly (but not likely) a bug in the 
+        //        ISR or IRQ code
+        //
+        //        * test_func();
+        //        * asm volatile("mov $0x0, %eax\n"
+        //          "int $0x80");
 
         // The point of no return (heh...)
         while (true);

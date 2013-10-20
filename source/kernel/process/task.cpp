@@ -17,12 +17,14 @@
 //
 
 #include <process/task.hpp>
+#include <cpu/tss.hpp>
 
 namespace mirus
 {
     namespace system
     {
         extern "C" void jmp_usermode();
+
         //
         // enter_userpace - Goodbye kernel
         //
@@ -30,11 +32,11 @@ namespace mirus
         {
             ktrace(trace_level::warning, "ENTERING USERSPACE\n");
 
-            // set_kernel_stack();
+            // i dont even know anymore
+            cpu::set_kernel_stack(0x8000);
 
         // Set up a stack structure for switching to user mode.
-        asm volatile("cli;\
-            mov $0x23, %ax;\
+        asm volatile("mov $0x23, %ax;\
             mov %ax, %ds;\
             mov %ax, %es;\
             mov %ax, %fs;\
@@ -46,10 +48,10 @@ namespace mirus
             pushf;\
             pushl $0x1B;\
             push $1f;\
-            sti;\
             iret;\
           1: \
             ");
+            // jmp_usermode();
 
             ktrace(trace_level::log, "Done\n");
         }
