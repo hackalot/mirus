@@ -74,7 +74,7 @@ namespace mirus
         {
             if (r->int_no < 32)
             {
-                ktrace(trace_level::error, "SYSTEM PANIC: %s\n", exception_messages[r->int_no]);
+                ktrace(trace_level::emerg, "SYSTEM PANIC: %s\n", exception_messages[r->int_no]);
                 ktrace(trace_level::none, "\tgs: %x\tfs: %x\n", r->gs, r->fs);
                 ktrace(trace_level::none, "\trs: %x\tds: %x\n", r->es, r->ds);
                 ktrace(trace_level::none, "\tedi: %x\tesi: %x\n", r->edi, r->esi);

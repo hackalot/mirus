@@ -30,6 +30,32 @@ namespace mirus
         // TODO: impliment tracing to the filesystem
     }
 
+    static void write_level(trace_level level)
+    {
+        switch (level)
+        {
+            case trace_level::emerg:
+                hardware::serial::write("[emerg ] ");
+                break;
+            case trace_level::alert:
+                hardware::serial::write("[alert ] ");
+                break;
+            case trace_level::crit:
+                hardware::serial::write("[crit  ] ");
+                break;
+            case trace_level::error:
+                hardware::serial::write("[error ] ");
+                break;
+            case trace_level::notice:
+                hardware::serial::write("[notice] ");
+                break;
+            case trace_level::info:
+            case trace_level::msg:
+                hardware::serial::write("[info  ] ");
+                break;
+        }
+    }
+
     //
     // ktrace - kernel tracing (to the debug console)
     //
@@ -47,11 +73,14 @@ namespace mirus
         if (buf[strlen(buf) - 1] == '\n') 
         {
             buf[strlen(buf) - 1] = '\0';
+
+            write_level(level);
             hardware::serial::write(buf);
             hardware::serial::write('\n');
         } 
         else 
         {
+            write_level(level);
             hardware::serial::write(buf);
         }       
 

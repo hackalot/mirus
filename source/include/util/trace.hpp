@@ -25,12 +25,22 @@ namespace mirus
     //
     enum class trace_level : int
     {
-        log = 0,
-        error = 1,
-        msg = 2,
-        trace = 3,
-        warning = 4,
-        none = 5
+        // log = 0,
+        // error = 1,
+        // msg = 2,
+        // trace = 3,
+        // warning = 4,
+        // none = 5
+
+        emerg,
+        alert,
+        crit,
+        error,
+        warn,
+        notice,
+        info,
+        msg,
+        none
     };
 
     //

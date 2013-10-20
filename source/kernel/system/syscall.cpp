@@ -38,7 +38,7 @@ namespace mirus
 
         void syscall_handler(cpu::regs* r)
         {
-            ktrace(trace_level::log, "System call called\n");
+            ktrace(trace_level::msg, "System call called\n");
             if (r->eax >= 3)
                 return;
 

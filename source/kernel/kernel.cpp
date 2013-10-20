@@ -76,7 +76,7 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        ktrace(trace_level::log, "Mirus 0.3.5-dev\n\n");
+        ktrace(trace_level::msg, "Mirus 0.3.5-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
@@ -90,7 +90,7 @@ namespace mirus
         if (mbd->flags & 1)
         {
             // Read header and assign
-            ktrace(trace_level::log, "Reading multiboot header\n");
+            ktrace(trace_level::msg, "Reading multiboot header\n");
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // Parse entries
@@ -103,19 +103,19 @@ namespace mirus
             // Get memory size in megabytes
             memory_size_m = ((memory_size / 1024) / 1024);
 
-            ktrace(trace_level::log, 
+            ktrace(trace_level::msg, 
                 "Avalible memory: %dm\n", 
                 memory_size_m);
         }
 
         // Check for any modules, the only of which should be the ramdisk
-        ktrace(trace_level::log, "Trying to get ramdisk...\n");
+        ktrace(trace_level::msg, "Trying to get ramdisk...\n");
 
         if (mod_count > 0)
         {
             kprintf("Loading ramdisk...");
 
-            ktrace(trace_level::log, 
+            ktrace(trace_level::msg, 
                 "Modules found: %d\n", 
                 mod_count);
 
@@ -125,7 +125,7 @@ namespace mirus
                 i++, mods++)
             {
                 ktrace(trace_level::none, "==========\n");
-                ktrace(trace_level::log, "Module found: [%d:%d]\n",
+                ktrace(trace_level::msg, "Module found: [%d:%d]\n",
                     mods->mod_start,
                     mods->mod_end);
 
@@ -138,47 +138,47 @@ namespace mirus
         }
         else
         {
-            ktrace(trace_level::log, "No modules found.\n");
+            ktrace(trace_level::msg, "No modules found.\n");
             kprintf("[ERROR]\n");
         }
 
         // Check for minimum memory size
         if (memory_size_m < min_mem)
-            ktrace(trace_level::warning, 
+            ktrace(trace_level::warn, 
                 "Memory is less than expected minimum\n");
 
         // Install GDT
-        ktrace(trace_level::log, "Installing GDT...");
+        ktrace(trace_level::msg, "Installing GDT...");
         cpu::gdt::install();
         ktrace(trace_level::none, "OK\n");
 
         // Install IDT
-        ktrace(trace_level::log, "Installing IDT...");
+        ktrace(trace_level::msg, "Installing IDT...");
         cpu::idt::install();
         ktrace(trace_level::none, "OK\n");
 
         // Setup ISRs
-        ktrace(trace_level::log, "Setting up ISRs...");
+        ktrace(trace_level::msg, "Setting up ISRs...");
         cpu::isr::install();
         ktrace(trace_level::none, "OK\n");
 
         // Setup IRQs
-        ktrace(trace_level::log, "Setting up IRQs...");
+        ktrace(trace_level::msg, "Setting up IRQs...");
         cpu::irq::install();
         ktrace(trace_level::none, "OK\n");
 
         // Setup screen
-        ktrace(trace_level::log, "Setting up screen...");
+        ktrace(trace_level::msg, "Setting up screen...");
         screen::terminal::install();
         ktrace(trace_level::none, "OK\n");
 
         // Setup timer
-        ktrace(trace_level::log, "Setting up timer...");
+        ktrace(trace_level::msg, "Setting up timer...");
         hardware::pit::install();
         ktrace(trace_level::none, "OK\n");
 
         // Setup serial ports
-        ktrace(trace_level::log, "Setting up serial ports...");
+        ktrace(trace_level::msg, "Setting up serial ports...");
         hardware::serial::install();
         ktrace(trace_level::none, "OK\n");
 
@@ -190,12 +190,14 @@ namespace mirus
         kprintf("limitations under the License.\n\n");
 
         // Set up system calls
-        ktrace(trace_level::log, "Installing system calls...");
+        ktrace(trace_level::msg, "Installing system calls...");
         system::init_syscalls();
         ktrace(trace_level::none, "OK\n");
 
         // Enter usermode
+        ktrace(trace_level::notice, "Entering usermode...");
         system::enter_userspace();
+        ktrace(trace_level::none, "OK\n");
 
         // ERROR: causes gpf when either of these happen
         //        possibly (but not likely) a bug in the 
@@ -204,6 +206,7 @@ namespace mirus
         //        * test_func();
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
+        test_func();
 
         // The point of no return (heh...)
         while (true);

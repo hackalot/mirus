@@ -69,9 +69,9 @@ namespace mirus
                 uint32_t size = get_size(header->size);
                 headers[i] = header;
 
-                ktrace(trace_level::log, "Filename: %s\n", header->filename);
-                ktrace(trace_level::log, "\tFile size: %db\n", size);
-                ktrace(trace_level::log, "\tFile content: %s\n", file_content);
+                ktrace(trace_level::msg, "Filename: %s\n", header->filename);
+                ktrace(trace_level::msg, "\tFile size: %db\n", size);
+                ktrace(trace_level::msg, "\tFile content: %s\n", file_content);
 
                 // PARSE ELF ---------------------------------------------------
                 // TODO: move
@@ -85,8 +85,8 @@ namespace mirus
                 //     ehdr->e_ident[2] == ELFMAG2 &&
                 //     ehdr->e_ident[3] == ELFMAG3)
                 // {
-                //     ktrace(trace_level::log, "ELF magic matches\n");
-                //     ktrace(trace_level::log, "ELF header size: %d\n", ehdr->e_ehsize);
+                //     ktrace(trace_level::msg, "ELF magic matches\n");
+                //     ktrace(trace_level::msg, "ELF header size: %d\n", ehdr->e_ehsize);
 
                 //     if (ehdr->e_type != ET_EXEC)
                 //         ktrace(trace_level::warning, "File not an executable\n");

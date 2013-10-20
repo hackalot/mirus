@@ -30,8 +30,6 @@ namespace mirus
         //
         void enter_userspace()
         {
-            ktrace(trace_level::warning, "ENTERING USERSPACE\n");
-
             // i dont even know anymore
             cpu::set_kernel_stack(0x8000);
 
@@ -52,8 +50,6 @@ namespace mirus
           1: \
             ");
             // jmp_usermode();
-
-            ktrace(trace_level::log, "Done\n");
         }
     } // !namespace
 } // !namespace
