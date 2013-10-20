@@ -20,22 +20,26 @@ tss_flush:
 
 global test_func
 test_func:
-    mov eax, 0
+    mov eax, 0x0
     int 0x80
+    ; sti
 
 global jmp_usermode
 jmp_usermode:
     cli
     mov ax, 0x23
-    mov ax, ds
-    mov ax, es
-    mov ax, fs
-    mov ax, gs
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
     mov eax, esp
-    push 0x23 ;
-    push eax  ;
+    push 0x23
+    push eax
     pushf
-    push 0x1B ;
-    ; push $1f
-    sti
+    pop eax
+    or eax, 0x200
+    push eax
+    push 0x1B
+    mov eax, [esp + 20]
+    push eax
     iret

@@ -34,7 +34,7 @@ namespace mirus
             (uintptr_t)&test_syscall
         };
 
-        typedef uint32_t (*syscall_t)(unsigned int, ...);
+        typedef uint32_t (*syscall_t)(...);
 
         void syscall_handler(cpu::regs* r)
         {
@@ -48,6 +48,7 @@ namespace mirus
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
+            // func();
 
             r->eax = ret;
         }
@@ -61,7 +62,6 @@ namespace mirus
 
         void init_syscalls()
         {
-            // asm volatile("sti");
             cpu::irq::install_handler(0x80, &syscall_handler);
         }
     } // !namespace
