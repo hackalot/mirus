@@ -25,7 +25,7 @@ namespace mirus
     namespace core
     {
         //
-        // exception_messages - all intel messages possible
+        // exception_messages - all intel messages
         //
         const char* exception_messages[] =
         { 
