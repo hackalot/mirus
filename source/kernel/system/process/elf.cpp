@@ -17,8 +17,8 @@
 //
 
 #include <stdafx.hpp>
-#include <process/elf.hpp>
-#include <process/process.hpp>
+#include <system/process/elf.hpp>
+#include <system/process/process.hpp>
 
 namespace mirus
 {

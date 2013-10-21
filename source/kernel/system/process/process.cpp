@@ -16,7 +16,7 @@
 // process.cpp - process information
 //
 
-#include <process/process.hpp>
+#include <system/process/process.hpp>
 
 namespace mirus
 {

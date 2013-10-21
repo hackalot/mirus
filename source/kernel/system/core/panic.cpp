@@ -17,7 +17,7 @@
 //
 
 #include <stdafx.hpp>
-#include <core/panic.hpp>
+#include <system/core/panic.hpp>
 #include <util/string.hpp>
 
 namespace mirus
@@ -25,7 +25,7 @@ namespace mirus
     namespace core
     {
         //
-        // exception_messages - all intel messages possible
+        // exception_messages - all intel messages
         //
         const char* exception_messages[] =
         { 

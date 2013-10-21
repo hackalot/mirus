@@ -16,7 +16,7 @@
 // task.cpp - Task stuff
 //
 
-#include <process/task.hpp>
+#include <system/process/task.hpp>
 #include <cpu/tss.hpp>
 
 namespace mirus
