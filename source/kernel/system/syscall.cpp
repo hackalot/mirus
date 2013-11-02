@@ -24,12 +24,12 @@ namespace mirus
 {
     namespace system
     {
-        static uint32_t test_syscall()
+        uint32_t test_syscall()
         {
             kprintf("Test syscall called.\n");
         }
 
-        static uintptr_t syscalls[] =
+        uintptr_t syscalls[] =
         {
             (uintptr_t)&test_syscall
         };
