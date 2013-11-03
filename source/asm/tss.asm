@@ -28,7 +28,7 @@ global jmp_usermode
 jmp_usermode:
     ; cli
     mov ax, 0x23
-    mov cs, ax
+    ; mov cs, ax
     mov ds, ax
     mov es, ax
     mov fs, ax
@@ -37,10 +37,12 @@ jmp_usermode:
     push 0x23
     push eax
     pushf
-    pop eax
-    or eax, 0x200
-    push eax
     push 0x1B
-    mov eax, [esp + 20]
-    push eax
     iret
+    ; pop eax
+    ; or eax, 0x200
+    ; push eax
+    ; push 0x1B
+    ; mov eax, [esp + 20]
+    ; push eax
+    ; iret
