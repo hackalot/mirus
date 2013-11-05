@@ -1,4 +1,10 @@
 # Mirus [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
+```
+ _      _   ___   _     __  
+| |\/| | | | |_) | | | ( (` 
+|_|  | |_| |_| \ \_\_/ _)_) 
+```
+
 Mirus is a new operating system designed on principles created by Plan 9 from Bell Labs.  Mirus is not a fork or clone of Plan 9, but rather an entirely different operating system that extends the functionality of Plan 9.
 
 Mirus is designed primarily for higher-performance machines, such as workstations and gaming rigs, and to be used by those of higher technical knowledge. We also are trying to implement cluster-based computing and advanced load bearing capabilities.
