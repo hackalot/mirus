@@ -15,10 +15,6 @@
 # build assembly
 desc "Build bootstrap + lower level ASM code"
 task :build_asm do
-    puts "Mirus build system [0.2.0]"
-    puts "(C) Mirus Project, Apache 2 License"
-    puts
-    
     $asm_files.each do |t|
         # replace .asm with .o
         object_file = t.sub(/\.asm$/, '.o')

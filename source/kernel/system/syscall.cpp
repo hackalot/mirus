@@ -48,7 +48,7 @@ namespace mirus
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
-            // func();
+            func();
 
             r->eax = ret;
         }

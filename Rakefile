@@ -36,6 +36,10 @@ require './build/lib/tasks/ramdisk'
 
 directory "./build/logs"
 
+puts "Mirus build system [0.2.0]"
+puts "(C) Mirus Project, Apache 2 License"
+puts
+
 # default task is to generate an iso image
 task :default => ['make_iso'] do    
     if $errors

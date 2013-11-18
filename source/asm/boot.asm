@@ -47,7 +47,7 @@ section .text
 global _start
 _start:
 	; mov esp, stack_top
-    mov esp, 0x8000
+    mov esp, 0x9000
     push esp
 
 
