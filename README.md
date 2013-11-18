@@ -1,6 +1,6 @@
 <table>
     <tr>
-        <td>![Imgur](http://i.imgur.com/IXyhj7t.png)</td>
+        <td><img src="http://i.imgur.com/IXyhj7t.png" /></td>
         <td>[![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)</td>
     </tr>
 </table>
