@@ -9,7 +9,6 @@ A key motivation in the creation of Mirus was to bring many of the powerful conc
 Mirus was designed to be elegant and powerful, allowing for tasks that may seem menial on other systems to become easy and fluid.
 
 ### Core Features
-* Inspired by Plan 9
 * Fairly POSIX complient
 * Dynamic, node based filesystem
 * Forward thinking design
@@ -30,10 +29,9 @@ rake
 A build of Mirus with no additional configuration or specified tasks will generate a bootable `mirus.iso` in the `build` directory.  You can burn this to any bootable medium you see fit, or run it in a virtual machine via `rake qemu`. 
 
 ### Dependencies
-To build Mirus, you will need to meet the following dependencies.  If you are not sure whether they are installed on your system, `rake` will notify you on build.
+To build Mirus, you will need to meet the following dependencies.  It is expected that binutils and other standard UNIX utilities are installed, but a few odities are required:
 
 * `clang` >= 3.3
-* `ld`
 * `grub2`
 * `yasm`
 * `xorriso` >= 1.2.9
