@@ -207,7 +207,7 @@ namespace mirus
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
         // test_func();
-        asm volatile("mov $0, %eax");
+        asm volatile("mov $0x0, %eax");
         asm volatile("int $0x80");
 
         // The point of no return (heh...)

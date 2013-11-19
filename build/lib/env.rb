@@ -39,7 +39,7 @@ $dep_files          = $cpp_files.sub(/\.cpp$/, '.d')
 # clang + additional options
 $compiler           = "clang++"
 $warnings           = "-Wall -Wextra -Wno-unused-parameter "
-$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -nostdlib -m32 -O0 "
+$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -nostdlib -m32 -O0 -g "
 $include_paths      = "-Isource/include -Isource/library "
 $cpp_flags          = $warnings << $options << $include_paths 
 
