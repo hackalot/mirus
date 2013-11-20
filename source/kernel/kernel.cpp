@@ -177,6 +177,9 @@ namespace mirus
         cpu::irq::install();
         ktrace(trace_level::none, "OK\n");
 
+        // Enable interrupts
+        asm volatile("sti");
+
         // Print kernel information
         kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
         kprintf("Unless required by applicable law or agreed to in writing, software\n");
@@ -202,17 +205,9 @@ namespace mirus
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
 
-        // asm volatile("mov $0x0, %eax");
-        // asm volatile("mov $0x0, %ebx");
-        // asm volatile("mov $0x0, %ecx");
-        // asm volatile("mov $0x0, %edx");
-        // asm volatile("mov $0x0, %esi");
-        // asm volatile("mov $0x0, %edi");
-        // asm volatile("int $0x7F");
+        test_func();
 
-        // system::test_syscalls(0);
-
-        // The point of no return (heh...)
+        // YOU SHALL NOT PASS!!!!
         while (true);
     }
 } // !namespace

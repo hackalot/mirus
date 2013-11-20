@@ -95,8 +95,6 @@ namespace mirus
         {
             irq::remap();
             irq::gates();
-
-            asm volatile("sti");
         }
 
         void irq::ack(int irq_no)

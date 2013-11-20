@@ -145,7 +145,7 @@ irq15:
 extern irq_handler
 
 irq_common_stub:
-     pusha
+    pusha
     push ds
     push es
     push fs
