@@ -19,14 +19,16 @@
 #include <stdafx.hpp>
 #include <system/syscall.hpp>
 #include <cpu/irq.hpp>
+#include <cpu/isr.hpp>
 
 namespace mirus
 {
     namespace system
     {
-        uint32_t test_syscall()
+        static int test_syscall()
         {
             kprintf("Test syscall called.\n");
+            return 0;
         }
 
         uintptr_t syscalls[] =
@@ -48,7 +50,6 @@ namespace mirus
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
-            func();
 
             r->eax = ret;
         }
@@ -57,12 +58,18 @@ namespace mirus
         {
             cpu::regs* r;
             r->eax = eax;
+            r->ebx = 0;
+            r->ecx = 0;
+            r->edx = 0;
+            r->esi = 0;
+            r->edi = 0;
             syscall_handler(r);
         }
 
         void init_syscalls()
         {
-            cpu::irq::install_handler(0x80, &syscall_handler);
+            cpu::irq::install_handler(0x7F, &syscall_handler);
+            // cpu::isr::install_handler(0x7F, &syscall_handler);
         }
     } // !namespace
 } // !namespace

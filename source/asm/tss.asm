@@ -21,8 +21,7 @@ tss_flush:
 global test_func
 test_func:
     mov eax, 0x0
-    int 0x80
-    ; sti
+    int 0x7F
 
 global jmp_usermode
 jmp_usermode:

@@ -29,7 +29,7 @@ namespace mirus
 {
     namespace cpu
     {
-        static irq_handler_t irq_routines[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        static irq_handler_t irq_routines[16] = { NULL };
 
         //
         // Set up a listener
@@ -114,7 +114,7 @@ namespace mirus
         //
         extern "C" void irq_handler(struct regs* r)
         {
-            void (*handler)(struct regs * r);       
+            void (*handler)(struct regs* r);       
 
             if (r->int_no > 47 || r->int_no < 32)
             {

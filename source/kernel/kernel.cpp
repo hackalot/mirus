@@ -162,24 +162,19 @@ namespace mirus
         cpu::isr::install();
         ktrace(trace_level::none, "OK\n");
 
-        // Setup IRQs
-        ktrace(trace_level::msg, "Setting up IRQs...");
-        cpu::irq::install();
-        ktrace(trace_level::none, "OK\n");
-
         // Setup screen
         ktrace(trace_level::msg, "Setting up screen...");
         screen::terminal::install();
         ktrace(trace_level::none, "OK\n");
 
-        // Setup timer
-        ktrace(trace_level::msg, "Setting up timer...");
-        hardware::pit::install();
-        ktrace(trace_level::none, "OK\n");
-
         // Setup serial ports
         ktrace(trace_level::msg, "Setting up serial ports...");
         hardware::serial::install();
+        ktrace(trace_level::none, "OK\n");
+
+        // Setup IRQs
+        ktrace(trace_level::msg, "Setting up IRQs...");
+        cpu::irq::install();
         ktrace(trace_level::none, "OK\n");
 
         // Print kernel information
@@ -207,8 +202,10 @@ namespace mirus
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
         // test_func();
+
         asm volatile("mov $0x0, %eax");
-        asm volatile("int $0x80");
+        asm volatile("int $0x7F");
+        // system::test_syscalls(0);
 
         // The point of no return (heh...)
         while (true);
