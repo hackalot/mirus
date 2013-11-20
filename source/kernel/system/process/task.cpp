@@ -31,26 +31,7 @@ namespace mirus
         void enter_userspace()
         {
             cpu::set_kernel_stack(0x9000);
-            
-            asm volatile("cli");
-            asm volatile("mov $0x23, %ax");
-            asm volatile("mov %ax, %ds");
-            asm volatile("mov %ax, %es");
-            asm volatile("mov %ax, %fs");
-            asm volatile("mov %ax, %gs");
-            asm volatile("mov %esp, %eax");
-            asm volatile("pushl $0x23");
-            asm volatile("pushl %eax");
-            asm volatile("pushf");
-            asm volatile("pop %eax");
-            asm volatile("orl $0x200, %eax");
-            asm volatile("push %eax");
-            asm volatile("pushl $0x1B");
-            asm volatile("push $1f");
-            asm volatile("iret");
-            asm volatile("1: ");
-
-            // jmp_usermode();
+            jmp_usermode();
         }
     } // !namespace
 } // !namespace

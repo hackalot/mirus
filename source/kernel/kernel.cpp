@@ -202,13 +202,13 @@ namespace mirus
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
 
-        asm volatile("mov $0x0, %eax");
-        asm volatile("mov $0x0, %ebx");
-        asm volatile("mov $0x0, %ecx");
-        asm volatile("mov $0x0, %edx");
-        asm volatile("mov $0x0, %esi");
-        asm volatile("mov $0x0, %edi");
-        asm volatile("int $0x7F");
+        // asm volatile("mov $0x0, %eax");
+        // asm volatile("mov $0x0, %ebx");
+        // asm volatile("mov $0x0, %ecx");
+        // asm volatile("mov $0x0, %edx");
+        // asm volatile("mov $0x0, %esi");
+        // asm volatile("mov $0x0, %edi");
+        // asm volatile("int $0x7F");
 
         // system::test_syscalls(0);
 
