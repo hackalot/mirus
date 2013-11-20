@@ -31,7 +31,7 @@ namespace mirus
             return 0;
         }
 
-        uintptr_t syscalls[] =
+        uintptr_t syscalls[1] =
         {
             (uintptr_t)&test_syscall
         };

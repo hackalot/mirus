@@ -43,7 +43,7 @@ namespace mirus
             asm volatile("pushl %eax");
             asm volatile("pushf");
             asm volatile("pop %eax");
-            asm volatile("orl $0x2000, %eax");
+            asm volatile("orl $0x200, %eax");
             asm volatile("push %eax");
             asm volatile("pushl $0x1B");
             asm volatile("push $1f");
