@@ -1,7 +1,7 @@
 # Building Mirus
 Mirus uses `rake` to build the kernel, drivers, userspace, and other components.
 
-## Getting Source
+### Getting Source
 Source code for Mirus is hosted on [GitHub](https://github.com/joshbeitler/mirus).  It can be cloned via
 
 ```
@@ -13,7 +13,7 @@ rake
 
 See the `CONTRIBUTING.md` file if you wish to submit any changes you make to the Mirus project.
 
-## Build Targets
+### Build Targets
 The following targets are avalible via `rake <target-name>`:
 * `build_all` - Build all components
 * `build_asm` - Build only assembly code components
@@ -27,5 +27,5 @@ Note that many of these targets depend on each other.  As such, if you call, say
 
 You can find the source for the targets in the `build/lib` directory, and in `Rakefile`.
 
-## Build Configuration
+### Build Configuration
 In order to configure the build to specific needs, you will need to create a file called `config.rb` in the `build` directory.  An example build configuration file is located in the `docs` directory.
