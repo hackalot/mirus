@@ -40,6 +40,7 @@ To build Mirus, you will need to meet the following dependencies.  It is expecte
 
 ### Contributing
 If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a separate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.
+Make sure to join the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev) to participate in discussions, get help, or ask questions.
 
 ### Issue Tracker
 If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
