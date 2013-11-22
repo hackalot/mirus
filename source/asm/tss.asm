@@ -36,7 +36,7 @@ jmp_usermode:
     push eax
     pushf
     pop eax
-    or 0x200, eax
+    or eax, 0x200
     push eax
     push 0x1B
     iret
