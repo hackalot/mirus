@@ -1,4 +1,4 @@
-<img src="http://i.imgur.com/zIHSvNm.png" width="45%" />
+<img src="http://i.imgur.com/EG2d50t.png" width="10%" />
 
 Mirus is a new operating system designed on principles created by Plan 9 from Bell Labs.  Mirus is not a fork or clone of Plan 9, but rather an entirely different operating system that extends the functionality of Plan 9.
 
