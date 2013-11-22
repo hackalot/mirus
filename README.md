@@ -1,54 +1,62 @@
 <img src="http://i.imgur.com/EG2d50t.png" width="10%" />
 
-Mirus is a new operating system designed on principles created by Plan 9 from Bell Labs.  Mirus is not a fork or clone of Plan 9, but rather an entirely different operating system that extends the functionality of Plan 9.
+Mirus is a new, modern operating system designed to help you get your work done faster and more efficiently.  It is designed for all shapes and sizes, and is scalable from the smallest embedded systems to massive server clusters.
 
-Mirus is designed primarily for higher-performance machines, such as workstations and gaming rigs, and to be used by those of higher technical knowledge. We also are trying to implement cluster-based computing and advanced load bearing capabilities.
+### About
 
-A key motivation in the creation of Mirus was to bring many of the powerful concepts created in Plan 9 to a more general audience, and to build upon what was started there.
+Mirus is the culmination of several years of in-depth planning and research into operating system theory.  It is designed for the future, implementing the latest and greatest innovations in computing.
 
-Mirus was designed to be elegant and powerful, allowing for tasks that may seem menial on other systems to become easy and fluid.
+Mirus is designed for scalability and distributed systems.  Using built in protocols and features such as Harmony and `rcx`, Mirus allows for technical prowess and networking abilities unmatched by anything you've ever seen.
 
-### Core Features
-* Fairly POSIX complient
+### Features
+
+* Capable of running many UNIX and Linux applications with a POSIX subsystem
 * Dynamic, node based filesystem
-* Forward thinking design
 * Resilient driver framework
 * Fast and lean microkernel
+* Modular architecture
+* Powerful remote features
 
 ### Testing
-We do not have bleeding-edge ISO images available currently.  In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task.  You will want to clone and build the git tree from the `master` branch.  Full build instructions are found in the `BUILDING.md` file.
 
-You can run the following commands to configure and build the system:
+In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `master` branch. 
 
 ```
-git clone https://github.com/joshbeitler/mirus.git --recursive
+git clone https://github.com/joshbeitler/mirus.git
 cd mirus
 rake
 ```
 
-A build of Mirus with no additional configuration or specified tasks will generate a bootable `mirus.iso` in the `build` directory.  You can burn this to any bootable medium you see fit, or run it in a virtual machine via `rake qemu`. 
+A build of Mirus with no additional configuration or specified tasks will generate a bootable disk image named `mirus.iso` in the build/ directory. You can burn this to any bootable medium you see fit, or run it in a virtual machine via `rake qemu`.
 
-### Dependencies
-To build Mirus, you will need to meet the following dependencies.  It is expected that binutils and other standard UNIX utilities are installed, but a few odities are required:
+**Dependencies**
 
-* `clang` >= 3.3
+To build Mirus, you will need to meet the following dependencies. It is expected that binutils and other standard UNIX utilities are installed, but a few odities are required:
+
+* `clang`
 * `grub2`
 * `yasm`
-* `xorriso` >= 1.2.9
+* `xorriso`
 * `rake`
-* `colorize`
 
 ### Contributing
-If you'd like to contribute, we would love you to go ahead.  Grab yourself a copy of the source, and get up close and personal with it.  It doesn't bite - trust us!  Make your changes on a separate fork and send a pull request our way.  See the `CONTRIBUTING.md` file for more details.
-Make sure to join the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev) to participate in discussions, get help, or ask questions.
 
-### Issue Tracker
-If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues).  Please tag and describe your issue in detail, and if any error codes are provided please include them.
+If you'd like to contribute, we would love you to go ahead. Grab yourself a copy of the source, and get up close and personal with it. It doesn't bite - trust us! Make your changes on a separate fork and send a pull request our way.
+
+**Mailing List**
+
+Subscribe to the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev) to get up-to-date development discussion and participate with the developers.
+
+**Issue Tracker**
+
+If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues). Please tag and describe your issue in detail, and if any error codes are provided please include them.
 
 ### Getting Help
-We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`.  The [wiki](https://github.com/joshbeitler/mirus/wiki) is an excellent place to look if you need a quick reference of Mirus.
+
+We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
 
 ### License
+
 ```
 Copyright 2013 Mirus Project
 
