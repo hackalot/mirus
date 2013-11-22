@@ -2,7 +2,7 @@
 
 > Mirus is a new, modern operating system designed to help you get your work done faster and more efficiently.  It is designed for all shapes and sizes, and is scalable from the smallest embedded systems to massive server clusters.
 
-### About
+## About
 
 Mirus is the culmination of several years of in-depth planning and research into operating system theory.  It is designed for the future, implementing the latest and greatest innovations in computing.
 
@@ -17,7 +17,7 @@ Mirus is designed for scalability and distributed systems.  Using built in proto
 * Modular architecture
 * Powerful remote features
 
-### Testing
+## Testing
 
 In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `master` branch. 
 
@@ -39,7 +39,7 @@ To build Mirus, you will need to meet the following dependencies. It is expected
 * `xorriso`
 * `rake`
 
-### Contributing
+## Contributing
 
 If you'd like to contribute, we would love you to go ahead. Grab yourself a copy of the source, and get up close and personal with it. It doesn't bite - trust us! Make your changes on a separate fork and send a pull request our way.
 
@@ -55,7 +55,7 @@ If you run into issues (which we almost guarantee you will), please post them on
 
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
 
-### License
+## License
 
 ```
 Copyright 2013 Mirus Project
