@@ -18,10 +18,10 @@ Mirus is designed for scalability and distributed systems.  Using built in proto
 ## Getting Started
 | **Docs**                            | **Building**                  | **Community**                     | **Contribute**                              |
 |-------------------------------------|-------------------------------|-----------------------------------|---------------------------------------------|
-| ![Technical Documentation](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/docs.png) | ![Building](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/building.png) | ![Community](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/community.png) | ![Contributing](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/contribute.png) |
+| [![i1][Technical Documentation](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/docs.png) | ![Building](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/building.png) | ![Community](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/community.png) | ![Contributing](https://raw.github.com/joshbeitler/mirus/newsrc/docs/resc/images/contribute.png) |
 
 ## Testing  [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
-In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `master` branch. 
+In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `master` branch.
 ```
 git clone https://github.com/joshbeitler/mirus.git
 cd mirus
