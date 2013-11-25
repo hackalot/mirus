@@ -32,8 +32,13 @@ def meets_deps?
 
     deps.each do |t|
         if ! which t
-            puts "Could not find dependency \"#{t}\"".red
-            return false
+            if t == "xorriso"
+                puts "Could not find dependency \"#{t}\"".yellow
+                return true
+            else
+                puts "Could not find dependency \"#{t}\"".red
+                return false
+            end
         end
     end
 
