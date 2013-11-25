@@ -15,6 +15,13 @@
 # build assembly
 desc "Build bootstrap + lower level ASM code"
 task :build_asm do
+    puts "  __  __ ___ ___ _   _ ___ "
+    puts " |  \\/  |_ _| _ | | | / __|"
+    puts " | |\\/| || ||   | |_| \\__ \\"
+    puts " |_|  |_|___|_|_\\\\___/|___/"
+    puts
+
+    puts "[rake] Assembling"
     $asm_files.each do |t|
         # replace .asm with .o
         object_file = t.sub(/\.asm$/, '.o')
@@ -25,8 +32,9 @@ task :build_asm do
                 puts "[rake] Could not build #{t}".red
                 $errors = true
             else
-                puts "[rake] #{t} -> #{object_file}".green
+                puts "    --> #{t}"
             end
         end
     end
+    puts
 end
