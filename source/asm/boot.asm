@@ -34,11 +34,11 @@ align 4
 ; cause massive harm. Instead, we'll provide our own stack. We will allocate
 ; room for a small temporary stack by creating a symbol at the bottom of it,
 ; then allocating 16384 bytes for it, and finally creating a symbol at the top.
-section .bootstrap_stack
-align 4
-stack_bottom:
-times 16384 db 0
-stack_top:
+; section .bootstrap_stack
+; align 4
+; stack_bottom:
+; times 16384 db 0
+; stack_top:
 
 ; The linker script specifies _start as the entry point to the kernel and the
 ; bootloader will jump to this position once the kernel has been loaded. It
@@ -47,9 +47,8 @@ section .text
 global _start
 _start:
 	; mov esp, stack_top
-    mov esp, 0x9000
+    mov esp, 0x7FFFF
     push esp
-
 
     ; multiboot information
     push eax

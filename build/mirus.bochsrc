@@ -2,8 +2,8 @@
 plugin_ctrl: unmapped=1, biosdev=1, speaker=1, extfpuirq=1, parallel=1, serial=1
 config_interface: textconfig
 display_library: x
-memory: host=32, guest=32
-romimage: file="/usr/share/bochs/BIOS-bochs-latest"
+memory: host=1024, guest=1024
+romimage: file="/usr/share/bochs/BIOS-bochs-kvm"
 vgaromimage: file="/usr/share/bochs/vgabios-stdvga"
 boot: cdrom
 floppy_bootsig_check: disabled=0
@@ -39,7 +39,7 @@ keyboard: type=mf, serial_delay=250, paste_delay=100000, user_shortcut=none
 mouse: type=ps2, enabled=0, toggle=ctrl+mbutton
 parport1: enabled=1, file=none
 parport2: enabled=0
-com1: enabled=1, mode=null, dev=none
+com1: enabled=1, mode=file, dev=/tmp/mirus_debug.log
 com2: enabled=0
 com3: enabled=0
 com4: enabled=0

@@ -51,7 +51,6 @@ task :default => ['make_iso'] do
     else
         puts
         puts "[rake] Build completed successfully!".green
-        puts
         exit 0
     end
 end
