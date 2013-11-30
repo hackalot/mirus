@@ -205,7 +205,12 @@ namespace mirus
         //        * asm volatile("mov $0x0, %eax\n"
         //          "int $0x80");
 
+        // asm volatile("push $0x00");
+        // asm volatile("pop %eax");
+        // asm volatile("int $0x7F");
         test_func();
+
+        // system::test_syscalls(0);
 
         // YOU SHALL NOT PASS!!!!
         while (true);

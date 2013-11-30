@@ -32,7 +32,7 @@ namespace mirus
         {
             cpu::set_kernel_stack(0x7FFFF);
             // jmp_usermode();
-            asm volatile("  \ 
+             asm volatile("  \ 
      cli; \ 
      mov $0x23, %ax; \ 
      mov %ax, %ds; \ 
@@ -45,13 +45,13 @@ namespace mirus
      pushl %eax; \ 
      pushf; \
      pop %eax; \
-     orl $0x0202, %eax; \
+     orl $0x200, %eax; \
      push %eax; \
      pushl $0x1B; \ 
      push $1f; \ 
      iret; \ 
-   1: \
-     ");
+   1: \ 
+   ");
         }
     } // !namespace
 } // !namespace

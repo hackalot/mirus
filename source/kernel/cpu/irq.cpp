@@ -29,7 +29,7 @@ namespace mirus
 {
     namespace cpu
     {
-        static irq_handler_t irq_routines[16] = { NULL };
+        static irq_handler_t irq_routines[255] = { NULL };
 
         //
         // Set up a listener

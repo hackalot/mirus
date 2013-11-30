@@ -78,7 +78,7 @@ namespace mirus
         {
             memset_v(isr_routines, 0x00, sizeof(isr_routines));
 
-            idt::set_gate(0, (unsigned)isr0, 0x08, 0x8E);
+            idt::set_gate(0, (unsigned)isr0, 0x08, 0xEE);
             idt::set_gate(1, (unsigned)isr1, 0x08, 0x8E);
             idt::set_gate(2, (unsigned)isr2, 0x08, 0x8E);
             idt::set_gate(3, (unsigned)isr3, 0x08, 0x8E);
@@ -113,8 +113,6 @@ namespace mirus
             idt::set_gate(29, (unsigned)isr29, 0x08, 0x8E);
             idt::set_gate(30, (unsigned)isr30, 0x08, 0x8E);
             idt::set_gate(31, (unsigned)isr31, 0x08, 0x8E);
-
-            idt::set_gate(0x7F, (unsigned)isr127, 0x08, 0x8E);
         }
 
         extern "C" void fault_handler(cpu::regs* r)
