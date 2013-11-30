@@ -20,7 +20,7 @@ tss_flush:
 
 global test_func
 test_func:
-    mov eax, 0x00
+    mov eax, 0
     int 0x7F
 
 global jmp_usermode

@@ -25,7 +25,10 @@ namespace mirus
 {
     namespace system
     {
-        static int test_syscall()
+        const uint32_t MAX_SYSCALLS = 1;
+        typedef uint32_t (*syscall_t)(...);
+
+        uint32_t test_syscall()
         {
             ktrace(trace_level::msg, "Test syscall called.\n");
             return 0;
@@ -36,19 +39,23 @@ namespace mirus
             (uintptr_t)&test_syscall
         };
 
-        typedef uint32_t (*syscall_t)(...);
-
         void syscall_handler(cpu::regs* r)
         {
             ktrace(trace_level::msg, "System call called\n");
-            ktrace(trace_level::none, "\teax: %d\n", r->eax);
+            ktrace(trace_level::msg, "Syscall number: %x:%d\n", r->eax);
 
-            if (r->eax >= 3)
+            if (r->eax >= MAX_SYSCALLS)
+            {
+                ktrace(trace_level::error, "Could not call: Out of bounds\n");
                 return;
+            }
 
             uintptr_t location = syscalls[r->eax];
             if (!location)
+            {
+                ktrace(trace_level::error, "Could not call: Non existant\n");
                 return;
+            }
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
