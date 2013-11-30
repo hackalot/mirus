@@ -25,20 +25,20 @@ test_func:
 
 global jmp_usermode
 jmp_usermode:
-   ;  cli
-   ;  mov ax, 0x23   
-   ;  mov ds, ax
-   ;  mov es, ax
-   ;  mov fs, ax
-   ;  mov gs, ax
+    cli
+    mov ax, 0x23   
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
 
-   ;  push 0x23      
-   ;  push esp      
-   ;  pushf      
-   ;  push 0x1b      
-   ;  lea eax, [a]      
-   ;  push eax
+    push 0x23      
+    push esp      
+    pushf      
+    push 0x1b      
+    lea eax, [a]      
+    push eax
 
-   ;  iret
-   ; a:
-   ;  add esp, 4
+    iret
+   a:
+    add esp, 4
