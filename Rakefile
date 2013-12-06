@@ -14,13 +14,7 @@
 
 # dependencies
 require 'rubygems'
-
-begin
-  require 'colorize'
-rescue Gem::LoadError
-  # not installed
-end
-
+require './build/lib/colorize'
 require './build/lib/deps'
 
 # check for required programs
