@@ -18,9 +18,11 @@
 
 #pragma once
 
+#include <stdafx.hpp>
+
 namespace mirus
 {
-    unsigned int strlen(const char* str);
+    size_t strlen(const char* str);
     char* itoa (int value);
     char* strpad(char* data, int padlen);
     char* strcat(char* dest, const char* src);

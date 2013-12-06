@@ -125,7 +125,7 @@ namespace mirus
                 i++, mods++)
             {
                 ktrace(trace_level::none, "==========\n");
-                ktrace(trace_level::msg, "Module found: [%d:%d]\n",x
+                ktrace(trace_level::msg, "Module found: [%d:%d]\n",
                     mods->mod_start,
                     mods->mod_end);
 
