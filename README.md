@@ -16,7 +16,8 @@ Mirus is designed for scalability and distributed systems.  Using built in proto
 * Powerful remote features
 
 ## Testing  [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
-In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `master` branch.
+In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `newsrc` branch.  Detailed build instruction can be
+found in the `BUILDING.md` file, including instructions for cross platform builds on OSX and Windows.
 ```
 git clone https://github.com/joshbeitler/mirus
 cd mirus
