@@ -7,7 +7,7 @@ Source code for Mirus is hosted on [GitHub](https://github.com/joshbeitler/mirus
 ```
 git clone https://github.com/joshbeitler/mirus.git --recursive
 cd mirus
-git submodue init
+git submodule init
 rake
 ```
 
