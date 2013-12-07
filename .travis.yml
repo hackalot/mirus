@@ -1,4 +1,5 @@
 language: cpp
 compiler:
   - clang
-script: ./build/travis-setup.sh && rake build_all
+script: ./build/travis-setup.sh 
+  && rake build_all
