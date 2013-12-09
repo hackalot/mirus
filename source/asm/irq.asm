@@ -29,6 +29,7 @@ global irq12
 global irq13
 global irq14
 global irq15
+global irq127
 
 ; 32: IRQ0
 irq0:
@@ -142,10 +143,17 @@ irq15:
     push byte 47
     jmp irq_common_stub
 
+; 127: System call vector
+irq127:
+    cli
+    push byte 0
+    push byte 127
+    jmp irq_common_stub
+
 extern irq_handler
 
 irq_common_stub:
-    pusha
+    pushad
     push ds
     push es
     push fs
@@ -164,6 +172,6 @@ irq_common_stub:
     pop fs
     pop es
     pop ds
-    popa
+    popad
     add esp, 8
     iret
