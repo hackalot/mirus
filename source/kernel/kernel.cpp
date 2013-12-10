@@ -20,18 +20,14 @@
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
 #include <boot/ramdisk.hpp>
-
 #include <cpu/gdt.hpp>
 #include <cpu/idt.hpp>
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
-
 #include <system/process/process.hpp>
 #include <system/process/elf.hpp>
 #include <system/process/task.hpp>
-
 #include <system/syscall.hpp>
-
 #include <hardware/timer.hpp>
 #include <hardware/serial.hpp>
 #include <hardware/rtc.hpp>

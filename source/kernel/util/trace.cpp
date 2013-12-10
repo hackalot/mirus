@@ -25,7 +25,7 @@ namespace mirus
     //
     // trace - send a trace message
     //
-    int trace(trace_level level, const char *fmt, ...)
+    void trace(trace_level level, const char *fmt, ...)
     {
         // TODO: impliment tracing to the filesystem
     }
@@ -51,7 +51,10 @@ namespace mirus
                 break;
             case trace_level::info:
             case trace_level::msg:
+            case trace_level::warn:
                 hardware::serial::write("[info  ] ");
+                break;
+            case trace_level::none:
                 break;
         }
     }

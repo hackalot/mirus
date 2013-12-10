@@ -65,7 +65,7 @@ namespace mirus
 
         void test_syscalls(int eax)
         {
-            cpu::regs* r;
+            cpu::regs* r = nullptr;
             r->eax = eax;
             r->ebx = 0;
             r->ecx = 0;
