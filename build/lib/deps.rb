@@ -39,6 +39,8 @@ def meets_deps?
                 puts "Could not find dependency \"#{t}\"".red
                 return false
             end
+        else
+            puts "[rake] #{t} found"
         end
     end
 

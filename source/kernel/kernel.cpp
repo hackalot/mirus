@@ -144,34 +144,28 @@ namespace mirus
                 "Memory is less than expected minimum\n");
 
         // Install GDT
-        ktrace(trace_level::msg, "Installing GDT...");
         cpu::gdt::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed GDT");
 
         // Install IDT
-        ktrace(trace_level::msg, "Installing IDT...");
         cpu::idt::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed IDT");
 
         // Setup ISRs
-        ktrace(trace_level::msg, "Setting up ISRs...");
         cpu::isr::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed ISRs");
 
         // Setup screen
-        ktrace(trace_level::msg, "Setting up screen...");
         screen::terminal::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed screen");
 
         // Setup serial ports
-        ktrace(trace_level::msg, "Setting up serial ports...");
         hardware::serial::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed serial ports");
 
         // Setup IRQs
-        ktrace(trace_level::msg, "Setting up IRQs...");
         cpu::irq::install();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed interrupts");
 
         // Enable interrupts
         asm volatile("sti");

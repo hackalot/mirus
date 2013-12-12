@@ -15,7 +15,6 @@
 # build kernel
 desc "Build the kernel"
 task :build_kernel do
-    puts "[rake] Building kernel"
     $cpp_files.each do |s|
         # replace .cpp with .o
         object_file = s.sub(/\.cpp$/, '.o')

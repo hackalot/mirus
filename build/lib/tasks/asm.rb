@@ -15,7 +15,7 @@
 # build assembly
 desc "Build bootstrap + lower level ASM code"
 task :build_asm do
-    puts "[rake] Assembling"
+    puts "[rake] Compiling kernel"
     $asm_files.each do |t|
         # replace .asm with .o
         object_file = t.sub(/\.asm$/, '.o')
@@ -30,5 +30,4 @@ task :build_asm do
             end
         end
     end
-    puts
 end
