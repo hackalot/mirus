@@ -48,6 +48,7 @@ namespace mirus
             void irq13();
             void irq14();
             void irq15();
+            void irq127();
         }
 
         //

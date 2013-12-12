@@ -145,27 +145,21 @@ namespace mirus
 
         // Install GDT
         cpu::gdt::install();
-        ktrace(trace_level::msg, "Installed GDT");
 
         // Install IDT
         cpu::idt::install();
-        ktrace(trace_level::msg, "Installed IDT");
 
         // Setup ISRs
         cpu::isr::install();
-        ktrace(trace_level::msg, "Installed ISRs");
 
         // Setup screen
         screen::terminal::install();
-        ktrace(trace_level::msg, "Installed screen");
 
         // Setup serial ports
         hardware::serial::install();
-        ktrace(trace_level::msg, "Installed serial ports");
 
         // Setup IRQs
         cpu::irq::install();
-        ktrace(trace_level::msg, "Installed interrupts");
 
         // Enable interrupts
         asm volatile("sti");
@@ -187,14 +181,7 @@ namespace mirus
         system::enter_userspace();
         ktrace(trace_level::none, "OK\n");
 
-        // ERROR: causes gpf when either of these happen
-        //        possibly (but not likely) a bug in the 
-        //        ISR or IRQ code
-        //
-        //        * test_func();
-        //        * asm volatile("mov $0x0, %eax\n"
-        //          "int $0x80");
-
+        // Test system calls
         asm volatile("mov $0, %eax");
         asm volatile("mov $0, %ebx");
         asm volatile("mov $0, %ecx");
@@ -202,9 +189,6 @@ namespace mirus
         asm volatile("mov $0, %esi");
         asm volatile("mov $0, %edi");
         asm volatile("int $0x7F");
-        // test_func();
-
-        // system::test_syscalls(0);
 
         // YOU SHALL NOT PASS!!!!
         while (true);

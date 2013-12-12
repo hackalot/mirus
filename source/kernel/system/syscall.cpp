@@ -77,7 +77,7 @@ namespace mirus
 
         void init_syscalls()
         {
-            cpu::idt::set_gate(0x7F, (unsigned long)syscall_handler, 0x08, 0x8E);
+            // cpu::idt::set_gate(0x7F, (unsigned long)syscall_handler, 0x08, 0x8E);
             cpu::irq::install_handler(0x7F, syscall_handler);
         }
     } // !namespace
