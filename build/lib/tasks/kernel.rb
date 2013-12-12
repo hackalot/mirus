@@ -22,12 +22,11 @@ task :build_kernel do
         # compile + get status
         sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log 2>&1" do |ok, res|
             if ! ok
-                puts "    --> #{s}".red
+                puts "--> #{s} - failed".red
                 $errors = true
             else
-                puts "    --> #{s}"
+                puts "--> #{s}"
             end
         end
     end
-    puts
 end

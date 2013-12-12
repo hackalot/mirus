@@ -32,15 +32,10 @@ def meets_deps?
 
     deps.each do |t|
         if ! which t
-            if t == "xorriso"
-                puts "Could not find dependency \"#{t}\"".yellow
-                return true
-            else
-                puts "Could not find dependency \"#{t}\"".red
-                return false
-            end
+            puts "-- Looking for #{t} - not found".red
+            return false
         else
-            puts "[rake] #{t} found"
+            puts "-- Looking for #{t} - found"
         end
     end
 
