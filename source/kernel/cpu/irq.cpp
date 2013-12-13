@@ -16,41 +16,28 @@
 // irq.hpp - IRQ implimentation
 //
 
-#include <stdafx.hpp>
-#include <cpu/idt.hpp>
-#include <cpu/regs.hpp>
-#include <util/ports.hpp>
 #include <cpu/irq.hpp>
 
-using mirus::hardware::io::inb;
-using mirus::hardware::io::outb;
+using mirus::hw::io::inb;
+using mirus::hw::io::outb;
 
 namespace mirus
 {
     namespace cpu
     {
-        static irq_handler_t irq_routines[255] = { NULL };
+        static irq_handler_t irq_routines[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        //
-        // Set up a listener
-        //
         void irq::install_handler(int irq, 
             irq_handler_t handler)
         {
             irq_routines[irq] = handler;
         }
 
-        //
-        // remove a handler on an irq
-        //
         void irq::uninstall_handler(int irq)
         {
             irq_routines[irq] = 0;
         }
 
-        //
-        // remap IRQs to avoid conflicts
-        //
         void irq::remap()
         {
             outb(0x20, 0x11);
@@ -65,9 +52,6 @@ namespace mirus
             outb(0xA1, 0x0);
         }
 
-        //
-        // set IRQ gates
-        //
         void irq::gates()
         {
             idt::set_gate(32, (unsigned long)irq0, 0x08, 0x8E);
@@ -88,13 +72,12 @@ namespace mirus
             idt::set_gate(47, (unsigned long)irq15, 0x08, 0x8E);
         }
 
-        //
-        // install the irq handler
-        //
         void irq::install()
         {
             irq::remap();
             irq::gates();
+
+            //IRQ_RES;
         }
 
         void irq::ack(int irq_no)
@@ -107,12 +90,9 @@ namespace mirus
             outb(0x20, 0x20);
         }
 
-        //
-        // our irq handler
-        //
         extern "C" void irq_handler(struct regs* r)
         {
-            void (*handler)(struct regs* r);
+            void (*handler)(struct regs * r);       
 
             if (r->int_no > 47 || r->int_no < 32)
             {

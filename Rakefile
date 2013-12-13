@@ -14,8 +14,15 @@
 
 # dependencies
 require 'rubygems'
-require './build/lib/colorize'
+require 'colorize'
+require 'artii'
 require './build/lib/deps'
+
+# check for required programs
+if meets_deps? == false
+    puts "Does not meet dependencies, cannot continue.".red
+    exit
+end
 
 # require all our tasks
 require './build/lib/env'
@@ -25,26 +32,27 @@ require './build/lib/tasks/asm'
 require './build/lib/tasks/clean'
 require './build/lib/tasks/kernel'
 require './build/lib/tasks/qemu'
+require './build/lib/tasks/configure'
 require './build/lib/tasks/link'
-require './build/lib/tasks/ramdisk'
 
 directory "./build/logs"
 
-# check for required programs
-if meets_deps? == false
-    puts "Does not meet dependencies, cannot continue.".red
-    exit -1
-end
+# cool ascii art
+a = Artii::Base.new :font => 'slant'
+puts a.asciify('mirus')
+puts "Mirus build system [0.2.0]"
+puts "(C) Mirus Project, Apache 2 License"
+
+puts
 
 # default task is to generate an iso image
-task :default => ['make_iso'] do  
+task :default => ['make_iso'] do
     if $errors
         puts
-        puts "[rake] Errors were generated during the build.  Please review the \"build/*.log\" files for details.".red
+        puts "Errors were generated during the build.  Please review the \"build/*.log\" files for details.".red
         exit 1
     else
         puts
-        puts "[rake] Build completed successfully!".green
-        exit 0
+        puts "Build completed successfully!".green
     end
 end

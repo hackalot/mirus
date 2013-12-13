@@ -1,0 +1,59 @@
+.
+|-- build
+|   |-- lib
+|   |   `-- tasks
+|   `-- logs
+|-- coreutils
+|-- documentation
+|   `-- resc
+|       `-- img
+|-- iso
+|   `-- boot
+|       `-- grub
+|-- mirloader
+|   |-- docs
+|   `-- src
+|-- mkdb
+|-- runtime
+|-- sing
+`-- source
+    |-- asm
+    |-- drivers
+    |   |-- acpi
+    |   |-- ata
+    |   |-- atapi
+    |   |-- keyboard
+    |   |-- serial
+    |   |-- usb
+    |   `-- vmm
+    |-- include
+    |   |-- backbone
+    |   |-- boot
+    |   |-- core
+    |   |-- cpu
+    |   |-- device
+    |   |-- driverman
+    |   |-- io
+    |   |-- mem
+    |   |-- process
+    |   |-- screen
+    |   |-- subsystem
+    |   |-- time
+    |   `-- util
+    |-- kernel
+    |   |-- core
+    |   |-- cpu
+    |   |-- device
+    |   |-- mem
+    |   |-- process
+    |   |-- screen
+    |   |-- time
+    |   `-- util
+    `-- system
+        |-- backbone
+        |-- driver
+        |-- io
+        |-- subsystem
+        `-- util
+
+56 directories

@@ -28,12 +28,9 @@ namespace mirus
             idt_ptr idtp;
         }
 
-        // IDT entry table
         static idt_entry _idt[256];
 
-        //
         // set an entry in the idt
-        //
         void idt::set_gate(unsigned char num, 
             unsigned long base, 
             unsigned short sel, 
@@ -46,12 +43,9 @@ namespace mirus
             // segment selection and flags
             _idt[num].sel = sel;
             _idt[num].always0 = 0;
-            _idt[num].flags = flags | 0x60;
+            _idt[num].flags = flags;
         }
 
-        //
-        // Install IDT + get ready for use
-        //
         void idt::install()
         {
             // set up IDT pointer

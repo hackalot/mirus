@@ -24,9 +24,7 @@ namespace mirus
 {
     namespace cpu
     {
-        //
-        // gdt_entry - defines an entry in the gdt
-        //
+        // defines an entry in the gdt
         class gdt_entry
         {
             public:
@@ -38,9 +36,7 @@ namespace mirus
                 unsigned char base_high;
         } __attribute__ ((__packed__));
 
-        //
-        // gdt_ptr pointer to our gdt
-        //
+        // pointer to our gdt
         class gdt_ptr
         {
             public:
@@ -48,24 +44,18 @@ namespace mirus
                 unsigned long base;
         } __attribute__ ((__packed__));
 
-        //
-        // gdt - the gdt
-        //
+        // our gdt + functions
         class gdt
         {
             public:
-                //
                 // setup a new entry
-                //
                 static void set_gate(int num, 
                     unsigned long base, 
                     unsigned long limit, 
                     unsigned char access, 
                     unsigned char gran);
             
-                //
-                // install the gdt (no shit!)
-                //
+                // install the gdt
                 static void install();
         };
     } // !namespace

@@ -22,10 +22,10 @@ task :build_kernel do
         # compile + get status
         sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log 2>&1" do |ok, res|
             if ! ok
-                puts "--> #{s} - failed".red
+                puts "[rake] Could not build #{s}".red
                 $errors = true
             else
-                puts "--> #{s}"
+                puts "[rake] #{s} -> #{object_file}".green
             end
         end
     end

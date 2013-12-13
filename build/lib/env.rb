@@ -19,14 +19,14 @@ $target_bin         = "kernel.bin"
 
 # build information to be passed to kernel
 $version_major      = 0
-$version_minor      = 3
-$version_rev        = 5
+$version_minor      = 2
+$version_rev        = 0
 $version_prefix     = "dev"
 $version_codename   = "wake"
 
 # source files
 $cpp_files          = FileList['source/kernel/**/*.cpp', 'source/system/**/*.cpp', 'source/*.cpp']
-$header_files       = FileList['source/include/*.hpp', 'source/common/**/*.h*']
+$header_files       = FileList['source/include/*.hpp', 'source/library/*.hpp']
 $asm_files          = FileList['source/asm/*.asm']
 
 # object files
@@ -39,7 +39,7 @@ $dep_files          = $cpp_files.sub(/\.cpp$/, '.d')
 # clang + additional options
 $compiler           = "clang++"
 $warnings           = "-Wall -Wextra -Wno-unused-parameter "
-$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -nostdlib -m32 -O0 -g "
+$options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -m32 -O0 "
 $include_paths      = "-Isource/include -Isource/library "
 $cpp_flags          = $warnings << $options << $include_paths 
 
@@ -49,7 +49,7 @@ $cpp_flags          << "-DBUILD_REV=#{$version_rev} "
 $cpp_flags          << "-DBUILD_PREFIX=#{$version_prefix} "
 $cpp_flags          << "-DBUILD_CODENAME=#{$version_codename}"
 
-# asm + options
+# nasm + options
 $assembler          = "yasm"
 $assembler_flags    = "-f elf"
 
@@ -59,7 +59,7 @@ $ld_flags           = "-T build/linker.ld -m elf_i386"
 
 # virtual machine options
 $vm                 = "qemu-system-i386"
-$vm_flags           = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso -m 1024 -s"
+$vm_flags           = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso"
 
 # did we generate any errors?
 $errors             = false

@@ -20,7 +20,6 @@
 
 #include <stdafx.hpp>
 #include <cpu/idt.hpp>
-#include <cpu/irq.hpp>
 #include <cpu/regs.hpp>
 
 namespace mirus
@@ -36,9 +35,6 @@ namespace mirus
             public:
                 // install the isr controller
                 static void install();
-
-                static void install_handler(size_t isr, irq_handler_t handler);
-                static void uninstall_handler(size_t isr);
         };
     } // !namespace
 } // !namespace
