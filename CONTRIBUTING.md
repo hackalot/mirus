@@ -4,6 +4,8 @@ If you've made some changes to the code that you'd like to see in the project, h
 ### Basic Contributing Guidelines
 We try to have a very clean and elegant codebase.  As such, any code submitted to us must follow the Mirus Style Guide.  Any code that is not formatted, named, or otherwise not compliant to the Style Guide will be regected.  Please note that this is nothing personal.  It's just business.
 
+Be sure to follow the coding style found in `docs/coding_style.cpp`.
+
 ### Mailing List
 In order to contribute, you need to join the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev), and send a message introducing yourself.  We'd be glad to help dish out easy starting tasks.
 
