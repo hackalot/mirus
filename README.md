@@ -7,7 +7,7 @@ Mirus is designed for scalability and distributed systems.  Using built in proto
 * Fast and lean microkernel
 * Modular architecture
 
-## Testing
+## Testing [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
 In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `newsrc` branch.  Detailed build instruction can be
 found in the `BUILDING.md` file, including instructions for cross platform builds on OSX and Windows.
 ```
@@ -33,15 +33,13 @@ If you'd like to contribute, we would love you to go ahead. Grab yourself a copy
 Subscribe to the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev) to get up-to-date development discussion and participate with the developers.
 
 ### Issue Tracker
-If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.comm/joshbeitler/mirus/issues). Please tag and describe your issue in detail, and if any error codes are provided please include them.
+If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues). Please tag and describe your issue in detail, and if any error codes are provided please include them.
 
 ### Getting Help
-We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.comm/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
+We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
 
 ## License
 ```
-Copyright 2013 Mirus Project
-
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
