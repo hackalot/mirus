@@ -2,7 +2,7 @@
 If you've made some changes to the code that you'd like to see in the project, have an idea for us, or have an issue, we're happy to hear your input and accept your pull requests!
 
 ### Basic Contributing Guidelines
-We try to have a very clean and elegant codebase.  As such, any code submitted to us must follow the Mirus Style Guide.  Any code that is not formatted, named, or otherwise not compliant to the Style Guide will be regected.  Please note that this is nothing personal.  It's just business.
+We try to have a very clean and elegant codebase.  As such, any code submitted to us must follow the Mirus Style Guide.  Any code that is not formatted, named, or otherwise not compliant to the Style Guide will be rejected.  Please note that this is nothing personal.  It's just business.
 
 Be sure to follow the coding style found in `docs/coding_style.cpp`.
 
