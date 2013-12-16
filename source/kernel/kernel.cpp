@@ -32,35 +32,17 @@ namespace mirus
 {
     extern "C" void test_func();
 
-    //
     // Memory size
-    //
     uint32_t memory_size = 0;
-
-    //
-    // Memory size (mb)
-    //
     uint32_t memory_size_m = 0;
+    uint32_t min_mem = 512;
 
-    //
     // Memory map
-    //
     memory_map_t* mmap = nullptr;
 
-    //
-    // Module count
-    //
-    uint32_t mod_count = 0;
-
-    //
     // Modules
-    //
+    uint32_t mod_count = 0;
     module_t* mods = nullptr;
-
-    //
-    // Minimum memory size (512mb)
-    //
-    uint32_t min_mem = 512;
 
     //
     // kernel_main - our kernel entry point
@@ -165,17 +147,16 @@ namespace mirus
         kprintf("limitations under the License.\n\n");
 
         // Set up system calls
-        ktrace(trace_level::msg, "Installing system calls...");
         system::init_syscalls();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::msg, "Installed system calls");
+        kprintf("Installed system calls");
 
         // Enable interrupts
         asm volatile("sti");
 
         // Enter usermode
-        ktrace(trace_level::notice, "Entering usermode...");
         system::enter_userspace();
-        ktrace(trace_level::none, "OK\n");
+        ktrace(trace_level::notice, "Entered usermode...");
 
         // Test system calls
         asm volatile("mov $0, %eax");
