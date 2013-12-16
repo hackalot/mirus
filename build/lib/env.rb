@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# utility functions
+def command?(command)
+    system("which #{ command} > /dev/null 2>&1")
+end 
+
 # define various targets
 $target             = "mirus"
 $target_iso         = "mirus.iso"
@@ -63,3 +68,11 @@ $vm_flags           = "-serial file:/tmp/mirus_debug.log -cdrom build/mirus.iso 
 
 # did we generate any errors?
 $errors             = false
+
+# different OSs use different names for grub
+$grub               = "grub2-mkrescue"
+
+if command?("grub2-mkrescue") == false
+	$grub = "grub-mkrescue"
+end
+

@@ -20,6 +20,6 @@ task :make_iso => ['build_asm', 'build_kernel', 'link', 'build_ramdisk'] do
     sh "cp ./build/kernel.bin ./iso/boot/kernel.bin >>./build/logs/isolog.log"
 
     if ! error_cp
-        sh "grub2-mkrescue -o ./build/#{$target_iso} iso >>./build/logs/isolog.log"
+        sh "#{$grub} -o ./build/#{$target_iso} iso >>./build/logs/isolog.log"
     end
 end
