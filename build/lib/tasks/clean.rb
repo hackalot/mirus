@@ -15,6 +15,8 @@
 # clean object files, etc.
 desc "Clean up all the extra crap"
 task :clean do
+    verbose false
+
     sh "rm -f #{$object_files} >/dev/null 2>&1"
     sh "rm -f #{$dep_files} >/dev/null 2>&1"
     sh "rm -f #{$target} >/dev/null 2>&1"
@@ -24,4 +26,5 @@ task :clean do
     sh "rm -f build/*.iso >/dev/null 2>&1"
     sh "rm -f build/logs/*.log >/dev/null 2>&1"
     sh "rm -f iso/boot/kernel.bin >/dev/null 2>&1"
+    sh "rm -f iso/boot/ramdisk.tar >/dev/null 2>&1"
 end

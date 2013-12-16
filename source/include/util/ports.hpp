@@ -20,15 +20,30 @@
 
 namespace mirus
 {
-    namespace hw
+    namespace hardware
     {
         namespace io
         {
-            //inb
+            // byte
             unsigned char inb(unsigned short _port);
-
-            // outb
             void outb(unsigned short _port, unsigned char _data);
+
+            // short
+            unsigned short ins(unsigned short _port);
+            void outs(unsigned short _port, unsigned short _data);
+
+            // long
+            unsigned int inl(unsigned short _port);
+            void outl(unsigned short _port, unsigned int _data);
+
+            // multiple short
+            void insm(unsigned short _port, 
+                unsigned char* data, 
+                unsigned long size);
+
+            void outsm(unsigned short _port, 
+                unsigned char* data, 
+                unsigned long size);
         } // !namespace
     } // !namespace
 } // !namespace

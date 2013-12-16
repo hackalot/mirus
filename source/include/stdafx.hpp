@@ -25,6 +25,12 @@
 
 // kernel includes
 #include <util/asm.hpp>
+#include <util/string.hpp>
+#include <util/va_list.hpp>
 
-// sti and cli
-#define IRQ_RES asm volatile("sti");
+// screen
+#include <screen/screen.hpp>
+
+// stdio functions
+#include <util/printf.hpp>
+#include <util/trace.hpp>

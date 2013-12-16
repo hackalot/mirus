@@ -16,4 +16,5 @@
 desc "Run Mirus in Qemu"
 task :qemu do
     sh "#{$vm} #{$vm_flags}"
+    sh "cat /tmp/mirus_debug.log"
 end

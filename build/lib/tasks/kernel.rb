@@ -20,13 +20,6 @@ task :build_kernel do
         object_file = s.sub(/\.cpp$/, '.o')
         
         # compile + get status
-        sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log 2>&1" do |ok, res|
-            if ! ok
-                puts "[rake] Could not build #{s}".red
-                $errors = true
-            else
-                puts "[rake] #{s} -> #{object_file}".green
-            end
-        end
+        sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log"
     end
 end

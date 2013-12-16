@@ -65,7 +65,15 @@ namespace mirus
         return dest;
     }
 
-    unsigned char* memset(unsigned char* dest, 
+    void* memcpy_v(void* dest,
+        void* src,
+        size_t count)
+    {
+        asm volatile ("cld; rep movsb" : "+c" (count), "+S" (src), "+D" (dest) :: "memory");
+        return dest; 
+    }
+
+    extern "C" unsigned char* memset(unsigned char* dest, 
         unsigned char val, 
         int count)
     {
@@ -91,6 +99,14 @@ namespace mirus
         }
 
         return dest;
+    }
+
+    void* memset_v(void* b,
+        int val,
+        size_t count)
+    {
+        asm volatile ("cld; rep stosb" : "+c" (count), "+D" (b) : "a" (val) : "memory");
+        return b;
     }
 
     unsigned short* memsetw(unsigned short* dest, 

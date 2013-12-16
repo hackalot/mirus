@@ -24,7 +24,9 @@ namespace mirus
 {
     namespace cpu
     {
-        // defines an entry in our idt
+        //
+        // idt_entry - defines an entry in our idt
+        //
         class idt_entry
         {
             public:
@@ -35,7 +37,9 @@ namespace mirus
                 unsigned short base_hi;
         } __attribute__ ((__packed__));
 
-        // pointer to our idt
+        //
+        // idt_ptr - pointer to our idt
+        //
         class idt_ptr
         {
             public:
@@ -43,17 +47,23 @@ namespace mirus
                 unsigned long base;
         } __attribute__ ((__packed__));
 
+        //
         // idt and idt functions
+        //
         class idt
         {
             public:
-                // setup an idt entry
+                //
+                // set_gate - setup an idt entry
+                //
                 static void set_gate(unsigned char num, 
                     unsigned long base, 
                     unsigned short sel, 
                     unsigned char flags);
                 
+                //
                 // install the idt
+                //
                 static void install();
         };
     } // !namespace

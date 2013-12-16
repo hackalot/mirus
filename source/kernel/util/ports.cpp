@@ -20,7 +20,7 @@
 
 namespace mirus
 {
-    namespace hw
+    namespace hardware
     {
         namespace io
         {
@@ -34,6 +34,44 @@ namespace mirus
             void outb(unsigned short _port, unsigned char _data)
             {
                 asm volatile ("outb %1, %0" : : "dN" (_port), "a" (_data));
+            }
+
+            unsigned short ins(unsigned short _port) 
+            {
+                unsigned short rv;
+                asm volatile ("inw %1, %0" : "=a" (rv) : "dN" (_port));
+                return rv;
+            }
+
+            void outs(unsigned short _port, unsigned short _data) 
+            {
+                asm volatile ("outw %1, %0" : : "dN" (_port), "a" (_data));
+            }
+
+            unsigned int inl(unsigned short _port) 
+            {
+                unsigned short rv;
+                asm volatile ("inl %%dx, %%eax" : "=a" (rv) : "dN" (_port));
+                return rv;
+            }
+
+            void outl(unsigned short _port, unsigned int _data) 
+            {
+                asm volatile ("outl %%eax, %%dx" : : "dN" (_port), "a" (_data));
+            }
+
+            void insm(unsigned short _port,
+                unsigned char* data,
+                unsigned long size)
+            {
+                asm volatile ("rep insw" : "+D" (data), "+c" (size) : "d" (_port) : "memory");
+            }
+
+            void outsm(unsigned short _port,
+                unsigned char* data,
+                unsigned long size)
+            {
+                asm volatile ("rep outsw" : "+S" (data), "+c" (size) : "d" (_port));
             }
         } // !namespace
     } // !namespace

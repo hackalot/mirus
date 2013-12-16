@@ -20,13 +20,6 @@ task :build_asm do
         object_file = t.sub(/\.asm$/, '.o')
         
         # assemble + get status
-        sh "#{$assembler} #{$assembler_flags} -o #{object_file} #{t} >>./build/logs/asmlog.log 2>&1" do |ok, res|
-            if ! ok
-                puts "[rake] Could not build #{t}".red
-                $errors = true
-            else
-                puts "[rake] #{t} -> #{object_file}".green
-            end
-        end
+        sh "#{$assembler} #{$assembler_flags} -o #{object_file} #{t} >>./build/logs/asmlog.log 2>&1"
     end
 end
