@@ -28,7 +28,7 @@ Note that many of these targets depend on each other.  As such, if you call, say
 You can find the source for the targets in the `build/lib` directory, and in `Rakefile`, or by running `rake -T`
 
 ### Linux
-Building on Linux is steightforward, simply clone and build, provided the dependencies are installed.  You can install
+Building on Linux is straightforward, simply clone and build, provided the dependencies are installed.  You can install
 the needed dependencies with the following commands, depending on your distrobution.
 
 **Fedora**
