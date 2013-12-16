@@ -141,22 +141,18 @@ namespace mirus
 
         // Print kernel information
         kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
-        kprintf("Unless required by applicable law or agreed to in writing, software\n");
-        kprintf("distributed under the License is distributed on an \"AS IS\" BASIS,\n");
-        kprintf("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n");
-        kprintf("limitations under the License.\n\n");
 
         // Set up system calls
         system::init_syscalls();
-        ktrace(trace_level::msg, "Installed system calls");
-        kprintf("Installed system calls");
+        ktrace(trace_level::msg, "Installed system calls\n");
+        kprintf("Installed system calls\n");
 
         // Enable interrupts
         asm volatile("sti");
 
         // Enter usermode
         system::enter_userspace();
-        ktrace(trace_level::notice, "Entered usermode...");
+        ktrace(trace_level::notice, "Entered usermode...\n");
 
         // Test system calls
         asm volatile("mov $0, %eax");
