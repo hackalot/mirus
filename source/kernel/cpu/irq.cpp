@@ -86,7 +86,6 @@ namespace mirus
             idt::set_gate(45, (unsigned long)irq13, 0x08, 0x8E);
             idt::set_gate(46, (unsigned long)irq14, 0x08, 0x8E);
             idt::set_gate(47, (unsigned long)irq15, 0x08, 0x8E);
-
             idt::set_gate(127, (unsigned long)irq127, 0x08, 0xEE);
         }
 
@@ -102,9 +101,7 @@ namespace mirus
         void irq::ack(int irq_no)
         {
             if (irq_no >= 12)
-            {
                 outb(0xA0, 0x20);
-            }
 
             outb(0x20, 0x20);
         }
