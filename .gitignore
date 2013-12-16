@@ -17,3 +17,12 @@
 *.iso
 *.bin
 *.log
+
+# ramdisk
+*.tar
+
+# distrobution files
+*.so
+*.lib
+*.elf
+*.mx
