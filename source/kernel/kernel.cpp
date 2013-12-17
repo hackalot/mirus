@@ -50,7 +50,7 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        ktrace(trace_level::msg, "Mirus 0.3.5-dev\n\n");
+        ktrace(trace_level::msg, "Mirus 0.3.6-dev\n\n");
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
