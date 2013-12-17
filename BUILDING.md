@@ -5,9 +5,8 @@ Mirus uses `rake` to build the kernel, drivers, userspace, and other components.
 Source code for Mirus is hosted on [GitHub](https://github.com/joshbeitler/mirus).  It can be cloned via
 
 ```
-git clone https://github.com/joshbeitler/mirus.git --recursive
+git clone https://github.com/joshbeitler/mirus.git
 cd mirus
-git submodule init
 rake
 ```
 
