@@ -100,7 +100,7 @@ namespace mirus
 
         void irq::ack(int irq_no)
         {
-            if (irq_no >= 12)
+            if (irq_no >= 8)
                 outb(0xA0, 0x20);
 
             outb(0x20, 0x20);
@@ -116,8 +116,8 @@ namespace mirus
 
             if (handler)
                 handler(r);
-            else
-                irq::ack(r->int_no - 32);
+           
+            irq::ack(r->int_no - 32);
         }
     } // !namespace
 } // !namespace
