@@ -1,0 +1,1 @@
+sh "cc -o init main.c"
