@@ -121,23 +121,15 @@ namespace mirus
             ktrace(trace_level::warn, 
                 "Memory is less than expected minimum\n");
 
-        // Install GDT
+        // Setup CPU
         cpu::gdt::install();
-
-        // Install IDT
         cpu::idt::install();
-
-        // Setup ISRs
         cpu::isr::install();
-
-        // Setup screen
-        screen::terminal::install();
-
-        // Setup serial ports
-        hardware::serial::install();
-
-        // Setup IRQs
         cpu::irq::install();
+
+        // Setup hardware
+        screen::terminal::install();
+        hardware::serial::install();
 
         // Print kernel information
         kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
