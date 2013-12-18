@@ -68,18 +68,17 @@ namespace mirus
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // Parse entries
-            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) + mbd->mmap_length)
+            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) 
+                + mbd->mmap_length)
             {
                 memory_size += mmap->length_low;
-                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size + sizeof(unsigned int));
+                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size 
+                    + sizeof(unsigned int));
             }
 
             // Get memory size in megabytes
             memory_size_m = ((memory_size / 1024) / 1024);
-
-            ktrace(trace_level::msg, 
-                "Avalible memory: %dm\n", 
-                memory_size_m);
+            ktrace(trace_level::msg, "Avalible memory: %dm\n", memory_size_m);
         }
 
         // Check for any modules, the only of which should be the ramdisk
@@ -89,9 +88,7 @@ namespace mirus
         {
             kprintf("Loading ramdisk...");
 
-            ktrace(trace_level::msg, 
-                "Modules found: %d\n", 
-                mod_count);
+            ktrace(trace_level::msg, "Modules found: %d\n", mod_count);
 
             uint32_t i = 0;
             for (i = 0, mods = (module_t*)mbd->mods_addr;
@@ -118,8 +115,7 @@ namespace mirus
 
         // Check for minimum memory size
         if (memory_size_m < min_mem)
-            ktrace(trace_level::warn, 
-                "Memory is less than expected minimum\n");
+            ktrace(trace_level::warn, "Memory is less than expected minimum\n");
 
         // Setup CPU
         cpu::gdt::install();
