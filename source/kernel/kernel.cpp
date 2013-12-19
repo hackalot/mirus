@@ -123,6 +123,9 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
+        // Enable interrupts
+        asm volatile("sti");
+
         // Setup hardware
         screen::terminal::install();
         hardware::serial::install();
@@ -134,9 +137,6 @@ namespace mirus
         system::init_syscalls();
         ktrace(trace_level::msg, "Installed system calls\n");
         kprintf("Installed system calls\n");
-
-        // Enable interrupts
-        asm volatile("sti");
 
         // Enter usermode
         system::enter_userspace();
