@@ -16,7 +16,7 @@
 // kernel.cpp - main source file + kernel entry point
 //              we all have to begin somewhere, right?
 //
-    
+
 #include <stdafx.hpp>
 #include <boot/multiboot.hpp>
 #include <boot/ramdisk.hpp>
@@ -54,7 +54,7 @@ namespace mirus
 
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
-            ktrace(trace_level::error, 
+            ktrace(trace_level::error,
                 "Multiboot bootloader magic doesn't match!\n");
 
         // Retrieve number of multiboot modules
@@ -72,7 +72,7 @@ namespace mirus
                 + mbd->mmap_length)
             {
                 memory_size += mmap->length_low;
-                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size 
+                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size
                     + sizeof(unsigned int));
             }
 

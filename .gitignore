@@ -26,3 +26,6 @@
 *.lib
 *.elf
 *.mx
+
+# OSX crud
+.afp*
