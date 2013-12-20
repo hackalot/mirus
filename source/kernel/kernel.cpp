@@ -143,15 +143,8 @@ namespace mirus
         system::enter_userspace();
         ktrace(trace_level::notice, "Entered usermode...\n");
 
-        // Test system calls
-        asm volatile("mov $0, %eax");
-        asm volatile("mov $0, %ebx");
-        asm volatile("mov $0, %ecx");
-        asm volatile("mov $0, %edx");
-        asm volatile("mov $0, %esi");
-        asm volatile("mov $0, %edi");
-        asm volatile("int $0x7F");
-        // test_func();
+        // System call test function
+        test_func();
 
         // YOU SHALL NOT PASS!!!!
         while (true);

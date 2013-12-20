@@ -27,6 +27,7 @@ test_func:
     mov edi, 0
     mov esi, 0
     int 0x7F
+    ret
 
 global jmp_usermode
 jmp_usermode:
