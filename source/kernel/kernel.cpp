@@ -52,6 +52,13 @@ namespace mirus
         // Print debug stub
         ktrace(trace_level::msg, "Mirus 0.3.6-dev\n\n");
 
+        // Set up screen early on for boot information output
+        screen::terminal::install();
+
+        // Print kernel information
+        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, 
+            BUILD_REV);
+
         // Get avalible memory
         if (magic != MULTIBOOT_BOOTLOADER_MAGIC)
             ktrace(trace_level::error,
@@ -86,8 +93,6 @@ namespace mirus
 
         if (mod_count > 0)
         {
-            kprintf("Loading ramdisk...");
-
             ktrace(trace_level::msg, "Modules found: %d\n", mod_count);
 
             uint32_t i = 0;
@@ -102,7 +107,7 @@ namespace mirus
 
                 // load the ramdisk
                 boot::parse_tar(mods->mod_start);
-                kprintf("[ OK ]\n");
+                kprintf("Loaded ramdisk\n");
 
                 ktrace(trace_level::none, "==========\n");
             }
@@ -127,11 +132,7 @@ namespace mirus
         asm volatile("sti");
 
         // Setup hardware
-        screen::terminal::install();
         hardware::serial::install();
-
-        // Print kernel information
-        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, BUILD_REV);
 
         // Set up system calls
         system::init_syscalls();

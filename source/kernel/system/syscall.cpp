@@ -30,7 +30,7 @@ namespace mirus
 
         uint32_t test_syscall()
         {
-            ktrace(trace_level::msg, "Test syscall called.\n");
+            kprintf("Hola\n");
             return 0;
         }
 
@@ -77,7 +77,7 @@ namespace mirus
 
         void init_syscalls()
         {
-            cpu::irq::install_handler(127, syscall_handler);
+            cpu::irq::install_handler(0x7F, syscall_handler);
         }
     } // !namespace
 } // !namespace
