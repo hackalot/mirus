@@ -14,7 +14,7 @@
 
 # utility functions
 def command?(command)
-    system("which #{ command} > /dev/null 2>&1")
+    system("which #{command} > /dev/null 2>&1")
 end 
 
 # define various targets
