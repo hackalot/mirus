@@ -98,6 +98,9 @@ namespace mirus
             irq::gates();
         }
 
+        //
+        // IRQ end of line
+        //
         void irq::ack(int irq_no)
         {
             if (irq_no >= 8)
@@ -107,17 +110,17 @@ namespace mirus
         }
 
         //
-        // our irq handler
+        // IRQ global handler
         //
         extern "C" void irq_handler(struct regs* r)
         {
             void (*handler)(struct regs* r);
-            handler = irq_routines[r->int_no - 32];
+            handler = irq_routines[r->int_no];
 
             if (handler)
                 handler(r);
            
-            irq::ack(r->int_no - 32);
+            irq::ack(r->int_no);
         }
     } // !namespace
 } // !namespace
