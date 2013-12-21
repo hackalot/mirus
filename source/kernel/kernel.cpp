@@ -130,7 +130,7 @@ namespace mirus
         cpu::irq::install();
 
         // Enable paging
-        mem::paging::init();
+        mem::paging::init(memory_size);
 
         // Enable interrupts
         asm volatile("sti");

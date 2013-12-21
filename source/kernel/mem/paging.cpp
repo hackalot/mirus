@@ -81,20 +81,19 @@ namespace mirus
         void alloc_frame(page_t* page, uint32_t is_kernel, int is_writeable)
         {
             if (page->frame != 0)
+            {
+                page->present = 1;
+                page->rw = (is_writeable == 1) ? 1:0;
+                page->user = (is_kernel == 1) ? 0:1;
                 return;
+            }
             else
             {
                 uint32_t index = first_frame();
-
-                if (index == (uint32_t)-1)
-                {
-                    // no free frames
-                }
-
                 set_frame(index * 0x1000);
                 page->present = 1;
-                page->rw = (is_writeable) ? 1:0;
-                page->user = (is_kernel) ? 0:1;
+                page->rw = (is_writeable == 1) ? 1:0;
+                page->user = (is_kernel == 1) ? 0:1;
                 page->frame = index;
             }
         }
@@ -107,17 +106,17 @@ namespace mirus
                 return;
             else
             {
-                clear_frame(frame);
+                clear_frame(frame * 0x1000);
                 page->frame = 0x0;
             }
         }
 
-        void paging::init()
+        void paging::init(uint32_t memsize)
         {
-            uint32_t mem_end_page = 0x1000000;
-            nframes = mem_end_page / 0x1000;
-
-            frames = (uint32_t*)kmalloc(INDEX_FROM_BIT(nframes));
+            // uint32_t mem_end_page = 0x1000000;
+            // nframes = mem_end_page / 0x1000;
+            nframes = memsize / 4;
+            frames = (uint32_t*)kmalloc(INDEX_FROM_BIT(nframes * 8));
             memset(frames, 0, INDEX_FROM_BIT(nframes));
 
             kernel_directory = (page_directory_t*)kmalloc_a(sizeof(page_directory_t));

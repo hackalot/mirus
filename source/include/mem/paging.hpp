@@ -51,7 +51,7 @@ namespace mirus
         class paging
         {
         public:
-            static void init();
+            static void init(uint32_t memsize);
             static void switch_page_directory(page_directory_t* new_dir);
             static page_t* get_page(uint32_t address, int make, page_directory_t* dir);
             static void page_fault(cpu::regs* r);
