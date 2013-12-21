@@ -1,1 +1,1 @@
-sh "cc -o init main.c"
+sh "rustc -o init main.rs"
