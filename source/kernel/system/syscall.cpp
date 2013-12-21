@@ -30,7 +30,7 @@ namespace mirus
 
         uint32_t test_syscall()
         {
-            kprintf("Hola\n");
+            kprintf("test_sycall called");
             return 0;
         }
 
@@ -39,23 +39,16 @@ namespace mirus
             (uintptr_t)&test_syscall
         };
 
+        //
+        // Called on interrupt 0x7F (127)
         void syscall_handler(cpu::regs* r)
         {
-            ktrace(trace_level::msg, "System call called\n");
-            ktrace(trace_level::msg, "Syscall number: %x:%d\n", r->eax);
-
             if (r->eax >= MAX_SYSCALLS)
-            {
-                ktrace(trace_level::error, "Could not call: Out of bounds\n");
                 return;
-            }
 
             uintptr_t location = syscalls[r->eax];
             if (!location)
-            {
-                ktrace(trace_level::error, "Could not call: Non existant\n");
                 return;
-            }
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
@@ -63,18 +56,9 @@ namespace mirus
             r->eax = ret;
         }
 
-        void test_syscalls(int eax)
-        {
-            cpu::regs* r = nullptr;
-            r->eax = eax;
-            r->ebx = 0;
-            r->ecx = 0;
-            r->edx = 0;
-            r->esi = 0;
-            r->edi = 0;
-            syscall_handler(r);
-        }
-
+        //
+        // Install system calls
+        //
         void init_syscalls()
         {
             cpu::irq::install_handler(0x7F, syscall_handler);
