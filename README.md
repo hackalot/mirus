@@ -1,5 +1,7 @@
 # Mirus
-Mirus is designed for scalability and distributed systems.  Using built in protocols and features such as Harmony and `rcx`, Mirus allows for technical prowess and networking abilities unmatched by anything you've ever seen.
+Mirus is a new operating system designed for scalability, security, and modularity.
+
+![docs/resc/images/frown.png]()
 
 ### Features
 * Dynamic, node based filesystem
