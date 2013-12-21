@@ -72,7 +72,7 @@ namespace mirus
                         uint32_t test = 0x1 << j;
 
                         if (!(frames[i]&test))
-                            return i*4*8+j;
+                            return i * 0x20 +j;
                     }
                 }
             }
@@ -121,9 +121,7 @@ namespace mirus
             current_directory = kernel_directory;
 
             for (uintptr_t i = 0; i < placement_address + 0x3000; i += 0x1000) 
-            {
                 alloc_frame(paging::get_page(i, 1, kernel_directory), 1, 0);
-            }
 
             cpu::irq::install_handler(14, paging::page_fault);
             kernel_directory->physical_address = (uintptr_t)kernel_directory->tables_physical;
@@ -147,7 +145,7 @@ namespace mirus
             uint32_t table_index = address / 1024;
 
             if (dir->tables[table_index])
-                return &dir->tables[table_index]->pages[address % 1014];
+                return &dir->tables[table_index]->pages[address % 1024];
             else if (make)
             {
                 uint32_t temp;
@@ -155,7 +153,7 @@ namespace mirus
                 dir->tables[table_index] = 
                     (page_table_t*)kmalloc_ap(sizeof(page_table_t), &temp);
                 dir->tables_physical[table_index] = temp | 0x7;
-                return &dir->tables[table_index]->pages[address % 1014];
+                return &dir->tables[table_index]->pages[address % 1024];
             }
             else
                 return 0;
