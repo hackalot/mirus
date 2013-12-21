@@ -31,8 +31,8 @@ namespace mirus
 
         extern uint32_t placement_address;
 
-        #define INDEX_FROM_BIT(a) (a/(8*4))
-        #define OFFSET_FROM_BIT(a) (a%(8*4))
+        #define INDEX_FROM_BIT(a) (a / 0x20)
+        #define OFFSET_FROM_BIT(a) (a % 0x20)
 
         static void set_frame(uint32_t frame_addr)
         {
@@ -122,14 +122,13 @@ namespace mirus
             kernel_directory = (page_directory_t*)kmalloc_a(sizeof(page_directory_t));
             current_directory = kernel_directory;
 
-            int i = 0;
-            while (i < placement_address)
+            for (uintptr_t i = 0; i < placement_address + 0x3000; i += 0x1000) 
             {
-                alloc_frame(get_page(i, 1, kernel_directory), 0, 0);
-                i += 0x1000;
+                alloc_frame(get_page(i, 1, kernel_directory), 1, 0);
             }
 
             cpu::irq::install_handler(14, paging::page_fault);
+            kernel_directory->physical_address = (uintptr_t)kernel_directory->tables_physical;
             paging::switch_page_directory(kernel_directory);
         }
 
@@ -137,7 +136,7 @@ namespace mirus
         {
             current_directory = dir;
 
-            asm volatile("mov %0, %%cr3":: "r"(&dir->tables_physical));
+            asm volatile("mov %0, %%cr3":: "r"(current_directory->physical_address));
             uint32_t cr0;
             asm volatile("mov %%cr0, %0": "=r"(cr0));
             cr0 |= 0x80000000;
