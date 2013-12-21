@@ -92,8 +92,8 @@ namespace mirus
                 uint32_t index = first_frame();
                 set_frame(index * 0x1000);
                 page->present = 1;
-                page->rw = (is_writeable == 1) ? 1:0;
-                page->user = (is_kernel == 1) ? 0:1;
+                page->rw = (is_writeable == 1) ? 1 : 0;
+                page->user = (is_kernel == 1)  ? 0 : 1;
                 page->frame = index;
             }
         }
