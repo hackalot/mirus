@@ -1,7 +1,7 @@
 # Mirus
 Mirus is a new operating system designed for scalability, security, and modularity.
 
-![docs/resc/images/frown.png]()
+[![kernel panic](docs/resc/images/frown.png)](docs/resc/images/frown.png)
 
 ### Features
 * Dynamic, node based filesystem
