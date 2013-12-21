@@ -13,7 +13,7 @@
 // limitations under the License.
 
 //
-// syscall.cpp - System call implimentation
+// syscall.cpp - System call implementation
 //
 
 #include <stdafx.hpp>
@@ -34,6 +34,7 @@ namespace mirus
             return 0;
         }
 
+        // System call vector
         uintptr_t syscalls[1] =
         {
             (uintptr_t)&test_syscall
@@ -41,6 +42,7 @@ namespace mirus
 
         //
         // Called on interrupt 0x7F (127)
+        //
         void syscall_handler(cpu::regs* r)
         {
             if (r->eax >= MAX_SYSCALLS)

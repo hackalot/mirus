@@ -24,3 +24,12 @@ xacl
 ```
 The above control list allows only the three specified users access, and
 denies anyone else.
+
+## Use in process system
+
+Access control lists are used in the process system to keep processes, threads,
+and other resource managing objects secure.
+
+A process typically has a single access control list assigned to it
+on creation.  Child processes inherit the control list of their
+parent.
