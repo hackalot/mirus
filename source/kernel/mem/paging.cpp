@@ -80,13 +80,8 @@ namespace mirus
 
         void alloc_frame(page_t* page, uint32_t is_kernel, int is_writeable)
         {
-            if (page->frame != 0)
-            {
-                page->present = 1;
-                page->rw = (is_writeable == 1) ? 1:0;
-                page->user = (is_kernel == 1) ? 0:1;
+            if (page->frame)
                 return;
-            }
             else
             {
                 uint32_t index = first_frame();
@@ -106,26 +101,32 @@ namespace mirus
                 return;
             else
             {
-                clear_frame(frame * 0x1000);
+                clear_frame(frame);
                 page->frame = 0x0;
             }
         }
 
         void paging::init(uint32_t memsize)
         {
-            nframes = memsize / 4;
-            frames = (uint32_t*)kmalloc(INDEX_FROM_BIT(nframes * 8));
+            uint32_t mem_end_page = memsize;
+            nframes = mem_end_page / 0x1000;
+            frames = (uint32_t*)kmalloc(INDEX_FROM_BIT(nframes));
             memset(frames, 0, INDEX_FROM_BIT(nframes));
 
             kernel_directory = (page_directory_t*)kmalloc_a(sizeof(page_directory_t));
+            memset((uint8_t*)kernel_directory, 0, sizeof(page_directory_t));
+            kernel_directory->physical_address = (uint32_t)kernel_directory->tables_physical;
+
             current_directory = kernel_directory;
 
             for (uintptr_t i = 0; i < placement_address + 0x3000; i += 0x1000) 
-                alloc_frame(paging::get_page(i, 1, kernel_directory), 1, 0);
+                alloc_frame(paging::get_page(i, 1, kernel_directory), 0, 0);
+
+            paging::switch_page_directory(kernel_directory);
 
             cpu::irq::install_handler(14, paging::page_fault);
             kernel_directory->physical_address = (uintptr_t)kernel_directory->tables_physical;
-            paging::switch_page_directory(kernel_directory);
+            paging::switch_page_directory(current_directory);
         }
 
         void paging::switch_page_directory(page_directory_t* dir)
