@@ -113,8 +113,6 @@ namespace mirus
 
         void paging::init(uint32_t memsize)
         {
-            // uint32_t mem_end_page = 0x1000000;
-            // nframes = mem_end_page / 0x1000;
             nframes = memsize / 4;
             frames = (uint32_t*)kmalloc(INDEX_FROM_BIT(nframes * 8));
             memset(frames, 0, INDEX_FROM_BIT(nframes));
@@ -124,7 +122,7 @@ namespace mirus
 
             for (uintptr_t i = 0; i < placement_address + 0x3000; i += 0x1000) 
             {
-                alloc_frame(get_page(i, 1, kernel_directory), 1, 0);
+                alloc_frame(paging::get_page(i, 1, kernel_directory), 1, 0);
             }
 
             cpu::irq::install_handler(14, paging::page_fault);
