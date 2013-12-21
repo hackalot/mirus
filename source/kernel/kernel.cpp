@@ -27,6 +27,7 @@
 #include <system/process/task.hpp>
 #include <system/syscall.hpp>
 #include <hardware/serial.hpp>
+#include <mem/paging.hpp>
 
 namespace mirus
 {
@@ -127,6 +128,9 @@ namespace mirus
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
+
+        // Enable paging
+        mem::paging::init();
 
         // Enable interrupts
         asm volatile("sti");

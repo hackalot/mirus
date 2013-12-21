@@ -34,6 +34,14 @@ namespace mirus
             return 0;
         }
 
+        //
+        // sys_spawn - Spawn a new process
+        //
+        uint32_t sys_spawn()
+        {
+            return 0;
+        }
+
         // System call vector
         uintptr_t syscalls[1] =
         {

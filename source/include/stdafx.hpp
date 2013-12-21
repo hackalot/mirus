@@ -27,6 +27,7 @@
 #include <util/asm.hpp>
 #include <util/string.hpp>
 #include <util/va_list.hpp>
+#include <cpu/regs.hpp>
 
 // screen
 #include <screen/screen.hpp>
@@ -34,3 +35,6 @@
 // stdio functions
 #include <util/printf.hpp>
 #include <util/trace.hpp>
+
+// memory
+#include <mem/kheap.hpp>
