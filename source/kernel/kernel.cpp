@@ -88,9 +88,6 @@ namespace mirus
             ktrace(trace_level::msg, "Avalible memory: %dm\n", memory_size_m);
         }
 
-        // Check for any modules, the only of which should be the ramdisk
-        ktrace(trace_level::msg, "Trying to get ramdisk...\n");
-
         if (mod_count > 0)
         {
             ktrace(trace_level::msg, "Modules found: %d\n", mod_count);
@@ -128,11 +125,11 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
-        // Enable interrupts
-        asm volatile("sti");
-
         // Setup hardware
         hardware::serial::install();
+
+        // Enable interrupts
+        asm volatile("sti");
 
         // Set up system calls
         system::init_syscalls();
@@ -144,7 +141,14 @@ namespace mirus
         ktrace(trace_level::notice, "Entered usermode...\n");
 
         // System call test function
-        test_func();
+        // test_func();
+        asm volatile("mov $1, %eax");
+        asm volatile("mov $0, %ebx");
+        asm volatile("mov $0, %ecx");
+        asm volatile("mov $0, %edx");
+        asm volatile("mov $0, %esi");
+        asm volatile("mov $0, %edi");
+        asm volatile("int $0x7F");
 
         // YOU SHALL NOT PASS!!!!
         while (true);
