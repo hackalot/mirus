@@ -27,7 +27,6 @@
 #include <system/process/task.hpp>
 #include <system/syscall.hpp>
 #include <hardware/serial.hpp>
-#include <mem/paging.hpp>
 
 namespace mirus
 {
@@ -57,7 +56,7 @@ namespace mirus
         screen::terminal::install();
 
         // Print kernel information
-        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, 
+        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR,
             BUILD_REV);
 
         // Get avalible memory
@@ -76,7 +75,7 @@ namespace mirus
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // Parse entries
-            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) 
+            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr)
                 + mbd->mmap_length)
             {
                 memory_size += mmap->length_low;
@@ -128,10 +127,6 @@ namespace mirus
         cpu::idt::install();
         cpu::isr::install();
         cpu::irq::install();
-
-        // Enable paging
-        // TODO: see the "paging" branch for this
-        // mem::paging::init(memory_size);
 
         // Enable interrupts
         asm volatile("sti");
