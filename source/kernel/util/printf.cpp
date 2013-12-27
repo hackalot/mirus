@@ -19,6 +19,7 @@
 #include <stdafx.hpp>
 #include <util/printf.hpp>
 #include <hardware/serial.hpp>
+#define UINT32_MAX  (0xffffffff)
 
 namespace mirus
 {
