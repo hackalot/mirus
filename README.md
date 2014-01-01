@@ -26,14 +26,8 @@ To build Mirus, you will need to meet the following dependencies. It is expected
 * `xorriso`
 * `rake`
 
-## Contributing
-If you'd like to contribute, we would love you to go ahead. Grab yourself a copy of the source, and get up close and personal with it. It doesn't bite - trust us! Make your changes on a separate fork and send a pull request our way.
-
-### Mailing List
-Subscribe to the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev) to get up-to-date development discussion and participate with the developers.
-
-### Issue Tracker
-If you run into issues (which we almost guarantee you will), please post them on the [issue tracker](https://github.com/joshbeitler/mirus/issues). Please tag and describe your issue in detail, and if any error codes are provided please include them.
+###Wiki
+For further information about the project please read the wiki present in mirus/docs/wiki or check out the [online wiki](https://github.com/joshbeitler/mirus/wiki)
 
 ### Getting Help
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
