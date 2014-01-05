@@ -18,7 +18,7 @@ task :build_kernel do
     $cpp_files.each do |s|
         # replace .cpp with .o
         object_file = s.sub(/\.cpp$/, '.o')
-        
+
         # compile + get status
         sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log"
     end

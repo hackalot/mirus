@@ -56,7 +56,7 @@ namespace mirus
         screen::terminal::install();
 
         // Print kernel information
-        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR,
+        kprintf("Mirus [%d.%d.%d-dev]\n\n", BUILD_MAJOR, BUILD_MINOR, 
             BUILD_REV);
 
         // Get avalible memory
@@ -75,7 +75,7 @@ namespace mirus
             mmap = (memory_map_t*)mbd->mmap_addr;
 
             // Parse entries
-            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr)
+            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) 
                 + mbd->mmap_length)
             {
                 memory_size += mmap->length_low;
@@ -87,6 +87,9 @@ namespace mirus
             memory_size_m = ((memory_size / 1024) / 1024);
             ktrace(trace_level::msg, "Avalible memory: %dm\n", memory_size_m);
         }
+
+        // Check for any modules, the only of which should be the ramdisk
+        ktrace(trace_level::msg, "Trying to get ramdisk...\n");
 
         if (mod_count > 0)
         {
@@ -125,11 +128,11 @@ namespace mirus
         cpu::isr::install();
         cpu::irq::install();
 
-        // Setup hardware
-        hardware::serial::install();
-
         // Enable interrupts
         asm volatile("sti");
+
+        // Setup hardware
+        hardware::serial::install();
 
         // Set up system calls
         system::init_syscalls();
@@ -141,14 +144,7 @@ namespace mirus
         ktrace(trace_level::notice, "Entered usermode...\n");
 
         // System call test function
-        // test_func();
-        asm volatile("mov $1, %eax");
-        asm volatile("mov $0, %ebx");
-        asm volatile("mov $0, %ecx");
-        asm volatile("mov $0, %edx");
-        asm volatile("mov $0, %esi");
-        asm volatile("mov $0, %edi");
-        asm volatile("int $0x7F");
+        test_func();
 
         // YOU SHALL NOT PASS!!!!
         while (true);
