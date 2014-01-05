@@ -28,15 +28,15 @@ namespace mirus
         const uint32_t MAX_SYSCALLS = 1;
         typedef uint32_t (*syscall_t)(...);
 
-        uint32_t test_syscall()
+        uint32_t sys_sendmsg()
         {
-            kprintf("Hola\n");
+            kprintf("Hi\n");
             return 0;
         }
 
-        uintptr_t syscalls[1] =
+        uintptr_t syscalls[MAX_SYSCALLS] =
         {
-            (uintptr_t)&test_syscall
+            (uintptr_t)&sys_sendmsg
         };
 
         void syscall_handler(cpu::regs* r)
@@ -61,18 +61,6 @@ namespace mirus
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
 
             r->eax = ret;
-        }
-
-        void test_syscalls(int eax)
-        {
-            cpu::regs* r = nullptr;
-            r->eax = eax;
-            r->ebx = 0;
-            r->ecx = 0;
-            r->edx = 0;
-            r->esi = 0;
-            r->edi = 0;
-            syscall_handler(r);
         }
 
         void init_syscalls()
