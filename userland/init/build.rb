@@ -1,1 +1,0 @@
-sh "rustc -o init main.rs"

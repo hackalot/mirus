@@ -26,6 +26,5 @@ namespace mirus
     {
         void init_syscalls();
         void syscall_handler(cpu::regs* r);
-        void test_syscalls(int eax);
     } // !namespace
 } // !namespace

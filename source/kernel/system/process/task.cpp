@@ -32,7 +32,6 @@ namespace mirus
         {
             cpu::set_kernel_stack(0x7FFFF);
 
-            // TODO: move to `tss.asm`
              asm volatile("  \ 
      cli; \ 
      mov $0x23, %ax; \ 

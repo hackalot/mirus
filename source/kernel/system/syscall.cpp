@@ -13,7 +13,7 @@
 // limitations under the License.
 
 //
-// syscall.cpp - System call implementation
+// syscall.cpp - System call implimentation
 //
 
 #include <stdafx.hpp>
@@ -28,37 +28,34 @@ namespace mirus
         const uint32_t MAX_SYSCALLS = 1;
         typedef uint32_t (*syscall_t)(...);
 
-        uint32_t test_syscall()
+        uint32_t sys_sendmsg()
         {
-            kprintf("test_sycall called");
+            kprintf("Hi\n");
             return 0;
         }
 
-        //
-        // sys_spawn - Spawn a new process
-        //
-        uint32_t sys_spawn()
+        uintptr_t syscalls[MAX_SYSCALLS] =
         {
-            return 0;
-        }
-
-        // System call vector
-        uintptr_t syscalls[1] =
-        {
-            (uintptr_t)&test_syscall
+            (uintptr_t)&sys_sendmsg
         };
 
-        //
-        // Called on interrupt 0x7F (127)
-        //
         void syscall_handler(cpu::regs* r)
         {
+            ktrace(trace_level::msg, "System call called\n");
+            ktrace(trace_level::msg, "Syscall number: %x:%d\n", r->eax);
+
             if (r->eax >= MAX_SYSCALLS)
+            {
+                ktrace(trace_level::error, "Could not call: Out of bounds\n");
                 return;
+            }
 
             uintptr_t location = syscalls[r->eax];
             if (!location)
+            {
+                ktrace(trace_level::error, "Could not call: Non existant\n");
                 return;
+            }
 
             syscall_t func = (syscall_t)location;
             uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
@@ -66,9 +63,6 @@ namespace mirus
             r->eax = ret;
         }
 
-        //
-        // Install system calls
-        //
         void init_syscalls()
         {
             cpu::irq::install_handler(0x7F, syscall_handler);

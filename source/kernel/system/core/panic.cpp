@@ -68,28 +68,55 @@ namespace mirus
 
         //
         // panic_at_the_disco - Kill the kernel and light everything on fire
+        //                      TODO: this is a mess...
         //
         void panic(cpu::regs* r)
         {
             if (r->int_no < 32)
             {
-                asm volatile("cli");
+                ktrace(trace_level::emerg, "SYSTEM PANIC: %s\n", exception_messages[r->int_no]);
+                ktrace(trace_level::none, "\tgs: %x\tfs: %x\n", r->gs, r->fs);
+                ktrace(trace_level::none, "\trs: %x\tds: %x\n", r->es, r->ds);
+                ktrace(trace_level::none, "\tedi: %x\tesi: %x\n", r->edi, r->esi);
+                ktrace(trace_level::none, "\tebp: %x\tesp: %x\n", r->ebp, r->esp);
+                ktrace(trace_level::none, "\tebx: %x\tedx: %x\n", r->ebx, r->edx);
+                ktrace(trace_level::none, "\tecx: %x\teax: %x\n", r->ecx, r->eax);
+                ktrace(trace_level::none, "\tint_no: %d\terr_code: %d\n", r->int_no, r->err_code);
+                ktrace(trace_level::none, "\teip: %x\tcs: %x\n", r->eip, r->cs);
+                ktrace(trace_level::none, "\teflags: %x\n\tuseresp: %x\n", r->eflags, r->useresp);
+                ktrace(trace_level::none, "\tss: %x\n", r->ss);
 
+                // Do kernel panic here
                 screen::terminal::clear();
 
-                kprintf("SYSTEM PANIC: %s\n\n", exception_messages[r->int_no]);
-                kprintf("gs: %x\tfs: %x\n", r->gs, r->fs);
-                kprintf("rs: %x\tds: %x\n", r->es, r->ds);
-                kprintf("edi: %x\tesi: %x\n", r->edi, r->esi);
-                kprintf("ebp: %x\tesp: %x\n", r->ebp, r->esp);
-                kprintf("ebx: %x\tedx: %x\n", r->ebx, r->edx);
-                kprintf("ecx: %x\teax: %x\n", r->ecx, r->eax);
-                kprintf("int_no: %d\terr_code: %d\n", r->int_no, r->err_code);
-                kprintf("eip: %x\tcs: %x\n", r->eip, r->cs);
-                kprintf("eflags: %x\nuseresp: %x\n", r->eflags, r->useresp);
-                kprintf("ss: %x\n", r->ss);
+                screen::terminal::set_color((unsigned char)screen::vga_color::red,
+                    (unsigned char)screen::vga_color::white);
 
-                ktrace(trace_level::emerg, "KERNEL PANIC\n");
+                int a = strlen(" Mirus ");
+                int location = 80 / 2 - (a / 2);
+
+                screen::terminal::set_col(location);
+                screen::terminal::set_row(5);
+
+                screen::terminal::writeln(" Mirus ");
+
+                screen::terminal::set_color((unsigned char)screen::vga_color::red,
+                    (unsigned char)screen::vga_color::black);
+
+                screen::terminal::write('\n');
+
+                a = strlen(exception_messages[r->int_no]);
+                int b = strlen(" Exception.");
+                a += b;
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+
+                screen::terminal::write(exception_messages[r->int_no]);
+                screen::terminal::write(" Exception\n");
+                a = strlen("The system has been halted.");
+                location = 80 / 2 - (a / 2);
+                screen::terminal::set_col(location);
+                screen::terminal::write("The system has been halted.");
 
                 while (true);
             }

@@ -20,23 +20,19 @@
 #include <util/printf.hpp>
 #include <hardware/serial.hpp>
 
-#ifndef UINT32_MAX
-    #define UINT32_MAX  (0xffffffff)
-#endif
-
 namespace mirus
 {
     //
     // Print a decimal number
     //
-    void print_dec(unsigned int value,
-        unsigned int width,
-        char* buf,
-        int* ptr)
+    void print_dec(unsigned int value, 
+        unsigned int width, 
+        char* buf, 
+        int* ptr) 
     {
         unsigned int n_width = 1;
         unsigned int i = 9;
-
+        
         while (value > i && i < UINT32_MAX)
         {
             n_width += 1;
@@ -45,8 +41,8 @@ namespace mirus
         }
 
         int printed = 0;
-
-        while (n_width + printed < width)
+        
+        while (n_width + printed < width) 
         {
             buf[*ptr] = '0';
             *ptr += 1;
@@ -54,7 +50,7 @@ namespace mirus
         }
 
         i = n_width;
-
+        
         while (i > 0)
         {
             unsigned int n = value / 10;
@@ -70,27 +66,27 @@ namespace mirus
     //
     // Print a hexadecimal number
     //
-    void print_hex(unsigned int value,
-        unsigned int width,
-        char* buf,
-        int* ptr)
+    void print_hex(unsigned int value, 
+        unsigned int width, 
+        char* buf, 
+        int* ptr) 
     {
         int i = width;
 
-        if (i == 0)
+        if (i == 0) 
             i = 8;
 
         unsigned int n_width = 1;
         unsigned int j = 0x0F;
-
-        while (value > j && j < UINT32_MAX)
+        
+        while (value > j && j < UINT32_MAX) 
         {
             n_width += 1;
             j *= 0x10;
             j += 0x0F;
         }
 
-        while (i > (int)n_width)
+        while (i > (int)n_width) 
         {
             buf[*ptr] = '0';
             *ptr += 1;
@@ -98,8 +94,8 @@ namespace mirus
         }
 
         i = (int)n_width;
-
-        while (i-- > 0)
+        
+        while (i-- > 0) 
         {
             buf[*ptr] = "0123456789abcdef"[(value>>(i*4))&0xF];
             *ptr += + 1;
@@ -109,17 +105,17 @@ namespace mirus
     //
     // Format a string for printing
     //
-    size_t vasprintf(char* buf,
-        const char* fmt,
-        va_list args)
+    size_t vasprintf(char* buf, 
+        const char* fmt, 
+        va_list args) 
     {
         char *s;
         int ptr = 0;
         int len = strlen(fmt);
-
-        for (int i = 0; i < len && fmt[i]; ++i)
+            
+        for (int i = 0; i < len && fmt[i]; ++i) 
         {
-            if (fmt[i] != '%')
+            if (fmt[i] != '%') 
             {
                 buf[ptr++] = fmt[i];
                 continue;
@@ -127,15 +123,15 @@ namespace mirus
 
             ++i;
             unsigned int arg_width = 0;
-
-            while (fmt[i] >= '0' && fmt[i] <= '9')
+                
+            while (fmt[i] >= '0' && fmt[i] <= '9') 
             {
                 arg_width *= 10;
                 arg_width += fmt[i] - '0';
                 ++i;
             }
 
-            switch (fmt[i])
+            switch (fmt[i]) 
             {
                 // string
                 case 's':
@@ -151,17 +147,17 @@ namespace mirus
 
                 // hex
                 case 'x':
-                    print_hex((unsigned long)va_arg(args, unsigned long),
-                        arg_width,
-                        buf,
+                    print_hex((unsigned long)va_arg(args, unsigned long), 
+                        arg_width, 
+                        buf, 
                         &ptr);
                     break;
 
                 // decimal
                 case 'd':
-                    print_dec((unsigned long)va_arg(args, unsigned long),
-                        arg_width,
-                        buf,
+                    print_dec((unsigned long)va_arg(args, unsigned long), 
+                        arg_width, 
+                        buf, 
                         &ptr);
                     break;
 
@@ -184,7 +180,7 @@ namespace mirus
     // Print a string
     //
     int kprintf(const char* fmt,
-        ...)
+        ...) 
     {
         char buf[1024] = { -1 };
         va_list args;
@@ -194,17 +190,17 @@ namespace mirus
         va_end(args);
 
         // Print
-        if (buf[strlen(buf) - 1] == '\n')
+        if (buf[strlen(buf) - 1] == '\n') 
         {
             // buf[strlen(buf) - 1] = '\0';
             screen::terminal::write(buf);
             // char buf2[1024];
             // screen::terminal::write(buf2);
-        }
-        else
+        } 
+        else 
         {
             screen::terminal::write(buf);
-        }
+        }   
         return out;
     }
 } // !namespace
