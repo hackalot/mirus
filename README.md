@@ -1,5 +1,7 @@
 # Mirus
-Mirus is a new operating system with the aim of trying out new and interesting things, in hopes to get the best combination possible. We throw all existing ideas and standards out the window and try to see what we can do better.
+Mirus is a new operating system with the aim of trying out new and interesting things, 
+in hopes to get the best combination possible. We throw all existing ideas and 
+standards out the window and try to see what we can do better.
 
 ### Features
 * Dynamic, node based filesystem
@@ -8,24 +10,32 @@ Mirus is a new operating system with the aim of trying out new and interesting t
 * Modular architecture
 
 ## Testing [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
-In order to test drive Mirus, you will need to build it from the source - which is a relatively painless task. You will want to clone and build from the `newsrc` branch.  Detailed build instruction can be
-found in the `BUILDING.md` file, including instructions for cross platform builds on OSX and Windows.
+In order to test drive Mirus, you will need to build it from the source - which 
+is a relatively painless task. You will want to clone and build from the `newsrc` 
+branch.  Detailed build instruction can be found in the `BUILDING.md` file, 
+including instructions for cross platform builds on OSX and Windows.
 ```
 $ git clone git@github.com:joshbeitler/mirus.git
 $ cd mirus
 $ rake
 ```
-A build of Mirus with no additional configuration or specified tasks will generate a bootable disk image named `mirus.iso` in the build/ directory. You can burn this to any bootable medium you see fit, or run it in a virtual machine via `rake qemu`.
+A build of Mirus with no additional configuration or specified tasks will 
+generate a bootable disk image named `mirus.iso` in the build/ directory. 
+You can burn this to any bootable medium you see fit, or run it in a virtual 
+machine via `rake qemu`.
 
 ### Vagrant
-You can use Vagrant to spin up a shiny VM, install the dependencies, and build all in one step. (You will, of course, need [Vagrant](http://vagrantup.com))
+You can use Vagrant to spin up a shiny VM, install the dependencies, 
+and build all in one step. (You will, of course, need [Vagrant](http://vagrantup.com))
 ```
 $ vagrant up
 $ vagrant ssh
 ```
 
 ### Dependencies
-To build Mirus, you will need to meet the following dependencies. It is expected that binutils and other standard UNIX utilities are installed, but a few odities are required:
+To build Mirus, you will need to meet the following dependencies. It is expected 
+that binutils and other standard UNIX utilities are installed, but a few 
+odities are required:
 
 * `clang`
 * `grub2`
@@ -34,10 +44,14 @@ To build Mirus, you will need to meet the following dependencies. It is expected
 * `rake`
 
 ### Wiki
-For further information about the project please read the wiki present in mirus/docs/wiki or check out the [online wiki](https://github.com/joshbeitler/mirus/wiki)
+For further information about the project please read the wiki present in 
+mirus/docs/wiki or check out the [online wiki](https://github.com/joshbeitler/mirus/wiki)
 
 ### Getting Help
-We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) or in the docs/ directory of the source.
+We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), 
+as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed 
+documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) 
+or in the docs/ directory of the source.
 
 ## License
 ```
