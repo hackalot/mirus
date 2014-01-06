@@ -19,7 +19,13 @@ task :build_asm do
         # replace .asm with .o
         object_file = t.sub(/\.asm$/, '.o')
         
+        print "#{$assembler} "
+
         # assemble + get status
-        sh "#{$assembler} #{$assembler_flags} -o #{object_file} #{t} >>./build/logs/asmlog.log 2>&1"
+        if system("#{$assembler} #{$assembler_flags} -o #{object_file} #{t} >>./build/logs/asmlog.log 2>&1")
+        	puts "#{t}".green
+        else
+        	puts "#{t}".red
+        end
     end
 end

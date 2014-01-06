@@ -15,5 +15,11 @@
 # create ramdisk
 desc "Create the ramdisk"
 task :build_ramdisk do
-    sh "cd ramdisk && tar -cf ../iso/boot/ramdisk.tar * && cd .."
+    if ! $errors
+    	sh "cd ramdisk && tar -cf ../iso/boot/ramdisk.tar * && cd .. 2>&1"
+    else
+    	puts
+    	puts "Cannot build ramdisk".red
+    	exit(1)
+    end
 end
