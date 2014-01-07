@@ -50,7 +50,7 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         // Print debug stub
-        ktrace(trace_level::msg, "Mirus 0.3.6-dev\n\n");
+        ktrace(trace_level::msg, "Mirus 0.3.7-dev\n\n");
 
         // Set up screen early on for boot information output
         screen::terminal::install();
