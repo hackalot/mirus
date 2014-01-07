@@ -33,16 +33,16 @@ namespace mirus
     extern "C" void test_func();
 
     // Memory size
-    uint32_t memory_size = 0;
+    uint32_t memory_size   = 0;
     uint32_t memory_size_m = 0;
-    uint32_t min_mem = 512;
-
+    uint32_t min_mem       = 512;
+    
     // Memory map
-    memory_map_t* mmap = nullptr;
-
+    memory_map_t* mmap     = nullptr;
+    
     // Modules
-    uint32_t mod_count = 0;
-    module_t* mods = nullptr;
+    uint32_t mod_count     = 0;
+    module_t* mods         = nullptr;
 
     //
     // kernel_main - our kernel entry point
