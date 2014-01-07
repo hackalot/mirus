@@ -19,7 +19,14 @@ task :build_kernel do
         # replace .cpp with .o
         object_file = s.sub(/\.cpp$/, '.o')
 
-        # compile + get status
-        sh "#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log"
+        print "#{$compiler} "
+
+ 		# compile + get status
+        if system("#{$compiler} #{$cpp_flags} -MMD -MP -c #{s} -o #{object_file} >>./build/logs/kernel.log 2>&1")
+        	puts "#{s}".green
+        else
+        	puts "#{s}".red
+        	$errors = true
+        end
     end
 end

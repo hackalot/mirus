@@ -25,13 +25,13 @@ $target_bin         = "kernel.bin"
 # build information to be passed to kernel
 $version_major      = 0
 $version_minor      = 3
-$version_rev        = 6
+$version_rev        = 7
 $version_prefix     = "dev"
 $version_codename   = "wake"
 
 # source files
-$cpp_files          = FileList['source/kernel/**/*.cpp', 'source/system/**/*.cpp', 'source/*.cpp']
-$header_files       = FileList['source/include/*.hpp', 'source/common/**/*.h*']
+$cpp_files          = FileList['source/kernel/**/*.cpp']
+$header_files       = FileList['source/include/*.hpp']
 $asm_files          = FileList['source/asm/*.asm']
 
 # object files
@@ -46,8 +46,8 @@ $compiler           = "clang++"
 $warnings           = "-Wall -Wextra -Wno-unused-parameter "
 $options            = "-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -nostdlib -m32 -O0 -g "
 $include_paths      = "-Isource/include -Isource/library "
-$cpp_flags          = $warnings << $options << $include_paths 
 
+$cpp_flags          = $warnings << $options << $include_paths 
 $cpp_flags          << "-DBUILD_MAJOR=#{$version_major} "
 $cpp_flags          << "-DBUILD_MINOR=#{$version_minor} "
 $cpp_flags          << "-DBUILD_REV=#{$version_rev} "
@@ -71,8 +71,3 @@ $errors             = false
 
 # different OSs use different names for grub
 $grub               = "grub2-mkrescue"
-
-if command?("grub2-mkrescue") == false
-	$grub = "grub-mkrescue"
-end
-

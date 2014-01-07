@@ -15,5 +15,13 @@
 # linkage
 desc "Link object files to flat binary"
 task :link => ['build_asm', 'build_kernel'] do
-    sh "#{$ld} #{$ld_flags} -o ./build/#{$target_bin} #{$object_files} >./build/logs/link.log"
+	print "#{$ld} "
+
+	# compile + get status
+    if system("#{$ld} #{$ld_flags} -o ./build/#{$target_bin} #{$object_files} >./build/logs/link.log 2>&1")
+    	puts "#{$target_bin}".green
+    else
+    	puts "#{$target_bin}".red
+    	$errors = true
+    end
 end
