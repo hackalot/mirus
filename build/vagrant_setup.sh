@@ -11,6 +11,3 @@ sudo pacman -S yasm xorriso clang --noconfirm
 
 # Go go gem rangers
 gem install colorize
-
-# Build
-rake

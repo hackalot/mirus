@@ -28,9 +28,9 @@ namespace mirus
         const uint32_t MAX_SYSCALLS = 1;
         typedef uint32_t (*syscall_t)(...);
 
-        uint32_t sys_sendmsg()
+        uint32_t sys_sendmsg(pid_t dest)
         {
-            kprintf("Hi\n");
+            kprintf("pid:%d\n", dest);
             return 0;
         }
 
