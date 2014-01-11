@@ -35,7 +35,7 @@ namespace mirus
     // Memory size
     uint32_t memory_size   = 0;
     uint32_t memory_size_m = 0;
-    uint32_t min_mem       = 512;
+    uint32_t min_mem       = 128;
     
     // Memory map
     memory_map_t* mmap     = nullptr;
