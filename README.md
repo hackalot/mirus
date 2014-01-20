@@ -9,7 +9,7 @@ standards out the window and try to see what we can do better.
 * Fast and lean microkernel
 * Modular architecture
 
-## Testing [![Build Status](https://travis-ci.org/joshbeitler/mirus.png?branch=newsrc)](https://travis-ci.org/joshbeitler/mirus)
+## Testing [![Build Status](https://travis-ci.org/hackalot/mirus.png?branch=newsrc)](https://travis-ci.org/hackalot/mirus)
 In order to test drive Mirus, you will need to build it from the source - which 
 is a relatively painless task. You will want to clone and build from the `newsrc` 
 branch.  Detailed build instruction can be found in the `BUILDING.md` file, 
