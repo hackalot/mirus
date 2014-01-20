@@ -1,4 +1,5 @@
-# Mirus
+<img src="http://i40.tinypic.com/5k4t38.png" width="25%" />
+
 Mirus is a new operating system with the aim of trying out new and interesting things, 
 in hopes to get the best combination possible. We throw all existing ideas and 
 standards out the window and try to see what we can do better.
