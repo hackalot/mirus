@@ -1,4 +1,4 @@
-<img src="http://i44.tinypic.com/xnuiis.png" width="25%" />
+# Mirus
 
 Mirus is a new operating system with the aim of trying out new and interesting things, 
 in hopes to get the best combination possible. We throw all existing ideas and 
