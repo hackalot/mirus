@@ -26,6 +26,7 @@
 #include <cpu/irq.hpp>
 #include <system/process/task.hpp>
 #include <system/syscall.hpp>
+#include <system/process/paging.hpp>
 #include <hardware/serial.hpp>
 
 namespace mirus

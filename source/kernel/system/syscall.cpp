@@ -34,6 +34,11 @@ namespace mirus
             return 0;
         }
 
+        uint32_t sys_spawn()
+        {
+            
+        }
+
         uintptr_t syscalls[MAX_SYSCALLS] =
         {
             (uintptr_t)&sys_sendmsg
