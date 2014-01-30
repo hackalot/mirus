@@ -1,4 +1,4 @@
-// Copyright 2013 Joshua Beitler
+// Copyright 2013 Mirus Project
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,27 +13,15 @@
 // limitations under the License.
 
 //
-// stdafx.hpp - Mirus main header file
-//              Includes all the useful headers we will ever need
+// message.hpp - Message types
 //
 
-#pragma once
-
-// compiler includes
-#include <stddef.h>
-#include <stdint.h>
-
-// kernel includes
-#include <util/asm.hpp>
-#include <util/string.hpp>
-#include <util/va_list.hpp>
-
-// screen
-#include <screen/screen.hpp>
-
-// stdio functions
-#include <util/printf.hpp>
-#include <util/trace.hpp>
-
-// types
-#include <types.hpp>
+namespace mirus
+{
+	namespace system
+	{
+		class message_t
+		{
+		};
+	} // !namespace
+} // !namespace

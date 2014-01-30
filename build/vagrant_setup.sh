@@ -7,12 +7,7 @@
 sudo pacman -Syy
 
 # Set up our exotic toolchain choices
-sudo pacman -S yasm --noconfirm
-sudo pacman -S xorriso --noconfirm
-sudo pacman -S clang --noconfirm
+sudo pacman -S yasm xorriso clang --noconfirm
 
 # Go go gem rangers
 gem install colorize
-
-# Build
-rake

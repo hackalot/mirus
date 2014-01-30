@@ -13,27 +13,10 @@
 // limitations under the License.
 
 //
-// stdafx.hpp - Mirus main header file
-//              Includes all the useful headers we will ever need
+// types.hpp - System types file
 //
 
-#pragma once
-
-// compiler includes
-#include <stddef.h>
-#include <stdint.h>
-
-// kernel includes
-#include <util/asm.hpp>
-#include <util/string.hpp>
-#include <util/va_list.hpp>
-
-// screen
-#include <screen/screen.hpp>
-
-// stdio functions
-#include <util/printf.hpp>
-#include <util/trace.hpp>
-
-// types
-#include <types.hpp>
+namespace mirus 
+{
+	typedef uint32_t pid_t;
+} // !namespace

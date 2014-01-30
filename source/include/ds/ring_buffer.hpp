@@ -1,4 +1,4 @@
-// Copyright 2013 Joshua Beitler
+// Copyright 2013 Mirus Project
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,27 +13,31 @@
 // limitations under the License.
 
 //
-// stdafx.hpp - Mirus main header file
-//              Includes all the useful headers we will ever need
+// ring_buffer.hpp - buffer data type
 //
 
 #pragma once
 
-// compiler includes
-#include <stddef.h>
-#include <stdint.h>
+#include <stdafx.hpp>
 
-// kernel includes
-#include <util/asm.hpp>
-#include <util/string.hpp>
-#include <util/va_list.hpp>
+namespace mirus
+{
+    class ring_buffer
+    {
+    public:
+        int8_t* buffer;
+        int8_t* buffer_end;
+        int8_t* data_start;
+        int8_t* data_end;
+        int64_t count;
+        int64_t size;
 
-// screen
-#include <screen/screen.hpp>
+        void init(int64_t sz);
+        void free();
+        bool push(int8_t data);
+        int8_t pop();
+        bool full();
+    };
 
-// stdio functions
-#include <util/printf.hpp>
-#include <util/trace.hpp>
 
-// types
-#include <types.hpp>
+} // !namespace

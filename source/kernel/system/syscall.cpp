@@ -13,7 +13,7 @@
 // limitations under the License.
 
 //
-// syscall.cpp - System call implimentation
+// syscall.cpp - System call implementation
 //
 
 #include <stdafx.hpp>
@@ -28,10 +28,15 @@ namespace mirus
         const uint32_t MAX_SYSCALLS = 1;
         typedef uint32_t (*syscall_t)(...);
 
-        uint32_t sys_sendmsg()
+        uint32_t sys_sendmsg(pid_t dest, pid_t sender)
         {
-            kprintf("Hi\n");
+            kprintf("dest:%d sender:%d\n", dest, sender);
             return 0;
+        }
+
+        uint32_t sys_spawn()
+        {
+            
         }
 
         uintptr_t syscalls[MAX_SYSCALLS] =
@@ -42,7 +47,7 @@ namespace mirus
         void syscall_handler(cpu::regs* r)
         {
             ktrace(trace_level::msg, "System call called\n");
-            ktrace(trace_level::msg, "Syscall number: %x:%d\n", r->eax);
+            ktrace(trace_level::msg, "Syscall number: %x\n", r->eax);
 
             if (r->eax >= MAX_SYSCALLS)
             {
@@ -57,10 +62,12 @@ namespace mirus
                 return;
             }
 
-            syscall_t func = (syscall_t)location;
-            uint32_t ret = func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
+            ktrace(trace_level::msg, "eax:%d ebx:%d edx:%d esi:%d edi:%d\n",
+                r->eax, r->ebx, r->ecx, r->edx, r->esi, r->edi);
 
-            r->eax = ret;
+            // TODO: GPF when trying to get call return value, re-implement
+            syscall_t func = (syscall_t)location;
+            func(r->ebx, r->ecx, r->edx, r->esi, r->edi);
         }
 
         void init_syscalls()
