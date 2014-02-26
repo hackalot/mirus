@@ -1,6 +1,0 @@
-[submodule "servers"]
-	path = servers
-	url = git://github.com/mirus/servers.git
-[submodule "mirloader"]
-	path = mirloader
-	url = git://github.com/mirus/mirloader.git
