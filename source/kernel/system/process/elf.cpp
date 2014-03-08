@@ -24,6 +24,9 @@ namespace mirus
 {
 	namespace system
 	{
-        
+        int exec(uint32_t address)
+        {   
+            
+        }
 	} // !namespace
 } // !namespace

@@ -25,6 +25,7 @@
 #include <cpu/isr.hpp>
 #include <cpu/irq.hpp>
 #include <system/process/task.hpp>
+#include <system/process/elf.hpp>
 #include <system/syscall.hpp>
 #include <hardware/serial.hpp>
 
@@ -144,7 +145,7 @@ namespace mirus
         ktrace(trace_level::notice, "Entered usermode...\n");
 
         // System call test function
-        test_func();
+        // test_func();
 
         // YOU SHALL NOT PASS!!!!
         while (true);
