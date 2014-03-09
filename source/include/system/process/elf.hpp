@@ -142,6 +142,7 @@ namespace mirus
 		#define EF_SPARCV9_TSO		 0x0			// Total store ordering
 		#define EF_SPARCV9_PSO		 0x1			// Partial store ordering
 		#define EF_SPARCV9_RMO		 0x2 			// Relaxed memory ordering
+		
 		//
 		// ELF Program Flags - used for the p_flags field of the program header
 		//
@@ -157,7 +158,7 @@ namespace mirus
 
 		//
 		// ELF Section Header Type - used for sh_type
-		//
+		//	
 		#define SHT_NONE			 0
 		#define SHT_PROGBITS 		 1
 		#define SHT_SYMTAB			 2

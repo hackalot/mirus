@@ -96,11 +96,24 @@ namespace mirus
                     ktrace(trace_level::msg, "\t\tELF entry point: %x\n", ehdr->e_entry);
 
                     for (uintptr_t x = 0;
-                        x < (uint32_t)ehdr->e_shentsize * ehdr->e_shnum;
-                        x += ehdr->e_shentsize)
+                        x < (uint32_t)ehdr->e_phentsize * ehdr->e_phnum;
+                        x += ehdr->e_phentsize)
                     {
-                        
+                        Elf32_Phdr* phdr = (Elf32_Phdr*)((uintptr_t)ehdr)
+                            + (ehdr->e_phoff + x);
+
+                        if (phdr->p_flags == PT_LOAD)
+                        {
+                            ktrace(trace_level::msg, "Loadable program header found.\n");
+                        }
                     }
+
+                    // uintptr_t entry = (uintptr_t)ehdr->e_entry;
+
+                    // ktrace(trace_level::warn, "Beginning ELF execution\n");
+                    // ((void (*)(void))ehdr->e_entry)();
+                    // ktrace(trace_level::msg, "Ending ELF execution\n");
+                    // kprintf("%d\n", ret);
                 }
 
                 // END ELF -----------------------------------------------------
