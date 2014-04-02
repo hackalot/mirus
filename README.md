@@ -56,7 +56,7 @@ and hit us up with a pull request - its that easy!
 Development is coordinated through the [mailing list](https://groups.google.com/forum/#!forum/mirus-dev),
 so be sure to join if you are interested in helping out.
 
-### Getting Help
+### Getting Help ![gitter](https://badges.gitter.im/mirus.png)
 We are active on Twitter at [@mirusproject](http://twitter.com/mirusproject), 
 as well as the IRC channel `#mirus` on `irc.freenode.net`. Detailed 
 documentation can be found on the [wiki](https://github.com/joshbeitler/mirus/wiki) 
