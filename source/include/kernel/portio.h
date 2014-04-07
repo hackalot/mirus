@@ -18,9 +18,8 @@
 
 #pragma once
 
-class Port
+namespace mirus
 {
-public:
     //
     // Byte
     //
@@ -38,4 +37,4 @@ public:
     //
     unsigned long read_long(unsigned short port);
     void write_long(unsigned short port, unsigned long data);
-};
+}

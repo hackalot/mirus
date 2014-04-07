@@ -16,19 +16,22 @@
 // kernel.cpp - main source file + kernel entry point
 //
 
+#include <kernel/kernel.h>
 #include <kernel/multiboot.h>
 #include <kernel/screen.h>
+#include <lib/stdio.h>
 
 namespace mirus
 {
     //
-    // kernel_main - our kernel entry point
+    // kernel_main - kernel entry point
     //
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
-        Screen screen = {};
-        screen.init();
-        screen.write('a');
+        Screen::init();
+        kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 
+            __VERSION_REV__);
+
         while (true);
     }
 } // !namespace

@@ -28,18 +28,21 @@ namespace mirus
     {
     public:
         // Set up the screen
-        void init();
+        static void init();
 
         //
         // Screen printing functions
         //
-        void write(const char& c);
-        void write(const char*& c);
-        void writeln(const char*& c);
+        static void write(char c);
+        static void write(int i);
+        static void write(const char* c);
+        static void writeln(char* c);
 
         //
         // Utility functions
         //
-        void move_cursor();
+        static void move_cursor();
+        static void clear();
+        static void scroll();
     };
 } // !namespace

@@ -1,11 +1,11 @@
-// Copyright 2013 Mirus Project
-
+// Copyright 2014 Joshua Beitler
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-
-// http://www.apache.org/licenses/LICENSE-2.0
-
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,16 +13,10 @@
 // limitations under the License.
 
 //
-// string.h - String functions
+// Kernel-mode stdio library
 //
 
 #pragma once
 
-#include <stdint.h>
-#include <stddef.h>
-
-namespace mirus
-{
-    size_t strlen(const char* str);
-    char* itoa(int value);
-} // !namespace
+#include <kernel/string.h>
+#include <kernel/printf.h>

@@ -21,7 +21,7 @@
 
 namespace mirus
 {
-    size_t strlen(const char*& str)
+    size_t strlen(const char* str)
     {
         size_t ret = 0;
 
@@ -33,7 +33,7 @@ namespace mirus
         return ret;
     }
 
-    char* itoa(int& value)
+    char* itoa(int value)
     {
         char *rc  = 0;
         char *ptr = 0;
