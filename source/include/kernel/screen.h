@@ -13,22 +13,11 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
+// screen.h - Generic screen drawing functions
 //
 
-#include <kernel/multiboot.h>
-#include <kernel/screen.h>
+#pragma once
 
-namespace mirus
-{
-    //
-    // kernel_main - our kernel entry point
-    //
-    extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
-    {
-        Screen screen = {};
-        screen.init();
-        screen.write('a');
-        while (true);
-    }
-} // !namespace
+#ifdef __ARCH_I386__
+    #include <arch/i386/screen.h>
+#endif

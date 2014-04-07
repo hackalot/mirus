@@ -19,12 +19,14 @@ FLAGS       equ  MBALIGN | MEMINFO      ; this is the Multiboot 'flag' field
 MAGIC       equ  0x1BADB002             ; 'magic number' lets bootloader find the header
 CHECKSUM    equ -(MAGIC + FLAGS)        ; checksum of above, to prove we are multiboot
 
+; Set up multiboot header
 section .multiboot
 align 4
     dd MAGIC
     dd FLAGS
     dd CHECKSUM
 
+; Set up temporary stack pointer
 section .bootstrap_stack
 align 4
 stack_bottom:
@@ -34,7 +36,7 @@ stack_top:
 section .text
 global _start
 _start:
-    ; mov esp, stack_top
+    mov esp, stack_top
     mov esp, 0x7FFFF
     push esp
 

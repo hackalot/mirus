@@ -13,22 +13,16 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
+// string.h - String functions
 //
 
-#include <kernel/multiboot.h>
-#include <kernel/screen.h>
+#pragma once
+
+#include <stdint.h>
+#include <stddef.h>
 
 namespace mirus
 {
-    //
-    // kernel_main - our kernel entry point
-    //
-    extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
-    {
-        Screen screen = {};
-        screen.init();
-        screen.write('a');
-        while (true);
-    }
+    size_t strlen(const char*& str);
+    char* itoa(int& value);
 } // !namespace

@@ -13,13 +13,15 @@
 # limitations under the License.
 
 arch = 'i386'
+arch_c = '__ARCH_I386__'
 target = 'mirus'
 
 cxx = 'clang++'
 ld  = 'ld'
 asm = 'yasm'
 
-cxx_flags = '-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -m32 -Isource/include'
+cxx_flags = '-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -m32 -Isource/include '
+cxx_flags << "-D#{arch_c}"
 asm_flags = '-f elf'
 ld_flags = '-T build/mirus.ld -m elf_i386'
 
