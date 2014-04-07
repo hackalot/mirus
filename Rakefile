@@ -12,30 +12,57 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# dependencies
-require 'rubygems'
-require './build/lib/colorize'
+arch = 'i386'
+target = 'mirus'
 
-# require all our tasks
-require './build/lib/env'
-require './build/lib/tasks/all'
-require './build/lib/tasks/iso'
-require './build/lib/tasks/asm'
-require './build/lib/tasks/clean'
-require './build/lib/tasks/kernel'
-require './build/lib/tasks/qemu'
-require './build/lib/tasks/link'
-require './build/lib/tasks/ramdisk'
+cxx = 'clang++'
+ld  = 'ld'
+asm = 'yasm'
 
-directory "./build/logs"
+cxx_flags = '-fno-builtin -fno-exceptions -ffreestanding -std=c++11 -m32 -Isource/include'
+asm_flags = '-f elf'
+ld_flags = '-T build/mirus.ld -m elf_i386'
 
-# default task is to generate an iso image
-task :default => ['make_iso'] do  
-    if $errors
-        puts "[rake] Errors were generated during the build.  Please review the \"build/*.log\" files for details.".red
-        exit 1
-    else
-        puts "[rake] Build completed successfully!".green
-        exit 0
+cpp_files = FileList[
+    "source/kernel/core/**/*.cpp", 
+    "source/kernel/arch/#{arch}/**/*.cpp"]
+
+asm_files = FileList[
+    "source/kernel/core/**/*.asm",
+    "source/kernel/arch/#{arch}/**/*.asm"]
+
+object_files = FileList[]
+
+task :default do
+    system('mkdir bin bin/obj 2>&1')
+
+    cpp_files.each do |file|
+        object_file = file.sub(/\.cpp$/, '.o')
+        object_file = File.basename(object_file)
+        system("#{cxx} #{cxx_flags} -MMD -MP -c #{file} -o bin/obj/#{object_file}")
+        object_files << "bin/obj/#{object_file}"
     end
+
+    asm_files.each do |file|
+        object_file = file.sub(/\.asm$/, '.o')
+        object_file = File.basename(object_file)
+        system("#{asm} #{asm_flags} -o bin/obj/#{object_file} #{file} ")
+        object_files << "bin/obj/#{object_file}"
+    end
+
+    system("#{ld} #{ld_flags} -o bin/kernel.bin #{object_files}")
+    system("cp bin/kernel.bin ./build/iso/boot/kernel.bin")
+    system("grub2-mkrescue -o bin/mirus.iso build/iso")
+end
+
+task :clean do
+    system("rm -rf bin 2>&1")
+    system("rm -f *.bin 2>&1")
+    system("rm -f *.o 2>&1")
+    system("rm -f *.d 2>&1")
+    system("rm -f build/iso/boot/kernel.bin")
+end
+
+task :qemu do
+    system("qemu-system-i386 -cdrom bin/mirus.iso")
 end
