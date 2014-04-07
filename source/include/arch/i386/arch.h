@@ -13,33 +13,10 @@
 // limitations under the License.
 
 //
-// screen.h - Generic screen drawing functions
+// arch.h - i386 architecture information
 //
-
-#pragma once
-
-#ifdef __ARCH_I386__
-    #include <arch/i386/screen.h>
-#endif
 
 namespace mirus
 {
-    class Screen
-    {
-    public:
-        // Set up the screen
-        void init();
-
-        //
-        // Screen printing functions
-        //
-        void write(const char& c);
-        void write(const char*& c);
-        void writeln(const char*& c);
-
-        //
-        // Utility functions
-        //
-        void move_cursor();
-    };
+    const char* platform = "i386";
 } // !namespace

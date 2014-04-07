@@ -19,6 +19,7 @@
 #include <stdint.h>
 #include <kernel/screen.h>
 #include <kernel/string.h>
+#include <kernel/portio.h>
 
 namespace mirus
 {
@@ -34,6 +35,19 @@ namespace mirus
     unsigned char make_color(Color fg, Color bg)
     {
         return ((unsigned char)bg << 4) | ((unsigned char)fg & 0x0F);
+    }
+
+    //
+    // Terminal control functions
+    //
+    void move_cursor()
+    {
+        unsigned temp = temp = csr_y * 80 + csr_x;
+
+        outb(0x3D4, 14);
+        outb(0x3D5, temp >> 8);
+        outb(0x3D4, 15);
+        outb(0x3D5, temp);
     }
 
     void Screen::init()

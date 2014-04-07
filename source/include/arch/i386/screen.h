@@ -48,22 +48,8 @@ namespace mirus
     //
     unsigned char make_color(unsigned char fg, unsigned char bg);
 
-    class Screen
-    {
-    public:
-        // Set up the screen
-        void init();
-
-        //
-        // Screen printing functions
-        //
-        void write(const char& c);
-        void write(const char*& c);
-        void writeln(const char*& c);
-
-        //
-        // Utility functions
-        //
-        void move_cursor();
-    };
+    //
+    // Terminal control functions
+    //
+    void move_cursor();
 } // !namespace

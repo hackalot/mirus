@@ -13,33 +13,29 @@
 // limitations under the License.
 
 //
-// screen.h - Generic screen drawing functions
+// portio.h - generic port operations
 //
 
 #pragma once
 
-#ifdef __ARCH_I386__
-    #include <arch/i386/screen.h>
-#endif
-
-namespace mirus
+class Port
 {
-    class Screen
-    {
-    public:
-        // Set up the screen
-        void init();
+public:
+    //
+    // Byte
+    //
+    unsigned char read_byte(unsigned short port);
+    void write_byte(unsigned short port, unsigned char data);
 
-        //
-        // Screen printing functions
-        //
-        void write(const char& c);
-        void write(const char*& c);
-        void writeln(const char*& c);
+    //
+    // Short
+    //
+    unsigned short read_short(unsigned short port);
+    void write_short(unsigned short port, unsigned short data);
 
-        //
-        // Utility functions
-        //
-        void move_cursor();
-    };
-} // !namespace
+    //
+    // Long
+    //
+    unsigned long read_long(unsigned short port);
+    void write_long(unsigned short port, unsigned long data);
+};
