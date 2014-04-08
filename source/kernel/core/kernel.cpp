@@ -18,6 +18,7 @@
 
 #include <kernel/kernel.h>
 #include <kernel/multiboot.h>
+#include <kernel/gdt.h>
 #include <kernel/screen.h>
 #include <lib/stdio.h>
 
@@ -28,7 +29,9 @@ namespace mirus
     //
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
+        GDT::init();
         Screen::init();
+
         kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 
             __VERSION_REV__);
 

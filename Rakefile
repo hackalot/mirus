@@ -46,11 +46,12 @@ errors = false
 build_disk_image = false
 
 task :default do
+    build_disk_image = true
     system('mkdir bin bin/obj 2>&1')
 
     cpp_files.each do |file|
         object_file = file.sub(/\.cpp$/, '.o')
-        object_file = File.basename(object_file)
+        object_file = File.basename(object_file << File.extname(object_file))
 
         if system("#{cxx} #{cxx_flags} -MMD -MP -c #{file} -o bin/obj/#{object_file}") == false
             errors = true
