@@ -1,5 +1,11 @@
 <p align="center">
-    <img src="http://i62.tinypic.com/wu5i9.png" width="150px" />
+    <img src="http://i62.tinypic.com/wu5i9.png" width="150px" /><br><br>
+    <a href="https://travis-ci.org/joshbeitler/mirus">
+        <img src="https://travis-ci.org/joshbeitler/mirus.svg?branch=firefly-nova">
+    </a>
+    <a href="https://gitter.im/mirus">
+        <img src="https://camo.githubusercontent.com/511e8c80cebcf820a1362b41ff641cc6630c28c5/68747470733a2f2f6261646765732e6769747465722e696d2f6d697275732e706e67">
+    </a>
 </p>
 
 > Mirus is a new operating system designed for the future.  We throw all existing ideas and standards out the window and try to see what we can do better.  Our aim is to try out new and interesting things, in hopes of seeing what sticks.
