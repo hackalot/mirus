@@ -28,10 +28,42 @@
 namespace mirus
 {
     //
+    // Total system memory (in megabytes)
+    //
+    uint32_t memory_size = 0;
+
+    //
+    // Returns memory size in megabytes
+    //
+    void get_memory_size(multiboot_info_t* mbd)
+    {
+        memory_map_t* mmap   = nullptr;
+
+        if (mbd->flags & 1)
+        {
+            // Read header and assign
+            mmap = (memory_map_t*)mbd->mmap_addr;
+
+            // Parse entries
+            while ((unsigned int)mmap < (unsigned int)(mbd->mmap_addr) 
+                + mbd->mmap_length)
+            {
+                memory_size += mmap->length_low;
+                mmap = (memory_map_t*)((unsigned int)mmap + mmap->size
+                    + sizeof(unsigned int));
+            }
+
+            // Get memory size in megabytes
+            memory_size = ((memory_size / 1024) / 1024);
+        }
+    }
+
+    //
     // kernel_main - kernel entry point
     //
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
+        // Initialize hardware
         gdt::init();
         idt::init();
         isr::init();
@@ -39,8 +71,12 @@ namespace mirus
 
         Screen::init();
 
-        kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 
+        get_memory_size(mbd);
+
+        kprintf("mirus-%d.%d.%d-dev\n\n", __VERSION_MAJOR__, __VERSION_MINOR__, 
             __VERSION_REV__);
+        kprintf("module count: %d\n", mbd->mods_count);
+        kprintf("system memory: %d\n", memory_size);
 
         while (true);
     }
