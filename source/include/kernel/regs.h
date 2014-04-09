@@ -13,35 +13,25 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
+// regs.h - cpu register structure
 //
 
-#include <kernel/kernel.h>
-#include <kernel/multiboot.h>
-#include <kernel/gdt.h>
-#include <kernel/idt.h>
-#include <kernel/isr.h>
-#include <kernel/irq.h>
-#include <kernel/screen.h>
-#include <lib/stdio.h>
+#pragma once
 
 namespace mirus
 {
-    //
-    // kernel_main - kernel entry point
-    //
-    extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
+    struct regs
     {
-        gdt::init();
-        idt::init();
-        isr::init();
-        idt::init();
+        // pushed to the segs last
+        unsigned int gs, fs, es, ds;
         
-        Screen::init();
+        // pushed by 'pusha'
+        unsigned int edi, esi, ebp, esp, ebx, edx, ecx, eax;
 
-        kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 
-            __VERSION_REV__);
+        // pushbyte + ecodes
+        unsigned int int_no, err_code;
 
-        while (true);
-    }
+        // pushed by CPU automatically
+        unsigned int eip, cs, eflags, useresp, ss;
+    } __attribute__ ((__packed__));
 } // !namespace

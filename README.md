@@ -26,7 +26,7 @@ $ rake
 ```
 
 ### Documentation
-Piping-hot documentation is avaliable for your use at no cost at all.  Kernel documentation is included in the `docs` directory of the source distribution, or online in the [docs](https://github.com/mirus/docs) project.
+Piping-hot documentation is available for your use at no cost at all.  Kernel documentation is included in the `docs` directory of the source distribution, or online in the [docs](https://github.com/mirus/docs) project.
 
 All documentation you could ever want is also available on the [wiki](https://github.com/joshbeitler/mirus/wiki), which is usually more up-to-date than the source docs.
 

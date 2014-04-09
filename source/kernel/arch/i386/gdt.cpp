@@ -37,7 +37,7 @@ namespace mirus
     //
     // setup a new entry
     //
-    void GDT::set_gate(int num, unsigned long base, unsigned long limit, 
+    void gdt::set_gate(int num, unsigned long base, unsigned long limit, 
         unsigned char access, unsigned char gran)
     {
         // descriptor base address
@@ -57,25 +57,25 @@ namespace mirus
     //
     // gogogo
     //
-    void GDT::init()
+    void gdt::init()
     {
         gp.limit = (sizeof(gdt_entry) * 6) - 1;
         gp.base = (unsigned long)&_gdt;
 
         // Null descriptor
-        GDT::set_gate(0, 0, 0, 0, 0);
+        gdt::set_gate(0, 0, 0, 0, 0);
 
         // code seg
-        GDT::set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
+        gdt::set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
 
         // data seg
-        GDT::set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
+        gdt::set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
 
         // user code
-        GDT::set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
+        gdt::set_gate(3, 0, 0xFFFFFFFF, 0xFA, 0xCF);
 
         // user data
-        GDT::set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
+        gdt::set_gate(4, 0, 0xFFFFFFFF, 0xF2, 0xCF);
 
         // flush it
         gdt_flush();

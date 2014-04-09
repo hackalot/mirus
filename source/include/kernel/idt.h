@@ -13,48 +13,45 @@
 // limitations under the License.
 
 //
-// idt.hpp - i386 idt implimentation
+// idt.h - i386 idt implimentation
 //
 
 #pragma once
 
 namespace mirus
 {
-    class IDTEntry
+    class idt_entry
     {
-        public:
-            unsigned short base_lo;
-            unsigned short sel;        // Our kernel segment goes here!
-            unsigned char always0;     // This will ALWAYS be set to 0!
-            unsigned char flags;       // Set using the above table!
-            unsigned short base_hi;
+    public:
+        unsigned short base_lo;
+        unsigned short sel;        // Our kernel segment goes here!
+        unsigned char always0;     // This will ALWAYS be set to 0!
+        unsigned char flags;       // Set using the above table!
+        unsigned short base_hi;
     } __attribute__ ((__packed__));
 
-    //
-    // idt_ptr - pointer to our idt
-    //
-    class IDTPtr
+    class idt_ptr
     {
-        public:
-            unsigned short limit;
-            unsigned long base;
+    public:
+        unsigned short limit;
+        unsigned long base;
     } __attribute__ ((__packed__));
 
     //
     // idt and idt functions
     //
-    class IDT
+    class idt
     {
-        public:
-            //
-            // set_gate - setup an idt entry
-            //
-            static void set_gate(unsigned char num, unsigned long base, 
-                unsigned short sel, unsigned char flags);
-            
-            //
-            // install the idt
-            //
-            static void init();
+    public:
+        //
+        // set_gate - setup an idt entry
+        //
+        static void set_gate(unsigned char num, unsigned long base, 
+            unsigned short sel, unsigned char flags);
+        
+        //
+        // install the idt
+        //
+        static void init();
     };
 } // !namespace

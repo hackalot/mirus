@@ -13,35 +13,30 @@
 // limitations under the License.
 
 //
-// kernel.cpp - main source file + kernel entry point
+// isr.hpp - isr implimentation
 //
 
-#include <kernel/kernel.h>
-#include <kernel/multiboot.h>
-#include <kernel/gdt.h>
+#pragma once
+
+#include <stddef.h>
+#include <stdint.h>
 #include <kernel/idt.h>
-#include <kernel/isr.h>
 #include <kernel/irq.h>
-#include <kernel/screen.h>
-#include <lib/stdio.h>
+#include <kernel/regs.h>
 
 namespace mirus
 {
-    //
-    // kernel_main - kernel entry point
-    //
-    extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
+    // triggered when a kernel panic happens
+    extern "C" void fault_handler(struct regs* r);
+
+    // isr functions
+    class isr
     {
-        gdt::init();
-        idt::init();
-        isr::init();
-        idt::init();
-        
-        Screen::init();
+    public:
+        // install the isr controller
+        static void init();
 
-        kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 
-            __VERSION_REV__);
-
-        while (true);
-    }
+        static void install_handler(size_t isr, irq_handler_t handler);
+        static void uninstall_handler(size_t isr);
+    };
 } // !namespace

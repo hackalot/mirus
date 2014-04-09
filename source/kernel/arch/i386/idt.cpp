@@ -24,16 +24,16 @@ namespace mirus
     extern "C"
     {
         void idt_load();
-        IDTPtr idtp;
+        idt_ptr idtp;
     }
 
     // IDT entry table
-    static IDTEntry _idt[256];
+    static idt_entry _idt[256];
 
     //
     // set an entry in the idt
     //
-    void IDT::set_gate(unsigned char num, unsigned long base, unsigned short sel, 
+    void idt::set_gate(unsigned char num, unsigned long base, unsigned short sel, 
         unsigned char flags)
     {
         // interrupt base routine address
@@ -49,14 +49,14 @@ namespace mirus
     //
     // Install IDT + get ready for use
     //
-    void IDT::init()
+    void idt::init()
     {
         // set up IDT pointer
-        idtp.limit = (sizeof(IDTEntry) * 256) - 1;
+        idtp.limit = (sizeof(idt_entry) * 256) - 1;
         idtp.base = (unsigned long)&_idt;
 
         // clear IDT
-        memset((unsigned char *)&_idt, 0, sizeof(IDTEntry) * 256);
+        memset((unsigned char *)&_idt, 0, sizeof(idt_entry) * 256);
 
         // load idt
         idt_load();

@@ -47,7 +47,7 @@ namespace mirus
     //
     // GDT itself
     //
-    class GDT
+    class gdt
     {
     public:
         //
