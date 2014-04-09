@@ -35,8 +35,8 @@ namespace mirus
         gdt::init();
         idt::init();
         isr::init();
-        idt::init();
-        
+        irq::init();
+
         Screen::init();
 
         kprintf("mirus-%d.%d.%d-dev", __VERSION_MAJOR__, __VERSION_MINOR__, 

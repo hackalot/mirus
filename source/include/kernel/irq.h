@@ -58,8 +58,7 @@ namespace mirus
         //
         // Set up a listener
         //
-        static void install_handler(int irq, 
-            irq_handler_t handler);
+        static void install_handler(int irq, irq_handler_t handler);
         
         //
         // remove a handler on an irq
