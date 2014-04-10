@@ -95,7 +95,7 @@ task :clean do
 end
 
 task :qemu do
-    system("qemu-system-i386 -cdrom bin/mirus.iso")
+    system("qemu-system-i386 -cdrom bin/mirus.iso -m 1024m")
 end
 
 task :travis do
