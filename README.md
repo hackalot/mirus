@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="http://i62.tinypic.com/wu5i9.png" width="150px" /><br><br>
+    <img src="http://i60.tinypic.com/6yfhj9.jpg" width="150px" /><br><br>
 </p>
 
 > Mirus is a new operating system designed for the future.  We throw all existing ideas and standards out the window and try to see what we can do better.  Our aim is to try out new and interesting things, in hopes of seeing what sticks.
