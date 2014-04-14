@@ -22,6 +22,7 @@
 #include <kernel/idt.h>
 #include <kernel/isr.h>
 #include <kernel/irq.h>
+#include <kernel/tss.h>
 #include <kernel/screen.h>
 #include <lib/stdio.h>
 
@@ -68,6 +69,9 @@ namespace mirus
         idt::init();
         isr::init();
         irq::init();
+
+        // Enable interrupts
+        asm volatile("sti");
 
         Screen::init();
 
