@@ -30,7 +30,9 @@ namespace mirus
     {
         set_kernel_stack(0x7FFFF);
 
-         asm volatile("  \
+        // TODO: move this into its own assembly file eventually
+        // TODO: format this nicer
+        asm volatile("  \
  cli; \
  mov $0x23, %ax; \
  mov %ax, %ds; \

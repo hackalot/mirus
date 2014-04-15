@@ -18,6 +18,15 @@ tss_flush:
     ltr ax
     ret
 
+global test_func
+test_func:
+    mov eax, 1
+    mov ebx, 0
+    mov ecx, 0
+    mov edx, 0
+    mov esi, 0
+    mov edi, 0
+
 global jmp_usermode
 jmp_usermode:
     cli

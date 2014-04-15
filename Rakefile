@@ -14,7 +14,7 @@
 
 version_major = 0
 version_minor = 1
-version_rev   = 5
+version_rev   = 6
 version_code  = 'firefly'
 version_post  = 'dev'
 
