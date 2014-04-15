@@ -43,10 +43,9 @@ asm_files = FileList[
 
 object_files = FileList[]
 errors = false
-build_disk_image = false
+build_disk_image = true
 
 task :default do
-    build_disk_image = true
     system('mkdir bin bin/obj 2>&1')
 
     cpp_files.each do |file|

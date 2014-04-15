@@ -5,7 +5,7 @@
 
 > Mirus is a new operating system designed for the future.  We throw all existing ideas and standards out the window and try to see what we can do better.  Our aim is to try out new and interesting things, in hopes of seeing what sticks.
 
-## Testing
+## Testing [![Build Status](https://travis-ci.org/joshbeitler/mirus.svg?branch=firefly-nova)](https://travis-ci.org/joshbeitler/mirus) 
 We don't provide ready-made and up-to-date ISO images of Mirus often.  In order to try out the latest and greatest features, you'll need to build yourself a steaming fresh copy of Mirus.
 
 ```
