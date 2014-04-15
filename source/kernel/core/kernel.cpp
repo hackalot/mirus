@@ -24,6 +24,8 @@
 #include <kernel/irq.h>
 #include <kernel/tss.h>
 #include <kernel/screen.h>
+#include <kernel/syscall.h>
+#include <kernel/task.h>
 #include <lib/stdio.h>
 
 namespace mirus
@@ -38,7 +40,7 @@ namespace mirus
     //
     void get_memory_size(multiboot_info_t* mbd)
     {
-        memory_map_t* mmap   = nullptr;
+        memory_map_t* mmap = nullptr;
 
         if (mbd->flags & 1)
         {
@@ -74,6 +76,8 @@ namespace mirus
         asm volatile("sti");
 
         Screen::init();
+        init_syscalls();
+        enter_userspace();
 
         get_memory_size(mbd);
 

@@ -18,7 +18,7 @@
 
 #include <kernel/tss.h>
 #include <kernel/gdt.h>
-#include <kernel/memory>
+#include <kernel/memory.h>
 
 namespace mirus
 {
