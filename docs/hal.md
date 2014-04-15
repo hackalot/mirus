@@ -8,4 +8,4 @@ When a kernel architecture is supplied to the build system, the default (intel-i
 All HAL components, both inside and outside, reside in the so called "hardware namespace".  The back end of the HAL is the "hardware" espace itself, while the front-end is the "core.hardware" namespace.  The HAL is the basis for the kernel API, on which all low level operations are performed.
 
 ## Kernel structure
-<center><img src="https://raw.githubusercontent.com/joshbeitler/mirus/firefly-nova/docs/resources/kernel-structure.png"></center>
+<p align="center"><img src="https://raw.githubusercontent.com/joshbeitler/mirus/firefly-nova/docs/resources/kernel-structure.png"></p>
