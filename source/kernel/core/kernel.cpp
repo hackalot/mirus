@@ -28,6 +28,8 @@
 #include <kernel/task.h>
 #include <lib/stdio.h>
 
+extern "C" void test_func();
+
 namespace mirus
 {
     //
@@ -85,6 +87,8 @@ namespace mirus
             __VERSION_REV__);
         kprintf("module count: %d\n", mbd->mods_count);
         kprintf("system memory: %d\n", memory_size);
+
+        test_func();
 
         while (true);
     }
