@@ -22,26 +22,28 @@
 #include <kernel/syscall.h>
 #include <kernel/irq.h>
 #include <kernel/isr.h>
+#include <kernel/message.h>
 
 namespace mirus
 {
-    const uint32_t MAX_SYSCALLS = 1;
+    const uint32_t MAX_SYSCALLS = 2;
     typedef uint32_t (*syscall_t)(...);
 
-    uint32_t sys_sendmsg(uint32_t dest, uint32_t sender)
+    uint32_t system_send(uint32_t dest, message_t* msg)
     {
-        kprintf("dest:%d sender:%d\n", dest, sender);
+        kprintf("sending message to: %d\n", dest);
         return 0;
     }
 
-    uint32_t sys_spawn()
+    uint32_t system_recieve()
     {
         return 0;
     }
 
     uintptr_t syscalls[MAX_SYSCALLS] =
     {
-        (uintptr_t)&sys_sendmsg
+        (uintptr_t)&system_send,
+        (uintptr_t)&system_recieve
     };
 
     void syscall_handler(regs* r)

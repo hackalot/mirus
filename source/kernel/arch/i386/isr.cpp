@@ -21,6 +21,7 @@
 #include <kernel/isr.h>
 #include <kernel/regs.h>
 #include <kernel/memory.h>
+#include <kernel/panic.h>
 
 namespace mirus
 {
@@ -117,6 +118,6 @@ namespace mirus
 
     extern "C" void fault_handler(regs* r)
     {
-        kprintf("crap\n");
+        panic(r);
     }
 } // !namespace
