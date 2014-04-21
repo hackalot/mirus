@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-    <img src="https://raw.githubusercontent.com/joshbeitler/mirus/firefly-nova/docs/resources/mirus-circle.png" width="350px" /><br><br>
+    <img src="https://raw.githubusercontent.com/joshbeitler/mirus/firefly-nova/docs/resources/mirus-circle.png" width="150px" /><br><br>
 </p>
 
 > Mirus is a new operating system designed for the future.  We throw all existing ideas and standards out the window and try to see what we can do better.  Our aim is to try out new and interesting things, in hopes of seeing what sticks.
