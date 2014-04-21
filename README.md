@@ -1,4 +1,3 @@
-<br>
 <p align="center">
     <img src="https://raw.githubusercontent.com/joshbeitler/mirus/firefly-nova/docs/resources/mirus-circle.png" width="150px" /><br><br>
 </p>
