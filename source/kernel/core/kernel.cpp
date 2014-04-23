@@ -26,7 +26,7 @@
 #include <kernel/screen.h>
 #include <kernel/syscall.h>
 #include <kernel/task.h>
-#include <kernel/paging.h>
+#include <kernel/mm.h>
 #include <lib/stdio.h>
 
 extern "C" void test_func();
@@ -70,6 +70,7 @@ namespace mirus
     extern "C" void kernel_main(multiboot_info_t* mbd, unsigned int magic)
     {
         get_memory_size(mbd);
+        extern char end[];
 
         // Initialize hardware
         gdt::init();
@@ -81,17 +82,19 @@ namespace mirus
         asm volatile("sti");
 
         Screen::init();
-        // paging::init();
+        
+        init_paging(memory_size, (unsigned int)&end);
+        kprintf("[sweet]\n");
+
         init_syscalls();
         enter_userspace();
 
         kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
             __VERSION_MINOR__, __VERSION_REV__);
 
-        extern char end[];
-
         kprintf("kernel addr [%x:%x]\n", 0xFFFFFF, &end);
-        kprintf("kernel size: %dKiB\n", ((uint32_t)end - 0xFFFFFF) / 1024);
+        kprintf("kernel size: %dKiB\n\n", ((uint32_t)&end - 0xFFFFFF) / 1024);
+        kprintf("trying paging...");
 
         // This is the magical system call test function that you've all heard
         // so much about.

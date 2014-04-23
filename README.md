@@ -15,6 +15,8 @@ $ rake
 
 A build of Mirus with no additional configuration will generate a bootable disk image named `mirus.iso` in the `bin` directory. You can burn this to any bootable medium you see fit, or quickly run it in a virtual machine via `rake qemu`.
 
+_Want a [screenshot](http://tinypic.com/r/2n6d5yt/8)?  Don't worry, they will get nicer pretty soon._
+
 ### Vagrant
 You can use Vagrant to spin up a shiny VM, install the dependencies, and build all in one step. (You will, of course, need [Vagrant](http://vagrantup.com)  This is useful if you are building on a non-supported platform or want to have a clean environment.
 
