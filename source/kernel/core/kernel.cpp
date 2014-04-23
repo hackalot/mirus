@@ -85,14 +85,16 @@ namespace mirus
         init_syscalls();
         enter_userspace();
 
-        kprintf("mirus-%d.%d.%d-dev\n\n", __VERSION_MAJOR__, __VERSION_MINOR__, 
-            __VERSION_REV__);
+        kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
+            __VERSION_MINOR__, __VERSION_REV__);
 
         extern char end[];
 
         kprintf("kernel addr [%x:%x]\n", 0xFFFFFF, &end);
         kprintf("kernel size: %dKiB\n", ((uint32_t)end - 0xFFFFFF) / 1024);
 
+        // This is the magical system call test function that you've all heard
+        // so much about.
         // test_func();
 
         while (true);
