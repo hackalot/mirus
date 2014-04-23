@@ -104,8 +104,6 @@ typedef struct module
     unsigned long reserved;
 } module_t;
 
-
-
 /* The memory map. Be careful that the offset 0 is base_addr_low
    but no size. */
 typedef struct memory_map

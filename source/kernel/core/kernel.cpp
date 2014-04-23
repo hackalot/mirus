@@ -88,6 +88,11 @@ namespace mirus
         kprintf("mirus-%d.%d.%d-dev\n\n", __VERSION_MAJOR__, __VERSION_MINOR__, 
             __VERSION_REV__);
 
+        extern char end[];
+
+        kprintf("kernel addr [%x:%x]\n", 0xFFFFFF, &end);
+        kprintf("kernel size: %dKiB\n", ((uint32_t)end - 0xFFFFFF) / 1024);
+
         // test_func();
 
         while (true);
