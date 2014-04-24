@@ -73,7 +73,7 @@ namespace mirus
         extern char end[];
 
         Screen::init();
-
+        
         kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
             __VERSION_MINOR__, __VERSION_REV__);
 
@@ -85,10 +85,10 @@ namespace mirus
         init_paging(memory_size, (unsigned int)&end);
         kprintf("[sweet]");
 
-        // irq::init();
+        irq::init();
 
         // Enable interrupts
-        // asm volatile("sti");
+        asm volatile("sti");
 
         init_syscalls();
         enter_userspace();

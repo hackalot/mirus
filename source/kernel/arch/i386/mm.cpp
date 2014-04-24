@@ -27,7 +27,7 @@ namespace mirus
     uint32_t* page_directory = (uint32_t*)PAGE_DIRECTORY_VIRTUAL_ADDRESS;
     uint32_t* page_tables    = (uint32_t*)PAGE_TABLE_VIRTUAL_ADDRESS;
 
-    page_directory_t* current_directory;
+    page_directory_t* current_directory = nullptr;
     uint32_t location = 0x50000000;
 
     uint32_t alloc_page()
@@ -55,7 +55,7 @@ namespace mirus
             Copy the location of your page directory into the CR3 register.
             Set the PG bit in the CR0 register. (OR-ing with 0x80000000.)
         */
-
+        location = end;
         uint32_t cr0;
 
         irq::install_handler(14, &page_fault);
