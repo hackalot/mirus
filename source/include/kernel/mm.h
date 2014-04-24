@@ -25,5 +25,21 @@
 
 namespace mirus
 {
+    #define PAGE_DIRECTORY_VIRTUAL_ADDRESS 0xFFBFF000
+    #define PAGE_TABLE_VIRTUAL_ADDRESS     0xFFC00000
+
+    #define PAGE_DIRECTORY_INDEX(x) ((uint32_t)x/1024)
+    #define PAGE_TABLE_INDEX(x) ((uint32_t)x%1024)
+
+    #define PAGE_PRESENT 0x1
+    #define PAGE_WRITE   0x2
+    #define PAGE_USER    0x4
+    #define PAGE_MASK    0xFFFFF000;
+
+    typedef uint32_t page_directory_t;
+
     void init_paging(uint32_t memory_size, unsigned int end);
+    void switch_page_directory(page_directory_t* dir);
+    void map(uint32_t virt_addr, uint32_t phys_addr, uint32_t flags);
+    void unmap(uint32_t virt_addr);
 } // !namespace

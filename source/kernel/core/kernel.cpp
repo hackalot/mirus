@@ -82,19 +82,19 @@ namespace mirus
         asm volatile("sti");
 
         Screen::init();
+
+        kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
+            __VERSION_MINOR__, __VERSION_REV__);
         
         init_paging(memory_size, (unsigned int)&end);
-        kprintf("[sweet]\n");
+        kprintf("[sweet]");
 
         init_syscalls();
         enter_userspace();
 
-        kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
-            __VERSION_MINOR__, __VERSION_REV__);
-
-        kprintf("kernel addr [%x:%x]\n", 0xFFFFFF, &end);
-        kprintf("kernel size: %dKiB\n\n", ((uint32_t)&end - 0xFFFFFF) / 1024);
-        kprintf("trying paging...");
+        // kprintf("kernel addr [%x:%x]\n", 0xFFFFFF, &end);
+        // kprintf("kernel size: %dKiB\n\n", ((uint32_t)&end - 0xFFFFFF) / 1024);
+        // kprintf("trying paging...");
 
         // This is the magical system call test function that you've all heard
         // so much about.

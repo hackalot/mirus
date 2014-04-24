@@ -17,42 +17,41 @@
 //
 
 #include <kernel/mm.h>
+#include <kernel/memory.h>
 
 namespace mirus
 {
-    // TODO: Simple code copied from wiki; massively upgrade later on
+    uint32_t* page_directory = (uint32_t*)PAGE_DIRECTORY_VIRTUAL_ADDRESS;
+    uint32_t* page_tables    = (uint32_t*)PAGE_TABLE_VIRTUAL_ADDRESS;
+
+    page_directory_t* current_directory;
+    uint32_t location = 0x200000;
+
+    void alloc_page()
+    {
+        uint32_t l = location;
+        location = (uint32_t)location + 0x1000;
+        return l;
+    }
+
+    void free_page()
+    {
+        
+    }
+
     void init_paging(uint32_t memory_size, unsigned int end)
     {
-        unsigned int kernel_end_page = (((unsigned int)end) & 0xFFFFF000) + 0x1000;
-        unsigned int* page_directory = (unsigned int*)kernel_end_page;
-        unsigned int* page_table = page_directory + 1024;
+        /*
+            It's simple!
 
-        uint32_t frame_count = memory_size / 4;
+            Copy the location of your page directory into the CR3 register.
+            Set the PG bit in the CR0 register. (OR-ing with 0x80000000.)
+        */
 
-        // empty all page directory entries
-        for (int i = 0; i < 1024; i++)
-        {
-            page_directory[i] = 0 | 2;
-        }
+        uint32_t cr0;
 
-        // little bobby page tables
-        unsigned int address = 0;
-        for (unsigned int i; i < 1024; i++)
-        {
-            page_table[i] = address | 3;
-            address += 4096;
-        }
+        // TODO: page fault handler
 
-        // put table in directory
-        page_directory[0] = *page_table;
-        page_directory[0] |= 3;
 
-        // enable paging
-        // ERROR: GPF here.
-        asm volatile("mov %0, %%cr3" :: "b"(page_directory));
-        unsigned int cr0;
-        asm volatile("mov %%cr0, %0": "=b"(cr0));
-        cr0 |= 0x80000000;
-        asm volatile("mov %0, %%cr0":: "b"(cr0));
     }
 } // !namespace
