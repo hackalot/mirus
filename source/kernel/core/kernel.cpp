@@ -72,22 +72,23 @@ namespace mirus
         get_memory_size(mbd);
         extern char end[];
 
-        // Initialize hardware
-        gdt::init();
-        idt::init();
-        isr::init();
-        irq::init();
-
-        // Enable interrupts
-        asm volatile("sti");
-
         Screen::init();
 
         kprintf("mirus firefly [%d.%d.%d-dev]\n\n", __VERSION_MAJOR__, 
             __VERSION_MINOR__, __VERSION_REV__);
-        
+
+        // Initialize hardware
+        gdt::init();
+        idt::init();
+        isr::init();
+
         init_paging(memory_size, (unsigned int)&end);
         kprintf("[sweet]");
+
+        // irq::init();
+
+        // Enable interrupts
+        // asm volatile("sti");
 
         init_syscalls();
         enter_userspace();

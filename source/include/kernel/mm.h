@@ -34,7 +34,9 @@ namespace mirus
     #define PAGE_PRESENT 0x1
     #define PAGE_WRITE   0x2
     #define PAGE_USER    0x4
-    #define PAGE_MASK    0xFFFFF000;
+    #define PAGE_MASK    0xFFFFF000
+
+    #define PAGE_SIZE    0x1000
 
     typedef uint32_t page_directory_t;
 
