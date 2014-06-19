@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/joshbeitler/mirus.png?label=ready&title=Ready)](https://waffle.io/joshbeitler/mirus)
 # Mirus
 
 Mirus is a new operating system with the aim of trying out new and interesting things, 
